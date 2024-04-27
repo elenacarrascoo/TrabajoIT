@@ -17,6 +17,8 @@ import org.hibernate.Transaction;
 
 public class citaDAO {
     
+    Session session = null;
+    
     public void altaCita(Cita c){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();

@@ -16,6 +16,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class historialDAO {
+    Session session = null;
     
     public void altaHistorial(Historial h){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
