@@ -18,6 +18,11 @@
             <result name="error">/login.jsp</result>
         </action>
         
+        <action name="elegirRegistro" class="acciones.indexAction" method="elegirRegistro">
+            <result name="altaPropietario">/altaPropietario.jsp</result>
+            <result name="altaVeterinario">/altaVeterinario.jsp</result>
+            <result name="error">/registro.jsp</result>
+        </action>
         <action name="registrarPropietario" class="acciones.propietarioAction">
             <result name="success">/login.jsp</result>
         </action>

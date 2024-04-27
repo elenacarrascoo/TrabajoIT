@@ -19,6 +19,7 @@ public class indexAction extends ActionSupport {
     
     private String dni;
     private String nombre;
+    private String rolUsuario;
     
     public indexAction() {
     }
@@ -46,6 +47,14 @@ public class indexAction extends ActionSupport {
     public String registrarForm() {
         return SUCCESS;
     }
+
+    public String getRolUsuario() {
+        return rolUsuario;
+    }
+
+    public void setRolUsuario(String rolUsuario) {
+        this.rolUsuario = rolUsuario;
+    }
     
     public String comprobarLogin(){
         propietarioDAO daoProp = new propietarioDAO();
@@ -61,6 +70,16 @@ public class indexAction extends ActionSupport {
             }else{
                 return ERROR;
             }
+        }
+    }
+    
+    public String elegirRegistro(){
+        if(this.getRolUsuario().equals("propietario")){
+            return "altaPropietario";
+        }else if(this.getRolUsuario().equals("veterinario")){
+            return "altaVeterinario";
+        }else{
+            return ERROR;
         }
     }
     
