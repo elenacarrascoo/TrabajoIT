@@ -18,6 +18,10 @@ import org.hibernate.Transaction;
 public class propietarioDAO {
     Session session = null;
     
+    public propietarioDAO(){
+        
+    }
+    
     public void altaPropietario(Propietario p){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();

@@ -57,8 +57,9 @@ public class indexAction extends ActionSupport {
     }
     
     public String comprobarLogin(){
+        Propietario p = new Propietario();
         propietarioDAO daoProp = new propietarioDAO();
-        Propietario p = daoProp.loginPropietario(this.getDni(), this.getPassword());
+        p = daoProp.loginPropietario(this.getDni(), this.getPassword());
         
         if(p!=null){
             return "propietario";
