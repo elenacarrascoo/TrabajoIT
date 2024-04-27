@@ -51,15 +51,6 @@ public class citaDAO {
         return c;
     }
     
-    public Cita obtenerCita(int idCita){
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Cita where id = " + idCita);
-        Cita c = (Cita) q.uniqueResult();
-        tx.commit();
-        return c;
-    }
-    
     public List<Cita> obtenerCitasVeterinario(int idVeterinario){
         List<Cita> citas;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
