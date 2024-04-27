@@ -18,7 +18,7 @@ import persistencia.veterinarioDAO;
 public class indexAction extends ActionSupport {
     
     private String dni;
-    private String nombre;
+    private String password;
     private String rolUsuario;
     
     public indexAction() {
@@ -32,18 +32,14 @@ public class indexAction extends ActionSupport {
         this.dni = dni;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getPassword() {
+        return password;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPassword(String password) {
+        this.password = password;
     }
-    
-    public String execute() throws Exception {
-        return SUCCESS;
-    }
-    
+      
     public String registrarForm() {
         return SUCCESS;
     }
@@ -56,17 +52,21 @@ public class indexAction extends ActionSupport {
         this.rolUsuario = rolUsuario;
     }
     
+    public String execute() throws Exception {
+        return SUCCESS;
+    }
+    
     public String comprobarLogin(){
         propietarioDAO daoProp = new propietarioDAO();
-        Propietario p = daoProp.loginPropietario(this.getNombre(), this.getDni());
+        Propietario p = daoProp.loginPropietario(this.getDni(), this.getPassword());
         
         if(p!=null){
             return "propietario";
         }else{
             veterinarioDAO daoVet= new veterinarioDAO();
-            Veterinario v = daoVet.loginVeterinario(this.getNombre(), this.getDni());
+            Veterinario v = daoVet.loginVeterinario(this.getDni(), this.getPassword());
             if(v!=null){
-                return "veterinaro";
+                return "veterinario";
             }else{
                 return ERROR;
             }

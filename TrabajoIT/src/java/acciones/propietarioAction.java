@@ -21,6 +21,7 @@ public class propietarioAction extends ActionSupport {
     private int telefono;
     private String correo;
     private String infoContactoAdicional;
+    private String password;
     
     public propietarioAction() {
     }
@@ -72,10 +73,18 @@ public class propietarioAction extends ActionSupport {
     public void setInfoContactoAdicional(String infoContactoAdicional) {
         this.infoContactoAdicional = infoContactoAdicional;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     
     public String execute() throws Exception {
         propietarioDAO pdao = new propietarioDAO();
-        Propietario p = new Propietario(this.getDni(), this.getNombre(), this.getDireccion(), this.getTelefono(), this.getCorreo(), this.getInfoContactoAdicional());
+        Propietario p = new Propietario(this.getDni(), this.getNombre(), this.getDireccion(), this.getTelefono(), this.getCorreo(), this.getInfoContactoAdicional(), this.getPassword());
         pdao.altaPropietario(p);
         return SUCCESS;
     }

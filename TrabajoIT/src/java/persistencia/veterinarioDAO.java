@@ -18,10 +18,10 @@ import org.hibernate.Transaction;
 public class veterinarioDAO {
     Session session = null;
     
-    public Veterinario loginVeterinario(String nombre, String dni){
+    public Veterinario loginVeterinario(String dni, String password){
         session=HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx=session.beginTransaction();
-        Query q=session.createQuery("From Veterinario where nombre='"+nombre+"' and dni='"+dni+"'");
+        Query q=session.createQuery("From Veterinario where dni='"+dni+"' and password='"+password+"'");
         Veterinario v = (Veterinario)q.uniqueResult();
         tx.commit();
         return v;

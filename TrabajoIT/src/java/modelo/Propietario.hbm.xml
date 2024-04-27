@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26-abr-2024 11:41:49 by Hibernate Tools 4.3.1 -->
+<!-- Generated 27-abr-2024 18:08:08 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Propietario" table="propietario" catalog="clinica_veterinaria" optimistic-lock="version">
-        <id name="dni" type="int">
-            <column name="dni" />
+        <id name="dni" type="string">
+            <column name="dni" length="9" />
             <generator class="assigned" />
         </id>
         <property name="nombre" type="string">
@@ -22,6 +22,9 @@
         </property>
         <property name="infoContactoAdicional" type="string">
             <column name="infoContactoAdicional" length="200" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="50" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package modelo;
-// Generated 26-abr-2024 11:41:48 by Hibernate Tools 4.3.1
+// Generated 27-abr-2024 18:08:07 by Hibernate Tools 4.3.1
 
 
 
@@ -8,23 +8,26 @@ package modelo;
  */
 public class Propietario  implements java.io.Serializable {
 
+
      private String dni;
      private String nombre;
      private String direccion;
      private int telefono;
      private String correo;
      private String infoContactoAdicional;
+     private String password;
 
     public Propietario() {
     }
 
-    public Propietario(String dni, String nombre, String direccion, int telefono, String correo, String infoContactoAdicional) {
+    public Propietario(String dni, String nombre, String direccion, int telefono, String correo, String infoContactoAdicional, String password) {
        this.dni = dni;
        this.nombre = nombre;
        this.direccion = direccion;
        this.telefono = telefono;
        this.correo = correo;
        this.infoContactoAdicional = infoContactoAdicional;
+       this.password = password;
     }
    
     public String getDni() {
@@ -68,6 +71,13 @@ public class Propietario  implements java.io.Serializable {
     
     public void setInfoContactoAdicional(String infoContactoAdicional) {
         this.infoContactoAdicional = infoContactoAdicional;
+    }
+    public String getPassword() {
+        return this.password;
+    }
+    
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 

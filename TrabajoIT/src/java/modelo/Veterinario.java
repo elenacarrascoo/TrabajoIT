@@ -1,5 +1,5 @@
 package modelo;
-// Generated 26-abr-2024 11:41:48 by Hibernate Tools 4.3.1
+// Generated 27-abr-2024 18:08:07 by Hibernate Tools 4.3.1
 
 
 
@@ -8,25 +8,35 @@ package modelo;
  */
 public class Veterinario  implements java.io.Serializable {
 
+
+     private String dni;
      private String nombre;
      private String especialidad;
      private int experiencia;
      private int telefono;
      private String correo;
-     private String dni;
+     private String password;
 
     public Veterinario() {
     }
 
-    public Veterinario(String nombre, String especialidad, int experiencia, int telefono, String correo, String dni) {
+    public Veterinario(String dni, String nombre, String especialidad, int experiencia, int telefono, String correo, String password) {
+       this.dni = dni;
        this.nombre = nombre;
        this.especialidad = especialidad;
        this.experiencia = experiencia;
        this.telefono = telefono;
        this.correo = correo;
-       this.dni = dni;
+       this.password = password;
     }
    
+    public String getDni() {
+        return this.dni;
+    }
+    
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
     public String getNombre() {
         return this.nombre;
     }
@@ -62,12 +72,12 @@ public class Veterinario  implements java.io.Serializable {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    public String getDni() {
-        return this.dni;
+    public String getPassword() {
+        return this.password;
     }
     
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 
