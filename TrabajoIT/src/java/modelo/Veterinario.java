@@ -8,8 +8,6 @@ package modelo;
  */
 public class Veterinario  implements java.io.Serializable {
 
-
-     private Integer id;
      private String nombre;
      private String especialidad;
      private int experiencia;
@@ -29,13 +27,6 @@ public class Veterinario  implements java.io.Serializable {
        this.dni = dni;
     }
    
-    public Integer getId() {
-        return this.id;
-    }
-    
-    public void setId(Integer id) {
-        this.id = id;
-    }
     public String getNombre() {
         return this.nombre;
     }

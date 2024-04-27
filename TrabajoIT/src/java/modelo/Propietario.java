@@ -8,8 +8,7 @@ package modelo;
  */
 public class Propietario  implements java.io.Serializable {
 
-
-     private int dni;
+     private String dni;
      private String nombre;
      private String direccion;
      private int telefono;
@@ -19,7 +18,7 @@ public class Propietario  implements java.io.Serializable {
     public Propietario() {
     }
 
-    public Propietario(int dni, String nombre, String direccion, int telefono, String correo, String infoContactoAdicional) {
+    public Propietario(String dni, String nombre, String direccion, int telefono, String correo, String infoContactoAdicional) {
        this.dni = dni;
        this.nombre = nombre;
        this.direccion = direccion;
@@ -28,11 +27,11 @@ public class Propietario  implements java.io.Serializable {
        this.infoContactoAdicional = infoContactoAdicional;
     }
    
-    public int getDni() {
+    public String getDni() {
         return this.dni;
     }
     
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
     public String getNombre() {
