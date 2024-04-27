@@ -8,6 +8,8 @@ package persistencia;
  *
  * @author clarabecerragil
  */
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 import modelo.Cita;
 import modelo.HibernateUtil;
