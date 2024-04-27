@@ -13,14 +13,14 @@
         </action>
         
         <action name="login" class="acciones.indexAction" method="comprobarLogin">
-            <result name="propietario">/propietario.jsp</result>
-            <result name="veterinario">/veterinario.jsp</result>
+            <result name="propietario">/Propietario/propietario.jsp</result>
+            <result name="veterinario">/Veterinario/veterinario.jsp</result>
             <result name="error">/login.jsp</result>
         </action>
         
         <action name="elegirRegistro" class="acciones.indexAction" method="elegirRegistro">
-            <result name="altaPropietario">/altaPropietario.jsp</result>
-            <result name="altaVeterinario">/altaVeterinario.jsp</result>
+            <result name="altaPropietario">/Propietario/altaPropietario.jsp</result>
+            <result name="altaVeterinario">/Veterinario/altaVeterinario.jsp</result>
             <result name="error">/registro.jsp</result>
         </action>
         <action name="registrarPropietario" class="acciones.propietarioAction">
