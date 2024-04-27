@@ -13,8 +13,13 @@
         </action>
         
         <action name="login" class="acciones.indexAction" method="comprobarLogin">
-            <result name="success">/propietario.jsp</result>
-            <result name="error">/veterinario.jsp</result>
+            <result name="propietario">/propietario.jsp</result>
+            <result name="veterinario">/veterinario.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+        
+        <action name="registrarPropietario" class="acciones.propietarioAction">
+            <result name="success">/login.jsp</result>
         </action>
     </package>
 </struts>

@@ -6,7 +6,10 @@
 package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
+import modelo.Propietario;
+import modelo.Veterinario;
 import persistencia.propietarioDAO;
+import persistencia.veterinarioDAO;
 
 /**
  *
@@ -14,7 +17,26 @@ import persistencia.propietarioDAO;
  */
 public class indexAction extends ActionSupport {
     
+    private String dni;
+    private String nombre;
+    
     public indexAction() {
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     public String execute() throws Exception {
@@ -25,8 +47,21 @@ public class indexAction extends ActionSupport {
         return SUCCESS;
     }
     
-    //public String comprobarLogin(){
-    //    propietarioDAO dao = new propietarioDAO();    
-    //}
+    public String comprobarLogin(){
+        propietarioDAO daoProp = new propietarioDAO();
+        Propietario p = daoProp.loginPropietario(this.getNombre(), this.getDni());
+        
+        if(p!=null){
+            return "propietario";
+        }else{
+            veterinarioDAO daoVet= new veterinarioDAO();
+            Veterinario v = daoVet.loginVeterinario(this.getNombre(), this.getDni());
+            if(v!=null){
+                return "veterinaro";
+            }else{
+                return ERROR;
+            }
+        }
+    }
     
 }
