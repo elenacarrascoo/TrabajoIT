@@ -5,6 +5,16 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
+        <action name="loginForm" class="acciones.indexAction">
+            <result name="success">/login.jsp</result>
+        </action>
+        <action name="registrarForm" class="acciones.indexAction" method="registrarForm">
+            <result name="success">/registro.jsp</result>
+        </action>
         
+        <action name="login" class="acciones.indexAction" method="comprobarLogin">
+            <result name="success">/propietario.jsp</result>
+            <result name="error">/veterinario.jsp</result>
+        </action>
     </package>
 </struts>
