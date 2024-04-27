@@ -39,7 +39,7 @@ public class propietarioDAO {
         tx.commit();
     }
     
-    public Propietario obtenerPropietario(int dniPropietario){
+    public Propietario obtenerPropietario(String dniPropietario){  
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         Query q = session.createQuery("FROM Propietario where dni = " + dniPropietario);
@@ -48,10 +48,10 @@ public class propietarioDAO {
         return p;
     }
     
-    public Propietario loginPropietario(String nombre, String dni){
+    public Propietario loginPropietario(String dni, String password){
         session=HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx=session.beginTransaction();
-        Query q=session.createQuery("From Propietario where nombre='"+nombre+"' and dni='"+dni+"'");
+        Query q=session.createQuery("From Propietario where dni='"+dni+"' and password='"+password+"'");
         Propietario p = (Propietario)q.uniqueResult();
         tx.commit();
         return p;

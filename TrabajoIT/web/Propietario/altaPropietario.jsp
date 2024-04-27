@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,12 +16,13 @@
         <h1>Introduce tus datos:</h1>
         
         <s:form action="registrarPropietario" method="post">
-            <s:textfield name="dni" label="DNI:"/>
-            <s:textfield name="nombre" label="Nombre:"/>
-            <s:textfield name="direccion" label="Direccion:"/>
-            <s:textfield name="telefono" label="Telefono:"/>
-            <s:textfield name="correo" label="Correo:"/>
-            <s:textfield name="infoContactoAdicional" label="Info contacto adicional:"/>
+            <s:textfield name="dni" label="DNI"/>
+            <s:textfield name="nombre" label="Nombre"/>
+            <s:textfield name="direccion" label="Direccion"/>
+            <s:textfield name="telefono" label="Telefono"/>
+            <s:textfield name="correo" label="Correo"/>
+            <s:textfield name="infoContactoAdicional" label="Info contacto adicional"/>
+            <s:password name="password" label="Contraseña"/>
             <s:submit name="darAltaPropietario" value="Dar de alta"/>
         </s:form>
     </body>
