@@ -5,7 +5,10 @@
  */
 package acciones;
 
+import static com.opensymphony.xwork2.Action.SUCCESS;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
 import modelo.Propietario;
 import modelo.Veterinario;
 import persistencia.propietarioDAO;
@@ -57,21 +60,28 @@ public class indexAction extends ActionSupport {
     }
     
     public String comprobarLogin(){
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        
         Propietario p = new Propietario();
         propietarioDAO daoProp = new propietarioDAO();
         p = daoProp.loginPropietario(this.getDni(), this.getPassword());
-        
+                
         if(p!=null){
+            session.put("propietario", p);
             return "propietario";
         }else{
             veterinarioDAO daoVet= new veterinarioDAO();
             Veterinario v = daoVet.loginVeterinario(this.getDni(), this.getPassword());
             if(v!=null){
+                session.put("veterinario", v);
                 return "veterinario";
             }else{
                 return ERROR;
             }
         }
+        
+        
+        
     }
     
     public String elegirRegistro(){

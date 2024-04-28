@@ -2,41 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/index.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/registro.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/src/java/hibernate.reveng.xml</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/src/java/persistencia/veterinarioDAO.java</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Paciente/pacienteActual.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Propietario/propietarioPacientes.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/src/java/persistencia/pacienteDAO.java</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Historial/historialPaciente.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/src/java/acciones/indexAction.java</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Paciente/datosPaciente.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/login.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Propietario/altaPropietario.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Veterinario/altaVeterinario.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Cita/citas.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/src/java/modelo/Propietario.java</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Propietario/propietario.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Factura/altaFactura.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Factura/propietarioFacturas.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Medicamento/actualizarMedicamento.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Historial/actualizarHistorial.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Medicamento/altaMedicamento.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/src/java/persistencia/propietarioDAO.java</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Veterinario/agenda.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/src/java/modelo/HibernateUtil.java</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Cita/actualizarCita.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Receta/actualizarReceta.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Medicamento/medicamentos.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Paciente/actualizarPaciente.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Veterinario/veterinario.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Tratamiento/altaTratamiento.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/web/Receta/altaReceta.jsp</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/src/java/acciones/propietarioAction.java</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/src/java/struts.xml</file>
-            <file>file:/C:/TrabajoIT/TrabajoIT/TrabajoIT/src/java/hibernate.cfg.xml</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
