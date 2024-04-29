@@ -29,5 +29,8 @@
         <action name="registrarPropietario" class="acciones.propietarioAction">
             <result name="success">/login.jsp</result>
         </action>
+        <action name="verPacientes" class="acciones.propietarioAction" method="listarPacientesPropietario">
+            <result name="success">/Propietario/propietarioPacientes.jsp</result>
+        </action>
     </package>
 </struts>

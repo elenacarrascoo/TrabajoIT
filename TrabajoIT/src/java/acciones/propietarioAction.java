@@ -5,8 +5,13 @@
  */
 package acciones;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
+import java.util.Map;
+import modelo.Paciente;
 import modelo.Propietario;
+import persistencia.pacienteDAO;
 import persistencia.propietarioDAO;
 
 /**
@@ -22,6 +27,7 @@ public class propietarioAction extends ActionSupport {
     private String correo;
     private String infoContactoAdicional;
     private String password;
+    private List <Paciente> listaPacientes;
     
     public propietarioAction() {
     }
@@ -81,11 +87,28 @@ public class propietarioAction extends ActionSupport {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<Paciente> getListaPacientes() {
+        return listaPacientes;
+    }
+
+    public void setListaPacientes(List<Paciente> listaPacientes) {
+        this.listaPacientes = listaPacientes;
+    }
     
     public String execute() throws Exception {
         propietarioDAO pdao = new propietarioDAO();
         Propietario p = new Propietario(this.getDni(), this.getNombre(), this.getDireccion(), this.getTelefono(), this.getCorreo(), this.getInfoContactoAdicional(), this.getPassword());
         pdao.altaPropietario(p);
+        return SUCCESS;
+    }
+    
+    public String listarPacientesPropietario(){
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        pacienteDAO pDAO = new pacienteDAO();
+        Propietario p = (Propietario) session.get("propietario");
+        List <Paciente> listaPacientes = pDAO.obtenerPacientes(p.getDni());
+        this.setListaPacientes(listaPacientes);   
         return SUCCESS;
     }
     

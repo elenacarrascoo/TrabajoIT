@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,46 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Tus mascotas:</h1>
+        <table border="1" class="wwFormTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Especie</th>
+                    <th>Raza</th>
+                    <th>Sexo</th>
+                    <th>Edad</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Propietario</th>
+                    <th>Historial</th>
+                </tr>
+            </thead>
+            <tbody>
+                <s:iterator var="paciente" value="listaPacientes">
+                    <tr>
+                        <td><s:property value="#paciente.id"/></td>
+                        <td><s:property value="#paciente.nombre"/></td>
+                        <td><s:property value="#paciente.especie"/></td>
+                        <td><s:property value="#paciente.raza"/></td>
+                        <td><s:property value="#paciente.sexo"/></td>
+                        <td><s:property value="#paciente.edad"/></td>
+                        <td><s:property value="#paciente.fechaNacimiento"/></td>
+                        <td><s:property value="#paciente.numHistorial"/></td>
+                        <td>
+                            <s:form action="" method="post">
+                                <button type="submit">Ver historial mascota</button>
+                            </s:form>
+                        </td>
+                        <td>
+                            <s:form action="" method="post">
+                                <button type="submit">Gestion citas</button>
+                            </s:form>
+                        </td>
+                    </tr>
+                </s:iterator>
+                     
+            </tbody>             
+        </table>
     </body>
 </html>
