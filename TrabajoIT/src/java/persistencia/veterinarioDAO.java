@@ -5,6 +5,8 @@
  */
 package persistencia;
 
+import java.util.*;
+import modelo.Cita;
 import modelo.HibernateUtil;
 import modelo.Veterinario;
 import org.hibernate.Query;
@@ -16,14 +18,70 @@ import org.hibernate.Transaction;
  * @author ecarr
  */
 public class veterinarioDAO {
+
     Session session = null;
-    
-    public Veterinario loginVeterinario(String dni, String password){
-        session=HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction tx=session.beginTransaction();
-        Query q=session.createQuery("From Veterinario where dni='"+dni+"' and password='"+password+"'");
-        Veterinario v = (Veterinario)q.uniqueResult();
+
+    public Veterinario loginVeterinario(String dni, String password) {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("From Veterinario where dni='" + dni + "' and password='" + password + "'");
+        Veterinario v = (Veterinario) q.uniqueResult();
         tx.commit();
         return v;
+
     }
+
+    public List<Cita> obtenerCitas(int idVeterinario) {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("From Cita where idVeterinario='" + idVeterinario + "'");
+        List citasVeterinario = (List<Cita>) q.list();
+        tx.commit();
+        return citasVeterinario;
+
+    }
+
+    public void altaVeterinario(Veterinario v) {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        session.save(v);
+        tx.commit();
+    }
+
+  public void eliminarVeterinario(Veterinario veterinario) {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = session.beginTransaction();
+        session.delete(veterinario);
+        tx.commit();
+    }
+
+    public void modificarVeterinario(Veterinario v) {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = session.beginTransaction();
+        session.update(v);
+        tx.commit();
+    }
+    
+    public List<Veterinario> obtenerCompañeros() {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("From Veterinario");
+        List <Veterinario> listaVeterinarios = (List<Veterinario>) q.list();
+        tx.commit();
+        return listaVeterinarios;
+
+    }
+    
+    public Veterinario obtenerVeterinario(String dni){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("From Veterinario where dni=" + dni);
+        Veterinario veterinario = (Veterinario)q.uniqueResult();
+        tx.commit();
+        return veterinario;
+        
+    }
+    
+
 }
+

@@ -1,3 +1,8 @@
+<%-- 
+    Document   : altaplayerForm
+    Created on : 07-abr-2024, 19:21:45
+    Author     : migue
+--%>
 
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -8,15 +13,15 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Registro de nuevo veterinario </h1>
+        <h1>Modificación de datos</h1>
         
         
-        <s:form name="altaVeterinario" action="altaVeterinario" method="post">
+        <s:form name="modificacionVeterinario" action="modificacionVeterinario" method="post">
             <table class="wwFormTable">
                 <tbody>
                     <tr>
                         <td class="tdLabel">
-                            <s:textfield name="dni" label="DNI"></s:textfield>
+                            <s:textfield name="dni" label="DNI" value="%{dni}" readonly="true"></s:textfield>
                             </td>
                         </tr>
                         <tr>
@@ -50,7 +55,7 @@
                         <tr>
                             <td colspan="2">
                                 <div align="right">
-                                <s:submit name="boton" value="registro"></s:submit>
+                                <s:submit name="boton" value="modificacion"></s:submit>
                                 </div>
                             </td>
                         </tr>

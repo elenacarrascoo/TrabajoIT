@@ -10,18 +10,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Opciones del Veterinario</title>
     </head>
     <body>
-        <h1>Bienvenido <s:property value="veterinario.nombre"></s:property>, especializada en <s:property value="veterinario.especialidad"></s:property></h1>
-        <h2>¿Que acción deseas realizar?</h2>
-        <s:form name="veterinarioAction" method="post">
-            <s:submit name="boton1" value="Consultar Agenda"></s:submit>
-            <s:submit name="boton2" value="Modificar Datos"></s:submit>
-            <s:submit name="boton3" value="Consultar Compañeros" ></s:submit>
-            <s:submit name="boton4" value="Baja Compañero"></s:submit>
-            
+        <h1>Bienvenido, <s:property value="nombre"></s:property> Especializado en <s:property value="especialidad"></s:property></h1>
+        <h2>¿Qué acción deseas realizar?</h2>
+
+        <s:form action="veterinarioActions" method="post">
+            <s:submit name="boton" value="Consultar_Agenda" />
         </s:form>
         
+        <s:form action="veterinarioActions" method="post">
+            <s:submit name="boton" value="Modificar_Datos" />
+        </s:form>
+
+        <s:form action="veterinarioActions" method="post">
+            <s:submit name="boton" value="Consultar_Compañeros" />
+        </s:form>
+
+        <s:form action="veterinarioActions" method="post">
+            <s:submit name="boton" value="Baja_Veterinario" />
+        </s:form>
+
     </body>
 </html>

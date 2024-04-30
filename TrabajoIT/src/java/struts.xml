@@ -33,4 +33,47 @@
             <result name="success">/Propietario/propietarioPacientes.jsp</result>
         </action>
     </package>
+    
+     <package name="veterinarioActions" extends="struts-default">
+        <action name="veterinarioActions" class="acciones.veterinarioAction">
+            <result name="consultarAgenda">/Veterinario/agenda.jsp</result>
+            
+            <result name="modificarDatos">/Veterinario/modificarDatos.jsp</result>
+            
+            <result name="consultarCompañeros">/Veterinario/compañeros.jsp</result>
+            
+            <result name="bajaVeterinario">/Veterinario/veterinario.jsp</result>
+            
+            <result name="success">/login.jsp</result>
+             
+        </action>
+        
+        <action name="altaVeterinario" class="acciones.veterinarioAction">
+            
+        <result name="nuevoRegistro">/Veterinario/login.jsp</result>
+        
+        </action>
+        
+        <action name="modificacionVeterinario" class="acciones.veterinarioAction">
+            
+            <result name ="modificacionVeterinario">/Veterinario/veterinario.jsp</result>
+            
+        </action>
+        
+        <action name="opcionesAdicionales" class="acciones.veterinarioAction">
+            
+            <result name="gestionRecetas">/Receta/receta.jsp</result>
+            <result name="generarFactura">/Factura/altaFactura.jsp</result>
+            
+        </action>
+        
+        <action name="opcionesAgenda" class="acciones.veterinarioAction">
+            <result name="verPaciente">/Paciente/pacienteActual.jsp</result>
+            <result name="altaTratamiento">/Tratamiento/altaTratamiento.jsp</result>
+            <result name="altaReceta">/Receta/altaReceta.jsp</result>
+            <result name="altaMedicamento">/Medicamento/altaMedicamento.jsp</result>
+            <result name="gestionMedicamentos">/Medicamento/medicamentos.jsp</result>
+        </action>
+        
+    </package>
 </struts>
