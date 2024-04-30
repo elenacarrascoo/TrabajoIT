@@ -42,7 +42,7 @@
             
             <result name="consultarCompañeros">/Veterinario/compañeros.jsp</result>
             
-            <result name="bajaVeterinario">/Veterinario/veterinario.jsp</result>
+            <result name="bajaVeterinario">/Veterinario/bajaVeterinario.jsp</result>
             
             <result name="success">/login.jsp</result>
              

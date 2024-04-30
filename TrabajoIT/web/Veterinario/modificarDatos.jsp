@@ -19,27 +19,18 @@
         <s:form name="modificacionVeterinario" action="modificacionVeterinario" method="post">
             <table class="wwFormTable">
                 <tbody>
-                    <tr>
-                        <td class="tdLabel">
-                            <s:textfield name="dni" label="DNI" value="%{dni}" readonly="true"></s:textfield>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tdLabel">
-                            <s:textfield name="nombre" label="Nombre"></s:textfield>
-                            </td>
-                        </tr>
+                        
                         <tr>
                             <td class="tdLabel">
                             <s:textfield name="especialidad" label="Especialidad"></s:textfield>
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="experiencia" label="Experiencia"></s:textfield>
+                            <s:textfield name="experiencia" label="Experiencia" min="0" max="49"></s:textfield>
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="telefono" label="Telefono"></s:textfield>
+                            <s:textfield name="telefono" label="Telefono" min="9" max="9"></s:textfield>
                             </td>
                             
                             <td class="tdLabel">

@@ -159,7 +159,6 @@ public class veterinarioAction extends ActionSupport {
                     addActionError("Veterinario no encontrado en la base de datos");
                     return ERROR;
                 }
-
                 veterinario.setNombre(nombre);
                 veterinario.setEspecialidad(especialidad);
                 veterinario.setExperiencia(experiencia);
