@@ -10,12 +10,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>baja Veterinario</title>
+        <title>Baja Veterinario</title>
     </head>
     <body>
-        <h1>Se ha llevado a cabo la baja definitiva de <s:property value="veterinario.nombre"></s:property>, con DNI <s:property value="veterinario.dni"></s:property> </h1>
         
-        <h2>Gracias por haber trabajdo con nosotros.</h2>
+        <s:form action="eliminacionVeterinario" method="post">
+            <s:textfield name="dni" label="Dime el dni del veterinario a dar de baja"></s:textfield>
+            <s:submit name="boton" value="Dar de Baja"/>
+        </s:form>
+        
+        <s:form action="opcionesAdicionales" method="post">
+            <s:submit name="boton" value="Volver"/>
+        </s:form>
         
         
     </body>

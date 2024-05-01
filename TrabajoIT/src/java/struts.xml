@@ -34,7 +34,7 @@
         </action>
     </package>
     
-     <package name="veterinarioActions" extends="struts-default">
+    <package name="veterinarioActions" extends="struts-default">
         <action name="veterinarioActions" class="acciones.veterinarioAction">
             <result name="consultarAgenda">/Veterinario/agenda.jsp</result>
             
@@ -45,12 +45,24 @@
             <result name="bajaVeterinario">/Veterinario/bajaVeterinario.jsp</result>
             
             <result name="success">/login.jsp</result>
+            
+            <result name="salir">/index.jsp</result>
+            
+            <result name="cancelar">/registro.jsp</result>
+            
+            
+            
              
+        </action>
+        
+        <action name="eliminacionVeterinario" class="acciones.veterinarioAction">
+            <result name="eliminar">/Veterinario/infoEliminacion.jsp</result>
+            
         </action>
         
         <action name="altaVeterinario" class="acciones.veterinarioAction">
             
-        <result name="nuevoRegistro">/Veterinario/login.jsp</result>
+            <result name="nuevoRegistro">/login.jsp</result>
         
         </action>
         
@@ -64,6 +76,8 @@
             
             <result name="gestionRecetas">/Receta/receta.jsp</result>
             <result name="generarFactura">/Factura/altaFactura.jsp</result>
+            <result name="volver">/Veterinario/veterinario.jsp</result>
+            <result name="salir">/index.jsp</result>
             
         </action>
         
@@ -74,6 +88,8 @@
             <result name="altaMedicamento">/Medicamento/altaMedicamento.jsp</result>
             <result name="gestionMedicamentos">/Medicamento/medicamentos.jsp</result>
         </action>
+        
+        
         
     </package>
 </struts>

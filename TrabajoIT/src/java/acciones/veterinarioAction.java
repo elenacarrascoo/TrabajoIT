@@ -128,26 +128,23 @@ public class veterinarioAction extends ActionSupport {
         veterinarioDAO dao = new veterinarioDAO();
 
         switch (boton) {
-            case "Modificar_Datos":
+            case "Modificar Datos":
                 return "modificarDatos";
 
-            case "Consultar_Agenda":
+            case "Consultar Agenda":
                 idVeterinario = 5688767;
                 citasVeterinario = dao.obtenerCitas(idVeterinario);
                 return "consultarAgenda";
 
-            case "Consultar_Compañeros":
+            case "Consultar Compañeros":
                 listaVeterinarios = dao.obtenerCompañeros();
                 return "consultarCompañeros";
 
-            case "Baja_Veterinario":
-                Veterinario veterinario = dao.obtenerVeterinario(dni);
-                dao.eliminarVeterinario(veterinario);
-                listaVeterinarios = dao.obtenerCompañeros();
-                return "bajaveterinario";
+            case "Baja Veterinario":
+                return "bajaVeterinario";
 
             case "registro":
-                veterinario = new Veterinario(dni, nombre, especialidad, experiencia, telefono, correo, password);
+                Veterinario veterinario = new Veterinario(dni, nombre, especialidad, experiencia, telefono, correo, password);
                 dao.altaVeterinario(veterinario);
                 listaVeterinarios = dao.obtenerCompañeros();
                 return "nuevoRegistro";
@@ -174,26 +171,42 @@ public class veterinarioAction extends ActionSupport {
 
                 return "modificacionVeterinario";
                 
-            case "Gestión_Recetas":
+            case "LogOut":
+                return "salir";
+                
+            case "Volver":
+                return "volver";
+                
+            case "Gestión Recetas":
                 return "gestionRecetas";
                 
-            case "Generar_Factura":
+            case "Generar Factura":
                 return "generarFactura";
                 
-            case"Ver_Paciente":
+            case"Ver Paciente":
                 return "verPaciente";
                 
-            case "Alta_Tratamiento":
+            case "Alta Tratamiento":
                 return "altaTratamiento";
                 
-            case "Alta_Receta":
+            case "Alta Receta":
                 return "altaReceta";
                 
-            case "Alta_Medicamento":
+            case "Alta Medicamento":
                 return "altaMedicamento";
                 
-            case "Gestión_Medicamentos":
+            case "Gestión Medicamentos":
                 return "gestionMedicamentos";
+                
+            case "Cancelar":
+                return "cancelar";
+                
+                
+            case "Dar de Baja":
+               veterinario = dao.obtenerVeterinario(dni);
+               dao.eliminarVeterinario(veterinario);
+               listaVeterinarios = dao.obtenerCompañeros();
+               return "eliminar";
                 
 
             default:

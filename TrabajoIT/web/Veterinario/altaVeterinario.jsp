@@ -16,33 +16,33 @@
                 <tbody>
                     <tr>
                         <td class="tdLabel">
-                            <s:textfield name="dni" label="DNI"></s:textfield>
+                            <s:textfield name="dni" label="DNI" required="true"></s:textfield>
                             </td>
                         </tr>
                         <tr>
                             <td class="tdLabel">
-                            <s:textfield name="nombre" label="Nombre"></s:textfield>
+                            <s:textfield name="nombre" label="Nombre" required="true"></s:textfield>
                             </td>
                         </tr>
                         <tr>
                             <td class="tdLabel">
-                            <s:textfield name="especialidad" label="Especialidad"></s:textfield>
+                            <s:textfield name="especialidad" label="Especialidad" required="true"></s:textfield>
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="experiencia" label="Experiencia"></s:textfield>
+                            <s:textfield name="experiencia" label="Experiencia" required="true"></s:textfield>
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="telefono" label="Telefono"></s:textfield>
+                            <s:textfield name="telefono" label="Telefono" required="true"></s:textfield>
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="correo" label="Correo electronico"></s:textfield>
+                            <s:textfield name="correo" label="Correo electronico" required="true"></s:textfield>
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="password" label="Password"></s:textfield>
+                            <s:textfield name="password" label="Password" required="true"></s:textfield>
                             </td>
                             
                             
@@ -57,7 +57,7 @@
                     </tbody>
                 </table>
         </s:form>
-        <s:form id="cancelar" name="cancelar" action="cancelar" method="post">
+        <s:form action="veterinarioActions" method="post">
             <s:submit name="boton" value="Cancelar"></s:submit>
         </s:form>
     </body>

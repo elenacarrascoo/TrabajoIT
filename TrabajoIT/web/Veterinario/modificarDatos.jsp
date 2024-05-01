@@ -53,8 +53,10 @@
                     </tbody>
                 </table>
         </s:form>
-        <s:form id="cancelar" name="cancelar" action="cancelar" method="post">
-            <s:submit name="boton" value="Cancelar"></s:submit>
-        </s:form>
+        <s:form action="opcionesAdicionales" method="post">
+                        <s:submit name="boton" value="Volver"/>
+                        <s:submit name="boton" value="LogOut"/>
+                        
+                    </s:form>
     </body>
 </html>

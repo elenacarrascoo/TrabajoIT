@@ -17,19 +17,23 @@
         <h2>¿Qué acción deseas realizar?</h2>
 
         <s:form action="veterinarioActions" method="post">
-            <s:submit name="boton" value="Consultar_Agenda" />
+            <s:submit name="boton" value="Consultar Agenda" />
         </s:form>
         
         <s:form action="veterinarioActions" method="post">
-            <s:submit name="boton" value="Modificar_Datos" />
+            <s:submit name="boton" value="Modificar Datos" />
         </s:form>
 
         <s:form action="veterinarioActions" method="post">
-            <s:submit name="boton" value="Consultar_Compañeros" />
+            <s:submit name="boton" value="Consultar Compañeros" />
         </s:form>
 
         <s:form action="veterinarioActions" method="post">
-            <s:submit name="boton" value="Baja_Veterinario" />
+            <s:submit name="boton" value="Baja Veterinario" />
+        </s:form>
+        
+        <s:form action="veterinarioActions" method="post">
+            <s:submit name="boton" value="LogOut" />
         </s:form>
 
     </body>

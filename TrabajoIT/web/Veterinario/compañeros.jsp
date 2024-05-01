@@ -39,11 +39,23 @@
                     </s:iterator>
                 </tbody>
             </table>
+            
+            <s:form action="opcionesAdicionales" method="post">
+                        <s:submit name="boton" value="Volver"/>
+                        <s:submit name="boton" value="LogOut"/>
+                        
+                    </s:form>
         </s:if>
         
         <!-- Si la lista es nula o está vacía -->
         <s:else>
             <p>No se encontraron veterinarios.</p>
+            
+            <s:form action="opcionesAdicionales" method="post">
+                        <s:submit name="boton" value="Volver"/>
+                        <s:submit name="boton" value="LogOut"/>
+                        
+                    </s:form>
         </s:else>
         
     </body>

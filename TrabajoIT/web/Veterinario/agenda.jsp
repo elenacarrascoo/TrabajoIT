@@ -50,25 +50,25 @@
 
                                 <s:form action="opcionesAgenda" method="post">
 
-                                    <s:submit name="boton" value="Alta_Tratamiento" />
+                                    <s:submit name="boton" value="Alta Tratamiento" />
 
                                 </s:form>
 
                                 <s:form action="opcionesAgenda" method="post">
 
-                                    <s:submit name="boton" value="Alta_Receta" />
+                                    <s:submit name="boton" value="Alta Receta" />
 
                                 </s:form>
 
                                 <s:form action="opcionesAgenda" method="post">
 
-                                    <s:submit name="boton" value="Alta_Medicamento" />
+                                    <s:submit name="boton" value="Alta Medicamento" />
 
                                 </s:form>
 
                                 <s:form action="opcionesAgenda" method="post">
 
-                                    <s:submit name="boton" value="Gestión_Medicamentos" />
+                                    <s:submit name="boton" value="Gestión Medicamentos" />
 
                                 </s:form>
                             </td>
@@ -77,8 +77,11 @@
 
                     <!-- Opciones adicionales -->
                     <s:form action="opcionesAdicionales" method="post">
-                        <s:submit name="boton" value="Gestión_Recetas" />
-                        <s:submit name="boton" value="Generar_Factura" />
+                        <s:submit name="boton" value="Gestión Recetas" />
+                        <s:submit name="boton" value="Generar Factura" />
+                        <s:submit name="boton" value="Volver"/>
+                        <s:submit name="boton" value="LogOut"/>
+                        
                     </s:form>
                 </tbody>
             </table>
@@ -87,6 +90,13 @@
         <!-- Si la lista es nula o está vacía -->
         <s:else>
             <p>No hay citas disponibles.</p>
+            
+            
+            <s:form action="opcionesAdicionales" method="post">
+                        <s:submit name="boton" value="Volver"/>
+                        <s:submit name="boton" value="LogOut"/>
+                        
+                    </s:form>
         </s:else>
 
     </body>
