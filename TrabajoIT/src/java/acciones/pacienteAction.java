@@ -105,5 +105,23 @@ public class pacienteAction extends ActionSupport {
         return SUCCESS;
     }
     
+    public String modificarPaciente(){
+        pacienteDAO pdao = new pacienteDAO();
+        Paciente p = pdao.obtenerPaciente(id);
+        p.setNombre(this.getNombre());
+        p.setEspecie(this.getEspecie());
+        p.setRaza(this.getRaza());
+        p.setSexo(this.getSexo());
+        p.setEdad(this.getEdad());
+        p.setFechaNacimiento(this.getFechaNacimiento());
+        return SUCCESS;
+    }
+    
+    public String eliminarPaciente(){
+        pacienteDAO pdao = new pacienteDAO();
+        Paciente p = pdao.obtenerPaciente(id);
+        pdao.bajaPaciente(p);
+        return SUCCESS;
+    }
     
 }
