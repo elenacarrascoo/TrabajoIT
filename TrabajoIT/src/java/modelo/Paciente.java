@@ -17,20 +17,20 @@ public class Paciente  implements java.io.Serializable {
      private String sexo;
      private int edad;
      private Date fechaNacimiento;
-     private int idPropietario;
+     private String dniPropietario;
      private int numHistorial;
 
     public Paciente() {
     }
 
-    public Paciente(String nombre, String especie, String raza, String sexo, int edad, Date fechaNacimiento, int idPropietario, int numHistorial) {
+    public Paciente(String nombre, String especie, String raza, String sexo, int edad, Date fechaNacimiento, String dniPropietario, int numHistorial) {
        this.nombre = nombre;
        this.especie = especie;
        this.raza = raza;
        this.sexo = sexo;
        this.edad = edad;
        this.fechaNacimiento = fechaNacimiento;
-       this.idPropietario = idPropietario;
+       this.dniPropietario = dniPropietario;
        this.numHistorial = numHistorial;
     }
    
@@ -83,12 +83,12 @@ public class Paciente  implements java.io.Serializable {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    public int getIdPropietario() {
-        return this.idPropietario;
+    public String getDniPropietario() {
+        return this.dniPropietario;
     }
     
-    public void setIdPropietario(int idPropietario) {
-        this.idPropietario = idPropietario;
+    public void setDniPropietario(String dniPropietario) {
+        this.dniPropietario = dniPropietario;
     }
     public int getNumHistorial() {
         return this.numHistorial;
