@@ -38,6 +38,15 @@
         <action name="verPacientes" class="acciones.propietarioAction" method="listarPacientesPropietario">
             <result name="success">/Propietario/propietarioPacientes.jsp</result>
         </action>
+        <action name="formModificarPaciente">
+            <result>/Paciente/actualizarPaciente.jsp</result>
+        </action>
+        <action name="actualizarPaciente" class="acciones.pacienteAction" method="modificarPaciente">
+            <result name="success">/Propietario/propietarioPacientes.jsp</result>
+        </action>
+        <action name="eliminarPaciente" class="acciones.pacienteAction" method="eliminarPaciente">
+            <result name="success">/Propietario/propietarioPacientes.jsp</result>
+        </action>
     </package>
     
     <package name="veterinarioActions" extends="struts-default">
