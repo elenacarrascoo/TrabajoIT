@@ -49,6 +49,18 @@
                                 <button type="submit">Gestion citas</button>
                             </s:form>
                         </td>
+                        <td>
+                            <s:form action="eliminarPaciente" method="post">
+                                <s:submit name="eliminarPaciente">Eliminar mascota</s:submit>
+                                <s:hidden name="idPaciente" value="%{#paciente.id}"/>
+                            </s:form>
+                        </td>                      
+                        <td>
+                            <s:form action="formModificarPaciente" method="post">
+                                <s:submit name="modificarPaciente">Modificar mascota</s:submit>
+                                <s:hidden name="idPaciente" value="%{#paciente.id}"></s:hidden>
+                            </s:form>
+                        </td>
                     </tr>
                 </s:iterator>
                      
