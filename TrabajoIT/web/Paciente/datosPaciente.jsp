@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Datos mascota:</h1>
+        <div>
+            <p><strong>ID:</strong> <s:property value="#session.paciente.id"/></p>
+            <p><strong>Nombre:</strong> <s:property value="#session.paciente.nombre"/></p>
+            <p><strong>Especie:</strong> <s:property value="#session.paciente.especie"/></p>
+            <p><strong>Raza:</strong> <s:property value="#session.paciente.raza"/></p>
+            <p><strong>Sexo:</strong> <s:property value="#session.paciente.sexo"/></p>
+            <p><strong>Edad:</strong> <s:property value="#session.paciente.edad"/></p>
+            <p><strong>Fecha de nacimiento:</strong> <s:property value="#session.paciente.fechaNacimiento"/></p>
+            <p><strong>ID Propietario:</strong> <s:property value="#session.paciente.dniPropietario"/></p>
+            <p><strong>Num Historial:</strong> <s:property value="#session.paciente.numHistorial"/></p>
+        </div>
     </body>
 </html>

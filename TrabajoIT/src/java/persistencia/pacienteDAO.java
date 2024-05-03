@@ -43,7 +43,7 @@ public class pacienteDAO {
     public Paciente obtenerPaciente(int idPaciente){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Propietario where id = " + idPaciente);
+        Query q = session.createQuery("FROM Paciente where id = " + idPaciente);
         Paciente p = (Paciente) q.uniqueResult();
         tx.commit();
         return p;
@@ -52,11 +52,20 @@ public class pacienteDAO {
     public List<Paciente> obtenerPacientes(String dniPropietario){
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("from Paciente where idPropietario = " + dniPropietario);
+        Query q = session.createQuery("from Paciente where dniPropietario = " + dniPropietario);
         List<Paciente> pacientes = (List<Paciente>) q.list();
         tx.commit();
         return pacientes;
     }
 
     //obtenerNumHistorial(id_paciente)
+
+    public Paciente obtenerPacienteNumHistorial(int numHistorialCita) {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("FROM Paciente where numHistorial = " + numHistorialCita);
+        Paciente p = (Paciente) q.uniqueResult();
+        tx.commit();
+        return p;
+    }
 }

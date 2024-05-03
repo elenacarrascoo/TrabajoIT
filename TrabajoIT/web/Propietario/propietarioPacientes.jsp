@@ -51,13 +51,13 @@
                         </td>
                         <td>
                             <s:form action="eliminarPaciente" method="post">
-                                <s:submit name="eliminarPaciente">Eliminar mascota</s:submit>
+                                <s:submit name="eliminarPaciente" value="Eliminar mascota"/>
                                 <s:hidden name="idPaciente" value="%{#paciente.id}"/>
                             </s:form>
                         </td>                      
                         <td>
                             <s:form action="formModificarPaciente" method="post">
-                                <s:submit name="modificarPaciente">Modificar mascota</s:submit>
+                                <s:submit name="modificarPaciente" value="Modificar mascota"/>
                                 <s:hidden name="idPaciente" value="%{#paciente.id}"></s:hidden>
                             </s:form>
                         </td>

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,19 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <s:form method="post" action="consultarPaciente">
+            <s:label from="consultarPaciente" value="Ver datos de tu mascota: "></s:label>
+            <s:submit name="consultarPaciente" value="Consultar Paciente"></s:submit>
+        </s:form>
+        <br>
+        <s:form method="post" action="">
+            <s:label from="" value=""></s:label>
+            <s:submit name="" value=""></s:submit>
+        </s:form>
+        <br>
+        <s:form method="post" action="">
+            <s:label from="" value=""></s:label>
+            <s:submit name="" value=""></s:submit>
+        </s:form>
     </body>
 </html>

@@ -1,5 +1,5 @@
 package modelo;
-// Generated 27-abr-2024 18:08:07 by Hibernate Tools 4.3.1
+// Generated 03-may-2024 14:34:39 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -15,7 +15,7 @@ public class Cita  implements java.io.Serializable {
      private Date hora;
      private String motivo;
      private int numHistorial;
-     private int idVeterinario;
+     private String dniVeterinario;
      private Integer idTratamiento;
      private Integer idReceta;
      private int idFactura;
@@ -24,20 +24,20 @@ public class Cita  implements java.io.Serializable {
     }
 
 	
-    public Cita(Date fecha, Date hora, String motivo, int numHistorial, int idVeterinario, int idFactura) {
+    public Cita(Date fecha, Date hora, String motivo, int numHistorial, String dniVeterinario, int idFactura) {
         this.fecha = fecha;
         this.hora = hora;
         this.motivo = motivo;
         this.numHistorial = numHistorial;
-        this.idVeterinario = idVeterinario;
+        this.dniVeterinario = dniVeterinario;
         this.idFactura = idFactura;
     }
-    public Cita(Date fecha, Date hora, String motivo, int numHistorial, int idVeterinario, Integer idTratamiento, Integer idReceta, int idFactura) {
+    public Cita(Date fecha, Date hora, String motivo, int numHistorial, String dniVeterinario, Integer idTratamiento, Integer idReceta, int idFactura) {
        this.fecha = fecha;
        this.hora = hora;
        this.motivo = motivo;
        this.numHistorial = numHistorial;
-       this.idVeterinario = idVeterinario;
+       this.dniVeterinario = dniVeterinario;
        this.idTratamiento = idTratamiento;
        this.idReceta = idReceta;
        this.idFactura = idFactura;
@@ -78,12 +78,12 @@ public class Cita  implements java.io.Serializable {
     public void setNumHistorial(int numHistorial) {
         this.numHistorial = numHistorial;
     }
-    public int getIdVeterinario() {
-        return this.idVeterinario;
+    public String getDniVeterinario() {
+        return this.dniVeterinario;
     }
     
-    public void setIdVeterinario(int idVeterinario) {
-        this.idVeterinario = idVeterinario;
+    public void setDniVeterinario(String dniVeterinario) {
+        this.dniVeterinario = dniVeterinario;
     }
     public Integer getIdTratamiento() {
         return this.idTratamiento;

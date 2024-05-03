@@ -49,7 +49,6 @@ Contributor(s):
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-    
     <mapping resource="modelo/Propietario.hbm.xml"/>
     <mapping resource="modelo/Receta.hbm.xml"/>
     <mapping resource="modelo/Veterinario.hbm.xml"/>
