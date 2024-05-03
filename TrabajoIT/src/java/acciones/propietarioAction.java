@@ -112,4 +112,15 @@ public class propietarioAction extends ActionSupport {
         return SUCCESS;
     }
     
+    public String actualizarPropietario(){
+        propietarioDAO pdao = new propietarioDAO();
+        Propietario p = pdao.obtenerPropietario(dni);
+        p.setNombre(this.getNombre());
+        p.setDireccion(this.getDireccion());
+        p.setTelefono(this.getTelefono());
+        p.setCorreo(this.getCorreo());
+        p.setInfoContactoAdicional(this.getInfoContactoAdicional());
+        return SUCCESS;
+    }
+    
 }

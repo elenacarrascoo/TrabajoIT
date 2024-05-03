@@ -53,6 +53,12 @@
         <action name="consultarPaciente" class="acciones.pacienteAction" method="consultarPaciente">
             <result name="success">/Paciente/datosPaciente.jsp</result>
         </action>
+        <action name="actualizarPropietario">
+            <result>/Propietario/actualizarPropietario.jsp</result>
+        </action>
+        <action name="registrarActualizacion" class="acciones.propietarioAction" method="actualizarPropietario">
+            <result name="success">/Propietario/propietario.jsp</result>
+        </action>
     </package>
     
     <package name="veterinarioActions" extends="struts-default">
