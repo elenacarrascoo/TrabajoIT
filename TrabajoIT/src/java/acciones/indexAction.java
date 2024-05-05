@@ -42,10 +42,6 @@ public class indexAction extends ActionSupport {
     public void setPassword(String password) {
         this.password = password;
     }
-      
-    public String registrarForm() {
-        return SUCCESS;
-    }
 
     public String getRolUsuario() {
         return rolUsuario;
@@ -56,10 +52,6 @@ public class indexAction extends ActionSupport {
     }
     
     public String execute() throws Exception {
-        return SUCCESS;
-    }
-    
-    public String comprobarLogin(){
         Map<String, Object> session = ActionContext.getContext().getSession();
         
         Propietario p = new Propietario();
@@ -79,9 +71,6 @@ public class indexAction extends ActionSupport {
                 return ERROR;
             }
         }
-        
-        
-        
     }
     
     public String elegirRegistro(){
@@ -94,4 +83,19 @@ public class indexAction extends ActionSupport {
         }
     }
     
+    public void validate() {
+        String actionName = ActionContext.getContext().getName();
+
+        if (actionName.equals("login")) {
+
+            if (this.getDni().equals("")) {
+                addFieldError("dni", "Introduce el dni");
+            } 
+
+            if (this.getPassword().equals("")) {
+                addFieldError("password", "Introduce la contraseña");
+            }
+        }
+    }
+        
 }

@@ -5,17 +5,18 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        <action name="loginForm" class="acciones.indexAction">
-            <result name="success">/login.jsp</result>
+        <action name="loginForm">
+            <result>/login.jsp</result>
         </action>
-        <action name="registrarForm" class="acciones.indexAction" method="registrarForm">
-            <result name="success">/registro.jsp</result>
+        <action name="registrarForm">
+            <result>/registro.jsp</result>
         </action>
         
-        <action name="login" class="acciones.indexAction" method="comprobarLogin">
+        <action name="login" class="acciones.indexAction">
             <result name="propietario">/Propietario/propietario.jsp</result>
             <result name="veterinario">/Veterinario/veterinario.jsp</result>
             <result name="error">/login.jsp</result>
+            <result name="input">/login.jsp</result>
         </action>
         
         <action name="elegirRegistro" class="acciones.indexAction" method="elegirRegistro">
@@ -28,6 +29,7 @@
     <package name="propietarioPacienteActions" extends="struts-default">
         <action name="registrarPropietario" class="acciones.propietarioAction">
             <result name="success">/login.jsp</result>
+            <result name="input">/Propietario/altaPropietario.jsp</result>
         </action>
         <action name="formAltaPaciente">
             <result>/Paciente/altaPaciente.jsp</result>
@@ -58,6 +60,7 @@
         </action>
         <action name="registrarActualizacion" class="acciones.propietarioAction" method="actualizarPropietario">
             <result name="success">/Propietario/propietario.jsp</result>
+            <result name="input">/Propietario/actualizarPropietario.jsp</result>
         </action>
     </package>
     

@@ -9,6 +9,8 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import modelo.Paciente;
 import modelo.Propietario;
 import persistencia.pacienteDAO;
@@ -19,7 +21,7 @@ import persistencia.propietarioDAO;
  * @author ecarr
  */
 public class propietarioAction extends ActionSupport {
-    
+
     private String dni;
     private String nombre;
     private String direccion;
@@ -27,8 +29,8 @@ public class propietarioAction extends ActionSupport {
     private String correo;
     private String infoContactoAdicional;
     private String password;
-    private List <Paciente> listaPacientes;
-    
+    private List<Paciente> listaPacientes;
+
     public propietarioAction() {
     }
 
@@ -95,26 +97,27 @@ public class propietarioAction extends ActionSupport {
     public void setListaPacientes(List<Paciente> listaPacientes) {
         this.listaPacientes = listaPacientes;
     }
-    
+
     public String execute() throws Exception {
         propietarioDAO pdao = new propietarioDAO();
         Propietario p = new Propietario(this.getDni(), this.getNombre(), this.getDireccion(), this.getTelefono(), this.getCorreo(), this.getInfoContactoAdicional(), this.getPassword());
         pdao.altaPropietario(p);
         return SUCCESS;
     }
-    
-    public String listarPacientesPropietario(){
+
+    public String listarPacientesPropietario() {
         Map<String, Object> session = ActionContext.getContext().getSession();
         pacienteDAO pDAO = new pacienteDAO();
         Propietario p = (Propietario) session.get("propietario");
-        List <Paciente> listaPacientes = pDAO.obtenerPacientes(p.getDni());
-        this.setListaPacientes(listaPacientes);   
+        List<Paciente> listaPacientes = pDAO.obtenerPacientes(p.getDni());
+        this.setListaPacientes(listaPacientes);
         return SUCCESS;
     }
-    
-    public String actualizarPropietario(){
+
+    public String actualizarPropietario() {
+        Map<String, Object> session = ActionContext.getContext().getSession();
         propietarioDAO pdao = new propietarioDAO();
-        Propietario p = pdao.obtenerPropietario(dni);
+        Propietario p = (Propietario) session.get("propietario");
         p.setNombre(this.getNombre());
         p.setDireccion(this.getDireccion());
         p.setTelefono(this.getTelefono());
@@ -122,5 +125,46 @@ public class propietarioAction extends ActionSupport {
         p.setInfoContactoAdicional(this.getInfoContactoAdicional());
         return SUCCESS;
     }
-    
+
+    public void validate() {
+        String actionName = ActionContext.getContext().getName();
+
+        if (actionName.equals("registrarPropietario")) {
+            String patronDNI = "[0-9]{7,8}[A-Z a-z]";
+            Pattern patron1 = Pattern.compile(patronDNI);
+            Matcher macheadorDNI = patron1.matcher(this.getDni());
+
+            if (this.getDni().equals("")) {
+                addFieldError("dni", "Introduce el dni");
+            } else if (!macheadorDNI.matches()) {
+                addFieldError("dni", "Formato de dni incorrecto");
+            }
+
+            if (this.getPassword().equals("")) {
+                addFieldError("password", "Introduce la contraseña");
+            } else if (this.getPassword().length() < 8 || this.getPassword().length() > 11) {
+                addFieldError("password", "La contraseña debe tener entre 8 y 11 caracteres");
+            }
+
+            if (this.getNombre().equals("")) {
+                addFieldError("nombre", "Introduce el nombre");
+            }
+
+            if (this.getTelefono() == 0) {
+                addFieldError("telefono", "Introduce el teléfono");
+            }
+
+        }
+        
+        if(actionName.equals("registrarActualizacion")){
+            if (this.getNombre().equals("")) {
+                addFieldError("nombre", "Introduce el nombre");
+            }
+
+            if (this.getTelefono() == 0) {
+                addFieldError("telefono", "Introduce el teléfono");
+            }
+        }
+    }
+
 }
