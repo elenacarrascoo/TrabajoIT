@@ -31,10 +31,10 @@ public class veterinarioDAO {
 
     }
 
-    public List<Cita> obtenerCitas(int idVeterinario) {
+    public List<Cita> obtenerCitas(String dni) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("From Cita where idVeterinario='" + idVeterinario + "'");
+        Query q = session.createQuery("From Cita where dniVeterinario='" + dni + "'");
         List citasVeterinario = (List<Cita>) q.list();
         tx.commit();
         return citasVeterinario;
@@ -72,10 +72,20 @@ public class veterinarioDAO {
 
     }
     
-    public Veterinario obtenerVeterinario(String dni){
+    public Veterinario obtenerVeterinarioBaja(String dni, String password){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("From Veterinario where dni=" + dni);
+        Query q = session.createQuery("From Veterinario where dni='" + dni + "' and password='" + password + "'");
+        Veterinario veterinario = (Veterinario)q.uniqueResult();
+        tx.commit();
+        return veterinario;
+        
+    }
+    
+     public Veterinario obtenerVeterinario(String dni){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("From Veterinario where dni='" + dni);
         Veterinario veterinario = (Veterinario)q.uniqueResult();
         tx.commit();
         return veterinario;

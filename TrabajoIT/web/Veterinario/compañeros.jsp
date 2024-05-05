@@ -7,33 +7,33 @@
         <title>Lista de Veterinarios</title>
     </head>
     <body>
-        <h1>Lista de Veterinarios</h1>
+        <h1>Lista de Veterinarios </h1>
         
         <!-- Verifica que la lista no sea nula y tenga elementos -->
-        <s:if test="%{#listaVeterinarios != null && #listaVeterinarios.size() > 0}">
+        <s:if test="%{!listaVeterinarios.isEmpty()}">
             <table border="1">
                 <thead>
                     <tr>
-                        <th>DNI</th>
                         <th>Nombre</th>
                         <th>Especialidad</th>
                         <th>Experiencia</th>
                         <th>Telefono</th>
                         <th>Correo</th>
+                        <th>dni</th>
                         <th>Contraseña</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Itera sobre la lista de veterinarios -->
-                    <s:iterator value="#listaVeterinarios" var="veterinario">
+                    <s:iterator value="listaVeterinarios" var="veterinario">
                         <tr>
-                            <td><s:property value="#veterinario.dni" /></td>
-                            <td><s:property value="#veterinario.nombre" /></td>
-                            <td><s:property value="#veterinario.especialidad"/></td>
-                            <td><s:property value="#veterinario.experiencia"/></td>
-                            <td><s:property value="#veterinario.telefono"/></td>
-                            <td><s:property value="#veterinario.correo"/></td>
-                            <td><s:property value="#veterinario.contraseña"/></td>
+                            <td><s:property value="#veterinario.nombre"></s:property></td>
+                            <td><s:property value="#veterinario.especialidad"></s:property></td>
+                            <td><s:property value="#veterinario.experiencia"></s:property></td>
+                            <td><s:property value="#veterinario.telefono"></s:property></td>
+                            <td><s:property value="#veterinario.correo"></s:property></td>
+                            <td><s:property value="#veterinario.dni"></s:property></td>
+                            <td><s:property value="#veterinario.contraseña"></s:property></td>
                             
                         </tr>
                     </s:iterator>

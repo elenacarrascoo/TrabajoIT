@@ -26,11 +26,11 @@
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="experiencia" label="Experiencia" min="0" max="49"></s:textfield>
+                            <s:textfield name="experiencia" label="Experiencia" min="0" max="49" value=""></s:textfield>
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="telefono" label="Telefono" min="9" max="9"></s:textfield>
+                            <s:textfield name="telefono" label="Telefono" min="9" max="9" value=""></s:textfield>
                             </td>
                             
                             <td class="tdLabel">
@@ -46,7 +46,7 @@
                         <tr>
                             <td colspan="2">
                                 <div align="right">
-                                <s:submit name="boton" value="modificacion"></s:submit>
+                                <s:submit name="boton" value="Modificacion"></s:submit>
                                 </div>
                             </td>
                         </tr>

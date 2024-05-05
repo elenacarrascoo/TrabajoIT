@@ -13,10 +13,10 @@
         <title>Listado de Citas</title>
     </head>
     <body>
-        <h1>Listado de Citas</h1>
+        <h1>Listado de Citas de <s:property value="{veterinario.nombre}"></s:property></h1>
 
         <!-- Verificar si la lista no es nula y tiene al menos un elemento -->
-        <s:if test="%{#citasVeterinario} != null && #citasVeterinario.size() > 0}">  
+        <s:if test="%{!citasVeterinario.isEmpty()}">  
             <table border="1">
                 <thead>
                     <tr>
@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                     <!-- Iterar sobre la lista de citas -->
-                    <s:iterator value="#citasVeterinario" var="cita">
+                    <s:iterator value="citasVeterinario" var="cita">
                         <tr>
                             <td><s:property value="#cita.fecha" /></td>
                             <td><s:property value="#cita.hora" /></td>
@@ -40,11 +40,11 @@
                             <td><s:property value="#cita.idFactura" /></td>
                             <td>
                                 <!-- Formularios con acciones para cada cita -->
-                                <s:form action="verPaciente" method="post">
+                                <s:form action="opcionesAgenda" method="post">
 
-                                    <s:hidden name="numHistorialCita" value="%{#cita.numHistorial}" />
+                                    <s:hidden name="idCita" value="cita.id" />
                                     <!-- campo hidden para identificar la cita -->
-                                    <s:submit name="verPaciente" value="Ver Paciente" />
+                                    <s:submit name="boton" value="Ver_Paciente" />
 
                                 </s:form>
 

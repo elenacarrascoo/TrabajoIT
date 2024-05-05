@@ -31,14 +31,14 @@ public class veterinarioAction extends ActionSupport {
     private String password;
     private List<Cita> citasVeterinario;
     private List<Veterinario> listaVeterinarios;
-    private int idVeterinario;
+    private String dniVeterinario;
 
-    public int getIdVeterinario() {
-        return idVeterinario;
+    public String getIdVeterinario() {
+        return dniVeterinario;
     }
 
-    public void setIdVeterinario(int idVeterinario) {
-        this.idVeterinario = idVeterinario;
+    public void setIdVeterinario(String idVeterinario) {
+        this.dniVeterinario = idVeterinario;
     }
     
     
@@ -132,8 +132,8 @@ public class veterinarioAction extends ActionSupport {
                 return "modificarDatos";
 
             case "Consultar Agenda":
-                idVeterinario = 5688767;
-                citasVeterinario = dao.obtenerCitas(idVeterinario);
+               // dniVeterinario = dni;
+                citasVeterinario = dao.obtenerCitas(dni);
                 return "consultarAgenda";
 
             case "Consultar Compañeros":
@@ -149,7 +149,7 @@ public class veterinarioAction extends ActionSupport {
                 listaVeterinarios = dao.obtenerCompañeros();
                 return "nuevoRegistro";
 
-            case "modificacion":
+            case "Modificacion":
                 veterinario = dao.obtenerVeterinario(dni);
 
                 if (veterinario == null) {
@@ -203,7 +203,7 @@ public class veterinarioAction extends ActionSupport {
                 
                 
             case "Dar de Baja":
-               veterinario = dao.obtenerVeterinario(dni);
+               veterinario = dao.obtenerVeterinarioBaja(dni, password);
                dao.eliminarVeterinario(veterinario);
                listaVeterinarios = dao.obtenerCompañeros();
                return "eliminar";
