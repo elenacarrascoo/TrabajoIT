@@ -9,16 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Nueva Cita</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>Nueva Cita</h1>
-        <s:form>
-            <s:textfield name="fecha" label="Fecha"/>
-            <s:textfield name="hora" label="Hora"/>
-            <s:textfield name="motivo" label="Motivo"/>
-            
-            <s:submit name="altaCita" value="Reservar"/>
-        </s:form>
+        <h1>Hello World!</h1>
     </body>
 </html>

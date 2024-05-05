@@ -66,70 +66,51 @@
         </action>
     </package>
     
-    <package name="citasActions" extends="struts-default">
-        <action name="gestionCitas" class="acciones.citaAction" method="citasPendientes">
-            <result name="success">/Cita/citas.jsp</result>
-        </action>
-        
-        <action name="actualizarCita" class="acciones.citaAction">
-            <result>/Cita/actualizarCita.jsp</result>
-        </action>
-        
-        <action name="eliminarCita" class="acciones.citaAction" method="eliminarCita">
-            <result name="success">/Cita/citas.jsp</result>
-        </action>
-        
-        <action name="modificarCita" class="acciones.citaAction" method="modificarCita">
-            <result name="success">/Cita/citas.jsp</result>
-        </action>
-        
-        <action name="cogerCita" class="acciones.citaAction">
-            <result>/Cita/nuevaCita.jsp</result>
-        </action>
-        
-        <action name="altaCita" class="acciones.citaAction"method="altaCita">
-            <result>/Cita/citas.jsp</result>
-        </action>
-    </package>
-    
-    <package name="historialActions" extends="struts-default">
-        <action name="consultarHistorial" class="acciones.historialAction" method="verHistorialPaciente">
-            <result name="success">/Historial/historialPaciente.jsp</result>
-        </action>
-        
-        <action name="modificarHistorial" class="acciones.historialAction" method="modificarHistorial">
-            <result name="success">/Historial/actualizarHistorial.jsp</result>
-        </action>
-    </package>
-    
     <package name="veterinarioActions" extends="struts-default">
         <action name="veterinarioActions" class="acciones.veterinarioAction">
-            <result name="consultarAgenda">/Veterinario/agenda.jsp</result>          
-            <result name="modificarDatos">/Veterinario/modificarDatos.jsp</result>           
-            <result name="consultarCompañeros">/Veterinario/compañeros.jsp</result>            
-            <result name="bajaVeterinario">/Veterinario/bajaVeterinario.jsp</result>           
-            <result name="success">/login.jsp</result>            
-            <result name="salir">/index.jsp</result>            
-            <result name="cancelar">/registro.jsp</result>    
+            <result name="consultarAgenda">/Veterinario/agenda.jsp</result>
+            
+            <result name="modificarDatos">/Veterinario/modificarDatos.jsp</result>
+            
+            <result name="consultarCompañeros">/Veterinario/compañeros.jsp</result>
+            
+            <result name="bajaVeterinario">/Veterinario/bajaVeterinario.jsp</result>
+            
+            <result name="success">/login.jsp</result>
+            
+            <result name="salir">/index.jsp</result>
+            
+            <result name="cancelar">/registro.jsp</result>
+            
+            
+            
+             
         </action>
         
         <action name="eliminacionVeterinario" class="acciones.veterinarioAction">
-            <result name="eliminar">/Veterinario/infoEliminacion.jsp</result>         
+            <result name="eliminar">/Veterinario/infoEliminacion.jsp</result>
+            
         </action>
         
-        <action name="altaVeterinario" class="acciones.veterinarioAction">        
-            <result name="nuevoRegistro">/login.jsp</result>       
+        <action name="altaVeterinario" class="acciones.veterinarioAction">
+            
+            <result name="nuevoRegistro">/login.jsp</result>
+        
         </action>
         
-        <action name="modificacionVeterinario" class="acciones.veterinarioAction">           
-            <result name ="modificacionVeterinario">/Veterinario/veterinario.jsp</result>           
+        <action name="modificacionVeterinario" class="acciones.veterinarioAction">
+            
+            <result name ="modificacionVeterinario">/Veterinario/veterinario.jsp</result>
+            
         </action>
         
-        <action name="opcionesAdicionales" class="acciones.veterinarioAction">          
+        <action name="opcionesAdicionales" class="acciones.veterinarioAction">
+            
             <result name="gestionRecetas">/Receta/receta.jsp</result>
             <result name="generarFactura">/Factura/altaFactura.jsp</result>
             <result name="volver">/Veterinario/veterinario.jsp</result>
-            <result name="salir">/index.jsp</result>          
+            <result name="salir">/index.jsp</result>
+            
         </action>
         
         <action name="opcionesAgenda" class="acciones.veterinarioAction">
@@ -138,6 +119,9 @@
             <result name="altaReceta">/Receta/altaReceta.jsp</result>
             <result name="altaMedicamento">/Medicamento/altaMedicamento.jsp</result>
             <result name="gestionMedicamentos">/Medicamento/medicamentos.jsp</result>
-        </action>  
+        </action>
+        
+        
+        
     </package>
 </struts>

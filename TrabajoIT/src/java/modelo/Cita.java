@@ -23,16 +23,7 @@ public class Cita  implements java.io.Serializable {
     public Cita() {
     }
 
-
-    public Cita(Date fecha, Date hora, String motivo, int numHistorial, String dniVeterinario) {
-        this.fecha = fecha;
-        this.hora = hora;
-        this.motivo = motivo;
-        this.numHistorial = numHistorial;
-        this.dniVeterinario = dniVeterinario;
-        this.idFactura = idFactura;
-    }
-    
+	
     public Cita(Date fecha, Date hora, String motivo, int numHistorial, String dniVeterinario, int idFactura) {
         this.fecha = fecha;
         this.hora = hora;
