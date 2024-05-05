@@ -40,12 +40,9 @@
                             <td><s:property value="#cita.idFactura" /></td>
                             <td>
                                 <!-- Formularios con acciones para cada cita -->
-                                <s:form action="opcionesAgenda" method="post">
-
-                                    <s:hidden name="idCita" value="cita.id" />
-                                    <!-- campo hidden para identificar la cita -->
-                                    <s:submit name="boton" value="Ver_Paciente" />
-
+                                <s:form action="verPaciente" method="post">
+                                    <s:hidden name="numHistorialCita" value="%{#cita.numHistorial}" />
+                                    <s:submit name="verPaciente" value="Ver Paciente" />
                                 </s:form>
 
                                 <s:form action="opcionesAgenda" method="post">
