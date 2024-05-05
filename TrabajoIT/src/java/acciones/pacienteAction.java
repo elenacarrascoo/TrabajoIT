@@ -9,6 +9,9 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import modelo.Historial;
 import modelo.Paciente;
 import modelo.Propietario;
 import persistencia.pacienteDAO;
@@ -107,9 +110,10 @@ public class pacienteAction extends ActionSupport {
     public String execute() throws Exception {
         Map<String, Object> session = ActionContext.getContext().getSession();
         Propietario prop = (Propietario) session.get("propietario");
-        pacienteDAO pdao = new pacienteDAO();
-        //VER COMO OBTENER NUM HISTORIAL
-        Paciente p = new Paciente(this.getNombre(), this.getEspecie(), this.getRaza(), this.getSexo(), this.getEdad(), this.getFechaNacimiento(), prop.getDni(), this.getNumHistorial());
+        pacienteDAO pdao = new pacienteDAO(); 
+        Paciente p = new Paciente(this.getNombre(), this.getEspecie(), this.getRaza(), this.getSexo(), this.getEdad(), this.getFechaNacimiento(), prop.getDni());
+        Historial h = new Historial();
+        p.setNumHistorial(h.getId());
         pdao.altaPaciente(p);
         return SUCCESS;
     }
@@ -139,6 +143,30 @@ public class pacienteAction extends ActionSupport {
         Map<String, Object> session = ActionContext.getContext().getSession();
         session.put("paciente", p);
         return SUCCESS;
+    }
+    
+    public void validate() {
+        String actionName = ActionContext.getContext().getName();
+
+        if (actionName.equals("registrarPaciente") || actionName.equals("actualizarPaciente")) {
+
+            if (this.getNombre().equals("")) {
+                addFieldError("nombre", "Introduce el nombre");
+            }
+
+            if (this.getSexo().equals("")) {
+                addFieldError("sexo", "Introduce el sexo");
+            } 
+
+            if (this.getEdad()==0) {
+                addFieldError("edad", "Introduce la edad");
+            }
+
+            if (this.getFechaNacimiento().equals("")) {
+                addFieldError("fechaNacimiento", "Introduce la fecha de nacimiento");
+            }
+
+        }
     }
     
 }

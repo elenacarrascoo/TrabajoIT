@@ -33,6 +33,16 @@ public class Paciente  implements java.io.Serializable {
        this.dniPropietario = dniPropietario;
        this.numHistorial = numHistorial;
     }
+    
+    public Paciente(String nombre, String especie, String raza, String sexo, int edad, Date fechaNacimiento, String dniPropietario) {
+       this.nombre = nombre;
+       this.especie = especie;
+       this.raza = raza;
+       this.sexo = sexo;
+       this.edad = edad;
+       this.fechaNacimiento = fechaNacimiento;
+       this.dniPropietario = dniPropietario;
+    }
    
     public Integer getId() {
         return this.id;

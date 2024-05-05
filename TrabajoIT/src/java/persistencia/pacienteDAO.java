@@ -19,6 +19,10 @@ import org.hibernate.Transaction;
 public class pacienteDAO {
     Session session = null;
     
+    public pacienteDAO(){
+        
+    }
+    
     public void altaPaciente(Paciente p){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
@@ -43,7 +47,7 @@ public class pacienteDAO {
     public Paciente obtenerPaciente(int idPaciente){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Paciente where id = " + idPaciente);
+        Query q = session.createQuery("From Paciente where id = " + idPaciente);
         Paciente p = (Paciente) q.uniqueResult();
         tx.commit();
         return p;
@@ -63,7 +67,7 @@ public class pacienteDAO {
     public Paciente obtenerPacienteNumHistorial(int numHistorialCita) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Paciente where numHistorial = " + numHistorialCita);
+        Query q = session.createQuery("From Paciente where numHistorial = " + numHistorialCita);
         Paciente p = (Paciente) q.uniqueResult();
         tx.commit();
         return p;

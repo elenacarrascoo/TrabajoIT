@@ -36,6 +36,7 @@
         </action>
         <action name="registrarPaciente" class="acciones.pacienteAction">
             <result name="success">/Propietario/propietario.jsp</result>
+            <result name="input">/Paciente/altaPaciente.jsp</result>
         </action>
         <action name="verPacientes" class="acciones.propietarioAction" method="listarPacientesPropietario">
             <result name="success">/Propietario/propietarioPacientes.jsp</result>
@@ -45,6 +46,7 @@
         </action>
         <action name="actualizarPaciente" class="acciones.pacienteAction" method="modificarPaciente">
             <result name="success">/Propietario/propietarioPacientes.jsp</result>
+            <result name="input">/Paciente/actualizarPaciente.jsp</result>
         </action>
         <action name="eliminarPaciente" class="acciones.pacienteAction" method="eliminarPaciente">
             <result name="success">/Propietario/propietarioPacientes.jsp</result>
