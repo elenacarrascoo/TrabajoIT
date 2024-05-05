@@ -40,6 +40,12 @@
                         <td><s:property value="#paciente.fechaNacimiento"/></td>
                         <td><s:property value="#paciente.numHistorial"/></td>
                         <td>
+                            <s:form action="cogerCita" method="post">
+                                <s:submit name="cogerCita">Goger cita</s:submit>
+                                <s:hidden name="idPaciente" value="%{#paciente.id}"/>
+                            </s:form>
+                        </td>
+                        <td>
                             <s:form action="" method="post">
                                 <button type="submit">Ver historial mascota</button>
                             </s:form>
