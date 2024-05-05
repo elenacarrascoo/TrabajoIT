@@ -42,17 +42,18 @@
                         <td>
                             <s:form action="cogerCita" method="post">
                                 <s:submit name="cogerCita">Goger cita</s:submit>
-                                <s:hidden name="idPaciente" value="%{#paciente.id}"/>
+                                <s:hidden name="numHistorial" value="%{#paciente.numHistorial}"/>
                             </s:form>
                         </td>
                         <td>
-                            <s:form action="" method="post">
-                                <button type="submit">Ver historial mascota</button>
+                            <s:form action="consultarHistorial" method="post">
+                                <s:hidden name="pacienteConsultar" value="%{#paciente.id}"/>
+                                <s:submit name="consultarHistorial">Ver historial mascota</s:submit>
                             </s:form>
                         </td>
                         <td>
-                            <s:form action="" method="post">
-                                <button type="submit">Gestion citas</button>
+                            <s:form action="gestionCitas" method="post">
+                                <s:hidden name="historialPacienteConsultar" value="%{#paciente.numhistorial}"/>
                             </s:form>
                         </td>
                         <td>
