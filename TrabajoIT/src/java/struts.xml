@@ -49,10 +49,10 @@
         <action name="eliminarPaciente" class="acciones.pacienteAction" method="eliminarPaciente">
             <result name="success">/Propietario/propietarioPacientes.jsp</result>
         </action>
-        <action name="verPaciente">
+        <action name="verPaciente" class="acciones.pacienteAction" method="consultarPaciente">
             <result>/Paciente/pacienteActual.jsp</result>
         </action>
-        <action name="consultarPaciente" class="acciones.pacienteAction" method="consultarPaciente">
+        <action name="consultarPaciente">
             <result name="success">/Paciente/datosPaciente.jsp</result>
         </action>
         <action name="actualizarPropietario">
