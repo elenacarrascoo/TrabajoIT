@@ -131,6 +131,14 @@
         <action name="modificarCita" class="acciones.citaAction" method="modificarCita">
             <result name="success">/Cita/citas.jsp</result>
         </action>
+        
+        <action name="cogerCita" class="acciones.citaAction">
+            <result>/Cita/nuevaCita.jsp</result>
+        </action>
+        
+        <action name="altaCita" class="acciones.citaAction" method="altaCita">
+            <result name="success">/Cita/citas.jsp</result>
+        </action>
        
     </package>
     
