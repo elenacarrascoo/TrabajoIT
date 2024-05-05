@@ -9,9 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Actualizaci&oacute;n de la Cita</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Actualizando la cita <s:property value="#session.cita.id"/></h1>
+        <s:form>
+            <s:textfield name="fecha" label="Fecha"/>
+            <s:textfield name="hora" label="Hora"/>
+            <s:textfield name="motivo" label="Motivo"/>
+        
+            <s:submit name="modificarCita" value="Actualizar"/>
+        </s:form>
     </body>
 </html>

@@ -9,6 +9,8 @@ package persistencia;
  * @author clarabecerragil
  */
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import modelo.Cita;
@@ -71,11 +73,14 @@ public class citaDAO {
         return citas;
     }
     
-    public List<Cita> obtenerCitasPendientes(int numHistorial, Date fecha, Time hora){
+    public List<Cita> obtenerCitasPendientes(int numHistorial, Date fecha, Date hora){
         List<Cita> citas;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Cita where numHistorial = " + numHistorial +"AND fecha = " +fecha +"AND hora = " +hora);
+        Query q = session.createQuery("FROM Cita WHERE numHistorial = :numHistorial AND fecha > :fecha AND hora > :hora");
+        q.setParameter("numHistorial", numHistorial);
+        q.setParameter("fecha", fecha);
+        q.setParameter("hora", hora);
         citas = (List<Cita>) q.list();
         tx.commit();
         return citas;

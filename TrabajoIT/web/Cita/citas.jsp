@@ -9,9 +9,58 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Citas</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+        <h1>Gesti&oacute;n de citas del paciente <s:property value="#session.paciente.nombre"/></h1>
+    <s:form action="" method="post">
+        <s:submit value="altaCita" name="Alta Cita"></s:submit>
+    </s:form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Motivo</th>
+                <th>Precio</th>
+                <th>Numero de Historial Asociado</th>
+                <th>Veterinatio responsable</th>
+                <th>Tratamiento realizado</th>
+                <th>Receta</th>
+                <th>Factura</th>
+            </tr>
+        </thead>
+        <tbody>
+            <s:iterator var="cita" value="citasPendientes">
+                <tr>
+                    <td><s:property value="#cita.id"/></td>
+                    <td><s:property value="#cita.fecha"/></td>
+                    <td><s:property value="#cita.hora"/></td>
+                    <td><s:property value="#cita.motivo"/></td>
+                    <td><s:property value="#cita.precio"/></td>
+                    <td><s:property value="#cita.numHistorial"/></td>
+                    <td><s:property value="#cita.idVeterinario"/></td>
+                    <td><s:property value="#cita.idTratamiento"/></td>
+                    <td><s:property value="#cita.idReceta"/></td>
+                    <td><s:property value="#cita.idFactura"/></td>
+                    <td>
+                        <s:form action="actualizarCita" method="post">
+                            <s:hidden name="idCitaModificar" value="%{#cita.id}"/>
+                            <button type="submit">Actualizar</button>
+                        </s:form>
+                    </td>
+                    <td>
+                    <s:form action="eliminarCita" method="post">
+                        <s:hidden name="idCitaModificar" value="%{#cita.id}"/>
+                        <button type="submit">Eliminar</button>
+                    </s:form>
+                    </td>
+                </tr>
+            </s:iterator>
+        </tbody>
+    </table>
+</body>
 </html>
+
