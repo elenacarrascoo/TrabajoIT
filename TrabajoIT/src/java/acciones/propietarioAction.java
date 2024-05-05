@@ -116,7 +116,6 @@ public class propietarioAction extends ActionSupport {
 
     public String actualizarPropietario() {
         Map<String, Object> session = ActionContext.getContext().getSession();
-        propietarioDAO pdao = new propietarioDAO();
         Propietario p = (Propietario) session.get("propietario");
         p.setNombre(this.getNombre());
         p.setDireccion(this.getDireccion());
@@ -125,7 +124,7 @@ public class propietarioAction extends ActionSupport {
         p.setInfoContactoAdicional(this.getInfoContactoAdicional());
         return SUCCESS;
     }
-
+    
     public void validate() {
         String actionName = ActionContext.getContext().getName();
 

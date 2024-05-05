@@ -7,6 +7,7 @@ package acciones;
 
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.*;
 import modelo.*;
@@ -133,7 +134,9 @@ public class veterinarioAction extends ActionSupport {
 
             case "Consultar Agenda":
                // dniVeterinario = dni;
-                citasVeterinario = dao.obtenerCitas(dni);
+                Map<String, Object> session = ActionContext.getContext().getSession();
+                Veterinario v = (Veterinario) session.get("veterinario");
+                citasVeterinario = dao.obtenerCitas(v.getDni());
                 return "consultarAgenda";
 
             case "Consultar Compañeros":
