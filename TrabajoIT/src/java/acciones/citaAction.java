@@ -30,6 +30,8 @@ public class citaAction extends ActionSupport {
     int pacienteConsultar;
     int historialPacienteConsultar;
     
+    int numHistorial;
+    
     String fecha;
     String hora;
     String motivo;
@@ -81,11 +83,32 @@ public class citaAction extends ActionSupport {
     public void setHistorialPacienteConsultar(int historialPacienteConsultar) {
         this.historialPacienteConsultar = historialPacienteConsultar;
     }
+
+    public int getNumHistorial() {
+        return numHistorial;
+    }
+
+    public void setnumHistorial(int numHistorial) {
+        this.numHistorial = numHistorial;
+    }
     
     public citaAction() {
     }
     
     public String execute() throws Exception {
+        return SUCCESS;
+    }
+    
+    public String altaCita() throws ParseException{
+        citaDAO c = new citaDAO();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-mm-dd");
+        Date fechaFormateada = formatoFecha.parse(this.getFecha());
+       
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH-MM-SS");
+        Date horaFormateada = formatoHora.parse(this.getHora());
+        //Falta asignar como asingar el veterinario
+        Cita cita = new Cita(fechaFormateada, horaFormateada, this.getMotivo(), this.getNumHistorial(), null);
+        c.altaCita(cita);
         return SUCCESS;
     }
     

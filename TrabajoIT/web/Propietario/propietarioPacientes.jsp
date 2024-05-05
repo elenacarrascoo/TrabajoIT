@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Mascotas</title>
     </head>
     <body>
         <h1>Tus mascotas:</h1>
@@ -42,16 +42,18 @@
                         <td>
                             <s:form action="cogerCita" method="post">
                                 <s:submit name="cogerCita">Goger cita</s:submit>
-                                <s:hidden name="idPaciente" value="%{#paciente.id}"/>
+                                <s:hidden name="numHistorial" value="%{#paciente.numHistorial}"/>
                             </s:form>
                         </td>
                         <td>
-                            <s:form action="" method="post">
+                            <s:form action="consultarHistorial" method="post">
+                                <s:hidden name="pacienteConsultar" value="%{#paciente.id}"/>
                                 <button type="submit">Ver historial mascota</button>
                             </s:form>
                         </td>
                         <td>
-                            <s:form action="" method="post">
+                            <s:form action="gestionCitas" method="post">
+                                <s:hidden name="historialPacienteConsultar" value="%{#paciente.numhistorial}"/>
                                 <button type="submit">Gestion citas</button>
                             </s:form>
                         </td>
