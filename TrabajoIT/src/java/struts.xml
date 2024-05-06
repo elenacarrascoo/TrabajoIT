@@ -152,14 +152,11 @@
         </action>
     </package>
     
-    
-    <package name="Tratamiento" extends="struts-default">
-        <action name="Tratamiento" class="acciones.tratamientoAction">
+    <action name="Tratamiento" class="acciones.tratamientoAction">
             <result name="registro">/Veterinario/veterinario.jsp</result>
             <result name="success">/Tratamiento/altaTratamiento.jsp</result>
             <result name="consultar">/Tratamiento/tratamientoPaciente.jsp</result>
             <result name="volver">/Veterinario/veterinario.jsp</result>
             <result name="salir">/login.jsp</result>
         </action>
-    </package>
 </struts>
