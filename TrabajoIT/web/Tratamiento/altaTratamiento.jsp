@@ -1,11 +1,6 @@
-<%-- 
-    Document   : altaTratamiento
-    Created on : 27-abr-2024, 16:45:03
-    Author     : ecarr
---%>
 
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,31 +8,56 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Al paciente <s:property value="#paciente.nombre"></s:property> se le ha asignado el siguiente tratamiento:</h1>
-         <table border="1">
-        <thead>
-            <tr>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Precio</th>
-                <th>Resultado</th>
-                <th>Tipo</th>
-                <th>ID</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Iteramos sobre listaTratamientos para crear las filas de la tabla -->
-            <s:iterator value="listaTratamientos" var="tratamiento">
-                <tr>
-                    <td><s:property value="#tratamiento.fecha" /></td>
-                    <td><s:property value="#tratamiento.hora" /></td>
-                    <td><s:property value="#tratamiento.precio" /></td>
-                    <td><s:property value="#tratamiento.resultado" /></td>
-                    <td><s:property value="#tratamiento.tipo" /></td>
-                    <td><s:property value="#tratamiento.id" /></td>
-                </tr>
-            </s:iterator>
-        </tbody>
-    </table>
+        <h1>Registro de nuevo tratamiento </h1>
+        
+        
+        <s:form name="Tratamiento" action="Tratamiento" method="post">
+            <table class="wwFormTable">
+                <tbody>
+                    <tr>
+                        <td class="tdLabel">
+                            <s:textfield name="fecha" label="Fecha" type="date"></s:textfield>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdLabel">
+                            <s:textfield name="hora" label="Hora" type="time" min="09:00" max="20:00" ></s:textfield>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdLabel">
+                            <s:textfield name="precio" label="Precio" ></s:textfield>
+                            </td>
+                            
+                            <td class="tdLabel">
+                            <s:textfield name="resultado" label="Resultado" ></s:textfield>
+                            </td>
+                            
+                            <td class="tdLabel">
+                            <s:textfield name="tipo" label="Tipo" ></s:textfield>
+                            </td>
+                            
+                            <td class="tdLabel">
+                            <s:textfield name="idCita" label="ID Cita" value="%{#cita.id}" readonly="true"></s:textfield>
+                            </td>
+                            
+                                                        
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div align="right">
+                                <s:submit name="boton" value="Registrar Tratamiento"></s:submit>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <s:form action="Tratamiento" method="post">
+                        <s:submit name="boton" value="Volver"/>
+                        <s:submit name="boton" value="LogOut"/>
+                        
+                        </s:form>
+                    </tbody>
+                </table>
+        </s:form>
     </body>
 </html>

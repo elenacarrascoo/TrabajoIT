@@ -21,6 +21,11 @@
                 <tbody>
                         
                         <tr>
+                            
+                            <td class="tdLabel">
+                            <s:textfield name="dni" label="DNI"></s:textfield>
+                            </td>
+                            
                             <td class="tdLabel">
                             <s:textfield name="especialidad" label="Especialidad"></s:textfield>
                             </td>

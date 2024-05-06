@@ -37,6 +37,7 @@
                             <td><s:property value="#cita.hora" /></td>
                             <td><s:property value="#cita.motivo" /></td>
                             <td><s:property value="#cita.numHistorial" /></td>
+                            <td><s:property value="#cita.dniVeterinario" /></td>
                             <td><s:property value="#cita.idFactura" /></td>
                             <td>
                                 <!-- Formularios con acciones para cada cita -->
