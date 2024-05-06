@@ -30,7 +30,7 @@
             <column name="idReceta" unique="true" />
         </property>
         <property name="idFactura" type="int">
-            <column name="idFactura" not-null="true" unique="true" />
+            <column name="idFactura" unique="true" />
         </property>
     </class>
 </hibernate-mapping>

@@ -24,14 +24,14 @@ import persistencia.citaDAO;
  * @author ecarr
  */
 public class citaAction extends ActionSupport {
- 
+
     int idCitaModificar;
-    
+
     int pacienteConsultar;
     int historialPacienteConsultar;
-    
+
     int numHistorial;
-    
+
     String fecha;
     String hora;
     String motivo;
@@ -91,65 +91,102 @@ public class citaAction extends ActionSupport {
     public void setNumHistorial(int numHistorial) {
         this.numHistorial = numHistorial;
     }
-    
+
     public citaAction() {
     }
-    
+
     public String execute() throws Exception {
         return SUCCESS;
     }
-    
-    public String altaCita() throws ParseException{
+
+    public String altaCita() throws ParseException {
         citaDAO c = new citaDAO();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-mm-dd");
         Date fechaFormateada = formatoFecha.parse(this.getFecha());
-       
-        SimpleDateFormat formatoHora = new SimpleDateFormat("HH-MM-SS");
+
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:MM:SS");
         Date horaFormateada = formatoHora.parse(this.getHora());
         //Falta asignar como asingar el veterinario
-        Cita cita = new Cita(fechaFormateada, horaFormateada, this.getMotivo(), this.getNumHistorial(), null);
+        Cita cita = new Cita(fechaFormateada, horaFormateada, this.getMotivo(), this.getNumHistorial(), "123456");
         c.altaCita(cita);
         return SUCCESS;
     }
-    
-    public String citasPendientes(){  
-       Map<String, Object> session = ActionContext.getContext().getSession();
-       citaDAO c = new citaDAO();
 
-       Date fecha = new Date();
-       Date hora = new Date();   
-       
-       // Revisar tipos de hora y fecha con la BBDD
-       List<Cita> citasPendientes = c.obtenerCitasPendientes(this.getHistorialPacienteConsultar(), fecha, hora);
-       
-       session.put("citasPendientes", citasPendientes);
-       return SUCCESS;
+    public String citasPendientes() {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        citaDAO c = new citaDAO();
+
+        Date fecha = new Date();
+        Date hora = new Date();
+
+        // Revisar tipos de hora y fecha con la BBDD
+        List<Cita> citasPendientes = c.obtenerCitasPendientes(this.getHistorialPacienteConsultar(), fecha, hora);
+
+        session.put("citasPendientes", citasPendientes);
+        return SUCCESS;
     }
-    
-    public String modificarCita() throws ParseException{
-       Map<String, Object> session = ActionContext.getContext().getSession();
-       citaDAO c = new citaDAO();
-       Cita citaModificar = c.obtenerCita(this.getIdCitaModificar());
-       
-       SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-mm-dd");
-       Date fechaFormateada = formatoFecha.parse(this.getFecha());
-       
-       SimpleDateFormat formatoHora = new SimpleDateFormat("HH-MM-SS");
-       Date horaFormateada = formatoHora.parse(this.getHora());
-       
-       citaModificar.setHora(fechaFormateada);
-       citaModificar.setFecha(horaFormateada);
-       citaModificar.setMotivo(this.getMotivo());
-       c.actualizarCita(citaModificar);
-       return SUCCESS;
+
+    public String modificarCita() throws ParseException {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        citaDAO c = new citaDAO();
+        Cita citaModificar = c.obtenerCita(this.getIdCitaModificar());
+
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-mm-dd");
+        Date fechaFormateada = formatoFecha.parse(this.getFecha());
+
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        Date horaFormateada = formatoHora.parse(this.getHora());
+
+        citaModificar.setHora(fechaFormateada);
+        citaModificar.setFecha(horaFormateada);
+        citaModificar.setMotivo(this.getMotivo());
+        c.actualizarCita(citaModificar);
+        return SUCCESS;
     }
-    
-    public String eliminarCita(){
-       Map<String, Object> session = ActionContext.getContext().getSession();
-       citaDAO c = new citaDAO();
-       Cita citaEliminar = c.obtenerCita(this.getIdCitaModificar()); 
-       c.bajaCita(citaEliminar);
-       return SUCCESS;
+
+    public String eliminarCita() {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        citaDAO c = new citaDAO();
+        Cita citaEliminar = c.obtenerCita(this.getIdCitaModificar());
+        c.bajaCita(citaEliminar);
+        return SUCCESS;
     }
-    
+
+    public void validate() {
+        String actionName = ActionContext.getContext().getName();
+
+        if (actionName.equals("altaCita") || actionName.equals("modificarCita")) {
+            
+            if (this.getFecha().equals("")) {
+                addFieldError("fecha", "Introduce la fecha");
+            } else {
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-mm-dd");
+                formatoFecha.setLenient(false);
+                try {
+                    formatoFecha.parse(this.getFecha());
+                } catch (ParseException e) {
+                    addFieldError("fecha", "Formato de fecha inválido. Utiliza YYYY-mm-dd.");
+                }
+            }
+
+            if (this.getHora().equals("")) {
+                addFieldError("hora", "Introduce la hora");
+            } else {
+                // Validar formato de hora
+                SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+                formatoHora.setLenient(false);
+                try {
+                    formatoHora.parse(this.getHora());
+                } catch (ParseException e) {
+                    addFieldError("hora", "Formato de hora inválido. Utiliza HH:mm:ss.");
+                }
+            }
+
+            if (this.getMotivo().equals("")) {
+                addFieldError("motivo", "Introduce el motivo");
+            }
+
+        }
+    }
+
 }
