@@ -57,8 +57,6 @@ public class tratamientoDAO {
         session.delete(tratamiento);
         tx.commit();
     }
-        
-    
 }
 
     

@@ -13,7 +13,7 @@
         <title>Listado de Citas</title>
     </head>
     <body>
-        <h1>Listado de Citas de <s:property value="%{#veterinario.nombre}"></s:property></h1>
+        <h1>Listado de Citas de <s:property value="{veterinario.nombre}"></s:property></h1>
 
         <!-- Verificar si la lista no es nula y tiene al menos un elemento -->
         <s:if test="%{!citasVeterinario.isEmpty()}">  
@@ -37,16 +37,12 @@
                             <td><s:property value="#cita.hora" /></td>
                             <td><s:property value="#cita.motivo" /></td>
                             <td><s:property value="#cita.numHistorial" /></td>
-                            <td><s:property value="#cita.dniVeterinario" /></td>
                             <td><s:property value="#cita.idFactura" /></td>
                             <td>
                                 <!-- Formularios con acciones para cada cita -->
-                                <s:form action="opcionesAgenda" method="post">
-
-                                    <s:hidden name="idCita" value="cita.id" />
-                                    <!-- campo hidden para identificar la cita -->
-                                    <s:submit name="boton" value="Ver Paciente" />
-
+                                <s:form action="verPaciente" method="post">
+                                    <s:hidden name="numHistorialCita" value="%{#cita.numHistorial}" />
+                                    <s:submit name="verPaciente" value="Ver Paciente" />
                                 </s:form>
 
                                 <s:form action="opcionesAgenda" method="post">
@@ -70,12 +66,6 @@
                                 <s:form action="opcionesAgenda" method="post">
 
                                     <s:submit name="boton" value="Gestión Medicamentos" />
-
-                                </s:form>
-                                    
-                                     <s:form action="Tratamiento" method="post">
-
-                                    <s:submit name="boton" value="Ver Tratamientos" />
 
                                 </s:form>
                             </td>

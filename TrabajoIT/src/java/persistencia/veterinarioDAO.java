@@ -85,7 +85,7 @@ public class veterinarioDAO {
      public Veterinario obtenerVeterinario(String dni){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("From Veterinario where dni='" + dni + "'");
+        Query q = session.createQuery("From Veterinario where dni='" + dni);
         Veterinario veterinario = (Veterinario)q.uniqueResult();
         tx.commit();
         return veterinario;
