@@ -52,8 +52,10 @@
                             </s:form>
                         </td>
                         <td>
+                            <!-- Mirar este hidden -->
                             <s:form action="gestionCitas" method="post">
-                                <s:hidden name="historialPacienteConsultar" value="%{#paciente.numhistorial}"/>
+                                <s:hidden name="historialConsultar" value="%{#paciente.numhistorial}"/>
+                                <s:submit name="gestionCitas">Gestionar Citas</s:submit>
                             </s:form>
                         </td>
                         <td>

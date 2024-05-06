@@ -8,10 +8,13 @@ package acciones;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
 import java.util.Map;
+import modelo.Cita;
 import modelo.Historial;
 import modelo.Propietario;
 import modelo.Veterinario;
+import persistencia.citaDAO;
 import persistencia.historialDAO;
 
 /**
@@ -22,6 +25,8 @@ public class historialAction extends ActionSupport {
  
     int id;
     int historialConsultar;
+    int pacienteConsultar;
+    private List<Cita> listaCitas;
 
     public int getId() {
         return id;
@@ -38,9 +43,23 @@ public class historialAction extends ActionSupport {
     public void setHistorialConsultar(int historialConsultar) {
         this.historialConsultar = historialConsultar;
     }
-    
-    
 
+    public int getPacienteConsultar() {
+        return pacienteConsultar;
+    }
+
+    public void setPacienteConsultar(int pacienteConsultar) {
+        this.pacienteConsultar = pacienteConsultar;
+    }
+
+    public List<Cita> getListaCitas() {
+        return listaCitas;
+    }
+
+    public void setListaCitas(List<Cita> listaCitas) {
+        this.listaCitas = listaCitas;
+    }
+    
     public historialAction() {
     }
     
@@ -51,8 +70,9 @@ public class historialAction extends ActionSupport {
     public String verHistorialPaciente(){
        Map<String, Object> session = ActionContext.getContext().getSession();
        historialDAO h = new historialDAO();
-       Historial historialPaciente = h.obtenerHistorialPaciente(this.getHistorialConsultar());
+       Historial historialPaciente = h.obtenerHistorialPaciente(this.getPacienteConsultar());
        session.put("historialPaciente", historialPaciente);
+       listarCitasHistorial();
        return SUCCESS;
     }
     
@@ -72,6 +92,15 @@ public class historialAction extends ActionSupport {
        h.bajaHistorial(historialEliminar);
        //No se si es ese id el que hay quye pasarle
        return SUCCESS;
+    }
+    
+    public String listarCitasHistorial(){
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        citaDAO cDAO = new citaDAO();
+        Historial h = (Historial) session.get("historialPaciente");
+        List<Cita> listaCitas = cDAO.obtenerCitasPaciente(h.getId());
+        this.setListaCitas(listaCitas);
+        return SUCCESS;
     }
     
 }

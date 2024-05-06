@@ -151,6 +151,7 @@ public class citaAction extends ActionSupport {
         c.bajaCita(citaEliminar);
         return SUCCESS;
     }
+    
 
     public void validate() {
         String actionName = ActionContext.getContext().getName();

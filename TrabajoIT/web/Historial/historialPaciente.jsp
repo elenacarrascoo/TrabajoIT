@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,11 +13,14 @@
         <title>Historial del Paciente</title>
     </head>
     <body>
-        <h1>Historial del paciente: <s:property value="#session.paciente.nombre"/></h1>
-        
-        Numero de Historial: <s:property value="#session.historialPaciente.numHistorial"/>
+        <!-- En la base de datos deberia estar el objeto paciente para acceder a sus cosas, no el id -->
+        <h1>Historial del paciente: <s:property value="#session.historialPaciente.paciente.nombre"/></h1>
+        Numero de Historial: <s:property value="#session.historialPaciente.id"/>
+        <br>
         Id del Paciente: <s:property value="#session.historialPaciente.idPaciente"/>
+        <br>
         Historial de Citas: 
+        
         <table>
             <thead>
                 <tr>
@@ -31,16 +35,18 @@
                 </tr>
             </thead>
                 <tbody>
+                    <s:iterator var="cita" value="listaCitas">
                     <tr>
-                        <td><s:property value="#session.historialPaciente.cita.id"/></td>
-                        <td><s:property value="#session.historialPaciente.cita.fecha"/></td>
-                        <td><s:property value="#session.historialPaciente.cita.hora"/></td>
-                        <td><s:property value="#session.historialPaciente.cita.motivo"/></td>
-                        <td><s:property value="#session.historialPaciente.cita.veterinario.nombre"/></td>   
-                        <td><s:property value="#session.historialPaciente.cita.tratamiento.tipo"/></td>
-                        <td><s:property value="#session.historialPaciente.cita.receta.dosis"/></td>
-                        <td><s:property value="#session.historialPaciente.cita.factura.numFactura"/></td>
+                        <td><s:property value="#cita.id"/></td>
+                        <td><s:property value="#cita.fecha"/></td>
+                        <td><s:property value="#cita.hora"/></td>
+                        <td><s:property value="#cita.motivo"/></td>
+                        <td><s:property value="#cita.veterinario.nombre"/></td>   
+                        <td><s:property value="#cita.tratamiento.tipo"/></td>
+                        <td><s:property value="#cita.receta.dosis"/></td>
+                        <td><s:property value="#cita.factura.numFactura"/></td>
                     </tr>
+                    </s:iterator>
                 </tbody>
         </table>
     </body>

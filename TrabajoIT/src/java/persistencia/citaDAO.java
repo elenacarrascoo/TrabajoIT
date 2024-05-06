@@ -85,4 +85,15 @@ public class citaDAO {
         tx.commit();
         return citas;
     } 
+    
+    public List<Cita> obtenerCitasHistorial(int numHistorial){
+        List<Cita> citas;
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("FROM Cita WHERE numHistorial = :numHistorial");
+        q.setParameter("numHistorial", numHistorial);
+        citas = (List<Cita>) q.list();
+        tx.commit();
+        return citas;
+    } 
 }
