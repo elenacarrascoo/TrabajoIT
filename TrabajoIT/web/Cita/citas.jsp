@@ -41,11 +41,11 @@
                     <td><s:property value="#cita.hora"/></td>
                     <td><s:property value="#cita.motivo"/></td>
                     <td><s:property value="#cita.precio"/></td>
-                    <td><s:property value="#cita.numHistorial"/></td>
-                    <td><s:property value="#cita.idVeterinario"/></td>
-                    <td><s:property value="#cita.idTratamiento"/></td>
-                    <td><s:property value="#cita.idReceta"/></td>
-                    <td><s:property value="#cita.idFactura"/></td>
+                    <td><s:property value="#cita.historial.numHistorial"/></td>
+                    <td><s:property value="#cita.veterinario.nombre"/></td>
+                    <td><s:property value="#cita.tratamiento.tipo"/></td>
+                    <td><s:property value="#cita.receta.dosis"/></td>
+                    <td><s:property value="#cita.factura.id"/></td>
                     <td>
                         <s:form action="actualizarCita" method="post">
                             <s:hidden name="idCitaModificar" value="%{#cita.id}"/>

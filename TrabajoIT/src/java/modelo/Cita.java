@@ -28,7 +28,6 @@ public class Cita  implements java.io.Serializable {
     public Cita() {
     }
 
-	
     public Cita(int id, Historial historial, Veterinario veterinario, Date fecha, Date hora, String motivo) {
         this.id = id;
         this.historial = historial;
@@ -37,6 +36,7 @@ public class Cita  implements java.io.Serializable {
         this.hora = hora;
         this.motivo = motivo;
     }
+    
     public Cita(int id, Factura factura, Historial historial, Receta receta, Tratamiento tratamiento, Veterinario veterinario, Date fecha, Date hora, String motivo, Set facturas, Set recetas, Set tratamientos) {
        this.id = id;
        this.factura = factura;

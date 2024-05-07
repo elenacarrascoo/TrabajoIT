@@ -67,7 +67,7 @@ public class citaDAO {
         List<Cita> citas;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Cita where numHistorial = " + numHistorial);
+        Query q = session.createQuery("FROM Cita where numHistorial = numHistorial" + numHistorial);
         citas = (List<Cita>) q.list();
         tx.commit();
         return citas;
@@ -77,7 +77,7 @@ public class citaDAO {
         List<Cita> citas;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Cita WHERE numHistorial = :numHistorial AND fecha > :fecha AND hora > :hora");
+        Query q = session.createQuery("FROM Cita WHERE numHistorial = :numHistorial AND (fecha > :fecha OR (fecha = :fecha AND hora > :hora))");
         q.setParameter("numHistorial", numHistorial);
         q.setParameter("fecha", fecha);
         q.setParameter("hora", hora);

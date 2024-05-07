@@ -38,11 +38,11 @@
                         <td><s:property value="#paciente.sexo"/></td>
                         <td><s:property value="#paciente.edad"/></td>
                         <td><s:property value="#paciente.fechaNacimiento"/></td>
-                        <td><s:property value="#paciente.numHistorial"/></td>
+                        <td><s:property value="#paciente.historial.numHistorial"/></td>
                         <td>
                             <s:form action="cogerCita" method="post">
                                 <s:submit name="cogerCita">Goger cita</s:submit>
-                                <s:hidden name="numHistorial" value="%{#paciente.numHistorial}"/>
+                                <s:hidden name="numHistorial" value="%{#paciente.historial}"/>
                             </s:form>
                         </td>
                         <td>
@@ -54,7 +54,7 @@
                         <td>
                             <!-- Mirar este hidden -->
                             <s:form action="gestionCitas" method="post">
-                                <s:hidden name="historialConsultar" value="%{#paciente.numhistorial}"/>
+                                <s:hidden name="historialConsultar" value="%{#paciente.historial}"/>
                                 <s:submit name="gestionCitas">Gestionar Citas</s:submit>
                             </s:form>
                         </td>

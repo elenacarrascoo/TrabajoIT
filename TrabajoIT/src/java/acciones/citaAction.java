@@ -8,6 +8,7 @@ package acciones;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -17,6 +18,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import modelo.Cita;
+import modelo.Historial;
+import modelo.Veterinario;
 import persistencia.citaDAO;
 
 /**
@@ -28,9 +31,11 @@ public class citaAction extends ActionSupport {
     int idCitaModificar;
 
     int pacienteConsultar;
-    int historialPacienteConsultar;
+    Historial historialPacienteConsultar;
 
     int numHistorial;
+    //No estoy seguro de que asi
+    Veterinario veterinario;
 
     String fecha;
     String hora;
@@ -76,11 +81,11 @@ public class citaAction extends ActionSupport {
         this.pacienteConsultar = pacienteConsultar;
     }
 
-    public int getHistorialPacienteConsultar() {
+    public Historial getHistorialPacienteConsultar() {
         return historialPacienteConsultar;
     }
 
-    public void setHistorialPacienteConsultar(int historialPacienteConsultar) {
+    public void setHistorialPacienteConsultar(Historial historialPacienteConsultar) {
         this.historialPacienteConsultar = historialPacienteConsultar;
     }
 
@@ -92,6 +97,15 @@ public class citaAction extends ActionSupport {
         this.numHistorial = numHistorial;
     }
 
+    public Veterinario getVeterinario() {
+        return veterinario;
+    }
+
+    public void setVeterinario(Veterinario veterinario) {
+        this.veterinario = veterinario;
+    }
+    
+
     public citaAction() {
     }
 
@@ -101,26 +115,35 @@ public class citaAction extends ActionSupport {
 
     public String altaCita() throws ParseException {
         citaDAO c = new citaDAO();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-mm-dd");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
         Date fechaFormateada = formatoFecha.parse(this.getFecha());
 
-        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:MM:SS");
-        Date horaFormateada = formatoHora.parse(this.getHora());
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        Date hora = formatoHora.parse(this.getHora());
+        
         //Falta asignar como asingar el veterinario
-        Cita cita = new Cita(fechaFormateada, horaFormateada, this.getMotivo(), this.getNumHistorial(), "123456");
+        Cita cita = new Cita(this.getHistorialPacienteConsultar(), this.getVeterinario(), fechaFormateada, hora, this.getMotivo());
         c.altaCita(cita);
         return SUCCESS;
     }
 
-    public String citasPendientes() {
+    public String citasPendientes() throws ParseException {
         Map<String, Object> session = ActionContext.getContext().getSession();
         citaDAO c = new citaDAO();
 
-        Date fecha = new Date();
-        Date hora = new Date();
+        Date fechaHoraActual = new Date();
+        
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
 
+        String fechaActualStr = formatoFecha.format(fechaHoraActual); // Solo la fecha
+        String horaActualStr = formatoHora.format(fechaHoraActual); // Solo la hora
+        
+        Date fechaActual = formatoFecha.parse(fechaActualStr); 
+        Date horaActual = formatoHora.parse(horaActualStr);   
+        
         // Revisar tipos de hora y fecha con la BBDD
-        List<Cita> citasPendientes = c.obtenerCitasPendientes(this.getHistorialPacienteConsultar(), fecha, hora);
+        List<Cita> citasPendientes = c.obtenerCitasPendientes(this.getHistorialPacienteConsultar(), fechaActual, horaActual);
 
         session.put("citasPendientes", citasPendientes);
         return SUCCESS;
