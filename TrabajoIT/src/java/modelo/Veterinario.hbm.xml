@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03-may-2024 14:34:40 by Hibernate Tools 4.3.1 -->
+<!-- Generated 07-may-2024 20:51:01 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Veterinario" table="veterinario" catalog="clinica_veterinaria" optimistic-lock="version">
         <id name="dni" type="string">
@@ -9,10 +9,10 @@
             <generator class="assigned" />
         </id>
         <property name="nombre" type="string">
-            <column name="nombre" length="25" not-null="true" />
+            <column name="nombre" length="30" not-null="true" />
         </property>
         <property name="especialidad" type="string">
-            <column name="especialidad" length="50" not-null="true" />
+            <column name="especialidad" length="18" not-null="true" />
         </property>
         <property name="experiencia" type="int">
             <column name="experiencia" not-null="true" />
@@ -24,7 +24,13 @@
             <column name="correo" length="30" not-null="true" />
         </property>
         <property name="password" type="string">
-            <column name="password" length="50" not-null="true" />
+            <column name="password" length="30" not-null="true" />
         </property>
+        <set name="citas" table="cita" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dniVeterinario" length="9" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="modelo.Cita" />
+        </set>
     </class>
 </hibernate-mapping>

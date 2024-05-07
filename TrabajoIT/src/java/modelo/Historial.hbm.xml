@@ -1,15 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03-may-2024 14:34:40 by Hibernate Tools 4.3.1 -->
+<!-- Generated 07-may-2024 20:51:01 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Historial" table="historial" catalog="clinica_veterinaria" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer">
-            <column name="id" />
-            <generator class="identity" />
+        <id name="numHistorial" type="int">
+            <column name="num_historial" />
+            <generator class="assigned" />
         </id>
-        <property name="idPaciente" type="int">
+        <many-to-one name="paciente" class="modelo.Paciente" fetch="select">
             <column name="idPaciente" not-null="true" unique="true" />
-        </property>
+        </many-to-one>
+        <set name="citas" table="cita" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numHistorial" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="modelo.Cita" />
+        </set>
+        <set name="pacientes" table="paciente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numHistorial" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="modelo.Paciente" />
+        </set>
     </class>
 </hibernate-mapping>

@@ -1,13 +1,28 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03-may-2024 14:34:40 by Hibernate Tools 4.3.1 -->
+<!-- Generated 07-may-2024 20:51:01 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Cita" table="cita" catalog="clinica_veterinaria" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer">
+        <id name="id" type="int">
             <column name="id" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
+        <many-to-one name="factura" class="modelo.Factura" fetch="select">
+            <column name="idFactura" unique="true" />
+        </many-to-one>
+        <many-to-one name="historial" class="modelo.Historial" fetch="select">
+            <column name="numHistorial" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="receta" class="modelo.Receta" fetch="select">
+            <column name="idReceta" unique="true" />
+        </many-to-one>
+        <many-to-one name="tratamiento" class="modelo.Tratamiento" fetch="select">
+            <column name="idTratamiento" unique="true" />
+        </many-to-one>
+        <many-to-one name="veterinario" class="modelo.Veterinario" fetch="select">
+            <column name="dniVeterinario" length="9" not-null="true" unique="true" />
+        </many-to-one>
         <property name="fecha" type="date">
             <column name="fecha" length="10" not-null="true" />
         </property>
@@ -15,22 +30,25 @@
             <column name="hora" length="8" not-null="true" />
         </property>
         <property name="motivo" type="string">
-            <column name="motivo" length="500" not-null="true" />
+            <column name="motivo" length="100" not-null="true" />
         </property>
-        <property name="numHistorial" type="int">
-            <column name="numHistorial" not-null="true" unique="true" />
-        </property>
-        <property name="dniVeterinario" type="string">
-            <column name="dniVeterinario" length="11" not-null="true" unique="true" />
-        </property>
-        <property name="idTratamiento" type="java.lang.Integer">
-            <column name="idTratamiento" unique="true" />
-        </property>
-        <property name="idReceta" type="java.lang.Integer">
-            <column name="idReceta" unique="true" />
-        </property>
-        <property name="idFactura" type="int">
-            <column name="idFactura" unique="true" />
-        </property>
+        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCita" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="modelo.Factura" />
+        </set>
+        <set name="recetas" table="receta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCita" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="modelo.Receta" />
+        </set>
+        <set name="tratamientos" table="tratamiento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCita" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="modelo.Tratamiento" />
+        </set>
     </class>
 </hibernate-mapping>

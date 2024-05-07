@@ -23,8 +23,6 @@
             <s:textfield name="sexo" label="Sexo"/>
             <s:textfield name="edad" label="Edad"/>
             <s:textfield name="fechaNacimiento" label="Fecha de nacimiento"/>
-            <s:label value="Numero de historial"/>
-            <s:number name="numHistorial"/>
             <s:submit name="darAltaPaciente" value="Dar de alta"/>
         </s:form>
     </body>

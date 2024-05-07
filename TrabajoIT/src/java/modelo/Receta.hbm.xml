@@ -1,21 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03-may-2024 14:34:40 by Hibernate Tools 4.3.1 -->
+<!-- Generated 07-may-2024 20:51:01 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Receta" table="receta" catalog="clinica_veterinaria" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer">
+        <id name="id" type="int">
             <column name="id" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
+        <many-to-one name="cita" class="modelo.Cita" fetch="select">
+            <column name="idCita" not-null="true" unique="true" />
+        </many-to-one>
         <property name="dosis" type="string">
-            <column name="dosis" length="25" not-null="true" />
+            <column name="dosis" length="40" not-null="true" />
         </property>
         <property name="indicaciones" type="string">
-            <column name="indicaciones" length="50" not-null="true" />
+            <column name="indicaciones" length="100" not-null="true" />
         </property>
-        <property name="idCita" type="int">
-            <column name="idCita" not-null="true" unique="true" />
-        </property>
+        <set name="citas" table="cita" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idReceta" unique="true" />
+            </key>
+            <one-to-many class="modelo.Cita" />
+        </set>
     </class>
 </hibernate-mapping>

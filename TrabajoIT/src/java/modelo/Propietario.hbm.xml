@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03-may-2024 14:34:40 by Hibernate Tools 4.3.1 -->
+<!-- Generated 07-may-2024 20:51:01 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Propietario" table="propietario" catalog="clinica_veterinaria" optimistic-lock="version">
         <id name="dni" type="string">
@@ -12,19 +12,31 @@
             <column name="nombre" length="25" not-null="true" />
         </property>
         <property name="direccion" type="string">
-            <column name="direccion" length="100" not-null="true" />
+            <column name="direccion" length="50" not-null="true" />
         </property>
         <property name="telefono" type="int">
             <column name="telefono" not-null="true" />
         </property>
         <property name="correo" type="string">
-            <column name="correo" length="30" not-null="true" />
+            <column name="correo" length="40" not-null="true" />
         </property>
         <property name="infoContactoAdicional" type="string">
-            <column name="infoContactoAdicional" length="200" not-null="true" />
+            <column name="infoContactoAdicional" length="60" not-null="true" />
         </property>
         <property name="password" type="string">
-            <column name="password" length="50" not-null="true" />
+            <column name="password" length="20" not-null="true" />
         </property>
+        <set name="pacientes" table="paciente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dniPropietario" length="9" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="modelo.Paciente" />
+        </set>
+        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPropietario" length="9" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="modelo.Factura" />
+        </set>
     </class>
 </hibernate-mapping>
