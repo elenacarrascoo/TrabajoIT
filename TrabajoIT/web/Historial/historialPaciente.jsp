@@ -41,6 +41,7 @@
                         <td><s:property value="#cita.fecha"/></td>
                         <td><s:property value="#cita.hora"/></td>
                         <td><s:property value="#cita.motivo"/></td>
+                        <!-- A partir de aqui hay problema por el tipo de relaciones de la BBDD -->
                         <td><s:property value="#cita.veterinario.nombre"/></td>   
                         <td><s:property value="#cita.tratamiento.tipo"/></td>
                         <td><s:property value="#cita.receta.dosis"/></td>
