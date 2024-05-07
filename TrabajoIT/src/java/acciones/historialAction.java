@@ -98,7 +98,7 @@ public class historialAction extends ActionSupport {
         Map<String, Object> session = ActionContext.getContext().getSession();
         citaDAO cDAO = new citaDAO();
         Historial h = (Historial) session.get("historialPaciente");
-        List<Cita> listaCitas = cDAO.obtenerCitasPaciente(h.getId());
+        List<Cita> listaCitas = cDAO.obtenerCitasPaciente(h.getNumHistorial());
         this.setListaCitas(listaCitas);
         return SUCCESS;
     }

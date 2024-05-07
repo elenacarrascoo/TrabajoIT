@@ -8,6 +8,7 @@ package acciones;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import static java.lang.Math.random;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,6 +18,7 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import modelo.Cita;
 import modelo.Historial;
 import modelo.Veterinario;
@@ -113,6 +115,7 @@ public class citaAction extends ActionSupport {
         return SUCCESS;
     }
 
+    Random random = new Random();
     public String altaCita() throws ParseException {
         citaDAO c = new citaDAO();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
@@ -122,7 +125,8 @@ public class citaAction extends ActionSupport {
         Date hora = formatoHora.parse(this.getHora());
         
         //Falta asignar como asingar el veterinario
-        Cita cita = new Cita(this.getHistorialPacienteConsultar(), this.getVeterinario(), fechaFormateada, hora, this.getMotivo());
+        //Ver lo de Id Cita
+        Cita cita = new Cita(random.nextInt(),this.getHistorialPacienteConsultar(), this.getVeterinario(), fechaFormateada, hora, this.getMotivo());
         c.altaCita(cita);
         return SUCCESS;
     }
@@ -143,7 +147,7 @@ public class citaAction extends ActionSupport {
         Date horaActual = formatoHora.parse(horaActualStr);   
         
         // Revisar tipos de hora y fecha con la BBDD
-        List<Cita> citasPendientes = c.obtenerCitasPendientes(this.getHistorialPacienteConsultar(), fechaActual, horaActual);
+        List<Cita> citasPendientes = c.obtenerCitasPendientes(this.getHistorialPacienteConsultar().getNumHistorial(), fechaActual, horaActual);
 
         session.put("citasPendientes", citasPendientes);
         return SUCCESS;

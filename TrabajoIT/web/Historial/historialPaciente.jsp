@@ -15,7 +15,7 @@
     <body>
         <!-- En la base de datos deberia estar el objeto paciente para acceder a sus cosas, no el id -->
         <h1>Historial del paciente: <s:property value="#session.historialPaciente.paciente.nombre"/></h1>
-        Numero de Historial: <s:property value="#session.historialPaciente.id"/>
+        Numero de Historial: <s:property value="#session.historialPaciente.numHistorial"/>
         <br>
         Id del Paciente: <s:property value="#session.historialPaciente.idPaciente"/>
         <br>
