@@ -88,7 +88,8 @@ public class veterinarioDAO {
         Query q = session.createQuery("From Veterinario where dni='" + dni);
         Veterinario veterinario = (Veterinario)q.uniqueResult();
         tx.commit();
-        return veterinario; 
+        return veterinario;
+        
     }
     
 
