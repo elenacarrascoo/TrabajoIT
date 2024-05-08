@@ -159,6 +159,7 @@ public class veterinarioAction extends ActionSupport {
                 veterinario.setTelefono(this.getTelefono());
                 veterinario.setCorreo(this.getCorreo());
                 veterinario.setPassword(this.getPassword());
+                dao.modificarVeterinario(veterinario);
                 
                 return "modificacionVeterinario";
             

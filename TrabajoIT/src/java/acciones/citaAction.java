@@ -128,6 +128,7 @@ public class citaAction extends ActionSupport {
         //Ver lo de Id Cita
         Cita cita = new Cita(random.nextInt(),this.getHistorialPacienteConsultar(), this.getVeterinario(), fechaFormateada, hora, this.getMotivo());
         c.altaCita(cita);
+        c.obtenerCitasPendientes(numHistorial, fechaFormateada, hora);
         return SUCCESS;
     }
 

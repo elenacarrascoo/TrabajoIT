@@ -24,23 +24,23 @@
 
 
                         <td class="tdLabel">
-                            <s:textfield name="especialidad" label="Especialidad"></s:textfield>
+                            <s:textfield name="especialidad" label="Especialidad" required="true"/>
                             </td>
 
                             <td class="tdLabel">
-                            <s:textfield name="experiencia" label="Experiencia" min="0" max="49" value=""></s:textfield>
+                            <s:textfield name="experiencia" label="Experiencia" min="0" max="49" value="" required="true"/>
                             </td>
 
                             <td class="tdLabel">
-                            <s:textfield name="telefono" label="Telefono" min="9" max="9" value=""></s:textfield>
+                            <s:textfield name="telefono" label="Telefono" min="9" max="9" value="" required="true" />
                             </td>
 
                             <td class="tdLabel">
-                            <s:textfield name="correo" label="Correo electronico"></s:textfield>
+                            <s:textfield name="correo" label="Correo electronico" required="true"/>
                             </td>
 
                             <td class="tdLabel">
-                            <s:textfield name="password" label="Password"></s:textfield>
+                            <s:textfield name="password" label="Password" required="true"/>
                             </td>
 
 

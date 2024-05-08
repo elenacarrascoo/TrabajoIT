@@ -106,15 +106,6 @@ public class tratamientoAction extends ActionSupport {
 
                 return "registro";
 
-            case "Consultar Tratamiento por IdCita":
-
-                return "introducirIdCita";
-
-            case "ConsultarID":
-                tratamiento = dao.obtenerTratamiento(idCita);
-
-                return "verTratamiento";
-
             case "Volver":
                 return "volver";
 

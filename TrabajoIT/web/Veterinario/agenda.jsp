@@ -53,14 +53,7 @@
 
                                 </s:form>
                                 
-                                <s:form action="Tratamiento" method="post">
-
-                                    <s:submit name="boton" value="Consultar Tratamiento por IdCita" />
-
-                                </s:form>
                                 
-                                
-
                                 <s:form action="opcionesAgenda" method="post">
 
                                     <s:submit name="boton" value="Alta Receta" />
