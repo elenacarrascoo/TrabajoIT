@@ -8,6 +8,7 @@ package persistencia;
 import java.util.List;
 import modelo.HibernateUtil;
 import modelo.Paciente;
+import modelo.Propietario;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -53,13 +54,15 @@ public class pacienteDAO {
         return p;
     }
     
-    public List<Paciente> obtenerPacientes(String dniPropietario){
+    public List<Paciente> obtenerPacientes(Propietario propietario){
+        List<Paciente> listadoCompleto = null;
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("from Paciente where dniPropietario = " + dniPropietario);
-        List<Paciente> pacientes = (List<Paciente>) q.list();
+        Query q = session.createQuery("from Paciente where dniPropietario =:dniPropietario");
+        q.setParameter("dniPropietario", propietario.getDni());
+        listadoCompleto = (List<Paciente>) q.list();
         tx.commit();
-        return pacientes;
+        return listadoCompleto;
     }
 
     //obtenerNumHistorial(id_paciente)

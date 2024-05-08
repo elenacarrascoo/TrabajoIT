@@ -41,7 +41,7 @@
                         <td><s:property value="#paciente.historial.numHistorial"/></td>
                         <td>
                             <s:form action="cogerCita" method="post">
-                                <s:submit name="cogerCita">Goger cita</s:submit>
+                                <s:submit name="cogerCita">Coger cita</s:submit>
                                 <s:hidden name="numHistorial" value="%{#paciente.historial}"/>
                             </s:form>
                         </td>

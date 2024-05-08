@@ -46,7 +46,7 @@ public class propietarioDAO {
     public Propietario obtenerPropietario(String dniPropietario){  
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Propietario where dni = " + dniPropietario);
+        Query q = session.createQuery("From Propietario where dni = " + dniPropietario);
         Propietario p = (Propietario) q.uniqueResult();
         tx.commit();
         return p;

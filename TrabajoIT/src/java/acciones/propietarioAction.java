@@ -109,7 +109,7 @@ public class propietarioAction extends ActionSupport {
         Map<String, Object> session = ActionContext.getContext().getSession();
         pacienteDAO pDAO = new pacienteDAO();
         Propietario p = (Propietario) session.get("propietario");
-        List<Paciente> listaPacientes = pDAO.obtenerPacientes(p.getDni());
+        List<Paciente> listaPacientes = pDAO.obtenerPacientes(p);
         this.setListaPacientes(listaPacientes);
         return SUCCESS;
     }
@@ -165,5 +165,5 @@ public class propietarioAction extends ActionSupport {
             }
         }
     }
-
+   
 }

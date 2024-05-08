@@ -22,8 +22,8 @@
             <p><strong>Sexo:</strong> <s:property value="#session.paciente.sexo"/></p>
             <p><strong>Edad:</strong> <s:property value="#session.paciente.edad"/></p>
             <p><strong>Fecha de nacimiento:</strong> <s:property value="#session.paciente.fechaNacimiento"/></p>
-            <p><strong>ID Propietario:</strong> <s:property value="#session.paciente.dniPropietario"/></p>
-            <p><strong>Num Historial:</strong> <s:property value="#session.paciente.numHistorial"/></p>
+            <p><strong>Nombre Propietario:</strong> <s:property value="#session.paciente.propietario.nombre"/></p>
+            <p><strong>Num Historial:</strong> <s:property value="#session.paciente.historial.numHistorial"/></p>
         </div>
     </body>
 </html>
