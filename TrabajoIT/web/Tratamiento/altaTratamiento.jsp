@@ -38,7 +38,7 @@
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="idCita" label="ID Cita" value="%{#cita.id}" readonly="true"></s:textfield>
+                            <s:textfield name="idCita" label="ID Cita" value="idCita" ></s:textfield>
                             </td>
                             
                                                         

@@ -8,6 +8,7 @@ package acciones;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
 import java.util.List;
+import modelo.Cita;
 import modelo.Tratamiento;
 import persistencia.tratamientoDAO;
 
@@ -18,22 +19,14 @@ import persistencia.tratamientoDAO;
 public class tratamientoAction extends ActionSupport {
 
     private String boton;
-    private List<Tratamiento> listaTratamientos;
-    private Integer id;
+    private int id;
+    private Cita cita;
+    private String tipo;
     private Date fecha;
-    private Date hora;
     private double precio;
     private String resultados;
-    private String tipo;
+    private List<Tratamiento> listaTratamientos;
     private int idCita;
-
-    public String getBoton() {
-        return boton;
-    }
-
-    public void setBoton(String boton) {
-        this.boton = boton;
-    }
 
     public List<Tratamiento> getListaTratamientos() {
         return listaTratamientos;
@@ -43,12 +36,36 @@ public class tratamientoAction extends ActionSupport {
         this.listaTratamientos = listaTratamientos;
     }
 
-    public Integer getId() {
+    public String getBoton() {
+        return boton;
+    }
+
+    public void setBoton(String boton) {
+        this.boton = boton;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public Cita getCita() {
+        return cita;
+    }
+
+    public void setCita(Cita cita) {
+        this.cita = cita;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public Date getFecha() {
@@ -57,14 +74,6 @@ public class tratamientoAction extends ActionSupport {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public Date getHora() {
-        return hora;
-    }
-
-    public void setHora(Date hora) {
-        this.hora = hora;
     }
 
     public double getPrecio() {
@@ -83,22 +92,6 @@ public class tratamientoAction extends ActionSupport {
         this.resultados = resultados;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public int getIdCita() {
-        return idCita;
-    }
-
-    public void setIdCita(int idCita) {
-        this.idCita = idCita;
-    }
-
     public tratamientoAction() {
     }
 
@@ -107,26 +100,30 @@ public class tratamientoAction extends ActionSupport {
 
         switch (boton) {
             case "Registrar Tratamiento":
-                Tratamiento tratamiento = new Tratamiento(fecha, hora, precio, resultados, tipo, idCita);
+                Tratamiento tratamiento = new Tratamiento(id, cita, tipo, fecha, precio, resultados);
                 dao.crearTratamiento(tratamiento);
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
+
                 return "registro";
-                
-            case "Ver Tratamientos":
+
+            case "Consultar Tratamiento por IdCita":
+
+                return "introducirIdCita";
+
+            case "ConsultarID":
                 tratamiento = dao.obtenerTratamiento(idCita);
-                return "consultar";
-                
-                
+
+                return "verTratamiento";
+
             case "Volver":
                 return "volver";
-                
-                
+
             case "LogOut":
                 return "volver";
-                 default:
-                    return SUCCESS;
+            default:
+                return SUCCESS;
         }
-      
+
     }
 
 }

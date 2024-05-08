@@ -13,7 +13,7 @@
         <title>Listado de Citas</title>
     </head>
     <body>
-        <h1>Listado de Citas de <s:property value="{veterinario.nombre}"></s:property></h1>
+        <h1>Listado de Citas de <s:property value="#session.veterinario.nombre"/></h1>
 
         <!-- Verificar si la lista no es nula y tiene al menos un elemento -->
         <s:if test="%{!citasVeterinario.isEmpty()}">  
@@ -49,8 +49,17 @@
                                 <s:form action="opcionesAgenda" method="post">
 
                                     <s:submit name="boton" value="Alta Tratamiento" />
+                                    <s:hidden name="idCita" value="{%cita.idCita}" />
 
                                 </s:form>
+                                
+                                <s:form action="Tratamiento" method="post">
+
+                                    <s:submit name="boton" value="Consultar Tratamiento por IdCita" />
+
+                                </s:form>
+                                
+                                
 
                                 <s:form action="opcionesAgenda" method="post">
 

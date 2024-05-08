@@ -55,10 +55,10 @@ public class veterinarioDAO {
         tx.commit();
     }
 
-    public void modificarVeterinario(Veterinario v) {
+    public void modificarVeterinario(Veterinario veterinario) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = session.beginTransaction();
-        session.update(v);
+        session.update(veterinario);
         tx.commit();
     }
     
@@ -85,7 +85,7 @@ public class veterinarioDAO {
      public Veterinario obtenerVeterinario(String dni){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("From Veterinario where dni='" + dni);
+        Query q = session.createQuery("From Veterinario where dni='" + dni + "'");
         Veterinario veterinario = (Veterinario)q.uniqueResult();
         tx.commit();
         return veterinario;

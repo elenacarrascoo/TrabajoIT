@@ -13,7 +13,7 @@
         <title>Opciones del Veterinario</title>
     </head>
     <body>
-        <h1>Bienvenido, <s:property value="{veterinario.nombre}"></s:property> Especializado en <s:property value="{veterinario.especialidad"></s:property></h1>
+        <h1>Bienvenido <s:property value="#session.veterinario.nombre"/>. Especializado en <s:property value="#session.veterinario.especialidad"/></h1>
         <h2>¿Qué acción deseas realizar?</h2>
 
         <s:form action="veterinarioActions" method="post">
