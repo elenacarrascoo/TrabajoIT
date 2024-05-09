@@ -154,9 +154,12 @@
     
     <package name="Tratamiento" extends="struts-default">
         <action name="Tratamiento" class="acciones.tratamientoAction">
-            <result name="registro">/Veterinario/veterinario.jsp</result>
+            <result name="input">/Veterinario/veterinario.jsp</result>
             <result name="success">/Tratamiento/altaTratamiento.jsp</result>
-            <result name="verTratamiento">/Paciente/tratamientosPaciente.jsp</result>
+            <result name="verTratamientos">/Paciente/tratamientosPaciente.jsp</result>
+            <result name="modificacionCompletada">/Paciente/tratamientosPaciente.jsp</result>
+            <result name="modificacion">/Tratamiento/modificarTratamiento.jsp</result>
+            <result name="eliminacion">/Paciente/tratamientosPacientes.jsp</result>
             <result name="volver">/Veterinario/veterinario.jsp</result>
             <result name="salir">/login.jsp</result>
         </action>

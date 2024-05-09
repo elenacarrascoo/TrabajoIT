@@ -5,9 +5,11 @@
  */
 package acciones;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import modelo.Cita;
 import modelo.Tratamiento;
 import persistencia.tratamientoDAO;
@@ -97,6 +99,7 @@ public class tratamientoAction extends ActionSupport {
 
     public String execute() throws Exception {
         tratamientoDAO dao = new tratamientoDAO();
+        Map<String, Object> session = ActionContext.getContext().getSession();
 
         switch (boton) {
             case "Registrar Tratamiento":
@@ -105,6 +108,31 @@ public class tratamientoAction extends ActionSupport {
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
 
                 return "registro";
+                
+            case "Consultar Tratamientos":
+                listaTratamientos = dao.obtenerTodosLosTratamientos();
+                return "verTratamientos";
+                
+            case "Modificar Tratamiento":
+                return "modificacion";
+                
+                
+            case"Modificar":
+                tratamiento = (Tratamiento) session.get("tratamiento");
+                tratamiento.setTipo(this.getTipo());
+                tratamiento.setFecha(this.getFecha());
+                tratamiento.setPrecio(this.getPrecio());
+                tratamiento.setResultados(this.getResultados());
+                dao.actualizarTratamiento(tratamiento);
+                listaTratamientos = dao.obtenerTodosLosTratamientos();
+                return "modificacionCompletada";
+                
+            case "Eliminar Tratamiento":
+                tratamiento = dao.obtenerTratamiento(idCita);
+                dao.eliminarTratamiento(tratamiento);
+                listaTratamientos = dao.obtenerTodosLosTratamientos();
+                return "eliminacion";
+            
 
             case "Volver":
                 return "volver";

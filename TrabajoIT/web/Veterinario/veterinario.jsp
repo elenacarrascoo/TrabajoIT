@@ -27,6 +27,10 @@
         <s:form action="veterinarioActions" method="post">
             <s:submit name="boton" value="Consultar Compañeros" />
         </s:form>
+        
+         <s:form action="Tratamiento" method="post">
+            <s:submit name="boton" value="Consultar Tratamientos" />
+        </s:form>
 
         <s:form action="veterinarioActions" method="post">
             <s:submit name="boton" value="Baja Veterinario" />
