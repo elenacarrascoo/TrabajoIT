@@ -24,7 +24,7 @@
 
 
                         <td class="tdLabel">
-                            <s:textfield name="especialidad" label="Especialidad" required="true"/>
+                            <s:textfield name="especialidad" label="Especialidad"  required="true"/>
                             </td>
 
                             <td class="tdLabel">

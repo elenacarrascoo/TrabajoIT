@@ -26,7 +26,14 @@
                         </tr>
                         <tr>
                             <td class="tdLabel">
-                            <s:textfield name="especialidad" label="Especialidad" required="true"></s:textfield>
+                          <!-- ComboBox para especialidad -->
+                        <s:select 
+                            name="especialidad" 
+                            label="Especialidad" 
+                            list="{'Medicina Interna','Cirugía General','Cirugía Ortopédica', 'Dermatología', 'Odontología Veterinaria','Oftalmología', 'Cardiología', 'Neurología', 'Oncología','Anestesiología','Radiología e Imagenología','Medicina de Emergencia','Comportamiento y Etología','Terapia Rehabilitativa','Zootecnia'}"
+                            headerKey="-1" 
+                            headerValue="Selecciona una especialidad" 
+                            required="true"/>
                             </td>
                             
                             <td class="tdLabel">

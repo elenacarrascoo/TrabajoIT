@@ -154,16 +154,18 @@ public class veterinarioAction extends ActionSupport {
                 return "nuevoRegistro";
 
             case "Modificacion":
-                //veterinario = dao.obtenerVeterinario(dni);
                 veterinario = (Veterinario) session.get("veterinario");
-                veterinario.setEspecialidad(this.getEspecialidad());
-                veterinario.setExperiencia(this.getExperiencia());
-                veterinario.setTelefono(this.getTelefono());
-                veterinario.setCorreo(this.getCorreo());
-                veterinario.setPassword(this.getPassword());
-                dao.modificarVeterinario(veterinario);
+                if (veterinario != null) {
+                    veterinario = (Veterinario) session.get("veterinario");
+                    veterinario.setEspecialidad(this.getEspecialidad());
+                    veterinario.setExperiencia(this.getExperiencia());
+                    veterinario.setTelefono(this.getTelefono());
+                    veterinario.setCorreo(this.getCorreo());
+                    veterinario.setPassword(this.getPassword());
+                    dao.modificarVeterinario(veterinario);
 
-                return "modificacionVeterinario";
+                    return "modificacionVeterinario";
+                }
 
             case "LogOut":
                 return "salir";

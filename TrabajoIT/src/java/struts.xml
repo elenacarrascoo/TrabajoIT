@@ -115,6 +115,7 @@
         </action>      
     </package>
     
+    
     <package name="citasActions" extends="struts-default">
         <action name="gestionCitas" class="acciones.citaAction" method="citasPendientes">
             <result name="success">/Cita/citas.jsp</result>

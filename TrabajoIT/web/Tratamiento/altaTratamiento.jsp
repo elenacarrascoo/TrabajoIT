@@ -30,7 +30,12 @@
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="resultado" label="Resultado" ></s:textfield>
+                                <s:select 
+                            name="tipo" 
+                            label="Tipo" 
+                            list="{'Quirúrgico','Desparasitación','Exámenes Clínicos', 'Fisioterapia','Vacunación', 'Diagnóstico', 'Terapias Rehabilitativas', 'Esterilización y Castración','Diagnóstico por Imagen','Tratamiento de Enfermedades Crónicas' }" 
+                            headerKey="-1" 
+                            headerValue="Selecciona un tipo"/>
                             </td>
                             
                             <td class="tdLabel">

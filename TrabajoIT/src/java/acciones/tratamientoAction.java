@@ -110,16 +110,15 @@ public class tratamientoAction extends ActionSupport {
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
 
                 return "registro";
-                
+
             case "Consultar Tratamientos":
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "verTratamientos";
-                
+
             case "Modificar Tratamiento":
                 return "modificacion";
-                
-                
-            case"Modificar":
+
+            case "Modificar":
                 tratamiento = (Tratamiento) session.get("tratamiento");
                 tratamiento.setTipo(this.getTipo());
                 tratamiento.setFecha(this.getFecha());
@@ -128,13 +127,12 @@ public class tratamientoAction extends ActionSupport {
                 dao.actualizarTratamiento(tratamiento);
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "modificacionCompletada";
-                
+
             case "Eliminar Tratamiento":
                 tratamiento = dao.obtenerTratamiento(idCita);
                 dao.eliminarTratamiento(tratamiento);
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "eliminacion";
-            
 
             case "Volver":
                 return "volver";
@@ -146,26 +144,15 @@ public class tratamientoAction extends ActionSupport {
         }
 
     }
-    
+
     public void validate() {
         // Validaciones para la acción de registro o modificación
         if ("Registrar Tratamiento".equalsIgnoreCase(boton) || "Modificar Tratamiento".equalsIgnoreCase(boton)) {
-            
+
             // Validar tipo (no vacío, uno de los valores permitidos)
             if (this.getTipo().isEmpty()) {
                 addFieldError("tipo", "Introduce el tipo de tratamiento");
-            } else {
-                String[] tiposValidos = {"TipoA", "TipoB", "TipoC"}; // Ajusta según tus valores válidos
-                boolean tipoValido = false;
-                for (String t : tiposValidos) {
-                    if (this.getTipo().equalsIgnoreCase(t)) {
-                        tipoValido = true;
-                        break;
-                    }
-                }
-                if (!tipoValido) {
-                    addFieldError("tipo", "Tipo no válido");
-                }
+
             }
 
             // Validar fecha (debe ser válida y en formato 'dd/MM/yyyy')
