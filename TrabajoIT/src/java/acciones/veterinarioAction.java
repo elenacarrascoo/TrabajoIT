@@ -152,7 +152,7 @@ public class veterinarioAction extends ActionSupport {
                 return "nuevoRegistro";
             
             case "Modificacion":
-                veterinario = dao.obtenerVeterinario(dni);
+                //veterinario = dao.obtenerVeterinario(dni);
                 veterinario = (Veterinario) session.get("veterinario");
                 veterinario.setEspecialidad(this.getEspecialidad());
                 veterinario.setExperiencia(this.getExperiencia());
