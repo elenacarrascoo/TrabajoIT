@@ -10,6 +10,8 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import modelo.*;
 import persistencia.veterinarioDAO;
 
@@ -18,10 +20,10 @@ import persistencia.veterinarioDAO;
  * @author Usuario
  */
 public class veterinarioAction extends ActionSupport {
-    
+
     public veterinarioAction() {
     }
-    
+
     private String boton;
     private String dni;
     private String nombre;
@@ -33,124 +35,124 @@ public class veterinarioAction extends ActionSupport {
     private List<Cita> citasVeterinario;
     private List<Veterinario> listaVeterinarios;
     private String dniVeterinario;
-    
+
     public String getIdVeterinario() {
         return dniVeterinario;
     }
-    
+
     public void setIdVeterinario(String idVeterinario) {
         this.dniVeterinario = idVeterinario;
     }
-    
+
     public List<Veterinario> getListaVeterinarios() {
         return listaVeterinarios;
     }
-    
+
     public void setListaVeterinarios(List<Veterinario> listaVeterinarios) {
         this.listaVeterinarios = listaVeterinarios;
     }
-    
+
     public String getBoton() {
         return boton;
     }
-    
+
     public void setBoton(String boton) {
         this.boton = boton;
     }
-    
+
     public String getDni() {
         return dni;
     }
-    
+
     public void setDni(String dni) {
         this.dni = dni;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
-    
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     public String getEspecialidad() {
         return especialidad;
     }
-    
+
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
-    
+
     public int getExperiencia() {
         return experiencia;
     }
-    
+
     public void setExperiencia(int experiencia) {
         this.experiencia = experiencia;
     }
-    
+
     public int getTelefono() {
         return telefono;
     }
-    
+
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
-    
+
     public String getCorreo() {
         return correo;
     }
-    
+
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
+
     public String getPassword() {
         return password;
     }
-    
+
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public List<Cita> getCitasVeterinario() {
         return citasVeterinario;
     }
-    
+
     public void setCitasVeterinario(List<Cita> citasVeterinario) {
         this.citasVeterinario = citasVeterinario;
     }
-    
+
     public String execute() throws Exception {
         System.out.println("Valor de boton: " + boton); // Para depuración
         veterinarioDAO dao = new veterinarioDAO();
         Map<String, Object> session = ActionContext.getContext().getSession();
-        
+
         switch (boton) {
             case "Modificar Datos":
                 return "modificarDatos";
-            
+
             case "Consultar Agenda":
                 // dniVeterinario = dni;
                 //Map<String, Object> session = ActionContext.getContext().getSession();
                 Veterinario v = (Veterinario) session.get("veterinario");
                 citasVeterinario = dao.obtenerCitas(v.getDni());
                 return "consultarAgenda";
-            
+
             case "Consultar Compañeros":
                 listaVeterinarios = dao.obtenerCompañeros();
                 return "consultarCompañeros";
-            
+
             case "Baja Veterinario":
                 return "bajaVeterinario";
-            
+
             case "registro":
                 Veterinario veterinario = new Veterinario(dni, nombre, especialidad, experiencia, telefono, correo, password);
                 dao.altaVeterinario(veterinario);
                 listaVeterinarios = dao.obtenerCompañeros();
                 return "nuevoRegistro";
-            
+
             case "Modificacion":
                 //veterinario = dao.obtenerVeterinario(dni);
                 veterinario = (Veterinario) session.get("veterinario");
@@ -160,50 +162,126 @@ public class veterinarioAction extends ActionSupport {
                 veterinario.setCorreo(this.getCorreo());
                 veterinario.setPassword(this.getPassword());
                 dao.modificarVeterinario(veterinario);
-                
+
                 return "modificacionVeterinario";
-            
+
             case "LogOut":
                 return "salir";
-            
+
             case "Volver":
                 return "volver";
-            
+
             case "Gestión Recetas":
                 return "gestionRecetas";
-            
+
             case "Generar Factura":
                 return "generarFactura";
-            
+
             case "Ver Paciente":
                 return "verPaciente";
-            
+
             case "Alta Tratamiento":
                 return "altaTratamiento";
-            
+
             case "Alta Receta":
                 return "altaReceta";
-            
+
             case "Alta Medicamento":
                 return "altaMedicamento";
-            
+
             case "Gestión Medicamentos":
                 return "gestionMedicamentos";
-            
+
             case "Cancelar":
                 return "cancelar";
-            
+
             case "Dar de Baja":
                 veterinario = dao.obtenerVeterinarioBaja(dni, password);
                 dao.eliminarVeterinario(veterinario);
                 listaVeterinarios = dao.obtenerCompañeros();
                 return "eliminar";
-            
+
             default:
-                
+
                 return SUCCESS;
-            
+
         }
     }
-    
+
+    public void validate() {
+        String actionName = ActionContext.getContext().getName();
+
+        if (actionName.equals("registrarProfesional")) {
+            // Validar DNI
+            String patronDNI = "^[0-9]{7,8}[A-Za-z]$";
+            Pattern patron1 = Pattern.compile(patronDNI);
+            Matcher macheadorDNI = patron1.matcher(this.getDni());
+
+            if (this.getDni().isEmpty()) {
+                addFieldError("dni", "Introduce el DNI");
+            } else if (!macheadorDNI.matches()) {
+                addFieldError("dni", "Formato de DNI incorrecto");
+            }
+
+            // Validar nombre
+            String patronNombre = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"; // Expresión regular para letras (mayúsculas, minúsculas) y espacios
+
+            if (this.getNombre().isEmpty()) {
+                addFieldError("nombre", "Introduce el nombre");
+            } else {
+                // Verificar que el nombre solo contenga letras y espacios
+                Pattern pattern = Pattern.compile(patronNombre);
+                Matcher matcher = pattern.matcher(this.getNombre());
+
+                if (!matcher.matches()) {
+                    addFieldError("nombre", "El nombre solo puede contener letras y espacios");
+                }
+            }
+
+            // Validar especialidad
+            if (this.getEspecialidad().isEmpty()) {
+                addFieldError("especialidad", "Introduce la especialidad");
+            }
+
+            // Validar experiencia (debe ser un número positivo y no superar los 50 años)
+            if (this.getExperiencia() < 0) {
+                addFieldError("experiencia", "La experiencia debe ser un número positivo");
+            } else if (this.getExperiencia() > 50) {
+                addFieldError("experiencia", "La experiencia no puede superar los 50 años");
+            }
+
+            // Validar correo electrónico
+            // Expresión regular para validar un correo electrónico con dominio 'upovet.es'
+            String patronCorreo = "^[\\w.-]+@upovet\\.es$";
+            Pattern patronCorreoPattern = Pattern.compile(patronCorreo);
+            Matcher macheadorCorreo = patronCorreoPattern.matcher(this.getCorreo());
+
+            // Verificar que el campo de correo no esté vacío
+            if (this.getCorreo().isEmpty()) {
+                addFieldError("correo", "Introduce el correo electrónico");
+            } // Verificar que el correo coincida con el patrón esperado
+            else if (!macheadorCorreo.matches()) {
+                addFieldError("correo", "Formato de correo electrónico incorrecto. Debe ser nombre@upovet.es");
+            }
+
+            // Validar teléfono
+            String patronTelefono = "^[0-9]{9}$";
+            Pattern patronTelefonoPattern = Pattern.compile(patronTelefono);
+            Matcher macheadorTelefono = patronTelefonoPattern.matcher(String.valueOf(this.getTelefono()));
+
+            if (this.getTelefono() <= 0) {
+                addFieldError("telefono", "Introduce un teléfono válido");
+            } else if (!macheadorTelefono.matches()) {
+                addFieldError("telefono", "El teléfono debe tener 9 dígitos");
+            }
+
+            // Validar contraseña
+            if (this.getPassword().isEmpty()) {
+                addFieldError("password", "Introduce la contraseña");
+            } else if (this.getPassword().length() < 8 || this.getPassword().length() > 11) {
+                addFieldError("password", "La contraseña debe tener entre 8 y 11 caracteres");
+            }
+        }
+    }
+
 }

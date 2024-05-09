@@ -10,6 +10,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import modelo.Cita;
 import modelo.Tratamiento;
 import persistencia.tratamientoDAO;
@@ -143,6 +145,50 @@ public class tratamientoAction extends ActionSupport {
                 return SUCCESS;
         }
 
+    }
+    
+    public void validate() {
+        // Validaciones para la acción de registro o modificación
+        if ("Registrar Tratamiento".equalsIgnoreCase(boton) || "Modificar Tratamiento".equalsIgnoreCase(boton)) {
+            
+            // Validar tipo (no vacío, uno de los valores permitidos)
+            if (this.getTipo().isEmpty()) {
+                addFieldError("tipo", "Introduce el tipo de tratamiento");
+            } else {
+                String[] tiposValidos = {"TipoA", "TipoB", "TipoC"}; // Ajusta según tus valores válidos
+                boolean tipoValido = false;
+                for (String t : tiposValidos) {
+                    if (this.getTipo().equalsIgnoreCase(t)) {
+                        tipoValido = true;
+                        break;
+                    }
+                }
+                if (!tipoValido) {
+                    addFieldError("tipo", "Tipo no válido");
+                }
+            }
+
+            // Validar fecha (debe ser válida y en formato 'dd/MM/yyyy')
+            if (this.getFecha() == null) {
+                addFieldError("fecha", "Introduce una fecha válida");
+            }
+
+            // Validar precio (debe ser positivo)
+            if (this.getPrecio() < 0) {
+                addFieldError("precio", "El precio debe ser un número positivo");
+            }
+
+            // Validar resultados (no vacío, solo letras y espacios)
+            String patronResultados = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$";
+            Pattern pattern = Pattern.compile(patronResultados);
+            Matcher matcher = pattern.matcher(this.getResultados());
+
+            if (this.getResultados().isEmpty()) {
+                addFieldError("resultados", "Introduce los resultados");
+            } else if (!matcher.matches()) {
+                addFieldError("resultados", "Los resultados solo pueden contener letras y espacios");
+            }
+        }
     }
 
 }
