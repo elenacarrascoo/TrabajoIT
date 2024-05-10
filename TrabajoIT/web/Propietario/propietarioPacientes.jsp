@@ -75,5 +75,8 @@
                      
             </tbody>             
         </table>
+        <s:form action="volverPropietario" method="post">
+            <s:submit name="volverPropietario" value="Volver"/>
+        </s:form>
     </body>
 </html>

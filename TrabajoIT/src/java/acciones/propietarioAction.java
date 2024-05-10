@@ -125,6 +125,12 @@ public class propietarioAction extends ActionSupport {
         return SUCCESS;
     }
     
+    public String logout() {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        session.clear();
+        return SUCCESS;
+    }
+    
     public void validate() {
         String actionName = ActionContext.getContext().getName();
 

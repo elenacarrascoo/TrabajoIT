@@ -28,5 +28,11 @@
             <s:label from="actualizarPropietario" value="Actualiza tus datos: "></s:label>
             <s:submit name="actualizarPropietario" value="Actualizar Datos"></s:submit>
         </s:form>
+        <br>
+        <br>
+        <br>
+        <s:form action="logoutPropietario" method="post">
+            <s:submit name="logout" value="LogOut"/>
+        </s:form>
     </body>
 </html>

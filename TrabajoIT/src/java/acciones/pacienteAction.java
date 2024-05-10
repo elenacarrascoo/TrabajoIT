@@ -30,6 +30,7 @@ public class pacienteAction extends ActionSupport {
     private int numHistorial;
     private int id;
     private int numHistorialCita;
+    private int idPaciente;
     
     public pacienteAction() {
     }
@@ -105,6 +106,14 @@ public class pacienteAction extends ActionSupport {
     public void setNumHistorialCita(int numHistorialCita) {
         this.numHistorialCita = numHistorialCita;
     }
+
+    public int getIdPaciente() {
+        return idPaciente;
+    }
+
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
+    }
     
     public String execute() throws Exception {
         Map<String, Object> session = ActionContext.getContext().getSession();
@@ -121,7 +130,7 @@ public class pacienteAction extends ActionSupport {
     
     public String modificarPaciente(){
         pacienteDAO pdao = new pacienteDAO();
-        Paciente p = pdao.obtenerPaciente(id);
+        Paciente p = pdao.obtenerPaciente(this.getIdPaciente());
         p.setNombre(this.getNombre());
         p.setEspecie(this.getEspecie());
         p.setRaza(this.getRaza());

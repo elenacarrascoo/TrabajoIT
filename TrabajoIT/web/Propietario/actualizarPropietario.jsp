@@ -24,5 +24,11 @@
             <s:textfield name="infoContactoAdicional" label="Información contacto adicional"/>
             <s:submit name="registrarActualizacion" value="Actualizar datos"/>
         </s:form>
+        <br>
+        <br>
+        <br>
+        <s:form action="volverPropietario" method="post">
+            <s:submit name="volverPropietario" value="Volver"/>
+        </s:form>
     </body>
 </html>

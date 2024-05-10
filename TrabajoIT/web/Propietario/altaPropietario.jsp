@@ -26,5 +26,11 @@
             <s:password name="password" label="Contraseña"/>
             <s:submit name="darAltaPropietario" value="Dar de alta"/>
         </s:form>
+        <br>
+        <br>
+        <br>
+        <s:form action="volverPropietario" method="post">
+            <s:submit name="volverPropietario" value="Volver"/>
+        </s:form>
     </body>
 </html>

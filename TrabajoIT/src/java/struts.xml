@@ -74,6 +74,14 @@
             <result name="success">/Propietario/propietario.jsp</result>
             <result name="input">/Propietario/actualizarPropietario.jsp</result>
         </action>
+        
+        <action name="logoutPropietario" class="acciones.propietarioAction" method="logout">
+            <result name="success">/login.jsp</result>
+        </action>
+        
+        <action name="volverPropietario">
+            <result>/Propietario/propietario.jsp</result>
+        </action>
     </package>
     
     <package name="veterinarioActions" extends="struts-default">
