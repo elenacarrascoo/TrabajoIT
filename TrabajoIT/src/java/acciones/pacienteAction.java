@@ -9,11 +9,10 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import modelo.Historial;
 import modelo.Paciente;
 import modelo.Propietario;
+import persistencia.historialDAO;
 import persistencia.pacienteDAO;
 
 /**
@@ -111,9 +110,12 @@ public class pacienteAction extends ActionSupport {
         Map<String, Object> session = ActionContext.getContext().getSession();
         Propietario prop = (Propietario) session.get("propietario");
         pacienteDAO pdao = new pacienteDAO(); 
-        Historial h = new Historial();
-        Paciente p = new Paciente(h, prop, this.getNombre(), this.getEspecie(), this.getRaza(), this.getSexo(), this.getEdad(), this.getFechaNacimiento());
+        Paciente p = new Paciente(10, null, prop, this.getNombre(), this.getEspecie(), this.getRaza(), this.getSexo(), (int) this.getEdad(), this.getFechaNacimiento());
         pdao.altaPaciente(p);
+        
+        Historial h = new Historial(10, p);
+        historialDAO hdao = new historialDAO();
+        hdao.altaHistorial(h);
         return SUCCESS;
     }
     

@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 import modelo.Cita;
 import modelo.HibernateUtil;
+import modelo.Historial;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -53,32 +54,22 @@ public class citaDAO {
         return c;
     }
     
-    public List<Cita> obtenerCitasVeterinario(int idVeterinario){
+    public List<Cita> obtenerCitasVeterinario(int dniVeterinario){
         List<Cita> citas;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Cita where idVeterinario = " + idVeterinario);
+        Query q = session.createQuery("FROM Cita where dniVeterinario = " + dniVeterinario);
         citas = (List<Cita>) q.list();
         tx.commit();
         return citas;
     }
     
-    public List<Cita> obtenerCitasPaciente(int numHistorial){
-        List<Cita> citas;
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Cita where numHistorial = numHistorial" + numHistorial);
-        citas = (List<Cita>) q.list();
-        tx.commit();
-        return citas;
-    }
-    
-    public List<Cita> obtenerCitasPendientes(int numHistorial, Date fecha, Date hora){
+    public List<Cita> obtenerCitasPendientes(Historial historial, Date fecha, Date hora){
         List<Cita> citas;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         Query q = session.createQuery("FROM Cita WHERE numHistorial = :numHistorial AND (fecha > :fecha OR (fecha = :fecha AND hora > :hora))");
-        q.setParameter("numHistorial", numHistorial);
+        q.setParameter("numHistorial", historial.getNumHistorial());
         q.setParameter("fecha", fecha);
         q.setParameter("hora", hora);
         citas = (List<Cita>) q.list();
@@ -86,12 +77,13 @@ public class citaDAO {
         return citas;
     } 
     
-    public List<Cita> obtenerCitasHistorial(int numHistorial){
-        List<Cita> citas;
+    
+    public List<Cita> obtenerCitasHistorial(Historial historial){
+        List<Cita> citas = null;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Cita WHERE numHistorial = :numHistorial");
-        q.setParameter("numHistorial", numHistorial);
+        Query q = session.createQuery("from Cita where numHistorial =:numHistorial");
+        q.setParameter("numHistorial", historial.getNumHistorial());
         citas = (List<Cita>) q.list();
         tx.commit();
         return citas;

@@ -24,8 +24,8 @@
                     <th>Sexo</th>
                     <th>Edad</th>
                     <th>Fecha de nacimiento</th>
-                    <th>Propietario</th>
                     <th>Historial</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,7 +42,7 @@
                         <td>
                             <s:form action="cogerCita" method="post">
                                 <s:submit name="cogerCita">Coger cita</s:submit>
-                                <s:hidden name="numHistorial" value="%{#paciente.historial}"/>
+                                <s:hidden name="numHistorial" value="%{#paciente.historial.numHistorial}"/>
                             </s:form>
                         </td>
                         <td>
@@ -54,7 +54,7 @@
                         <td>
                             <!-- Mirar este hidden -->
                             <s:form action="gestionCitas" method="post">
-                                <s:hidden name="historialConsultar" value="%{#paciente.historial}"/>
+                                <s:hidden name="historialConsultar" value="%{#paciente.historial.numHistorial}"/>
                                 <s:submit name="gestionCitas">Gestionar Citas</s:submit>
                             </s:form>
                         </td>

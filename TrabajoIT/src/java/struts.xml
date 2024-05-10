@@ -63,7 +63,7 @@
         </action>
         
         <action name="consultarPaciente">
-            <result name="success">/Paciente/datosPaciente.jsp</result>
+            <result>/Paciente/datosPaciente.jsp</result>
         </action>
         
         <action name="actualizarPropietario">
@@ -133,12 +133,14 @@
             <result name="success">/Cita/citas.jsp</result>
         </action>
         
-        <action name="cogerCita" class="acciones.citaAction">
+        <action name="cogerCita">
+            <result>/Cita/nuevaCita.jsp</result>
             <result name="input">/Cita/nuevaCita.jsp</result>
         </action>
         
         <action name="altaCita" class="acciones.citaAction" method="altaCita">
-            <result name="input">/Cita/citas.jsp</result>
+            <result name="success" type="redirectAction">gestionCitas</result>
+            <result name="input">/Cita/nuevaCita.jsp</result>
         </action>
        
     </package>

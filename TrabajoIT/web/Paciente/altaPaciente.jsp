@@ -14,7 +14,7 @@
         <s:head/>
     </head>
     <body>
-        <h1>Introduce los datos de tu mascota:</h1>
+        <h1><s:property value="#session.propietario.nombre"/>, introduce los datos de tu mascota:</h1>
         
         <s:form action="registrarPaciente" method="post">
             <s:textfield name="nombre" label="Nombre"/>
@@ -22,7 +22,7 @@
             <s:textfield name="raza" label="Raza"/>
             <s:textfield name="sexo" label="Sexo"/>
             <s:textfield name="edad" label="Edad"/>
-            <s:textfield name="fechaNacimiento" label="Fecha de nacimiento"/>
+            <s:textfield name="fechaNacimiento" label="Fecha de nacimiento" type="date"/>
             <s:submit name="darAltaPaciente" value="Dar de alta"/>
         </s:form>
     </body>

@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Datos mascota:</h1>
+        <h1>Datos de la mascota <s:property value="#session.paciente.nombre"/>:</h1>
         <div>
             <p><strong>ID:</strong> <s:property value="#session.paciente.id"/></p>
             <p><strong>Nombre:</strong> <s:property value="#session.paciente.nombre"/></p>

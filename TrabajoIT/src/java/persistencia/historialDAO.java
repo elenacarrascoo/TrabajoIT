@@ -11,6 +11,7 @@ package persistencia;
 
 import modelo.HibernateUtil;
 import modelo.Historial;
+import modelo.Paciente;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -39,10 +40,20 @@ public class historialDAO {
         tx.commit();
     }
     
-    public Historial obtenerHistorialPaciente(int idPaciente){
+    public Historial obtenerHistorialPaciente(Paciente paciente){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Historial where idPaciente = " + idPaciente);
+        Query q = session.createQuery("FROM Historial where idPaciente =:idPaciente");
+        q.setParameter("idPaciente", paciente.getId());
+        Historial h = (Historial) q.uniqueResult();
+        tx.commit();
+        return h;
+    }
+    
+    public Historial obtenerHistorial(int numHistorial){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("FROM Historial where num_historial = " + numHistorial);
         Historial h = (Historial) q.uniqueResult();
         tx.commit();
         return h;

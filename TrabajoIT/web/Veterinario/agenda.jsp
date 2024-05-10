@@ -24,8 +24,8 @@
                         <th>Hora</th>
                         <th>Motivo</th>
                         <th>Número de Historial</th>
-                        <th>ID del Veterinario</th>
-                        <th>ID de la Factura</th>
+                        <th>DNI del Veterinario</th>
+                        <th>Num de la Factura</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -36,13 +36,13 @@
                             <td><s:property value="#cita.fecha" /></td>
                             <td><s:property value="#cita.hora" /></td>
                             <td><s:property value="#cita.motivo" /></td>
-                            <td><s:property value="#cita.numHistorial" /></td>
-                            <td><s:property value="#cita.dniVeterinario" /></td>
-                            <td><s:property value="#cita.idFactura" /></td>
+                            <td><s:property value="#cita.historial.numHistorial" /></td>
+                            <td><s:property value="#cita.veterinario.dni" /></td>
+                            <td><s:property value="#cita.factura.numFactura" /></td>
                             <td>
                                 <!-- Formularios con acciones para cada cita -->
                                 <s:form action="verPaciente" method="post">
-                                    <s:hidden name="numHistorialCita" value="%{#cita.numHistorial}" />
+                                    <s:hidden name="numHistorialCita" value="%{#cita.historial.numHistorial}" />
                                     <s:submit name="verPaciente" value="Ver Paciente" />
                                 </s:form>
 

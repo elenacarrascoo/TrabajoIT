@@ -23,6 +23,8 @@ import modelo.Cita;
 import modelo.Historial;
 import modelo.Veterinario;
 import persistencia.citaDAO;
+import persistencia.historialDAO;
+import persistencia.veterinarioDAO;
 
 /**
  *
@@ -33,7 +35,7 @@ public class citaAction extends ActionSupport {
     int idCitaModificar;
 
     int pacienteConsultar;
-    Historial historialPacienteConsultar;
+    int historialConsultar;
 
     int numHistorial;
     //No estoy seguro de que asi
@@ -42,6 +44,8 @@ public class citaAction extends ActionSupport {
     String fecha;
     String hora;
     String motivo;
+    
+    List<Cita> citasPendientes;
 
     public int getIdCitaModificar() {
         return idCitaModificar;
@@ -83,12 +87,12 @@ public class citaAction extends ActionSupport {
         this.pacienteConsultar = pacienteConsultar;
     }
 
-    public Historial getHistorialPacienteConsultar() {
-        return historialPacienteConsultar;
+    public int getHistorialConsultar() {
+        return historialConsultar;
     }
 
-    public void setHistorialPacienteConsultar(Historial historialPacienteConsultar) {
-        this.historialPacienteConsultar = historialPacienteConsultar;
+    public void setHistorialConsultar(int historialConsultar) {
+        this.historialConsultar = historialConsultar;
     }
 
     public int getNumHistorial() {
@@ -106,8 +110,15 @@ public class citaAction extends ActionSupport {
     public void setVeterinario(Veterinario veterinario) {
         this.veterinario = veterinario;
     }
-    
 
+    public List<Cita> getCitasPendientes() {
+        return citasPendientes;
+    }
+
+    public void setCitasPendientes(List<Cita> citasPendientes) {
+        this.citasPendientes = citasPendientes;
+    }
+      
     public citaAction() {
     }
 
@@ -126,15 +137,25 @@ public class citaAction extends ActionSupport {
         
         //Falta asignar como asingar el veterinario
         //Ver lo de Id Cita
-        Cita cita = new Cita(random.nextInt(),this.getHistorialPacienteConsultar(), this.getVeterinario(), fechaFormateada, hora, this.getMotivo());
+        historialDAO hdao = new historialDAO();
+        Historial h = hdao.obtenerHistorial(this.getNumHistorial());
+        
+        Veterinario v = new Veterinario("13579246A", "Rodrigo", "general", 2, 964138961, "ecarrascohurtado@gmail.com", "rodrigo123");
+        veterinarioDAO vdao = new veterinarioDAO();
+        vdao.altaVeterinario(v);
+        
+        Cita cita = new Cita(12, h, v, fechaFormateada, hora, this.getMotivo());
         c.altaCita(cita);
+        
+        List<Cita> citasPendientes = c.obtenerCitasHistorial(h);
+        this.setCitasPendientes(citasPendientes);
         return SUCCESS;
     }
 
     public String citasPendientes() throws ParseException {
-        Map<String, Object> session = ActionContext.getContext().getSession();
+        //Map<String, Object> session = ActionContext.getContext().getSession();
         citaDAO c = new citaDAO();
-
+        
         Date fechaHoraActual = new Date();
         
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
@@ -146,10 +167,16 @@ public class citaAction extends ActionSupport {
         Date fechaActual = formatoFecha.parse(fechaActualStr); 
         Date horaActual = formatoHora.parse(horaActualStr);   
         
+        historialDAO hdao = new historialDAO();
+        Historial h = hdao.obtenerHistorial(this.getHistorialConsultar());
+        
+        
+        
         // Revisar tipos de hora y fecha con la BBDD
-        List<Cita> citasPendientes = c.obtenerCitasPendientes(this.getHistorialPacienteConsultar().getNumHistorial(), fechaActual, horaActual);
+        List<Cita> citasPendientes = c.obtenerCitasPendientes(h, fechaActual, horaActual);
 
-        session.put("citasPendientes", citasPendientes);
+        //session.put("citasPendientes", citasPendientes);
+        this.setCitasPendientes(citasPendientes);
         return SUCCESS;
     }
 

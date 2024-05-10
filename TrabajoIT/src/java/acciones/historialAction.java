@@ -12,10 +12,12 @@ import java.util.List;
 import java.util.Map;
 import modelo.Cita;
 import modelo.Historial;
+import modelo.Paciente;
 import modelo.Propietario;
 import modelo.Veterinario;
 import persistencia.citaDAO;
 import persistencia.historialDAO;
+import persistencia.pacienteDAO;
 
 /**
  *
@@ -70,7 +72,9 @@ public class historialAction extends ActionSupport {
     public String verHistorialPaciente(){
        Map<String, Object> session = ActionContext.getContext().getSession();
        historialDAO h = new historialDAO();
-       Historial historialPaciente = h.obtenerHistorialPaciente(this.getPacienteConsultar());
+       pacienteDAO p = new pacienteDAO();
+       Paciente paciente = p.obtenerPaciente(this.getPacienteConsultar());
+       Historial historialPaciente = h.obtenerHistorialPaciente(paciente);
        session.put("historialPaciente", historialPaciente);
        listarCitasHistorial();
        return SUCCESS;
@@ -79,7 +83,9 @@ public class historialAction extends ActionSupport {
     public String modificarHistorial(){
        Map<String, Object> session = ActionContext.getContext().getSession();
        historialDAO h = new historialDAO();
-       Historial historialModificar = h.obtenerHistorialPaciente(this.getId());
+       pacienteDAO p = new pacienteDAO();
+       Paciente paciente = p.obtenerPaciente(this.getPacienteConsultar());
+       Historial historialModificar = h.obtenerHistorialPaciente(paciente);
        //No se si es ese id el que hay quye pasarle
        
        return SUCCESS;
@@ -88,7 +94,9 @@ public class historialAction extends ActionSupport {
     public String eliminarHistorial(){
        Map<String, Object> session = ActionContext.getContext().getSession();
        historialDAO h = new historialDAO();
-       Historial historialEliminar = h.obtenerHistorialPaciente(this.getId());
+       pacienteDAO p = new pacienteDAO();
+       Paciente paciente = p.obtenerPaciente(this.getPacienteConsultar());
+       Historial historialEliminar = h.obtenerHistorialPaciente(paciente);
        h.bajaHistorial(historialEliminar);
        //No se si es ese id el que hay quye pasarle
        return SUCCESS;
@@ -98,7 +106,7 @@ public class historialAction extends ActionSupport {
         Map<String, Object> session = ActionContext.getContext().getSession();
         citaDAO cDAO = new citaDAO();
         Historial h = (Historial) session.get("historialPaciente");
-        List<Cita> listaCitas = cDAO.obtenerCitasPaciente(h.getNumHistorial());
+        List<Cita> listaCitas = cDAO.obtenerCitasHistorial(h);
         this.setListaCitas(listaCitas);
         return SUCCESS;
     }
