@@ -28,19 +28,19 @@
                             </td>
 
                             <td class="tdLabel">
-                            <s:textfield name="experiencia" label="Experiencia" min="0" max="49" value="" required="true"/>
+                            <s:textfield name="experiencia" label="Experiencia" min="0" max="49" value="%{#session.veterinario.experiencia}" required="true"/>
                             </td>
 
                             <td class="tdLabel">
-                            <s:textfield name="telefono" label="Telefono" min="9" max="9" value="" required="true" />
+                            <s:textfield name="telefono" label="Telefono" min="9" max="9" value="%{#session.veterinario.telefono}" required="true" />
                             </td>
 
                             <td class="tdLabel">
-                            <s:textfield name="correo" label="Correo electronico" required="true"/>
+                            <s:textfield name="correo" label="Correo electronico" value="%{#session.veterinario.correo}" required="true"/>
                             </td>
 
                             <td class="tdLabel">
-                            <s:textfield name="password" label="Password" required="true"/>
+                            <s:password name="password" label="Password" value="%{#session.veterinario.password}" required="true"/>
                             </td>
 
 

@@ -37,7 +37,7 @@
                             <td><s:property value="#tratamiento.fecha" /></td>
                             <td><s:property value="#tratamiento.precio" /></td>
                             <td><s:property value="#tratamiento.resultados" /></td>
-                            <td><s:property value="#tratamiento.idCita" /></td>
+                            <td><s:property value="#tratamiento.cita.id" /></td>
                             <td>
                                 <s:form action="Tratamiento" method="post">
 

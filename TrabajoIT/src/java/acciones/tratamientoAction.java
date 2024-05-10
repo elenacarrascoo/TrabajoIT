@@ -129,7 +129,7 @@ public class tratamientoAction extends ActionSupport {
                 return "modificacionCompletada";
 
             case "Eliminar Tratamiento":
-                tratamiento = dao.obtenerTratamiento(idCita);
+                tratamiento = dao.obtenerTratamiento(cita);
                 dao.eliminarTratamiento(tratamiento);
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "eliminacion";

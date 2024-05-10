@@ -23,23 +23,23 @@
                     <tr>
 
                             <td class="tdLabel">
-                            <s:textfield name="tipo" label="Tipo" required="true"/>
+                            <s:textfield name="tipo" label="Tipo"  value="%{#session.tratamiento.tipo}" required="true"/>
                             </td>
 
                             <td class="tdLabel">
-                            <s:textfield name="fecha" label="Fecha" type="date" required="true" />
+                            <s:textfield name="fecha" label="Fecha" type="date" value="%{#session.tratamiento.fecha}" required="true" />
                             </td>
 
                             <td class="tdLabel">
-                            <s:textfield name="precio" label="Precio" value="" required="true"/>
+                            <s:textfield name="precio" label="Precio" value="%{#session.tratamiento.precio}" required="true"/>
                             </td>
 
                             <td class="tdLabel">
-                            <s:textfield name="resultados" label="Resultados" required="true"/>
+                            <s:textfield name="resultados" label="Resultados" value="%{#session.tratamiento.resultados}" required="true"/>
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="idCita" label="ID Cita" required="true"/>
+                            <s:textfield name="idCita" label="ID Cita" value="%{#session.tratamiento.idCita}" required="true"/>
                             </td>
 
 
