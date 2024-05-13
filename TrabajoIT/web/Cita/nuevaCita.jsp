@@ -16,7 +16,7 @@
         <h1>Nueva Cita</h1>
     <s:form name="altaCita" action="altaCita" method="post">
         <s:textfield name="fecha" label="Fecha" type="date"/>
-        <s:textfield name="hora" label="Hora" type="time"/>
+        <s:textfield name="hora" label="Hora"/>
         <s:textfield name="motivo" label="Motivo"/>
         
         <s:submit name="altaCita" value="Reservar"/>

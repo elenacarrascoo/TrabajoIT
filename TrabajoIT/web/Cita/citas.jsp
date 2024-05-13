@@ -26,7 +26,6 @@
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Motivo</th>
-                        <th>Precio</th>
                         <th>Numero de Historial Asociado</th>
                         <th>Veterinatio responsable</th>
                         <th>Tratamiento realizado</th>
@@ -41,7 +40,6 @@
                             <td><s:property value="#cita.fecha"/></td>
                             <td><s:property value="#cita.hora"/></td>
                             <td><s:property value="#cita.motivo"/></td>
-                            <td><s:property value="#cita.precio"/></td>
                             <td><s:property value="#cita.historial.numHistorial"/></td>
                             <td><s:property value="#cita.veterinario.dni"/></td>
                             <td><s:property value="#cita.tratamiento.id"/></td>

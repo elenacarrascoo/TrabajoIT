@@ -17,7 +17,7 @@
         <s:form>
             <s:textfield name="fecha" label="Fecha"/>
             <s:textfield name="fecha" label="Fecha" type="date"/>
-            <s:textfield name="hora" label="Hora" type="time"/>
+            <s:textfield name="hora" label="Hora"/>
         
             <s:submit name="modificarCita" value="Actualizar"/>
         </s:form>
