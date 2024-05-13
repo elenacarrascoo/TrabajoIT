@@ -16,8 +16,8 @@
         <h1>Actualizando la cita <s:property value="#session.cita.id"/></h1>
         <s:form>
             <s:textfield name="fecha" label="Fecha"/>
-            <s:textfield name="hora" label="Hora"/>
-            <s:textfield name="motivo" label="Motivo"/>
+            <s:textfield name="fecha" label="Fecha" type="date"/>
+            <s:textfield name="hora" label="Hora" type="time"/>
         
             <s:submit name="modificarCita" value="Actualizar"/>
         </s:form>
