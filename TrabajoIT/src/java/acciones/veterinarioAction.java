@@ -9,10 +9,13 @@ import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.servlet.http.HttpServletRequest;
 import modelo.*;
+import org.apache.struts2.ServletActionContext;
 import persistencia.veterinarioDAO;
 
 /**
@@ -35,7 +38,17 @@ public class veterinarioAction extends ActionSupport {
     private List<Cita> citasVeterinario;
     private List<Veterinario> listaVeterinarios;
     private String dniVeterinario;
+    private String idCita;
 
+    public String getIdCita() {
+        return idCita;
+    }
+
+    public void setIdCita(String idCita) {
+        this.idCita = idCita;
+    }
+
+       
     public String getIdVeterinario() {
         return dniVeterinario;
     }
@@ -123,19 +136,24 @@ public class veterinarioAction extends ActionSupport {
     public void setCitasVeterinario(List<Cita> citasVeterinario) {
         this.citasVeterinario = citasVeterinario;
     }
+    
+    
 
     public String execute() throws Exception {
         System.out.println("Valor de boton: " + boton); // Para depuración
         veterinarioDAO dao = new veterinarioDAO();
+        
+        HttpServletRequest request = ServletActionContext.getRequest();
+        idCita = request.getParameter("idCita");
+        
         Map<String, Object> session = ActionContext.getContext().getSession();
-
+        session.put("idCita",idCita);
+        
         switch (boton) {
             case "Modificar Datos":
                 return "modificarDatos";
 
             case "Consultar Agenda":
-                // dniVeterinario = dni;
-                //Map<String, Object> session = ActionContext.getContext().getSession();
                 Veterinario v = (Veterinario) session.get("veterinario");
                 citasVeterinario = dao.obtenerCitas(v.getDni());
                 return "consultarAgenda";

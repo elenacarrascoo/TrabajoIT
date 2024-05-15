@@ -41,7 +41,8 @@
                             <td>
                                 <s:form action="Tratamiento" method="post">
 
-                                    <s:submit name="boton" value="Modificar Tratamiento" />
+                                    <s:submit name="boton" value="Modificar_Tratamiento" />
+                                    <s:hidden name="idCita" value="%{#tratamiento.cita.id}"/> 
 
                                 </s:form>
 

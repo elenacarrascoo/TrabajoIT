@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Modificación de tratamiento </h1>
+        <h1>Modificación de tratamiento de <s:property value="#session.tratamieto.id" /> </h1>
 
 
         <s:form name="Tratamiento" action="Tratamiento" method="post">
@@ -23,7 +23,7 @@
                     <tr>
 
                             <td class="tdLabel">
-                            <s:textfield name="tipo" label="Tipo"  value="%{#session.tratamiento.tipo}" required="true"/>
+                            <s:textfield name="tipo" label="Tipo"  required="true" value="%{#session.tratamiento.tipo}" required="true"/>
                             </td>
 
                             <td class="tdLabel">
@@ -39,7 +39,7 @@
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="idCita" label="ID Cita" value="%{#session.tratamiento.idCita}" required="true"/>
+                            <s:textfield name="idCita" label="ID Cita" value="%{#session.idCita}" required="true" readonly="true"/>
                             </td>
 
 

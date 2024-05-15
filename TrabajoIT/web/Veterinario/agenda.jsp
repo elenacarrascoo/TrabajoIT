@@ -20,6 +20,7 @@
             <table border="1">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Motivo</th>
@@ -33,6 +34,7 @@
                     <!-- Iterar sobre la lista de citas -->
                     <s:iterator value="citasVeterinario" var="cita">
                         <tr>
+                            <td><s:property value="#cita.id"/></td>
                             <td><s:property value="#cita.fecha" /></td>
                             <td><s:property value="#cita.hora" /></td>
                             <td><s:property value="#cita.motivo" /></td>
@@ -49,7 +51,7 @@
                                 <s:form action="opcionesAgenda" method="post">
 
                                     <s:submit name="boton" value="Alta Tratamiento" />
-                                    <s:hidden name="idCita" value="{%cita.idCita}" />
+                                    <s:hidden name="idCita" value="%{#cita.id}" />
 
                                 </s:form>
                                 

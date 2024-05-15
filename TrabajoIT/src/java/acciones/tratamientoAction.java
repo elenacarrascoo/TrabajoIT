@@ -12,8 +12,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.servlet.http.HttpServletRequest;
 import modelo.Cita;
 import modelo.Tratamiento;
+import org.apache.struts2.ServletActionContext;
+import persistencia.citaDAO;
 import persistencia.tratamientoDAO;
 
 /**
@@ -30,7 +33,7 @@ public class tratamientoAction extends ActionSupport {
     private double precio;
     private String resultados;
     private List<Tratamiento> listaTratamientos;
-    private int idCita;
+    private String idCita;
 
     public List<Tratamiento> getListaTratamientos() {
         return listaTratamientos;
@@ -96,15 +99,36 @@ public class tratamientoAction extends ActionSupport {
         this.resultados = resultados;
     }
 
+    public String getIdCita() {
+        return idCita;
+    }
+
+    public void setIdCita(String idCita) {
+        this.idCita = idCita;
+    }
+
+    
+    
+    
+
     public tratamientoAction() {
     }
 
     public String execute() throws Exception {
         tratamientoDAO dao = new tratamientoDAO();
+        
+        HttpServletRequest request = ServletActionContext.getRequest();
+        idCita = request.getParameter("idCita");
+        
+        
         Map<String, Object> session = ActionContext.getContext().getSession();
+        session.put("idCita", idCita);
 
         switch (boton) {
-            case "Registrar Tratamiento":
+            case "Registrar_Tratamiento":
+                citaDAO daocita = new citaDAO();
+               // session.put("idCita", this.getIdCita());
+                cita = daocita.obtenerCita((int) session.get("idCita"));
                 Tratamiento tratamiento = new Tratamiento(id, cita, tipo, fecha, precio, resultados);
                 dao.crearTratamiento(tratamiento);
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
@@ -115,11 +139,12 @@ public class tratamientoAction extends ActionSupport {
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "verTratamientos";
 
-            case "Modificar Tratamiento":
+            case "Modificar_Tratamiento":
                 return "modificacion";
 
             case "Modificar":
                 tratamiento = (Tratamiento) session.get("tratamiento");
+                if(tratamiento != null){
                 tratamiento.setTipo(this.getTipo());
                 tratamiento.setFecha(this.getFecha());
                 tratamiento.setPrecio(this.getPrecio());
@@ -127,6 +152,8 @@ public class tratamientoAction extends ActionSupport {
                 dao.actualizarTratamiento(tratamiento);
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "modificacionCompletada";
+                
+                }
 
             case "Eliminar Tratamiento":
                 tratamiento = dao.obtenerTratamiento(cita);
