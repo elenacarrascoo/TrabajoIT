@@ -16,12 +16,7 @@
                 <tbody>
                     <tr>
                         <td class="tdLabel">
-                            <s:textfield name="fecha" label="Fecha" type="date" required="true"></s:textfield>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tdLabel">
-                            <s:textfield name="hora" label="Hora" type="time" min="09:00" max="20:00" required="true" ></s:textfield>
+                            <s:textfield name="fecha" label="Fecha" required="true"></s:textfield>
                             </td>
                         </tr>
                         <tr>
@@ -37,6 +32,12 @@
                             headerKey="-1" 
                             headerValue="Selecciona un tipo" required="true"/>
                             </td>
+                            
+                            
+                            <td class="tdLabel">
+                                <s:textfield name="resultados" label="Resultados" required="true"></s:textfield>
+                            </td>
+                            
                             
                             <td class="tdLabel">
                             <s:textfield name="idCita" label="ID Cita" value="%{#session.idCita}" required="true" readonly="true"/>

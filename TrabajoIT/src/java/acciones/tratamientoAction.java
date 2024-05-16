@@ -7,6 +7,7 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -29,11 +30,12 @@ public class tratamientoAction extends ActionSupport {
     private int id;
     private Cita cita;
     private String tipo;
-    private Date fecha;
+    private String fecha;
     private double precio;
     private String resultados;
     private List<Tratamiento> listaTratamientos;
     private String idCita;
+    private Date fechaFormateada;
 
     public List<Tratamiento> getListaTratamientos() {
         return listaTratamientos;
@@ -75,12 +77,20 @@ public class tratamientoAction extends ActionSupport {
         this.tipo = tipo;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    public Date getFechaFormateada() {
+        return fechaFormateada;
+    }
+
+    public void setFechaFormateada(Date fechaFormateada) {
+        this.fechaFormateada = fechaFormateada;
     }
 
     public double getPrecio() {
@@ -107,33 +117,38 @@ public class tratamientoAction extends ActionSupport {
         this.idCita = idCita;
     }
 
-    
-    
-    
-
     public tratamientoAction() {
     }
 
     public String execute() throws Exception {
         tratamientoDAO dao = new tratamientoDAO();
-        
+        citaDAO daocita = new citaDAO();
+
         HttpServletRequest request = ServletActionContext.getRequest();
         idCita = request.getParameter("idCita");
-        
-        
+
         Map<String, Object> session = ActionContext.getContext().getSession();
+        //session.put("idCita", idCita);
         session.put("idCita", idCita);
+        Tratamiento tratamiento = new Tratamiento();
 
         switch (boton) {
             case "Registrar_Tratamiento":
-                citaDAO daocita = new citaDAO();
-               // session.put("idCita", this.getIdCita());
-                cita = daocita.obtenerCita((int) session.get("idCita"));
-                Tratamiento tratamiento = new Tratamiento(id, cita, tipo, fecha, precio, resultados);
-                dao.crearTratamiento(tratamiento);
-                listaTratamientos = dao.obtenerTodosLosTratamientos();
 
-                return "registro";
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+                fechaFormateada = formatoFecha.parse(this.getFecha());
+                session.put("idCita", this.getIdCita());
+                Object idCitaObj = session.get("idCita");
+                if (idCitaObj instanceof Integer) {
+                    cita = daocita.obtenerCita((Integer) idCitaObj);
+
+                    //cita = daocita.obtenerCita((int) session.get("idCita"));
+                    tratamiento = new Tratamiento(id, cita, tipo, fechaFormateada, precio, resultados);
+                    dao.crearTratamiento(tratamiento);
+                    listaTratamientos = dao.obtenerTodosLosTratamientos();
+
+                    return "registro";
+                }
 
             case "Consultar Tratamientos":
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
@@ -144,22 +159,31 @@ public class tratamientoAction extends ActionSupport {
 
             case "Modificar":
                 tratamiento = (Tratamiento) session.get("tratamiento");
-                if(tratamiento != null){
-                tratamiento.setTipo(this.getTipo());
-                tratamiento.setFecha(this.getFecha());
-                tratamiento.setPrecio(this.getPrecio());
-                tratamiento.setResultados(this.getResultados());
-                dao.actualizarTratamiento(tratamiento);
-                listaTratamientos = dao.obtenerTodosLosTratamientos();
-                return "modificacionCompletada";
-                
+                if (tratamiento != null) {
+
+                    tratamiento.setTipo(this.getTipo());
+                    tratamiento.setFecha(fechaFormateada);
+                    tratamiento.setPrecio(this.getPrecio());
+                    tratamiento.setResultados(this.getResultados());
+                    dao.actualizarTratamiento(tratamiento);
+                    listaTratamientos = dao.obtenerTodosLosTratamientos();
+                    return "modificacionCompletada";
+
                 }
 
             case "Eliminar Tratamiento":
+                cita = daocita.obtenerCita((int) session.get("idCita"));
                 tratamiento = dao.obtenerTratamiento(cita);
-                dao.eliminarTratamiento(tratamiento);
-                listaTratamientos = dao.obtenerTodosLosTratamientos();
-                return "eliminacion";
+                if (tratamiento != null) {
+                    dao.eliminarTratamiento(tratamiento);
+                    listaTratamientos = dao.obtenerTodosLosTratamientos();
+                    return "eliminacion";
+                } else {
+                    return ERROR;
+                }
+
+            case "Volver a Agenda":
+                return "retorno";
 
             case "Volver":
                 return "volver";
