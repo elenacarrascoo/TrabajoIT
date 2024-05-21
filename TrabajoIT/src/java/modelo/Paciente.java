@@ -1,5 +1,5 @@
 package modelo;
-// Generated 21-may-2024 20:42:03 by Hibernate Tools 4.3.1
+// Generated 21-may-2024 21:28:50 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -27,8 +27,7 @@ public class Paciente  implements java.io.Serializable {
     }
 
 	
-    public Paciente(Historial historial, Propietario propietario, String nombre, String especie, String raza, String sexo, int edad, Date fechaNacimiento) {
-        this.historial = historial;
+    public Paciente(Propietario propietario, String nombre, String especie, String raza, String sexo, int edad, Date fechaNacimiento) {
         this.propietario = propietario;
         this.nombre = nombre;
         this.especie = especie;

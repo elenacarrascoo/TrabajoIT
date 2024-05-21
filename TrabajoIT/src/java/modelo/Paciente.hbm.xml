@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21-may-2024 20:42:03 by Hibernate Tools 4.3.1 -->
+<!-- Generated 21-may-2024 21:28:51 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Paciente" table="paciente" catalog="clinica_veterinaria" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -9,7 +9,7 @@
             <generator class="identity" />
         </id>
         <many-to-one name="historial" class="modelo.Historial" fetch="select">
-            <column name="numHistorial" not-null="true" unique="true" />
+            <column name="numHistorial" unique="true" />
         </many-to-one>
         <many-to-one name="propietario" class="modelo.Propietario" fetch="select">
             <column name="dniPropietario" length="9" not-null="true" unique="true" />

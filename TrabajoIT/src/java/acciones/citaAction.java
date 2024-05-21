@@ -149,7 +149,7 @@ public class citaAction extends ActionSupport {
         Historial h = hdao.obtenerHistorial((int) session.get("numHistorial"));
         //Historial h = hdao.obtenerHistorial(1);
         veterinarioDAO vdao = new veterinarioDAO();
-        Veterinario v = vdao.obtenerVeterinario("13579246A");
+        Veterinario v = vdao.obtenerVeterinario("43220987M");
         
         Factura f = new Factura((Propietario) session.get("propietario"), new Date(), 20);
         facturaDAO fdao = new facturaDAO();
