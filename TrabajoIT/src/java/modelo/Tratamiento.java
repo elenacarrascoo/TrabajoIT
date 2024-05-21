@@ -1,5 +1,5 @@
 package modelo;
-// Generated 07-may-2024 20:51:00 by Hibernate Tools 4.3.1
+// Generated 21-may-2024 20:42:03 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class Tratamiento  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private Cita cita;
      private String tipo;
      private Date fecha;
@@ -24,16 +24,14 @@ public class Tratamiento  implements java.io.Serializable {
     }
 
 	
-    public Tratamiento(int id, Cita cita, String tipo, Date fecha, double precio, String resultados) {
-        this.id = id;
+    public Tratamiento(Cita cita, String tipo, Date fecha, double precio, String resultados) {
         this.cita = cita;
         this.tipo = tipo;
         this.fecha = fecha;
         this.precio = precio;
         this.resultados = resultados;
     }
-    public Tratamiento(int id, Cita cita, String tipo, Date fecha, double precio, String resultados, Set citas) {
-       this.id = id;
+    public Tratamiento(Cita cita, String tipo, Date fecha, double precio, String resultados, Set citas) {
        this.cita = cita;
        this.tipo = tipo;
        this.fecha = fecha;
@@ -42,11 +40,11 @@ public class Tratamiento  implements java.io.Serializable {
        this.citas = citas;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Cita getCita() {

@@ -1,5 +1,5 @@
 package modelo;
-// Generated 07-may-2024 20:51:00 by Hibernate Tools 4.3.1
+// Generated 21-may-2024 20:42:03 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class Paciente  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private Historial historial;
      private Propietario propietario;
      private String nombre;
@@ -27,18 +27,6 @@ public class Paciente  implements java.io.Serializable {
     }
 
 	
-    public Paciente(int id, Historial historial, Propietario propietario, String nombre, String especie, String raza, String sexo, int edad, Date fechaNacimiento) {
-        this.id = id;
-        this.historial = historial;
-        this.propietario = propietario;
-        this.nombre = nombre;
-        this.especie = especie;
-        this.raza = raza;
-        this.sexo = sexo;
-        this.edad = edad;
-        this.fechaNacimiento = fechaNacimiento;
-    }
-    
     public Paciente(Historial historial, Propietario propietario, String nombre, String especie, String raza, String sexo, int edad, Date fechaNacimiento) {
         this.historial = historial;
         this.propietario = propietario;
@@ -49,8 +37,7 @@ public class Paciente  implements java.io.Serializable {
         this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
     }
-    public Paciente(int id, Historial historial, Propietario propietario, String nombre, String especie, String raza, String sexo, int edad, Date fechaNacimiento, Set historials) {
-       this.id = id;
+    public Paciente(Historial historial, Propietario propietario, String nombre, String especie, String raza, String sexo, int edad, Date fechaNacimiento, Set historials) {
        this.historial = historial;
        this.propietario = propietario;
        this.nombre = nombre;
@@ -62,11 +49,11 @@ public class Paciente  implements java.io.Serializable {
        this.historials = historials;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Historial getHistorial() {

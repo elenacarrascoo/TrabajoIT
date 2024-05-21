@@ -1,5 +1,5 @@
 package modelo;
-// Generated 07-may-2024 20:51:00 by Hibernate Tools 4.3.1
+// Generated 21-may-2024 20:42:03 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class Cita  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private Factura factura;
      private Historial historial;
      private Receta receta;
@@ -21,24 +21,22 @@ public class Cita  implements java.io.Serializable {
      private Date fecha;
      private Date hora;
      private String motivo;
-     private Set facturas = new HashSet(0);
      private Set recetas = new HashSet(0);
      private Set tratamientos = new HashSet(0);
 
     public Cita() {
     }
 
-    public Cita(int id, Historial historial, Veterinario veterinario, Date fecha, Date hora, String motivo) {
-        this.id = id;
+	
+    public Cita(Factura factura, Historial historial, Veterinario veterinario, Date fecha, Date hora, String motivo) {
+        this.factura = factura;
         this.historial = historial;
         this.veterinario = veterinario;
         this.fecha = fecha;
         this.hora = hora;
         this.motivo = motivo;
     }
-    
-    public Cita(int id, Factura factura, Historial historial, Receta receta, Tratamiento tratamiento, Veterinario veterinario, Date fecha, Date hora, String motivo, Set facturas, Set recetas, Set tratamientos) {
-       this.id = id;
+    public Cita(Factura factura, Historial historial, Receta receta, Tratamiento tratamiento, Veterinario veterinario, Date fecha, Date hora, String motivo, Set recetas, Set tratamientos) {
        this.factura = factura;
        this.historial = historial;
        this.receta = receta;
@@ -47,16 +45,15 @@ public class Cita  implements java.io.Serializable {
        this.fecha = fecha;
        this.hora = hora;
        this.motivo = motivo;
-       this.facturas = facturas;
        this.recetas = recetas;
        this.tratamientos = tratamientos;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Factura getFactura() {
@@ -114,13 +111,6 @@ public class Cita  implements java.io.Serializable {
     
     public void setMotivo(String motivo) {
         this.motivo = motivo;
-    }
-    public Set getFacturas() {
-        return this.facturas;
-    }
-    
-    public void setFacturas(Set facturas) {
-        this.facturas = facturas;
     }
     public Set getRecetas() {
         return this.recetas;

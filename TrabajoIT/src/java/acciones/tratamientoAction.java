@@ -143,7 +143,7 @@ public class tratamientoAction extends ActionSupport {
                     cita = daocita.obtenerCita((Integer) idCitaObj);
 
                     //cita = daocita.obtenerCita((int) session.get("idCita"));
-                    tratamiento = new Tratamiento(id, cita, tipo, fechaFormateada, precio, resultados);
+                    tratamiento = new Tratamiento(cita, tipo, fechaFormateada, precio, resultados);
                     dao.crearTratamiento(tratamiento);
                     listaTratamientos = dao.obtenerTodosLosTratamientos();
 

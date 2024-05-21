@@ -1,5 +1,5 @@
 package modelo;
-// Generated 07-may-2024 20:51:00 by Hibernate Tools 4.3.1
+// Generated 21-may-2024 20:42:03 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -13,7 +13,6 @@ public class Factura  implements java.io.Serializable {
 
 
      private Integer numFactura;
-     private Cita cita;
      private Propietario propietario;
      private Date fecha;
      private double importe;
@@ -23,14 +22,12 @@ public class Factura  implements java.io.Serializable {
     }
 
 	
-    public Factura(Cita cita, Propietario propietario, Date fecha, double importe) {
-        this.cita = cita;
+    public Factura(Propietario propietario, Date fecha, double importe) {
         this.propietario = propietario;
         this.fecha = fecha;
         this.importe = importe;
     }
-    public Factura(Cita cita, Propietario propietario, Date fecha, double importe, Set citas) {
-       this.cita = cita;
+    public Factura(Propietario propietario, Date fecha, double importe, Set citas) {
        this.propietario = propietario;
        this.fecha = fecha;
        this.importe = importe;
@@ -43,13 +40,6 @@ public class Factura  implements java.io.Serializable {
     
     public void setNumFactura(Integer numFactura) {
         this.numFactura = numFactura;
-    }
-    public Cita getCita() {
-        return this.cita;
-    }
-    
-    public void setCita(Cita cita) {
-        this.cita = cita;
     }
     public Propietario getPropietario() {
         return this.propietario;

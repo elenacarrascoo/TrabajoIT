@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07-may-2024 20:51:01 by Hibernate Tools 4.3.1 -->
+<!-- Generated 21-may-2024 20:42:03 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Cita" table="cita" catalog="clinica_veterinaria" optimistic-lock="version">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.Integer">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <many-to-one name="factura" class="modelo.Factura" fetch="select">
-            <column name="idFactura" unique="true" />
+            <column name="idFactura" not-null="true" unique="true" />
         </many-to-one>
         <many-to-one name="historial" class="modelo.Historial" fetch="select">
             <column name="numHistorial" not-null="true" unique="true" />
@@ -32,12 +32,6 @@
         <property name="motivo" type="string">
             <column name="motivo" length="100" not-null="true" />
         </property>
-        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="idCita" not-null="true" unique="true" />
-            </key>
-            <one-to-many class="modelo.Factura" />
-        </set>
         <set name="recetas" table="receta" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idCita" not-null="true" unique="true" />

@@ -119,10 +119,10 @@ public class pacienteAction extends ActionSupport {
         Map<String, Object> session = ActionContext.getContext().getSession();
         Propietario prop = (Propietario) session.get("propietario");
         pacienteDAO pdao = new pacienteDAO(); 
-        Paciente p = new Paciente(10, null, prop, this.getNombre(), this.getEspecie(), this.getRaza(), this.getSexo(), (int) this.getEdad(), this.getFechaNacimiento());
+        Paciente p = new Paciente(null, prop, this.getNombre(), this.getEspecie(), this.getRaza(), this.getSexo(), (int) this.getEdad(), this.getFechaNacimiento());
         pdao.altaPaciente(p);
         
-        Historial h = new Historial(10, p);
+        Historial h = new Historial(p);
         historialDAO hdao = new historialDAO();
         hdao.altaHistorial(h);
         return SUCCESS;

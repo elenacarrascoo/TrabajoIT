@@ -1,5 +1,5 @@
 package modelo;
-// Generated 07-may-2024 20:51:00 by Hibernate Tools 4.3.1
+// Generated 21-may-2024 20:42:03 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
 public class Historial  implements java.io.Serializable {
 
 
-     private int numHistorial;
+     private Integer numHistorial;
      private Paciente paciente;
      private Set citas = new HashSet(0);
      private Set pacientes = new HashSet(0);
@@ -20,22 +20,20 @@ public class Historial  implements java.io.Serializable {
     }
 
 	
-    public Historial(int numHistorial, Paciente paciente) {
-        this.numHistorial = numHistorial;
+    public Historial(Paciente paciente) {
         this.paciente = paciente;
     }
-    public Historial(int numHistorial, Paciente paciente, Set citas, Set pacientes) {
-       this.numHistorial = numHistorial;
+    public Historial(Paciente paciente, Set citas, Set pacientes) {
        this.paciente = paciente;
        this.citas = citas;
        this.pacientes = pacientes;
     }
    
-    public int getNumHistorial() {
+    public Integer getNumHistorial() {
         return this.numHistorial;
     }
     
-    public void setNumHistorial(int numHistorial) {
+    public void setNumHistorial(Integer numHistorial) {
         this.numHistorial = numHistorial;
     }
     public Paciente getPaciente() {

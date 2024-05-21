@@ -20,9 +20,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import modelo.Cita;
+import modelo.Factura;
 import modelo.Historial;
+import modelo.Propietario;
 import modelo.Veterinario;
 import persistencia.citaDAO;
+import persistencia.facturaDAO;
 import persistencia.historialDAO;
 import persistencia.veterinarioDAO;
 
@@ -148,7 +151,10 @@ public class citaAction extends ActionSupport {
         veterinarioDAO vdao = new veterinarioDAO();
         Veterinario v = vdao.obtenerVeterinario("13579246A");
         
-        Cita cita = new Cita(12, h, v, fechaFormateada, hora, this.getMotivo());
+        Factura f = new Factura((Propietario) session.get("propietario"), new Date(), 20);
+        facturaDAO fdao = new facturaDAO();
+        fdao.altaFactura(f);
+        Cita cita = new Cita(f, h, v, fechaFormateada, hora, this.getMotivo());
         c.altaCita(cita);
         
         //List<Cita> citasPendientes = c.obtenerCitasHistorial(h);
