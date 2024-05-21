@@ -123,11 +123,15 @@ public class citaAction extends ActionSupport {
     }
 
     public String execute() throws Exception {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        session.put("numHistorial", this.getNumHistorial());
         return SUCCESS;
     }
 
     Random random = new Random();
     public String altaCita() throws ParseException {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        
         citaDAO c = new citaDAO();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
         Date fechaFormateada = formatoFecha.parse(this.getFecha());
@@ -138,17 +142,19 @@ public class citaAction extends ActionSupport {
         //Falta asignar como asingar el veterinario
         //Ver lo de Id Cita
         historialDAO hdao = new historialDAO();
-        Historial h = hdao.obtenerHistorial(this.getNumHistorial());
         
-        Veterinario v = new Veterinario("13579246A", "Rodrigo", "general", 2, 964138961, "ecarrascohurtado@gmail.com", "rodrigo123");
+        Historial h = hdao.obtenerHistorial((int) session.get("numHistorial"));
+        //Historial h = hdao.obtenerHistorial(1);
         veterinarioDAO vdao = new veterinarioDAO();
-        vdao.altaVeterinario(v);
+        Veterinario v = vdao.obtenerVeterinario("13579246A");
         
         Cita cita = new Cita(12, h, v, fechaFormateada, hora, this.getMotivo());
         c.altaCita(cita);
         
-        List<Cita> citasPendientes = c.obtenerCitasHistorial(h);
-        this.setCitasPendientes(citasPendientes);
+        //List<Cita> citasPendientes = c.obtenerCitasHistorial(h);
+        //this.setCitasPendientes(citasPendientes);
+        
+        session.remove("numHistorial");
         return SUCCESS;
     }
 

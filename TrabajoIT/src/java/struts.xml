@@ -141,13 +141,13 @@
             <result name="success">/Cita/citas.jsp</result>
         </action>
         
-        <action name="cogerCita">
-            <result>/Cita/nuevaCita.jsp</result>
+        <action name="cogerCita" class="acciones.citaAction">
+            <result name="success">/Cita/nuevaCita.jsp</result>
             <result name="input">/Cita/nuevaCita.jsp</result>
         </action>
         
         <action name="altaCita" class="acciones.citaAction" method="altaCita">
-            <result name="success" type="redirectAction">gestionCitas</result>
+            <result name="success">/Cita/citas.jsp</result>
             <result name="input">/Cita/nuevaCita.jsp</result>
         </action>
        

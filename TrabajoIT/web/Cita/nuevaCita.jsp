@@ -14,6 +14,7 @@
     </head>
     <body>
         <h1>Nueva Cita</h1>
+        <h1>Num historial: <s:property value="#session.numHistorial"/></h1>
     <s:form name="altaCita" action="altaCita" method="post">
         <s:textfield name="fecha" label="Fecha" type="date"/>
         <s:textfield name="hora" label="Hora"/>

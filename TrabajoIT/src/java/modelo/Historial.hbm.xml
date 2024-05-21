@@ -17,7 +17,7 @@
             </key>
             <one-to-many class="modelo.Cita" />
         </set>
-        <set name="pacientes" table="paciente" inverse="true" lazy="true" fetch="select">
+        <set name="pacientes" table="paciente" inverse="true" lazy="false" fetch="join">
             <key>
                 <column name="numHistorial" not-null="true" unique="true" />
             </key>
