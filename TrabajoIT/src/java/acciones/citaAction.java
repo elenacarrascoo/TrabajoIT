@@ -22,11 +22,13 @@ import java.util.Random;
 import modelo.Cita;
 import modelo.Factura;
 import modelo.Historial;
+import modelo.Paciente;
 import modelo.Propietario;
 import modelo.Veterinario;
 import persistencia.citaDAO;
 import persistencia.facturaDAO;
 import persistencia.historialDAO;
+import persistencia.pacienteDAO;
 import persistencia.veterinarioDAO;
 
 /**
@@ -40,7 +42,7 @@ public class citaAction extends ActionSupport {
     int pacienteConsultar;
     int historialConsultar;
 
-    int numHistorial;
+    int idPaciente;
     //No estoy seguro de que asi
     Veterinario veterinario;
 
@@ -98,12 +100,12 @@ public class citaAction extends ActionSupport {
         this.historialConsultar = historialConsultar;
     }
 
-    public int getNumHistorial() {
-        return numHistorial;
+    public int getIdPaciente() {
+        return idPaciente;
     }
 
-    public void setNumHistorial(int numHistorial) {
-        this.numHistorial = numHistorial;
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     public Veterinario getVeterinario() {
@@ -127,7 +129,7 @@ public class citaAction extends ActionSupport {
 
     public String execute() throws Exception {
         Map<String, Object> session = ActionContext.getContext().getSession();
-        session.put("numHistorial", this.getNumHistorial());
+        session.put("idPaciente", this.getIdPaciente());
         return SUCCESS;
     }
 
@@ -144,23 +146,35 @@ public class citaAction extends ActionSupport {
         
         //Falta asignar como asingar el veterinario
         //Ver lo de Id Cita
-        historialDAO hdao = new historialDAO();
         
-        Historial h = hdao.obtenerHistorial((int) session.get("numHistorial"));
-        //Historial h = hdao.obtenerHistorial(1);
+        //Historial h = hdao.obtenerHistorial((int) session.get("numHistorial"));
+        //Historial h = hdao.obtenerHistorial(1);      
         veterinarioDAO vdao = new veterinarioDAO();
         Veterinario v = vdao.obtenerVeterinario("43220987M");
         
         Factura f = new Factura((Propietario) session.get("propietario"), new Date(), 20);
         facturaDAO fdao = new facturaDAO();
         fdao.altaFactura(f);
-        Cita cita = new Cita(f, h, v, fechaFormateada, hora, this.getMotivo());
+        Cita cita = new Cita(f, v, fechaFormateada, hora, this.getMotivo());
         c.altaCita(cita);
+        
+        
+        pacienteDAO pdao = new pacienteDAO();
+        Paciente paciente = pdao.obtenerPaciente((int) session.get("idPaciente"));
+        Historial h = new Historial(cita, paciente);
+        historialDAO hdao = new historialDAO();
+        hdao.altaHistorial(h);
         
         //List<Cita> citasPendientes = c.obtenerCitasHistorial(h);
         //this.setCitasPendientes(citasPendientes);
+        Propietario p = (Propietario) session.get("propietario");
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaString = formater.format(cita.getFecha());
+        SimpleDateFormat formaterHora = new SimpleDateFormat("HH:mm:ss");
+        String horaString = formaterHora.format(cita.getFecha());
+        enviarCorreo(p.getCorreo(), fechaString, horaString, cita.getMotivo());
         
-        session.remove("numHistorial");
+        session.remove("idPaciente");
         return SUCCESS;
     }
 
@@ -185,15 +199,15 @@ public class citaAction extends ActionSupport {
         
         
         // Revisar tipos de hora y fecha con la BBDD
-        List<Cita> citasPendientes = c.obtenerCitasPendientes(h, fechaActual, horaActual);
+        //List<Cita> citasPendientes = c.obtenerCitasPendientes(h, fechaActual, horaActual);
 
         //session.put("citasPendientes", citasPendientes);
-        this.setCitasPendientes(citasPendientes);
+        //this.setCitasPendientes(citasPendientes);
         return SUCCESS;
     }
 
     public String modificarCita() throws ParseException {
-        Map<String, Object> session = ActionContext.getContext().getSession();
+        //Map<String, Object> session = ActionContext.getContext().getSession();
         citaDAO c = new citaDAO();
         Cita citaModificar = c.obtenerCita(this.getIdCitaModificar());
 
@@ -211,7 +225,7 @@ public class citaAction extends ActionSupport {
     }
 
     public String eliminarCita() {
-        Map<String, Object> session = ActionContext.getContext().getSession();
+       //Map<String, Object> session = ActionContext.getContext().getSession();
         citaDAO c = new citaDAO();
         Cita citaEliminar = c.obtenerCita(this.getIdCitaModificar());
         c.bajaCita(citaEliminar);
@@ -256,4 +270,10 @@ public class citaAction extends ActionSupport {
         }
     }
 
+    private static void enviarCorreo(java.lang.String destinatario, java.lang.String fecha, java.lang.String hora, java.lang.String motivo) {
+        misservicios.CorreoWS_Service service = new misservicios.CorreoWS_Service();
+        misservicios.CorreoWS port = service.getCorreoWSPort();
+        port.enviarCorreo(destinatario, fecha, hora, motivo);
+    }
+    
 }

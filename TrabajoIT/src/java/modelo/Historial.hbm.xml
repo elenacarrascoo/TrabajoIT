@@ -1,27 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21-may-2024 21:28:51 by Hibernate Tools 4.3.1 -->
+<!-- Generated 22-may-2024 21:09:53 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Historial" table="historial" catalog="clinica_veterinaria" optimistic-lock="version">
         <id name="numHistorial" type="java.lang.Integer">
             <column name="num_historial" />
             <generator class="identity" />
         </id>
-        <many-to-one name="paciente" class="modelo.Paciente" fetch="select">
-            <column name="idPaciente" not-null="true" unique="true" />
+        <many-to-one name="cita" class="modelo.Cita" fetch="select">
+            <column name="idCita" not-null="true" />
         </many-to-one>
-        <set name="citas" table="cita" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="numHistorial" not-null="true" unique="true" />
-            </key>
-            <one-to-many class="modelo.Cita" />
-        </set>
-        <set name="pacientes" table="paciente" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="numHistorial" unique="true" />
-            </key>
-            <one-to-many class="modelo.Paciente" />
-        </set>
+        <many-to-one name="paciente" class="modelo.Paciente" fetch="select">
+            <column name="idPaciente" not-null="true" />
+        </many-to-one>
     </class>
 </hibernate-mapping>

@@ -7,11 +7,14 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import modelo.Historial;
 import modelo.Paciente;
 import modelo.Propietario;
+import persistencia.citaDAO;
 import persistencia.historialDAO;
 import persistencia.pacienteDAO;
 
@@ -25,11 +28,11 @@ public class pacienteAction extends ActionSupport {
     private String especie;
     private String raza;
     private String sexo;
-    private int edad;
-    private Date fechaNacimiento;
+    private String edad;
+    private String fechaNacimiento;
     private int numHistorial;
     private int id;
-    private int numHistorialCita;
+    private int idCita;
     private int idPaciente;
     
     public pacienteAction() {
@@ -67,19 +70,19 @@ public class pacienteAction extends ActionSupport {
         this.sexo = sexo;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -99,12 +102,12 @@ public class pacienteAction extends ActionSupport {
         this.id = id;
     }
 
-    public int getNumHistorialCita() {
-        return numHistorialCita;
+    public int getIdCita() {
+        return idCita;
     }
 
-    public void setNumHistorialCita(int numHistorialCita) {
-        this.numHistorialCita = numHistorialCita;
+    public void setIdCita(int idCita) {
+        this.idCita = idCita;
     }
 
     public int getIdPaciente() {
@@ -119,24 +122,28 @@ public class pacienteAction extends ActionSupport {
         Map<String, Object> session = ActionContext.getContext().getSession();
         Propietario prop = (Propietario) session.get("propietario");
         pacienteDAO pdao = new pacienteDAO(); 
-        Paciente p = new Paciente(prop, this.getNombre(), this.getEspecie(), this.getRaza(), this.getSexo(), (int) this.getEdad(), this.getFechaNacimiento());
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-mm-dd");
+        Date fechaFormateada = formater.parse(this.getFechaNacimiento());
+        Paciente p = new Paciente(prop, this.getNombre(), this.getEspecie(), this.getRaza(), this.getSexo(), Integer.parseInt(this.getEdad()), fechaFormateada);
         pdao.altaPaciente(p);
         
-        Historial h = new Historial(p);
-        historialDAO hdao = new historialDAO();
-        hdao.altaHistorial(h);
+        //Historial h = new Historial(p);
+        //historialDAO hdao = new historialDAO();
+        //hdao.altaHistorial(h);
         return SUCCESS;
     }
     
-    public String modificarPaciente(){
+    public String modificarPaciente() throws ParseException{
         pacienteDAO pdao = new pacienteDAO();
         Paciente p = pdao.obtenerPaciente(this.getIdPaciente());
         p.setNombre(this.getNombre());
         p.setEspecie(this.getEspecie());
         p.setRaza(this.getRaza());
         p.setSexo(this.getSexo());
-        p.setEdad(this.getEdad());
-        p.setFechaNacimiento(this.getFechaNacimiento());
+        p.setEdad(Integer.parseInt(this.getEdad()));
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-mm-dd");
+        Date fechaFormateada = formater.parse(this.getFechaNacimiento());
+        p.setFechaNacimiento(fechaFormateada);
         return SUCCESS;
     }
     
@@ -148,8 +155,9 @@ public class pacienteAction extends ActionSupport {
     }
     
     public String consultarPaciente(){
-        pacienteDAO pdao = new pacienteDAO();
-        Paciente p = pdao.obtenerPacienteNumHistorial(this.getNumHistorialCita());
+        historialDAO hdao = new historialDAO();
+        citaDAO cdao = new citaDAO();
+        Paciente p = hdao.obtenerPacienteIdCita(cdao.obtenerCita(this.getIdCita()));
         Map<String, Object> session = ActionContext.getContext().getSession();
         session.put("paciente", p);
         return SUCCESS;
@@ -168,7 +176,7 @@ public class pacienteAction extends ActionSupport {
                 addFieldError("sexo", "Introduce el sexo");
             } 
 
-            if (this.getEdad()==0) {
+            if (Integer.parseInt(this.getEdad())==0) {
                 addFieldError("edad", "Introduce la edad");
             }
 

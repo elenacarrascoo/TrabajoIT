@@ -65,8 +65,7 @@ public class pacienteDAO {
         return listadoCompleto;
     }
 
-    //obtenerNumHistorial(id_paciente)
-
+/*
     public Paciente obtenerPacienteNumHistorial(int numHistorialCita) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
@@ -74,5 +73,5 @@ public class pacienteDAO {
         Paciente p = (Paciente) q.uniqueResult();
         tx.commit();
         return p;
-    }
+    }*/
 }

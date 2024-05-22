@@ -44,7 +44,7 @@
                             <td>
                                 <!-- Formularios con acciones para cada cita -->
                                 <s:form action="verPaciente" method="post">
-                                    <s:hidden name="numHistorialCita" value="%{#cita.historial.numHistorial}" />
+                                    <s:hidden name="idCita" value="%{#cita.id}" />
                                     <s:submit name="verPaciente" value="Ver Paciente" />
                                 </s:form>
 

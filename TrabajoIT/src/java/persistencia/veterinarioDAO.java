@@ -20,6 +20,10 @@ import org.hibernate.Transaction;
 public class veterinarioDAO {
 
     Session session = null;
+    
+    public veterinarioDAO(){
+        
+    }
 
     public Veterinario loginVeterinario(String dni, String password) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();

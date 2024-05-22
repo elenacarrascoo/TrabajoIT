@@ -41,13 +41,13 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="clinica_veterinaria"/>
+  <table-filter match-name="medicamento"/>
+  <table-filter match-name="paciente"/>
+  <table-filter match-name="factura"/>
+  <table-filter match-name="propietario"/>
+  <table-filter match-name="veterinario"/>
+  <table-filter match-name="historial"/>
   <table-filter match-name="receta"/>
   <table-filter match-name="cita"/>
-  <table-filter match-name="propietario"/>
   <table-filter match-name="tratamiento"/>
-  <table-filter match-name="historial"/>
-  <table-filter match-name="factura"/>
-  <table-filter match-name="paciente"/>
-  <table-filter match-name="veterinario"/>
-  <table-filter match-name="medicamento"/>
 </hibernate-reverse-engineering>

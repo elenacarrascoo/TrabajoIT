@@ -1,5 +1,5 @@
 package modelo;
-// Generated 21-may-2024 21:28:50 by Hibernate Tools 4.3.1
+// Generated 22-may-2024 21:09:52 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -14,39 +14,34 @@ public class Cita  implements java.io.Serializable {
 
      private Integer id;
      private Factura factura;
-     private Historial historial;
      private Receta receta;
      private Tratamiento tratamiento;
      private Veterinario veterinario;
      private Date fecha;
      private Date hora;
      private String motivo;
-     private Set recetas = new HashSet(0);
-     private Set tratamientos = new HashSet(0);
+     private Set historials = new HashSet(0);
 
     public Cita() {
     }
 
 	
-    public Cita(Factura factura, Historial historial, Veterinario veterinario, Date fecha, Date hora, String motivo) {
+    public Cita(Factura factura, Veterinario veterinario, Date fecha, Date hora, String motivo) {
         this.factura = factura;
-        this.historial = historial;
         this.veterinario = veterinario;
         this.fecha = fecha;
         this.hora = hora;
         this.motivo = motivo;
     }
-    public Cita(Factura factura, Historial historial, Receta receta, Tratamiento tratamiento, Veterinario veterinario, Date fecha, Date hora, String motivo, Set recetas, Set tratamientos) {
+    public Cita(Factura factura, Receta receta, Tratamiento tratamiento, Veterinario veterinario, Date fecha, Date hora, String motivo, Set historials) {
        this.factura = factura;
-       this.historial = historial;
        this.receta = receta;
        this.tratamiento = tratamiento;
        this.veterinario = veterinario;
        this.fecha = fecha;
        this.hora = hora;
        this.motivo = motivo;
-       this.recetas = recetas;
-       this.tratamientos = tratamientos;
+       this.historials = historials;
     }
    
     public Integer getId() {
@@ -62,13 +57,6 @@ public class Cita  implements java.io.Serializable {
     
     public void setFactura(Factura factura) {
         this.factura = factura;
-    }
-    public Historial getHistorial() {
-        return this.historial;
-    }
-    
-    public void setHistorial(Historial historial) {
-        this.historial = historial;
     }
     public Receta getReceta() {
         return this.receta;
@@ -112,19 +100,12 @@ public class Cita  implements java.io.Serializable {
     public void setMotivo(String motivo) {
         this.motivo = motivo;
     }
-    public Set getRecetas() {
-        return this.recetas;
+    public Set getHistorials() {
+        return this.historials;
     }
     
-    public void setRecetas(Set recetas) {
-        this.recetas = recetas;
-    }
-    public Set getTratamientos() {
-        return this.tratamientos;
-    }
-    
-    public void setTratamientos(Set tratamientos) {
-        this.tratamientos = tratamientos;
+    public void setHistorials(Set historials) {
+        this.historials = historials;
     }
 
 

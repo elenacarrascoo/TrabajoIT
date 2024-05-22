@@ -42,7 +42,7 @@
                         <td>
                             <s:form action="cogerCita" method="post">
                                 <s:submit name="cogerCita">Coger cita</s:submit>
-                                <s:hidden name="numHistorial" value="%{#paciente.historial.numHistorial}"/>
+                                <s:hidden name="idPaciente" value="%{#paciente.id}"/>
                             </s:form>
                         </td>
                         <td>

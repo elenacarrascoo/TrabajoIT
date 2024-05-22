@@ -23,6 +23,9 @@ import org.hibernate.Transaction;
 public class citaDAO {
     
     Session session = null;
+
+    public citaDAO() {
+    }
     
     public void altaCita(Cita c){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -63,7 +66,7 @@ public class citaDAO {
         tx.commit();
         return citas;
     }
-    
+    /*
     public List<Cita> obtenerCitasPendientes(Historial historial, Date fecha, Date hora){
         List<Cita> citas;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -75,8 +78,7 @@ public class citaDAO {
         citas = (List<Cita>) q.list();
         tx.commit();
         return citas;
-    } 
-    
+    }     
     
     public List<Cita> obtenerCitasHistorial(Historial historial){
         List<Cita> citas = null;
@@ -88,4 +90,5 @@ public class citaDAO {
         tx.commit();
         return citas;
     } 
+*/
 }

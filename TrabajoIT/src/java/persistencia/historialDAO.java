@@ -9,6 +9,8 @@ package persistencia;
  * @author clarabecerragil
  */
 
+import java.util.List;
+import modelo.Cita;
 import modelo.HibernateUtil;
 import modelo.Historial;
 import modelo.Paciente;
@@ -18,6 +20,9 @@ import org.hibernate.Transaction;
 
 public class historialDAO {
     Session session = null;
+
+    public historialDAO() {
+    }
     
     public void altaHistorial(Historial h){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -40,14 +45,25 @@ public class historialDAO {
         tx.commit();
     }
     
-    public Historial obtenerHistorialPaciente(Paciente paciente){
+    public List<Historial> obtenerHistorialPaciente(Paciente paciente){
+        List<Historial> listadoHistorial = null;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         Query q = session.createQuery("FROM Historial where idPaciente =:idPaciente");
         q.setParameter("idPaciente", paciente.getId());
+        listadoHistorial = (List<Historial>) q.list();
+        tx.commit();
+        return listadoHistorial;
+    }
+    
+    public Paciente obtenerPacienteIdCita(Cita cita){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("FROM Historial where idCita =:idCita");
+        q.setParameter("idCita", cita.getId());
         Historial h = (Historial) q.uniqueResult();
         tx.commit();
-        return h;
+        return h.getPaciente();
     }
     
     public Historial obtenerHistorial(int numHistorial){

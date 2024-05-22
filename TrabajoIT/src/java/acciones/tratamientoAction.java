@@ -143,7 +143,7 @@ public class tratamientoAction extends ActionSupport {
                     cita = daocita.obtenerCita((Integer) idCitaObj);
 
                     //cita = daocita.obtenerCita((int) session.get("idCita"));
-                    tratamiento = new Tratamiento(cita, tipo, fechaFormateada, precio, resultados);
+                    tratamiento = new Tratamiento(tipo, fechaFormateada, precio, resultados);
                     dao.crearTratamiento(tratamiento);
                     listaTratamientos = dao.obtenerTodosLosTratamientos();
 
@@ -172,6 +172,7 @@ public class tratamientoAction extends ActionSupport {
                 }
 
             case "Eliminar Tratamiento":
+                /*
                 cita = daocita.obtenerCita((int) session.get("idCita"));
                 tratamiento = dao.obtenerTratamiento(cita);
                 if (tratamiento != null) {
@@ -181,7 +182,8 @@ public class tratamientoAction extends ActionSupport {
                 } else {
                     return ERROR;
                 }
-
+                */
+                return SUCCESS;
             case "Volver a Agenda":
                 return "retorno";
 

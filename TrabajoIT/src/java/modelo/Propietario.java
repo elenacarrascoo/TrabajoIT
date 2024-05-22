@@ -1,5 +1,5 @@
 package modelo;
-// Generated 21-may-2024 21:28:50 by Hibernate Tools 4.3.1
+// Generated 22-may-2024 21:09:52 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -18,8 +18,8 @@ public class Propietario  implements java.io.Serializable {
      private String correo;
      private String infoContactoAdicional;
      private String password;
-     private Set pacientes = new HashSet(0);
      private Set facturas = new HashSet(0);
+     private Set pacientes = new HashSet(0);
 
     public Propietario() {
     }
@@ -34,7 +34,7 @@ public class Propietario  implements java.io.Serializable {
         this.infoContactoAdicional = infoContactoAdicional;
         this.password = password;
     }
-    public Propietario(String dni, String nombre, String direccion, int telefono, String correo, String infoContactoAdicional, String password, Set pacientes, Set facturas) {
+    public Propietario(String dni, String nombre, String direccion, int telefono, String correo, String infoContactoAdicional, String password, Set facturas, Set pacientes) {
        this.dni = dni;
        this.nombre = nombre;
        this.direccion = direccion;
@@ -42,8 +42,8 @@ public class Propietario  implements java.io.Serializable {
        this.correo = correo;
        this.infoContactoAdicional = infoContactoAdicional;
        this.password = password;
-       this.pacientes = pacientes;
        this.facturas = facturas;
+       this.pacientes = pacientes;
     }
    
     public String getDni() {
@@ -95,19 +95,19 @@ public class Propietario  implements java.io.Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Set getPacientes() {
-        return this.pacientes;
-    }
-    
-    public void setPacientes(Set pacientes) {
-        this.pacientes = pacientes;
-    }
     public Set getFacturas() {
         return this.facturas;
     }
     
     public void setFacturas(Set facturas) {
         this.facturas = facturas;
+    }
+    public Set getPacientes() {
+        return this.pacientes;
+    }
+    
+    public void setPacientes(Set pacientes) {
+        this.pacientes = pacientes;
     }
 
 

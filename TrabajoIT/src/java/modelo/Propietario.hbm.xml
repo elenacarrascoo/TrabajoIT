@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21-may-2024 21:28:51 by Hibernate Tools 4.3.1 -->
+<!-- Generated 22-may-2024 21:09:53 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Propietario" table="propietario" catalog="clinica_veterinaria" optimistic-lock="version">
         <id name="dni" type="string">
@@ -26,17 +26,17 @@
         <property name="password" type="string">
             <column name="password" length="20" not-null="true" />
         </property>
-        <set name="pacientes" table="paciente" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="dniPropietario" length="9" not-null="true" unique="true" />
-            </key>
-            <one-to-many class="modelo.Paciente" />
-        </set>
         <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="idPropietario" length="9" not-null="true" unique="true" />
+                <column name="idPropietario" length="9" not-null="true" />
             </key>
             <one-to-many class="modelo.Factura" />
+        </set>
+        <set name="pacientes" table="paciente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dniPropietario" length="9" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Paciente" />
         </set>
     </class>
 </hibernate-mapping>

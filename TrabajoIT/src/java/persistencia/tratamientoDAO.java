@@ -19,13 +19,16 @@ public class tratamientoDAO {
     
     Session session = null;
 
+    public tratamientoDAO() {
+    }
+
     public void crearTratamiento(Tratamiento tratamiento) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.save(tratamiento);
         tx.commit();
     }
-
+/*
     public Tratamiento obtenerTratamiento(Cita cita) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
@@ -35,7 +38,7 @@ public class tratamientoDAO {
         tx.commit();
         return tratamiento;
     }
-
+*/
     public List<Tratamiento> obtenerTodosLosTratamientos() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();

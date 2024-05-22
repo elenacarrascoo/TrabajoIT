@@ -16,6 +16,9 @@ import org.hibernate.Transaction;
  */
 public class facturaDAO {
     Session session = null;
+
+    public facturaDAO() {
+    }
     
     public void altaFactura(Factura f){
         session = HibernateUtil.getSessionFactory().getCurrentSession();

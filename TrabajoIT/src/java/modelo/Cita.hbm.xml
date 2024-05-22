@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21-may-2024 21:28:51 by Hibernate Tools 4.3.1 -->
+<!-- Generated 22-may-2024 21:09:53 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Cita" table="cita" catalog="clinica_veterinaria" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -9,19 +9,16 @@
             <generator class="identity" />
         </id>
         <many-to-one name="factura" class="modelo.Factura" fetch="select">
-            <column name="idFactura" not-null="true" unique="true" />
-        </many-to-one>
-        <many-to-one name="historial" class="modelo.Historial" fetch="select">
-            <column name="numHistorial" not-null="true" unique="true" />
+            <column name="idFactura" not-null="true" />
         </many-to-one>
         <many-to-one name="receta" class="modelo.Receta" fetch="select">
-            <column name="idReceta" unique="true" />
+            <column name="idReceta" />
         </many-to-one>
         <many-to-one name="tratamiento" class="modelo.Tratamiento" fetch="select">
-            <column name="idTratamiento" unique="true" />
+            <column name="idTratamiento" />
         </many-to-one>
         <many-to-one name="veterinario" class="modelo.Veterinario" fetch="select">
-            <column name="dniVeterinario" length="9" not-null="true" unique="true" />
+            <column name="dniVeterinario" length="9" not-null="true" />
         </many-to-one>
         <property name="fecha" type="date">
             <column name="fecha" length="10" not-null="true" />
@@ -32,17 +29,11 @@
         <property name="motivo" type="string">
             <column name="motivo" length="100" not-null="true" />
         </property>
-        <set name="recetas" table="receta" inverse="true" lazy="true" fetch="select">
+        <set name="historials" table="historial" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="idCita" not-null="true" unique="true" />
+                <column name="idCita" not-null="true" />
             </key>
-            <one-to-many class="modelo.Receta" />
-        </set>
-        <set name="tratamientos" table="tratamiento" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="idCita" not-null="true" unique="true" />
-            </key>
-            <one-to-many class="modelo.Tratamiento" />
+            <one-to-many class="modelo.Historial" />
         </set>
     </class>
 </hibernate-mapping>

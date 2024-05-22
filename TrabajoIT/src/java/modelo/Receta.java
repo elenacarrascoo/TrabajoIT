@@ -1,5 +1,5 @@
 package modelo;
-// Generated 21-may-2024 21:28:50 by Hibernate Tools 4.3.1
+// Generated 22-may-2024 21:09:52 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,7 +12,6 @@ public class Receta  implements java.io.Serializable {
 
 
      private Integer id;
-     private Cita cita;
      private String dosis;
      private String indicaciones;
      private Set citas = new HashSet(0);
@@ -21,13 +20,11 @@ public class Receta  implements java.io.Serializable {
     }
 
 	
-    public Receta(Cita cita, String dosis, String indicaciones) {
-        this.cita = cita;
+    public Receta(String dosis, String indicaciones) {
         this.dosis = dosis;
         this.indicaciones = indicaciones;
     }
-    public Receta(Cita cita, String dosis, String indicaciones, Set citas) {
-       this.cita = cita;
+    public Receta(String dosis, String indicaciones, Set citas) {
        this.dosis = dosis;
        this.indicaciones = indicaciones;
        this.citas = citas;
@@ -39,13 +36,6 @@ public class Receta  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
-    }
-    public Cita getCita() {
-        return this.cita;
-    }
-    
-    public void setCita(Cita cita) {
-        this.cita = cita;
     }
     public String getDosis() {
         return this.dosis;
