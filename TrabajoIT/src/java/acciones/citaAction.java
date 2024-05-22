@@ -171,7 +171,7 @@ public class citaAction extends ActionSupport {
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
         String fechaString = formater.format(cita.getFecha());
         SimpleDateFormat formaterHora = new SimpleDateFormat("HH:mm:ss");
-        String horaString = formaterHora.format(cita.getFecha());
+        String horaString = formaterHora.format(cita.getHora());
         enviarCorreo(p.getCorreo(), fechaString, horaString, cita.getMotivo());
         
         session.remove("idPaciente");
