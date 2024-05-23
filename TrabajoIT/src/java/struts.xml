@@ -45,8 +45,8 @@
             <result name="success">/Propietario/propietarioPacientes.jsp</result>
         </action>
         
-        <action name="formModificarPaciente">
-            <result>/Paciente/actualizarPaciente.jsp</result>
+        <action name="formModificarPaciente" class="acciones.pacienteAction" method="formModificarPaciente">
+            <result name="success">/Paciente/actualizarPaciente.jsp</result>
         </action>
         
         <action name="actualizarPaciente" class="acciones.pacienteAction" method="modificarPaciente">

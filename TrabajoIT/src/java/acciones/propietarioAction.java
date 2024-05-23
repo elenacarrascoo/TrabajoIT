@@ -122,6 +122,9 @@ public class propietarioAction extends ActionSupport {
         p.setTelefono(this.getTelefono());
         p.setCorreo(this.getCorreo());
         p.setInfoContactoAdicional(this.getInfoContactoAdicional());
+        p.setPassword(this.getPassword());
+        propietarioDAO pdao = new propietarioDAO();
+        pdao.actualizarPropietario(p);
         return SUCCESS;
     }
     

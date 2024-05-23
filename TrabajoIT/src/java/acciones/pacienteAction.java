@@ -133,9 +133,20 @@ public class pacienteAction extends ActionSupport {
         return SUCCESS;
     }
     
-    public String modificarPaciente() throws ParseException{
+    public String formModificarPaciente(){
+        Map<String, Object> session = ActionContext.getContext().getSession();
         pacienteDAO pdao = new pacienteDAO();
         Paciente p = pdao.obtenerPaciente(this.getIdPaciente());
+        session.put("pacienteModificar", p);
+        //this.setIdPaciente(this.getIdPaciente());
+        return SUCCESS;
+    }
+    
+    public String modificarPaciente() throws ParseException{
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        pacienteDAO pdao = new pacienteDAO();
+        //Paciente p = pdao.obtenerPaciente(this.getIdPaciente());
+        Paciente p = (Paciente) session.get("pacienteAModificar");
         p.setNombre(this.getNombre());
         p.setEspecie(this.getEspecie());
         p.setRaza(this.getRaza());
@@ -144,6 +155,9 @@ public class pacienteAction extends ActionSupport {
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-mm-dd");
         Date fechaFormateada = formater.parse(this.getFechaNacimiento());
         p.setFechaNacimiento(fechaFormateada);
+        //Propietario prop = (Propietario) session.get("propietario");
+        //p.setPropietario(prop);
+        pdao.actualizarPaciente(p);
         return SUCCESS;
     }
     

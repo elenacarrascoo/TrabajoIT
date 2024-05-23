@@ -22,6 +22,7 @@
             <s:textfield name="telefono" label="Telefono"/>
             <s:textfield name="correo" label="Correo"/>
             <s:textfield name="infoContactoAdicional" label="Información contacto adicional"/>
+            <s:password name="password" label="Password"/>
             <s:submit name="registrarActualizacion" value="Actualizar datos"/>
         </s:form>
         <br>

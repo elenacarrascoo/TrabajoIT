@@ -14,15 +14,15 @@
         <s:head/>
     </head>
     <body>
-        <h1>Actualiza los datos de tu mascota:</h1>
+        <h1>Actualiza los datos de tu mascota con id <s:property value="#session.pacienteModificar.id" />:</h1>
         
         <s:form action="actualizarPaciente" method="post">
-            <s:textfield name="nombre" label="Nombre"/>
-            <s:textfield name="especie" label="Especie"/>
-            <s:textfield name="raza" label="Raza"/>
-            <s:textfield name="sexo" label="Sexo"/>
-            <s:textfield name="edad" label="Edad"/>
-            <s:textfield name="fechaNacimiento" label="Fecha de nacimiento"/>
+            <s:textfield name="nombre" label="Nombre" value="%{#session.pacienteModificar.nombre}"/>
+            <s:textfield name="especie" label="Especie" value="%{#session.pacienteModificar.especie}"/>
+            <s:textfield name="raza" label="Raza" value="%{#session.pacienteModificar.raza}"/>
+            <s:textfield name="sexo" label="Sexo" value="%{#session.pacienteModificar.sexo}"/>
+            <s:textfield name="edad" label="Edad" value="%{#session.pacienteModificar.edad}"/>
+            <s:textfield name="fechaNacimiento" label="Fecha de nacimiento" type="date" value="%{#session.pacienteModificar.fechaNacimiento}"/>
             <s:submit name="actualizarPaciente" value="Actualizar datos"/>
         </s:form>
     </body>
