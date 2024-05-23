@@ -11,10 +11,10 @@
         <many-to-one name="factura" class="modelo.Factura" fetch="select">
             <column name="idFactura" not-null="true" />
         </many-to-one>
-        <many-to-one name="medicamento" class="modelo.Medicamento" fetch="select">
+        <many-to-one name="medicamento" class="modelo.Medicamento" lazy="false" fetch="join">
             <column name="idMedicamento" />
         </many-to-one>
-        <many-to-one name="tratamiento" class="modelo.Tratamiento" fetch="select">
+        <many-to-one name="tratamiento" class="modelo.Tratamiento" lazy="false" fetch="join">
             <column name="idTratamiento" />
         </many-to-one>
         <many-to-one name="veterinario" class="modelo.Veterinario" fetch="select">
@@ -29,7 +29,7 @@
         <property name="motivo" type="string">
             <column name="motivo" length="100" not-null="true" />
         </property>
-        <set name="historials" table="historial" inverse="true" lazy="true" fetch="select">
+        <set name="historials" table="historial" inverse="true" lazy="false" fetch="join">
             <key>
                 <column name="idCita" not-null="true" />
             </key>

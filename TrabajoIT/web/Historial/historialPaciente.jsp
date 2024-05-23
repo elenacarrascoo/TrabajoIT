@@ -14,10 +14,10 @@
     </head>
     <body>
         <!-- En la base de datos deberia estar el objeto paciente para acceder a sus cosas, no el id -->
-        <h1>Historial del paciente: <s:property value="historialPaciente.paciente.nombre"/></h1>
-        Numero de Historial: <s:property value="historialPaciente.numHistorial"/>
+        <h1>Historial del paciente: <s:property value="historialPaciente[0].paciente.nombre"/></h1>
+        Numero de Historial: <s:property value="historialPaciente[0].numHistorial"/>
         <br>
-        Id del Paciente: <s:property value="historialPaciente.paciente.id"/> 
+        Id del Paciente: <s:property value="historialPaciente[0].paciente.id"/> 
         <br>
         Historial de Citas: 
         <s:if test="%{!historialPaciente.isEmpty()}">
@@ -32,7 +32,7 @@
                             <th>Motivo</th>
                             <th>Veterinario</th>
                             <th>Tratamiento</th>
-                            <th>Receta</th>
+                            <th>Medicamento</th>
                             <th>Factura</th>
                         </tr>
                     </thead>
@@ -41,11 +41,11 @@
                             <tr>
                                 <td><s:property value="#historial.cita.id"/></td>
                                 <td><s:property value="#historial.cita.fecha"/></td>
-                                <td><s:property value="#historial.cita.hora"/></td>
+                                <td><s:property value="#hsitorial.cita.hora"/></td>
                                 <td><s:property value="#historial.cita.motivo"/></td>
                                 <td><s:property value="#historial.cita.veterinario.dni"/></td>   
                                 <td><s:property value="#historial.cita.tratamiento.tipo"/></td>
-                                <td><s:property value="#historial.cita.receta.dosis"/></td>
+                                <td><s:property value="#historial.cita.medicamento.nombre"/></td>
                                 <td><s:property value="#historial.cita.factura.numFactura"/></td>
                             </tr>
                         </s:iterator>

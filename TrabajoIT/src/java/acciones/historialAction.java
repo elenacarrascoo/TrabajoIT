@@ -111,14 +111,15 @@ public class historialAction extends ActionSupport {
        //No se si es ese id el que hay quye pasarle
        return SUCCESS;
     }
-    /*
+    
+    
     public String listarCitasHistorial(){
         Map<String, Object> session = ActionContext.getContext().getSession();
-        citaDAO cDAO = new citaDAO();
+        historialDAO hDAO = new historialDAO();
         Historial h = (Historial) session.get("historialPaciente");
-        List<Cita> listaCitas = cDAO.obtenerCitasHistorial(h);
+        List<Cita> listaCitas = hDAO.obtenerCitasPaciente(h.getPaciente());
         this.setListaCitas(listaCitas);
         return SUCCESS;
     }
-    */
+    
 }

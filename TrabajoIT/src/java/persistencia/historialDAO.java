@@ -9,6 +9,7 @@ package persistencia;
  * @author clarabecerragil
  */
 
+import java.util.ArrayList;
 import java.util.List;
 import modelo.Cita;
 import modelo.HibernateUtil;
@@ -73,5 +74,16 @@ public class historialDAO {
         Historial h = (Historial) q.uniqueResult();
         tx.commit();
         return h;
+    }
+    
+    public List<Cita> obtenerCitasPaciente(Paciente paciente){
+        List<Cita> citasPaciente = new ArrayList();
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("SELECT idCita FROM Historial where idPaciente =: idPaciente");
+        q.setParameter("idPaciente", paciente.getId());
+        citasPaciente = (List<Cita>) q.list();
+        tx.commit();
+        return citasPaciente;
     }
 }

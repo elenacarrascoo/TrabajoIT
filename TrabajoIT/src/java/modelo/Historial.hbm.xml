@@ -8,10 +8,10 @@
             <column name="num_historial" />
             <generator class="identity" />
         </id>
-        <many-to-one name="cita" class="modelo.Cita" fetch="select">
+        <many-to-one name="cita" class="modelo.Cita" lazy="false" fetch="join">
             <column name="idCita" not-null="true" />
         </many-to-one>
-        <many-to-one name="paciente" class="modelo.Paciente" fetch="select">
+        <many-to-one name="paciente" class="modelo.Paciente" lazy="false" fetch="join">
             <column name="idPaciente" not-null="true" />
         </many-to-one>
     </class>
