@@ -47,7 +47,6 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <mapping resource="modelo/Propietario.hbm.xml"/>
-    <mapping resource="modelo/Receta.hbm.xml"/>
     <mapping resource="modelo/Veterinario.hbm.xml"/>
     <mapping resource="modelo/Cita.hbm.xml"/>
     <mapping resource="modelo/Historial.hbm.xml"/>

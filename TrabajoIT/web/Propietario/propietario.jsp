@@ -29,6 +29,10 @@
             <s:submit name="actualizarPropietario" value="Actualizar Datos"></s:submit>
         </s:form>
         <br>
+        <s:form method="post" action="verFacturas">
+            <s:label from="verFacturas" vaalue="Ve toda la información de tus facturas "></s:label>
+            <s:submit name="verFacturas" value="Ver facturas"></s:submit>
+        </s:form>
         <br>
         <br>
         <s:form action="logoutPropietario" method="post">

@@ -179,4 +179,18 @@
             
         </action>
     </package>
+    
+    <package name="facturaActions" extends="struts-default">
+        <action name="eliminarFactura" class="acciones.facturaAction" method="eliminarFactura">
+            <result name="success">/Factura/propietarioFacturas.jsp</result>
+        </action>
+        
+        <action name="formModificarFactura">
+            <result>/Factura/actualizarFactura.jsp</result>
+        </action>
+        
+        <action name="volverPropietario">
+            <result>/Propietario/propietario.jsp</result>
+        </action>
+    </package>
 </struts>

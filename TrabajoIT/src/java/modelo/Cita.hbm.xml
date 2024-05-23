@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22-may-2024 21:09:53 by Hibernate Tools 4.3.1 -->
+<!-- Generated 23-may-2024 19:10:27 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Cita" table="cita" catalog="clinica_veterinaria" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -11,8 +11,8 @@
         <many-to-one name="factura" class="modelo.Factura" fetch="select">
             <column name="idFactura" not-null="true" />
         </many-to-one>
-        <many-to-one name="receta" class="modelo.Receta" fetch="select">
-            <column name="idReceta" />
+        <many-to-one name="medicamento" class="modelo.Medicamento" fetch="select">
+            <column name="idMedicamento" />
         </many-to-one>
         <many-to-one name="tratamiento" class="modelo.Tratamiento" fetch="select">
             <column name="idTratamiento" />

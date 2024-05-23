@@ -1,5 +1,5 @@
 package modelo;
-// Generated 22-may-2024 21:09:52 by Hibernate Tools 4.3.1
+// Generated 23-may-2024 19:10:23 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -14,7 +14,7 @@ public class Cita  implements java.io.Serializable {
 
      private Integer id;
      private Factura factura;
-     private Receta receta;
+     private Medicamento medicamento;
      private Tratamiento tratamiento;
      private Veterinario veterinario;
      private Date fecha;
@@ -33,9 +33,9 @@ public class Cita  implements java.io.Serializable {
         this.hora = hora;
         this.motivo = motivo;
     }
-    public Cita(Factura factura, Receta receta, Tratamiento tratamiento, Veterinario veterinario, Date fecha, Date hora, String motivo, Set historials) {
+    public Cita(Factura factura, Medicamento medicamento, Tratamiento tratamiento, Veterinario veterinario, Date fecha, Date hora, String motivo, Set historials) {
        this.factura = factura;
-       this.receta = receta;
+       this.medicamento = medicamento;
        this.tratamiento = tratamiento;
        this.veterinario = veterinario;
        this.fecha = fecha;
@@ -58,12 +58,12 @@ public class Cita  implements java.io.Serializable {
     public void setFactura(Factura factura) {
         this.factura = factura;
     }
-    public Receta getReceta() {
-        return this.receta;
+    public Medicamento getMedicamento() {
+        return this.medicamento;
     }
     
-    public void setReceta(Receta receta) {
-        this.receta = receta;
+    public void setMedicamento(Medicamento medicamento) {
+        this.medicamento = medicamento;
     }
     public Tratamiento getTratamiento() {
         return this.tratamiento;
