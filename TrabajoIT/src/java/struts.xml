@@ -161,6 +161,11 @@
         <action name="modificarHistorial" class="acciones.historialAction" method="modificarHistorial">
             <result name="success">/Historial/actualizarHistorial.jsp</result>
         </action>
+        
+        <action name="opcionesAdicionalesHistorial" class="acciones.historialAction">
+            <result name="propietarioPaciente">/Propietario/propietarioPacientes.jsp</result>
+            <result name="salir">/index.jsp</result>   
+        </action>
     </package>
     
     <package name="Tratamiento" extends="struts-default">

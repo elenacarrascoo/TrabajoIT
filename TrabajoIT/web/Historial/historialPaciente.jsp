@@ -54,10 +54,10 @@
             </s:if>
             <s:else>
                 <p>No se encontraron citas asociadas a este historial.</p>
-                <s:form action="opcionesAdicionales" method="post">
-                    <s:submit name="boton" value="Volver"/>
-                    <s:submit name="boton" value="LogOut"/>
-                </s:form>
-            </s:else>    
+            </s:else> 
+            <s:form action="opcionesAdicionalesHistorial" method="post">
+                <s:submit name="boton" value="Volver"/>
+                <s:submit name="boton" value="LogOut"/>
+            </s:form>
     </body>
 </html>

@@ -40,11 +40,13 @@ public class citaAction extends ActionSupport {
     int idCitaModificar;
 
     int pacienteConsultar;
-    int historialConsultar;
+    List<Historial> historialConsultar;
 
     int idPaciente;
     //No estoy seguro de que asi
     Veterinario veterinario;
+    Veterinario veterinarioSeleccionado;
+    List<Veterinario> veterinariosDisponibles;
 
     String fecha;
     String hora;
@@ -92,11 +94,11 @@ public class citaAction extends ActionSupport {
         this.pacienteConsultar = pacienteConsultar;
     }
 
-    public int getHistorialConsultar() {
+    public List<Historial> getHistorialConsultar() {
         return historialConsultar;
     }
 
-    public void setHistorialConsultar(int historialConsultar) {
+    public void setHistorialConsultar(List<Historial> historialConsultar) {
         this.historialConsultar = historialConsultar;
     }
 
@@ -123,7 +125,23 @@ public class citaAction extends ActionSupport {
     public void setCitasPendientes(List<Cita> citasPendientes) {
         this.citasPendientes = citasPendientes;
     }
-      
+
+    public List<Veterinario> getVeterinariosDisponibles() {
+        return veterinariosDisponibles;
+    }
+
+    public void setVeterinariosDisponibles(List<Veterinario> veterinariosDisponibles) {
+        this.veterinariosDisponibles = veterinariosDisponibles;
+    }
+
+    public Veterinario getVeterinarioSeleccionado() {
+        return veterinarioSeleccionado;
+    }
+
+    public void setVeterinarioSeleccionado(Veterinario veterinarioSeleccionado) {
+        this.veterinarioSeleccionado = veterinarioSeleccionado;
+    }
+     
     public citaAction() {
     }
 
@@ -152,10 +170,13 @@ public class citaAction extends ActionSupport {
         veterinarioDAO vdao = new veterinarioDAO();
         Veterinario v = vdao.obtenerVeterinario("43220987M");
         
+        Veterinario vSelector = this.getVeterinarioSeleccionado();
+        
         Factura f = new Factura((Propietario) session.get("propietario"), new Date(), 20);
         facturaDAO fdao = new facturaDAO();
         fdao.altaFactura(f);
         Cita cita = new Cita(f, v, fechaFormateada, hora, this.getMotivo());
+        //Cita cita = new Cita(f, vSelector, fechaFormateada, hora, this.getMotivo());
         c.altaCita(cita);
         
         
@@ -177,6 +198,12 @@ public class citaAction extends ActionSupport {
         session.remove("idPaciente");
         return SUCCESS;
     }
+    
+    public String obtenerVeterinarios(){
+        veterinarioDAO vDAO = new veterinarioDAO();
+        setVeterinariosDisponibles(vDAO.obtenerCompañeros());  
+        return SUCCESS;
+    }
 
     public String citasPendientes() throws ParseException {
         //Map<String, Object> session = ActionContext.getContext().getSession();
@@ -193,12 +220,28 @@ public class citaAction extends ActionSupport {
         Date fechaActual = formatoFecha.parse(fechaActualStr); 
         Date horaActual = formatoHora.parse(horaActualStr);   
         
+        pacienteDAO pdao = new pacienteDAO();
+        Paciente p = pdao.obtenerPaciente(this.getPacienteConsultar());
+        
         historialDAO hdao = new historialDAO();
-        Historial h = hdao.obtenerHistorial(this.getHistorialConsultar());
+        List<Historial> h = hdao.obtenerHistorialPaciente(p);
+        setHistorialConsultar(h);
         
+        /*for(int i=0; i<h.size(); i++){
+            Cita cita = h.get(i).getCita();
+            if(c.comprobarCitaPendiente(cita, fechaActual, horaActual) == true){
+                this.citasPendientes.add(cita);
+            }
+        }*/
         
-        
-        // Revisar tipos de hora y fecha con la BBDD
+        List<Cita> todasPendientes = c.obtenerCitaPendiente(fechaActual, horaActual);
+        /*for(int i=0; i<h.size(); i++){
+            for(int j=0; j<todasPendientes.size(); j++){
+                if(h.get(i).getCita().getId() == todasPendientes.get(j).getId()){
+                    this.citasPendientes.add(h.get(i).getCita());
+                }
+            }
+        }*/
         //List<Cita> citasPendientes = c.obtenerCitasPendientes(h, fechaActual, horaActual);
 
         //session.put("citasPendientes", citasPendientes);

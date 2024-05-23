@@ -76,14 +76,4 @@ public class historialDAO {
         return h;
     }
     
-    public List<Cita> obtenerCitasPaciente(Paciente paciente){
-        List<Cita> citasPaciente = new ArrayList();
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("SELECT idCita FROM Historial where idPaciente =: idPaciente");
-        q.setParameter("idPaciente", paciente.getId());
-        citasPaciente = (List<Cita>) q.list();
-        tx.commit();
-        return citasPaciente;
-    }
 }

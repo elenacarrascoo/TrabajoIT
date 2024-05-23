@@ -30,6 +30,7 @@ public class historialAction extends ActionSupport {
     int pacienteConsultar;
     private List<Cita> listaCitas;
     private List<Historial> historialPaciente;
+    private String boton;
 
     public int getId() {
         return id;
@@ -73,8 +74,21 @@ public class historialAction extends ActionSupport {
     public void setHistorialPaciente(List<Historial> historialPaciente) {
         this.historialPaciente = historialPaciente;
     }
+
+    public String getBoton() {
+        return boton;
+    }
+
+    public void setBoton(String boton) {
+        this.boton = boton;
+    }
     
     public String execute() throws Exception {
+        if(boton.equalsIgnoreCase("volver")){
+            return "propietarioPaciente";
+        }else if(boton.equalsIgnoreCase("logout")){
+            return "salir";
+        }
         return SUCCESS;
     }
     
@@ -112,14 +126,6 @@ public class historialAction extends ActionSupport {
        return SUCCESS;
     }
     
-    
-    public String listarCitasHistorial(){
-        Map<String, Object> session = ActionContext.getContext().getSession();
-        historialDAO hDAO = new historialDAO();
-        Historial h = (Historial) session.get("historialPaciente");
-        List<Cita> listaCitas = hDAO.obtenerCitasPaciente(h.getPaciente());
-        this.setListaCitas(listaCitas);
-        return SUCCESS;
-    }
+
     
 }

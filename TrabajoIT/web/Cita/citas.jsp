@@ -13,8 +13,8 @@
         <title>Citas</title>
     </head>
     <body>
-        <h1>Gesti&oacute;n de citas del paciente <s:property value="#session.paciente.nombre"/></h1>
-        <s:form action="" method="post">
+        <h1>Gesti&oacute;n de citas del paciente <s:property value="#historialConsultar.paciente.nombre"/></h1>
+        <s:form action="cogerCita" method="post">
             <s:submit value="altaCita" name="Alta Cita"></s:submit>
         </s:form>
 

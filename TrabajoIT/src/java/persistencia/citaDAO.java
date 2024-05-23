@@ -66,20 +66,35 @@ public class citaDAO {
         tx.commit();
         return citas;
     }
-    /*
-    public List<Cita> obtenerCitasPendientes(Historial historial, Date fecha, Date hora){
-        List<Cita> citas;
+    
+    public boolean comprobarCitaPendiente(Cita cita, Date fecha, Date hora){
+        boolean encontrado = false;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("FROM Cita WHERE numHistorial = :numHistorial AND (fecha > :fecha OR (fecha = :fecha AND hora > :hora))");
-        q.setParameter("numHistorial", historial.getNumHistorial());
+        Query q = session.createQuery("FROM Cita WHERE idCita = :idCita (fecha > :fecha OR (fecha = :fecha AND hora > :hora))");
+        q.setParameter("idCita", cita.getId());
         q.setParameter("fecha", fecha);
         q.setParameter("hora", hora);
-        citas = (List<Cita>) q.list();
+        
+        if(q.uniqueResult()!=null){
+            encontrado = true;
+        }
         tx.commit();
-        return citas;
-    }     
-    
+        return encontrado;
+    } 
+
+    public List<Cita> obtenerCitaPendiente(Date fecha, Date hora){
+        List<Cita> citasPendientes;
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("FROM Cita WHERE fecha > :fecha OR (fecha = :fecha AND hora > :hora)");
+        q.setParameter("fecha", fecha);
+        q.setParameter("hora", hora);
+        citasPendientes = (List<Cita>) q.list();
+        tx.commit();
+        return citasPendientes;
+    } 
+    /*
     public List<Cita> obtenerCitasHistorial(Historial historial){
         List<Cita> citas = null;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
