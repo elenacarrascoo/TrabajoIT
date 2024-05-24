@@ -122,7 +122,6 @@
         <action name="opcionesAgenda" class="acciones.veterinarioAction">
             <result name="verPaciente">/Paciente/pacienteActual.jsp</result>
             <result name="altaTratamiento">/Tratamiento/altaTratamiento.jsp</result>
-            <result name="altaMedicamento">/Medicamento/altaMedicamento.jsp</result>
             <result name="gestionMedicamentos">/Medicamento/medicamentos.jsp</result>
         </action>      
     </package>
@@ -200,6 +199,15 @@
         
         <action name="volverPropietario">
             <result>/Propietario/propietario.jsp</result>
+        </action>
+    </package>
+    
+    <package name="medicamentoActions" extends="struts-default">
+        <action name="altaMedicamento" class="acciones.medicamentoAction">
+            <result name="success">/Veterinario/agenda.jsp</result>
+        </action>
+        <action name="formAltaMedicamento">
+            <result>/Medicamento/altaMedicamento.jsp</result>
         </action>
     </package>
 </struts>

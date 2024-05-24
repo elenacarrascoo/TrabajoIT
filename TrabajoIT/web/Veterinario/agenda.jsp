@@ -27,6 +27,8 @@
                         <th>Número de Historial</th>
                         <th>DNI del Veterinario</th>
                         <th>Num de la Factura</th>
+                        <th>Medicamento (si lo hubiera)</th>
+                        <th>Tratamiento (si lo hubiera)</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -41,6 +43,8 @@
                             <td><s:property value="#cita.historial.numHistorial" /></td>
                             <td><s:property value="#cita.veterinario.dni" /></td>
                             <td><s:property value="#cita.factura.numFactura" /></td>
+                            <td><s:property value="#cita.medicamento.nombre" /></td>
+                            <td><s:property value="#cita.tratamiento.tipo" /></td>
                             <td>
                                 <!-- Formularios con acciones para cada cita -->
                                 <s:form action="verPaciente" method="post">
@@ -55,9 +59,9 @@
 
                                 </s:form>
 
-                                <s:form action="opcionesAgenda" method="post">
+                                <s:form action="formAltaMedicamento" method="post">
 
-                                    <s:submit name="boton" value="Alta Medicamento" />
+                                    <s:submit name="formAltaMedicamento" value="Alta Medicamento" />
 
                                 </s:form>
 
