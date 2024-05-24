@@ -54,13 +54,6 @@
                                     <s:hidden name="idCita" value="%{#cita.id}" />
 
                                 </s:form>
-                                
-                                
-                                <s:form action="opcionesAgenda" method="post">
-
-                                    <s:submit name="boton" value="Alta Receta" />
-
-                                </s:form>
 
                                 <s:form action="opcionesAgenda" method="post">
 
@@ -79,7 +72,6 @@
 
                     <!-- Opciones adicionales -->
                     <s:form action="opcionesAdicionales" method="post">
-                        <s:submit name="boton" value="Gestión Recetas" />
                         <s:submit name="boton" value="Generar Factura" />
                         <s:submit name="boton" value="Volver"/>
                         <s:submit name="boton" value="LogOut"/>

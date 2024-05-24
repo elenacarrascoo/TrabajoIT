@@ -85,6 +85,12 @@
         <action name="volverPropietarioPacientes">
             <result type="redirectAction">verPacientes</result>
         </action>
+        <action name="volverAgenda">
+            <result type="redirectAction">veterinarioActions</result>
+        </action>
+        <action name="volverPacienteActual">
+            <result>/Paciente/pacienteActual.jsp</result>
+        </action>
     </package>
     
     <package name="veterinarioActions" extends="struts-default">
@@ -111,7 +117,6 @@
         </action>   
          
         <action name="opcionesAdicionales" class="acciones.veterinarioAction">
-            <result name="gestionRecetas">/Receta/receta.jsp</result>
             <result name="generarFactura">/Factura/altaFactura.jsp</result>
             <result name="volver">/Veterinario/veterinario.jsp</result>
             <result name="salir">/index.jsp</result>   
@@ -120,7 +125,6 @@
         <action name="opcionesAgenda" class="acciones.veterinarioAction">
             <result name="verPaciente">/Paciente/pacienteActual.jsp</result>
             <result name="altaTratamiento">/Tratamiento/altaTratamiento.jsp</result>
-            <result name="altaReceta">/Receta/altaReceta.jsp</result>
             <result name="altaMedicamento">/Medicamento/altaMedicamento.jsp</result>
             <result name="gestionMedicamentos">/Medicamento/medicamentos.jsp</result>
         </action>      

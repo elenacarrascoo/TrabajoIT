@@ -8,7 +8,7 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="propietario" class="modelo.Propietario" fetch="select">
+        <many-to-one name="propietario" class="modelo.Propietario" lazy="false" fetch="join">
             <column name="dniPropietario" length="9" not-null="true" />
         </many-to-one>
         <property name="nombre" type="string">

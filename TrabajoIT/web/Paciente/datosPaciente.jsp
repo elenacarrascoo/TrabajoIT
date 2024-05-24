@@ -23,7 +23,9 @@
             <p><strong>Edad:</strong> <s:property value="#session.paciente.edad"/></p>
             <p><strong>Fecha de nacimiento:</strong> <s:property value="#session.paciente.fechaNacimiento"/></p>
             <p><strong>Nombre Propietario:</strong> <s:property value="#session.paciente.propietario.nombre"/></p>
-            <p><strong>Num Historial:</strong> <s:property value="#session.paciente.historial.numHistorial"/></p>
         </div>
     </body>
+    <s:form action="volverPacienteActual" method="post">
+        <s:submit name="volverPacienteActual" value="Volver"/>
+    </s:form>
 </html>

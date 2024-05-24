@@ -28,4 +28,7 @@
             <s:submit name="" value=""></s:submit>
         </s:form>
     </body>
+    <s:form action="volverAgenda" method="post">
+        <s:submit name="volverAgenda" value="Volver"/>
+    </s:form>
 </html>
