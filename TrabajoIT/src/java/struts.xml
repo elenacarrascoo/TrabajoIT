@@ -85,9 +85,6 @@
         <action name="volverPropietarioPacientes">
             <result type="redirectAction">verPacientes</result>
         </action>
-        <action name="volverAgenda">
-            <result type="redirectAction">veterinarioActions</result>
-        </action>
         <action name="volverPacienteActual">
             <result>/Paciente/pacienteActual.jsp</result>
         </action>
@@ -101,7 +98,7 @@
             <result name="bajaVeterinario">/Veterinario/bajaVeterinario.jsp</result>            
             <result name="success">/login.jsp</result>            
             <result name="salir">/index.jsp</result>            
-            <result name="cancelar">/registro.jsp</result>            
+            <result name="cancelar">/registro.jsp</result>         
         </action>
         
         <action name="eliminacionVeterinario" class="acciones.veterinarioAction">

@@ -38,10 +38,10 @@ public class CorreoWS {
      * @return
      */
     @WebMethod(operationName = "enviarCorreo")
-    public void enviarCorreo(@WebParam(name = "destinatario") String destinatario, @WebParam(name = "fecha") String fecha, @WebParam(name = "hora") String hora, @WebParam(name = "motivo") String motivo) {
+    public void enviarCorreo(@WebParam(name = "destinatario") String destinatario, @WebParam(name = "fecha") String fecha, @WebParam(name = "hora") String hora, @WebParam(name = "motivo") String motivo, @WebParam(name = "importeFactura") int importeFactura) {
 
         Document document = new Document();
-        String nombre = generarPdf(document);
+        String nombre = generarPdf(document, fecha, hora, motivo, importeFactura);
         Path currentRelativePath = Paths.get("");
         String s = currentRelativePath.toAbsolutePath().toString() + "\\" + nombre;
         System.out.println(s);
@@ -119,7 +119,7 @@ public class CorreoWS {
 
     }
 
-    private static String generarPdf(Document doc) {
+    private static String generarPdf(Document doc, String fecha, String hora, String motivo, int importeFactura) {
         
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -129,14 +129,13 @@ public class CorreoWS {
         
         
         // Instantiate HtmlFragment object with corresponding HTML fragment
-        HtmlFragment t = new HtmlFragment("<body style='line-height: 100px;'><ul><li>First</li><li>Second</li><li>Third</li><li>Fourth</li><li>Fifth</li></ul>Text after the list.<br/>Next line<br/>Last line</body>");
-        // Add Page in Pages Collection
+        HtmlFragment t = new HtmlFragment("<body style='line-height: 100px;'><ul><li>Fecha de la cita: "+ fecha +"</li><li>Hora de la fecha: "+hora+"</li><li>Motivo de la cita: "+motivo+"</li></ul>Importe a pagar por esta cita <strong>"+importeFactura+"</strong>></body>");
+
         Page page = doc.getPages().add();
         // Add HtmlFragment inside page
         page.getParagraphs().add(t);
         // Save resultant PDF file
         doc.save(nombre);
-        // ExEnd:AddHTMLOrderedListIntoDocuments
         return nombre;
     }
 

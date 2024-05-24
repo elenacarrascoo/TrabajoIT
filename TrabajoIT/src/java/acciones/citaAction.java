@@ -171,8 +171,9 @@ public class citaAction extends ActionSupport {
         Veterinario v = vdao.obtenerVeterinario("43220987M");
         
         Veterinario vSelector = this.getVeterinarioSeleccionado();
-        
-        Factura f = new Factura((Propietario) session.get("propietario"), new Date(), 20);
+        Random random = new Random();
+        int importeFactura = random.nextInt((99 - 0) + 1) + 0;
+        Factura f = new Factura((Propietario) session.get("propietario"), new Date(), importeFactura);
         facturaDAO fdao = new facturaDAO();
         fdao.altaFactura(f);
         Cita cita = new Cita(f, v, fechaFormateada, hora, this.getMotivo());
@@ -193,7 +194,7 @@ public class citaAction extends ActionSupport {
         String fechaString = formater.format(cita.getFecha());
         SimpleDateFormat formaterHora = new SimpleDateFormat("HH:mm:ss");
         String horaString = formaterHora.format(cita.getHora());
-        enviarCorreo(p.getCorreo(), fechaString, horaString, cita.getMotivo());
+        enviarCorreo(p.getCorreo(), fechaString, horaString, cita.getMotivo(), importeFactura);
         
         session.remove("idPaciente");
         return SUCCESS;
@@ -313,10 +314,12 @@ public class citaAction extends ActionSupport {
         }
     }
 
-    private static void enviarCorreo(java.lang.String destinatario, java.lang.String fecha, java.lang.String hora, java.lang.String motivo) {
+    private static void enviarCorreo(java.lang.String destinatario, java.lang.String fecha, java.lang.String hora, java.lang.String motivo, int importeFactura) {
         misservicios.CorreoWS_Service service = new misservicios.CorreoWS_Service();
         misservicios.CorreoWS port = service.getCorreoWSPort();
-        port.enviarCorreo(destinatario, fecha, hora, motivo);
+        port.enviarCorreo(destinatario, fecha, hora, motivo, importeFactura);
     }
+
+
     
 }
