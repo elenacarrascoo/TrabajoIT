@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Actualiza los datos de tu mascota con id <s:property value="#session.pacienteModificar.id" />:</h1>
-        
+
         <s:form action="actualizarPaciente" method="post">
             <s:textfield name="nombre" label="Nombre" value="%{#session.pacienteModificar.nombre}"/>
             <s:textfield name="especie" label="Especie" value="%{#session.pacienteModificar.especie}"/>
@@ -26,4 +26,7 @@
             <s:submit name="actualizarPaciente" value="Actualizar datos"/>
         </s:form>
     </body>
+    <s:form action="volverPropietarioPacientes" method="post">
+        <s:submit name="volverPropietarioPacientes" value="Volver"/>
+    </s:form>
 </html>

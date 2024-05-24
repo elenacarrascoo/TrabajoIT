@@ -152,7 +152,7 @@ public class propietarioAction extends ActionSupport {
                 addFieldError("password", "Introduce la contraseña");
             } else if (this.getPassword().length() < 8 || this.getPassword().length() > 11) {
                 addFieldError("password", "La contraseña debe tener entre 8 y 11 caracteres");
-            }
+            } 
 
             if (this.getNombre().equals("")) {
                 addFieldError("nombre", "Introduce el nombre");

@@ -11,7 +11,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
-import modelo.Historial;
 import modelo.Paciente;
 import modelo.Propietario;
 import persistencia.citaDAO;
@@ -126,10 +125,6 @@ public class pacienteAction extends ActionSupport {
         Date fechaFormateada = formater.parse(this.getFechaNacimiento());
         Paciente p = new Paciente(prop, this.getNombre(), this.getEspecie(), this.getRaza(), this.getSexo(), Integer.parseInt(this.getEdad()), fechaFormateada);
         pdao.altaPaciente(p);
-        
-        //Historial h = new Historial(p);
-        //historialDAO hdao = new historialDAO();
-        //hdao.altaHistorial(h);
         return SUCCESS;
     }
     
@@ -138,14 +133,12 @@ public class pacienteAction extends ActionSupport {
         pacienteDAO pdao = new pacienteDAO();
         Paciente p = pdao.obtenerPaciente(this.getIdPaciente());
         session.put("pacienteModificar", p);
-        //this.setIdPaciente(this.getIdPaciente());
         return SUCCESS;
     }
     
     public String modificarPaciente() throws ParseException{
         Map<String, Object> session = ActionContext.getContext().getSession();
         pacienteDAO pdao = new pacienteDAO();
-        //Paciente p = pdao.obtenerPaciente(this.getIdPaciente());
         Paciente p = (Paciente) session.get("pacienteAModificar");
         p.setNombre(this.getNombre());
         p.setEspecie(this.getEspecie());
@@ -155,15 +148,13 @@ public class pacienteAction extends ActionSupport {
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-mm-dd");
         Date fechaFormateada = formater.parse(this.getFechaNacimiento());
         p.setFechaNacimiento(fechaFormateada);
-        //Propietario prop = (Propietario) session.get("propietario");
-        //p.setPropietario(prop);
         pdao.actualizarPaciente(p);
         return SUCCESS;
     }
     
     public String eliminarPaciente(){
         pacienteDAO pdao = new pacienteDAO();
-        Paciente p = pdao.obtenerPaciente(id);
+        Paciente p = pdao.obtenerPaciente(this.getIdPaciente());
         pdao.bajaPaciente(p);
         return SUCCESS;
     }

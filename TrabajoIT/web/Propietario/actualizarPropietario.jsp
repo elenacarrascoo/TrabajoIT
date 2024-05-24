@@ -17,12 +17,12 @@
         <h1>Actualiza tus datos:</h1>
         
         <s:form action="registrarActualizacion" method="post">
-            <s:textfield name="nombre" label="Nombre"/>
-            <s:textfield name="direccion" label="Direccion"/>
-            <s:textfield name="telefono" label="Telefono"/>
-            <s:textfield name="correo" label="Correo"/>
-            <s:textfield name="infoContactoAdicional" label="Información contacto adicional"/>
-            <s:password name="password" label="Password"/>
+            <s:textfield name="nombre" label="Nombre" value="%{#session.propietario.nombre}"/>
+            <s:textfield name="direccion" label="Direccion" value="%{#session.propietario.direccion}"/>
+            <s:textfield name="telefono" label="Telefono" value="%{#session.propietario.telefono}"/>
+            <s:textfield name="correo" label="Correo" value="%{#session.propietario.correo}"/>
+            <s:textfield name="infoContactoAdicional" label="Información contacto adicional" value="%{#session.propietario.infoContactoAdicional}"/>
+            <s:password name="password" label="Password" value="%{#session.propietario.password}"/>
             <s:submit name="registrarActualizacion" value="Actualizar datos"/>
         </s:form>
         <br>

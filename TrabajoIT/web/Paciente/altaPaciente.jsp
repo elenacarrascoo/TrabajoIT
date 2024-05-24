@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1><s:property value="#session.propietario.nombre"/>, introduce los datos de tu mascota:</h1>
-        
+
         <s:form action="registrarPaciente" method="post">
             <s:textfield name="nombre" label="Nombre"/>
             <s:textfield name="especie" label="Especie"/>
@@ -26,4 +26,8 @@
             <s:submit name="darAltaPaciente" value="Dar de alta"/>
         </s:form>
     </body>
+
+    <s:form action="volverPropietario" method="post">
+        <s:submit name="volverPropietario" value="Volver"/>
+    </s:form>
 </html>

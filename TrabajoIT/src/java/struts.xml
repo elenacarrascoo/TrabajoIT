@@ -50,12 +50,12 @@
         </action>
         
         <action name="actualizarPaciente" class="acciones.pacienteAction" method="modificarPaciente">
-            <result name="success">/Propietario/propietarioPacientes.jsp</result>
+            <result name="success" type="redirectAction">verPacientes</result>
             <result name="input">/Paciente/actualizarPaciente.jsp</result>
         </action>
         
         <action name="eliminarPaciente" class="acciones.pacienteAction" method="eliminarPaciente">
-            <result name="success">/Propietario/propietarioPacientes.jsp</result>
+            <result name="success" type="redirectAction">verPacientes</result>
         </action>
         
         <action name="verPaciente" class="acciones.pacienteAction" method="consultarPaciente">
@@ -81,6 +81,9 @@
         
         <action name="volverPropietario">
             <result>/Propietario/propietario.jsp</result>
+        </action>
+        <action name="volverPropietarioPacientes">
+            <result type="redirectAction">verPacientes</result>
         </action>
     </package>
     
