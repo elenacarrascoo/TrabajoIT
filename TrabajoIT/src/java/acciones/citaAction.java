@@ -51,6 +51,7 @@ public class citaAction extends ActionSupport {
     String fecha;
     String hora;
     String motivo;
+    String boton;
     
     List<Cita> citasPendientes;
 
@@ -141,7 +142,15 @@ public class citaAction extends ActionSupport {
     public void setVeterinarioSeleccionado(Veterinario veterinarioSeleccionado) {
         this.veterinarioSeleccionado = veterinarioSeleccionado;
     }
-     
+
+    public String getBoton() {
+        return boton;
+    }
+
+    public void setBoton(String boton) {
+        this.boton = boton;
+    }
+    
     public citaAction() {
     }
 
@@ -197,6 +206,15 @@ public class citaAction extends ActionSupport {
         enviarCorreo(p.getCorreo(), fechaString, horaString, cita.getMotivo(), importeFactura);
         
         session.remove("idPaciente");
+        return SUCCESS;
+    }
+    
+    public String opciones(){
+        if(boton.equalsIgnoreCase("volver")){
+            return "propietarioPaciente";
+        }else if(boton.equalsIgnoreCase("volver")){
+            return "salir";
+        }
         return SUCCESS;
     }
     

@@ -64,7 +64,7 @@
         </s:if>
         <s:else>
             <p>No se encontraron citas pendientes.</p>
-            <s:form action="opcionesAdicionales" method="post">
+            <s:form action="opcionesAdicionalesCita" method="post">
                 <s:submit name="boton" value="Volver"/>
                 <s:submit name="boton" value="LogOut"/>
             </s:form>
