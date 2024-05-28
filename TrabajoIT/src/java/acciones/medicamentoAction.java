@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import modelo.Cita;
 import modelo.Medicamento;
@@ -28,7 +29,8 @@ public class medicamentoAction extends ActionSupport {
     private String nombre;
     private String fechaCaducidad;
     private int idCita;
-
+    private List<Medicamento> medicamentos;
+    
     public String getNombre() {
         return nombre;
     }
@@ -52,6 +54,14 @@ public class medicamentoAction extends ActionSupport {
     public void setIdCita(int idCita) {
         this.idCita = idCita;
     }
+
+    public List<Medicamento> getMedicamentos() {
+        return medicamentos;
+    }
+
+    public void setMedicamentos(List<Medicamento> medicamentos) {
+        this.medicamentos = medicamentos;
+    }
     
     public String execute() throws Exception {
         Map<String, Object> session = ActionContext.getContext().getSession();
@@ -74,4 +84,10 @@ public class medicamentoAction extends ActionSupport {
         return SUCCESS;
     }
     
+    public String consultarMedicamento(){
+        medicamentoDAO mdao = new medicamentoDAO();
+        List<Medicamento> medicamentos = mdao.obtenerMedicamentos();
+        setMedicamentos(medicamentos);
+        return SUCCESS;
+    }
 }

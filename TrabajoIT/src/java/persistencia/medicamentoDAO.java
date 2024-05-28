@@ -5,6 +5,7 @@
  */
 package persistencia;
 
+import java.util.List;
 import modelo.HibernateUtil;
 import modelo.Medicamento;
 import org.hibernate.Query;
@@ -41,6 +42,16 @@ public class medicamentoDAO {
         Transaction tx = session.beginTransaction();
         session.update(m);
         tx.commit();
+    }
+    
+    public List<Medicamento> obtenerMedicamentos(){
+        List<Medicamento> listadoCompleto = null;
+        this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("from Medicamento");
+        listadoCompleto = (List<Medicamento>) q.list();
+        tx.commit();
+        return listadoCompleto;
     }
    
 }
