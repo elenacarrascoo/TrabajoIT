@@ -84,10 +84,5 @@ public class medicamentoAction extends ActionSupport {
         return SUCCESS;
     }
     
-    public String consultarMedicamento(){
-        medicamentoDAO mdao = new medicamentoDAO();
-        List<Medicamento> medicamentos = mdao.obtenerMedicamentos();
-        setMedicamentos(medicamentos);
-        return SUCCESS;
-    }
+    
 }

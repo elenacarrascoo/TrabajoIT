@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import modelo.*;
 import org.apache.struts2.ServletActionContext;
+import persistencia.medicamentoDAO;
 import persistencia.veterinarioDAO;
 
 /**
@@ -39,6 +40,7 @@ public class veterinarioAction extends ActionSupport {
     private List<Veterinario> listaVeterinarios;
     private String dniVeterinario;
     private String idCita;
+    private List<Medicamento> medicamentos;
 
     public String getIdCita() {
         return idCita;
@@ -136,6 +138,14 @@ public class veterinarioAction extends ActionSupport {
     public void setCitasVeterinario(List<Cita> citasVeterinario) {
         this.citasVeterinario = citasVeterinario;
     }
+
+    public List<Medicamento> getMedicamentos() {
+        return medicamentos;
+    }
+
+    public void setMedicamentos(List<Medicamento> medicamentos) {
+        this.medicamentos = medicamentos;
+    }
     
     
 
@@ -210,6 +220,9 @@ public class veterinarioAction extends ActionSupport {
                 return "altaMedicamento";
 
             case "Gestión Medicamentos":
+                medicamentoDAO mdao = new medicamentoDAO();
+                List<Medicamento> medicamentos = mdao.obtenerMedicamentos();
+                setMedicamentos(medicamentos);
                 return "gestionMedicamentos";
 
             case "Cancelar":
