@@ -189,12 +189,19 @@
     </package>
     
     <package name="facturaActions" extends="struts-default">
+        <action name="verFacturas" class="acciones.facturaAction" method="verFacturas">
+            <result name="success">/Factura/propietarioFacturas.jsp</result>
+        </action>
         <action name="eliminarFactura" class="acciones.facturaAction" method="eliminarFactura">
             <result name="success">/Factura/propietarioFacturas.jsp</result>
         </action>
         
-        <action name="formModificarFactura">
-            <result>/Factura/actualizarFactura.jsp</result>
+        <action name="formModificarFactura" class="acciones.facturaAction">
+            <result name="success" type="redirectAction">verFacturas</result>
+        </action>
+        
+        <action name="modificarFactura" class="acciones.facturaAction" method="actualizarFactura">
+            <result name="success" type="redirectAction">verFacturas</result>
         </action>
         
         <action name="volverPropietario">

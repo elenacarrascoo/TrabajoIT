@@ -6,6 +6,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <s:iterator var="factura" value="listaFacturas">
+                <s:iterator var="factura" value="facturas">
                     <tr>
                         <td><s:property value="#factura.numFactura"/></td>
                         <td><s:property value="#factura.fecha"/></td>

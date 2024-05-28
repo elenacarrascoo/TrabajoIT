@@ -74,7 +74,6 @@
 
                     <!-- Opciones adicionales -->
                     <s:form action="opcionesAdicionales" method="post">
-                        <s:submit name="boton" value="Generar Factura" />
                         <s:submit name="boton" value="Volver"/>
                         <s:submit name="boton" value="LogOut"/>
                         

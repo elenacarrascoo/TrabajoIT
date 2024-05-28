@@ -33,7 +33,7 @@ public class facturaAction extends ActionSupport {
     private Propietario propietario;
     private Date fecha;
     private double importe;
-    private List<Cita> citas= new ArrayList<Cita>();
+    private List<Factura> facturas;
 
     public facturaAction() {
     }
@@ -70,46 +70,47 @@ public class facturaAction extends ActionSupport {
         this.importe = importe;
     }
 
-    public List<Cita> getCitas() {
-        return citas;
+    public List<Factura> getFacturas() {
+        return facturas;
     }
 
-    public void setCitas(List<Cita> citas) {
-        this.citas = citas;
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
     }
 
     public String execute() throws Exception {
         facturaDAO fdao = new facturaDAO();
-        Factura f = new Factura(this.getPropietario(), this.getFecha(), this.getImporte(), (Set) this.getCitas());
-        fdao.altaFactura(f);
+        Factura factura = fdao.obtenerFactura(this.getNumFactura());
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        session.put("factura", factura);
         return SUCCESS;
     }
 
     public String actualizarFactura() {
         Map<String, Object> session = ActionContext.getContext().getSession();
-        Factura f = (Factura) session.get("factura");//Tengo que ponerla en al sesion
+        Factura f = (Factura) session.get("factura");
         f.setImporte(this.getImporte());
-        return SUCCESS;
-    }
-    
-    public String modificarFactura(){
-        Map<String, Object> session = ActionContext.getContext().getSession();
-        facturaDAO f = new facturaDAO();
-        Factura facturaModificar = f.obtenerFactura(this.getNumFactura());
-
-        facturaModificar.setImporte(this.getImporte());
-        f.actualizarFactura(facturaModificar);
+        session.remove("factura");
         return SUCCESS;
     }
     
     public String eliminarFactura() {
-        Map<String, Object> session = ActionContext.getContext().getSession();
         facturaDAO f = new facturaDAO();
         Factura facturaEliminar = f.obtenerFactura(this.getNumFactura());
         f.bajaFactura(facturaEliminar);
         return SUCCESS;
     }
     
+    public String verFacturas(){
+       Map<String, Object> session = ActionContext.getContext().getSession();
+       Propietario p = (Propietario) session.get("propietario");
+       facturaDAO fdao = new facturaDAO();
+       List<Factura> listaFacturas = fdao.obtenerFacturasPropietario(p);
+       this.setFacturas(listaFacturas);
+       return SUCCESS;
+    }
+    
+    /*
     public String consultarFactura(){
         facturaDAO fdao = new facturaDAO();
         Factura f = fdao.obtenerFactura(this.getNumFactura());
@@ -117,7 +118,7 @@ public class facturaAction extends ActionSupport {
         session.put("factura", f);
         return SUCCESS;
     }
-        
+    */  
     
    
 }

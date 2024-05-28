@@ -19,12 +19,7 @@
         </s:form>
         <br>
         <s:form method="post" action="">
-            <s:label from="" value=""></s:label>
-            <s:submit name="" value=""></s:submit>
-        </s:form>
-        <br>
-        <s:form method="post" action="">
-            <s:label from="" value=""></s:label>
+            <s:label from="" value="Consultar historial"></s:label>
             <s:submit name="" value=""></s:submit>
         </s:form>
     </body>
