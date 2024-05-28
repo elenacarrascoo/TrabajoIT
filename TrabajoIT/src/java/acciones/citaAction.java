@@ -54,7 +54,6 @@ public class citaAction extends ActionSupport {
     
     List<Cita> citasPendientes;
 
-    private String boton;
     public int getIdCitaModificar() {
         return idCitaModificar;
     }
@@ -142,17 +141,8 @@ public class citaAction extends ActionSupport {
     public void setVeterinarioSeleccionado(Veterinario veterinarioSeleccionado) {
         this.veterinarioSeleccionado = veterinarioSeleccionado;
     }
-
-    public String getBoton() {
-        return boton;
-    }
-
-    public void setBoton(String boton) {
-        this.boton = boton;
-    }
      
     public citaAction() {
-        
     }
 
     public String execute() throws Exception {
@@ -283,15 +273,6 @@ public class citaAction extends ActionSupport {
         citaDAO c = new citaDAO();
         Cita citaEliminar = c.obtenerCita(this.getIdCitaModificar());
         c.bajaCita(citaEliminar);
-        return SUCCESS;
-    }
-    
-    public String opciones(){
-        if(boton.equalsIgnoreCase("volver")){
-            return "propietarioPaciente";
-        }else if(boton.equalsIgnoreCase("logout")){
-            return "salir";
-        }
         return SUCCESS;
     }
     

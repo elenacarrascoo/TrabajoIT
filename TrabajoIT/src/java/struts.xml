@@ -154,11 +154,6 @@
             <result name="input">/Cita/nuevaCita.jsp</result>
         </action>
        
-       <action name="opcionesAdicionalesCita" class="acciones.citaAction" method="opciones">
-            <result name="propietarioPaciente" type="redirectAction">verPacientes</result>
-            <result name="salir">/index.jsp</result>   
-        </action>
-       
     </package>
     
     <package name="historialActions" extends="struts-default">
@@ -171,7 +166,7 @@
         </action>
         
         <action name="opcionesAdicionalesHistorial" class="acciones.historialAction">
-            <result name="propietarioPaciente" type="redirectAction">verPacientes</result>
+            <result name="propietarioPaciente">/Propietario/propietarioPacientes.jsp</result>
             <result name="salir">/index.jsp</result>   
         </action>
     </package>
