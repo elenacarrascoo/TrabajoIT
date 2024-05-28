@@ -30,7 +30,7 @@
         <br>
         <br>
         <s:form action="volverPropietario" method="post">
-            <s:submit name="volverPropietario" value="Volver"/>
+            <s:submit name="volverPropietario" key="submit_volver"/>
         </s:form>
     </body>
 </html>

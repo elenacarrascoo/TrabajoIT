@@ -26,6 +26,6 @@
         </div>
     </body>
     <s:form action="volverPacienteActual" method="post">
-        <s:submit name="volverPacienteActual" value="Volver"/>
+        <s:submit name="volverPacienteActual" key="submit_volver"/>
     </s:form>
 </html>

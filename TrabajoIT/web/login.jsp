@@ -18,7 +18,7 @@
         <s:form action="login" method="post">
             <s:textfield name="dni" label="Introduce tu dni" ></s:textfield>
             <s:password name="password" label="Introduce tu contraseña"></s:password>
-            <s:submit name="botonLogin" value="Iniciar sesión"/>
+            <s:submit name="botonLogin" key="login"/>
         </s:form>
     </body>
 </html>

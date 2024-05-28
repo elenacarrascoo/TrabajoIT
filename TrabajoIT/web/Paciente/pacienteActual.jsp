@@ -15,7 +15,7 @@
     <body>
         <s:form method="post" action="consultarPaciente">
             <s:label from="consultarPaciente" value="Ver datos de tu mascota: "></s:label>
-            <s:submit name="consultarPaciente" value="Consultar Paciente"></s:submit>
+            <s:submit name="consultarPaciente" key="submit_consultarPaciente"></s:submit>
         </s:form>
         <br>
         <s:form method="post" action="">

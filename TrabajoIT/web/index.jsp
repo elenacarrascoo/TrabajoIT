@@ -17,12 +17,12 @@
         
         <h2>¿Perteneces ya a UPOVET?</h2>
         <s:form action="loginForm" method="post">
-            <s:submit name="login" value="Iniciar Sesión"/>
+            <s:submit name="login" key="submit_login"/>
         </s:form>
         
         <h2>¿Todavía no te has registrado?</h2>
         <s:form action="registrarForm" method="post">
-            <s:submit name="registrar" value="Registrar"/>
+            <s:submit name="registrar" key="submit_registrar"/>
         </s:form>
     </body>
 </html>

@@ -24,7 +24,6 @@
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Motivo</th>
-                        <th>Número de Historial</th>
                         <th>DNI del Veterinario</th>
                         <th>Num de la Factura</th>
                         <th>Medicamento (si lo hubiera)</th>
@@ -40,7 +39,6 @@
                             <td><s:property value="#cita.fecha" /></td>
                             <td><s:property value="#cita.hora" /></td>
                             <td><s:property value="#cita.motivo" /></td>
-                            <td><s:property value="#cita.historial.numHistorial" /></td>
                             <td><s:property value="#cita.veterinario.dni" /></td>
                             <td><s:property value="#cita.factura.numFactura" /></td>
                             <td><s:property value="#cita.medicamento.nombre" /></td>
@@ -60,7 +58,7 @@
                                 </s:form>
 
                                 <s:form action="formAltaMedicamento" method="post">
-
+                                    <s:hidden name="idCita" value="%{#cita.id}" />
                                     <s:submit name="formAltaMedicamento" value="Alta Medicamento" />
 
                                 </s:form>

@@ -39,28 +39,28 @@
                         <td><s:property value="#paciente.fechaNacimiento"/></td>
                         <td>
                             <s:form action="cogerCita" method="post">
-                                <s:submit name="cogerCita">Coger cita</s:submit>
+                                <s:submit name="cogerCita" key="submit_cogerCita"></s:submit>
                                 <s:hidden name="idPaciente" value="%{#paciente.id}"/>
                             </s:form>
                         
                             <s:form action="consultarHistorial" method="post">
                                 <s:hidden name="pacienteConsultar" value="%{#paciente.id}"/>
-                                <s:submit name="consultarHistorial">Ver historial mascota</s:submit>
+                                <s:submit name="consultarHistorial" key="submit_consultarHistorial"></s:submit>
                             </s:form>
                         
                             <!-- Mirar este hidden -->
                             <s:form action="gestionCitas" method="post">
                                 <s:hidden name="pacienteConsultar" value="%{#paciente.id}"/>
-                                <s:submit name="gestionCitas">Gestionar Citas</s:submit>
+                                <s:submit name="gestionCitas" key="submit_gestionCitas"></s:submit>
                             </s:form>
                         
                             <s:form action="eliminarPaciente" method="post">
-                                <s:submit name="eliminarPaciente" value="Eliminar mascota"/>
+                                <s:submit name="eliminarPaciente" key="submit_eliminarPaciente"/>
                                 <s:hidden name="idPaciente" value="%{#paciente.id}"/>
                             </s:form>
                         
                             <s:form action="formModificarPaciente" method="post">
-                                <s:submit name="modificarPaciente" value="Modificar mascota"/>
+                                <s:submit name="modificarPaciente" key="submit_modificarPaciente"/>
                                 <s:hidden name="idPaciente" value="%{#paciente.id}"></s:hidden>
                             </s:form>
                         </td>
@@ -70,7 +70,7 @@
             </tbody>             
         </table>
         <s:form action="volverPropietario" method="post">
-            <s:submit name="volverPropietario" value="Volver"/>
+            <s:submit name="volverPropietario" key="submit_volver"/>
         </s:form>
     </body>
 </html>

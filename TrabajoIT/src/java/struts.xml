@@ -203,10 +203,10 @@
     </package>
     
     <package name="medicamentoActions" extends="struts-default">
-        <action name="altaMedicamento" class="acciones.medicamentoAction">
+        <action name="altaMedicamento" class="acciones.medicamentoAction" method="altaMedicamento">
             <result name="success">/Veterinario/agenda.jsp</result>
         </action>
-        <action name="formAltaMedicamento">
+        <action name="formAltaMedicamento" class="acciones.medicamentoAction">
             <result>/Medicamento/altaMedicamento.jsp</result>
         </action>
     </package>

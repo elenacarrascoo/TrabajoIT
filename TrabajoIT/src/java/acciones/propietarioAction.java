@@ -143,23 +143,23 @@ public class propietarioAction extends ActionSupport {
             Matcher macheadorDNI = patron1.matcher(this.getDni());
 
             if (this.getDni().equals("")) {
-                addFieldError("dni", "Introduce el dni");
+                addFieldError("dni", getText("dni.requerido"));
             } else if (!macheadorDNI.matches()) {
-                addFieldError("dni", "Formato de dni incorrecto");
+                addFieldError("dni", getText("dni.formato"));
             }
 
             if (this.getPassword().equals("")) {
-                addFieldError("password", "Introduce la contraseña");
+                addFieldError("password", getText("password.requerida"));
             } else if (this.getPassword().length() < 8 || this.getPassword().length() > 11) {
-                addFieldError("password", "La contraseña debe tener entre 8 y 11 caracteres");
+                addFieldError("password", getText("password.longitud"));
             } 
 
             if (this.getNombre().equals("")) {
-                addFieldError("nombre", "Introduce el nombre");
+                addFieldError("nombre", getText("nombre.requerido"));
             }
 
             if (this.getTelefono() == 0) {
-                addFieldError("telefono", "Introduce el teléfono");
+                addFieldError("telefono", getText("telefono.requerido"));
             }
 
         }

@@ -40,16 +40,12 @@
                             <td><s:property value="#tratamiento.cita.id" /></td>
                             <td>
                                 <s:form action="Tratamiento" method="post">
-
-                                    <s:submit name="boton" value="Modificar_Tratamiento" />
+                                    <s:submit name="boton" key="submit_modificarTratamiento" />
                                     <s:hidden name="idCita" value="%{#tratamiento.cita.id}"/> 
-
                                 </s:form>
 
                                 <s:form action="Tratamiento" method="post">
-
-                                    <s:submit name="boton" value="Eliminar Tratamiento" />
-
+                                    <s:submit name="boton" key="submit_eliminarTratamiento" />
                                 </s:form>
                             </td>
 
@@ -62,19 +58,16 @@
             </table>
 
             <s:form action="opcionesAdicionales" method="post">
-
-                <s:submit name="boton" value="Volver"/>
-                <s:submit name="boton" value="LogOut"/>
-
+                <s:submit name="boton" key="submit_volver"/>
+                <s:submit name="boton" key="submit_logout"/>
             </s:form>
 
         </s:if>
         <s:else>
             <p>Tratamiento no encontrado.</p>
             <s:form action="opcionesAdicionales" method="post">
-                <s:submit name="boton" value="Volver"/>
-                <s:submit name="boton" value="LogOut"/>
-
+                <s:submit name="boton" key="submit_volver"/>
+                <s:submit name="boton" key="submit_logout"/>
             </s:form>
         </s:else>
     </body>
