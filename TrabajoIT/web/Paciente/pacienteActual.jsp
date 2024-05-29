@@ -18,9 +18,9 @@
             <s:submit name="consultarPaciente" key="submit_consultarPaciente"></s:submit>
         </s:form>
         <br>
-        <s:form method="post" action="">
-            <s:label from="" value="Consultar historial"></s:label>
-            <s:submit name="" value=""></s:submit>
+        <s:form method="post" action="consultarHistorial">
+            <s:label from="consultarHistorial" value="Consultar historial"></s:label>
+            <s:submit name="consultarHistorial" key="submit_consultarHistorial"></s:submit>
         </s:form>
     </body>
 </html>

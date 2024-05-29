@@ -20,6 +20,7 @@
                         <th>Id</th>
                         <th>Nombre</th>
                         <th>Fecha Caducidad</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>

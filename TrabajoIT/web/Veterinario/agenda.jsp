@@ -47,27 +47,28 @@
                                 <!-- Formularios con acciones para cada cita -->
                                 <s:form action="verPaciente" method="post">
                                     <s:hidden name="idCita" value="%{#cita.id}" />
-                                    <s:submit name="verPaciente" value="Ver Paciente" />
+                                    <s:submit name="verPaciente" value="Ver Paciente" key="submit_verPaciente" />
                                 </s:form>
 
                                 <s:form action="opcionesAgenda" method="post">
 
-                                    <s:submit name="boton" value="Alta Tratamiento" />
+                                    <s:submit name="boton" value="Alta Tratamiento" key="submit_altaVeterinario"/>
                                     <s:hidden name="idCita" value="%{#cita.id}" />
 
                                 </s:form>
 
                                 <s:form action="formAltaMedicamento" method="post">
                                     <s:hidden name="idCita" value="%{#cita.id}" />
-                                    <s:submit name="formAltaMedicamento" value="Alta Medicamento" />
+                                    <s:submit name="formAltaMedicamento" value="Alta Medicamento" key="submit_altaMedicamento"/>
 
                                 </s:form>
 
                                 <s:form action="opcionesAgenda" method="post">
 
-                                    <s:submit name="boton" value="Gestión Medicamentos" />
+                                    <s:submit name="boton" value="Gestión Medicamentos" key="submit_gestionMedicamentos" />
 
                                 </s:form>
+                                
                             </td>
                         </tr>
                     </s:iterator>

@@ -218,6 +218,9 @@ public class veterinarioAction extends ActionSupport {
 
             case "Alta Medicamento":
                 return "altaMedicamento";
+                
+            case "Actualizar Medicamento":
+                return "actualizarMedicamento";
 
             case "Gestión Medicamentos":
                 medicamentoDAO mdao = new medicamentoDAO();

@@ -17,7 +17,7 @@
         <s:form action="eliminacionVeterinario" method="post">
             <s:textfield name="dni" label="Dime el dni del veterinario a dar de baja"></s:textfield>
             <s:password name="password" label="Introduce tu contraseña"></s:password>
-            <s:submit name="boton" value="Dar de Baja"/>
+            <s:submit name="boton" value="Dar de Baja" key="submit_bajaVeterinario"/>
         </s:form>
         
         <s:form action="opcionesAdicionales" method="post">

@@ -4,6 +4,7 @@
     Author     : ecarr
 --%>
 
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Formulario de Actualización de Medicamento</h1>
+    <s:form action="medicamentoActions" method="actualizarMedicamento">
+        <s:textfield name="nombre" label="Nombre" required="true"/>
+        <s:textfield name="fechaCaducidad" label="Fecha de Caducidad" required="true"/>
+        <s:submit  name="Enviar" value="Enviar"/>
     </body>
 </html>

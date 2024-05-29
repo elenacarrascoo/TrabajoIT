@@ -84,5 +84,20 @@ public class medicamentoAction extends ActionSupport {
         return SUCCESS;
     }
     
+    public String modificarMedicamento() throws ParseException{
+         Map<String, Object> session = ActionContext.getContext().getSession();
+         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
+          Date fechaFormateada = formatoFecha.parse(this.getFechaCaducidad());
+          medicamentoDAO daoM = new medicamentoDAO();
+         Medicamento m = (Medicamento) session.get("pacienteAModificar");
+         m.setNombre(this.getNombre());
+         m.setFechaCaducidad(fechaFormateada);
+         daoM.actualizarMedicamento(m);
+         medicamentos = daoM.obtenerMedicamentos();
+         return SUCCESS;
+         
+        
+    }
+    
     
 }

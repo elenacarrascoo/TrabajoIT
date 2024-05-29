@@ -154,7 +154,7 @@ public class tratamientoAction extends ActionSupport {
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "verTratamientos";
 
-            case "Modificar_Tratamiento":
+            case "Modificar Tratamiento":
                 return "modificacion";
 
             case "Modificar":
@@ -172,7 +172,7 @@ public class tratamientoAction extends ActionSupport {
                 }
 
             case "Eliminar Tratamiento":
-                /*
+               /* 
                 cita = daocita.obtenerCita((int) session.get("idCita"));
                 tratamiento = dao.obtenerTratamiento(cita);
                 if (tratamiento != null) {
@@ -182,8 +182,10 @@ public class tratamientoAction extends ActionSupport {
                 } else {
                     return ERROR;
                 }
-                */
+                
                 return SUCCESS;
+
+*/
             case "Volver a Agenda":
                 return "retorno";
 

@@ -16,12 +16,12 @@
                 <tbody>
                     <tr>
                         <td class="tdLabel">
-                            <s:textfield name="dni" label="DNI" required="true"></s:textfield>
+                            <s:textfield name="dni" label="DNI" required="true" key="dni.requerido"></s:textfield>
                             </td>
                         </tr>
                         <tr>
                             <td class="tdLabel">
-                            <s:textfield name="nombre" label="Nombre" required="true"></s:textfield>
+                            <s:textfield name="nombre" label="Nombre" required="true" key="nombre.requerido"></s:textfield>
                             </td>
                         </tr>
                         <tr>
@@ -37,19 +37,19 @@
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="experiencia" label="Experiencia" required="true"></s:textfield>
+                            <s:textfield name="experiencia" label="Experiencia" required="true" key="experiencia.requerido"></s:textfield>
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="telefono" label="Telefono" required="true"></s:textfield>
+                            <s:textfield name="telefono" label="Telefono" required="true" key="telefono.requerido"></s:textfield>
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="correo" label="Correo electronico" required="true"></s:textfield>
+                            <s:textfield name="correo" label="Correo electronico" required="true" key="correo.requerido"></s:textfield>
                             </td>
                             
                             <td class="tdLabel">
-                            <s:textfield name="password" label="Password" required="true"></s:textfield>
+                            <s:textfield name="password" label="Password" required="true" key="password.requerida"></s:textfield>
                             </td>
                             
                             
