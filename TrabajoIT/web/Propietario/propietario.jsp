@@ -13,30 +13,45 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hola <s:property value="#session.propietario.nombre"/></h1>
-        <s:form method="post" action="formAltaPaciente">
-            <s:label from="altaPaciente" value="¿Quieres registrar a tu mascota?: "></s:label>
-            <s:submit name="altaPaciente" key="submit_altaPaciente"></s:submit>
-        </s:form>
-        <br>
-        <s:form method="post" action="verPacientes">
-            <s:label from="verPacientes" value="Ve toda la información de tus mascotas: "></s:label>
-            <s:submit name="verPacientes" key="submit_verPacientes"></s:submit>
-        </s:form>
-        <br>
-        <s:form method="post" action="actualizarPropietario">
-            <s:label from="actualizarPropietario" value="Actualiza tus datos: "></s:label>
-            <s:submit name="actualizarPropietario" key="submit_actualizar"></s:submit>
-        </s:form>
-        <br>
-        <s:form method="post" action="verFacturas">
-            <s:label from="verFacturas" value="Ve toda la información de tus facturas "></s:label>
-            <s:submit name="verFacturas" key="submit_verFacturas"></s:submit>
-        </s:form>
-        <br>
-        <br>
-        <s:form action="logoutPropietario" method="post">
-            <s:submit name="logout" key="submit_logout"/>
-        </s:form>
+        <jsp:include page="../HEADER.jsp" />
+                
+        <div class="container-fluid pt-3 pb-3" style="min-height: 70vh">
+            <div class="row mt-2 text-center">
+                <h1>Hola <s:property value="#session.propietario.nombre"/></h1>
+            </div>
+            <div class="row col-12 mt-5">
+                <div class="col-6 text-center">
+                    <h2>¿Quieres registrar a tu mascota?</h2>
+                    <a href="<s:url action='formAltaPaciente'/>" class="btnModificado btn">
+                        <s:text name="submit_altaPaciente" />
+                    </a>
+                </div>
+                <div class="col-6 text-center">
+                    <h2>Ve toda la información de tus mascotas</h2>
+                    <a href="<s:url action='verPacientes'/>" class="btnModificado btn">
+                        <s:text name="submit_verPacientes" />
+                    </a>   
+                </div>
+                
+            </div>
+            <div class="row col-12 mt-5">
+                <div class="col-6 mt-3 text-center">
+                    <h2>Actualiza tus datos</h2>
+                    <a href="<s:url action='actualizarPropietario'/>" class="btnModificado btn">
+                        <s:text name="submit_actualizar" />
+                    </a>
+                </div>
+                <div class="col-6 mt-3 text-center">
+                    <h2>Ve toda la información de tus facturas</h2>
+                    <a href="<s:url action='verFacturas'/>" class="btnModificado btn">
+                        <s:text name="submit_verFacturas" />
+                    </a>   
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>

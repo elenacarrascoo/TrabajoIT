@@ -1,0 +1,26 @@
+@font-face {
+  font-family: Hind;
+  src: url(../FUENTES/Hind-Regular.ttf);
+}
+
+body{
+    font-family: Hind;
+}
+
+.btnModificado{
+    background-color: #3C6E71;
+    border-color: #FFFFFF;
+    color: white;
+    font-size: 15pt;
+}
+
+.btnModificado:hover,btnRegistro:active {
+    background-color: #D9D9D9;
+    border-color: #D9D9D9;
+    color: black;
+    transform: scale(1.05);
+}
+
+.footerFuente {
+    color: white;
+}

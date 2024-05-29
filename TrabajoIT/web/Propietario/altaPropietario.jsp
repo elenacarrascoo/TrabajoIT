@@ -14,6 +14,8 @@
         <s:head/>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
+        
         <h1>Introduce tus datos:</h1>
         
         <s:form action="registrarPropietario" method="post">
@@ -32,5 +34,6 @@
         <s:form action="volverPropietario" method="post">
             <s:submit name="volverPropietario" key="submit_volver"/>
         </s:form>
+        <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>

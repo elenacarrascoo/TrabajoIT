@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
+        
         <h1>Datos de la mascota <s:property value="#session.paciente.nombre"/>:</h1>
         <div>
             <p><strong>ID:</strong> <s:property value="#session.paciente.id"/></p>
@@ -28,4 +30,5 @@
     <s:form action="volverPacienteActual" method="post">
         <s:submit name="volverPacienteActual" key="submit_volver"/>
     </s:form>
+    <jsp:include page="../FOOTER.jsp" />
 </html>

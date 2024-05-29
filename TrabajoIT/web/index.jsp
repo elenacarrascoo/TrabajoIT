@@ -13,16 +13,30 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>BIENVENIDO A NUESTRO VETERINARIO!</h1>
+        <jsp:include page="HEADER.jsp" />
+        <div class="container-fluid pt-3 pb-3" style="min-height: 70vh">
+            <div class="row mt-2 text-center">
+                <h1>¡BIENVENIDO A NUESTRO VETERINARIO!</h1>
+            </div>
+            <div class="row col-12 mt-5">
+                <div class="col-6 text-center">
+                    <h2>¿Perteneces ya a UPOVET?</h2>
+                    <a href="<s:url action='loginForm'/>" class="btnModificado btn">
+                        <s:text name="submit_login" />
+                    </a>
+                </div>
+                <div class="col-6 text-center">
+                    <h2>¿Todavía no te has registrado?</h2>
+                    <a href="<s:url action='registrarForm'/>" class="btnModificado btn">
+                        <s:text name="submit_registrar" />
+                    </a>   
+                </div>
+                
+            </div>
+            
+        </div>
         
-        <h2>¿Perteneces ya a UPOVET?</h2>
-        <s:form action="loginForm" method="post">
-            <s:submit name="login" key="submit_login"/>
-        </s:form>
         
-        <h2>¿Todavía no te has registrado?</h2>
-        <s:form action="registrarForm" method="post">
-            <s:submit name="registrar" key="submit_registrar"/>
-        </s:form>
+        <jsp:include page="FOOTER.jsp" />
     </body>
 </html>

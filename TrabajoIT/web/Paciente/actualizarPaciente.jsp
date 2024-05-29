@@ -14,6 +14,8 @@
         <s:head/>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
+        
         <h1>Actualiza los datos de tu mascota con id <s:property value="#session.pacienteModificar.id" />:</h1>
 
         <s:form action="actualizarPaciente" method="post">
@@ -29,4 +31,5 @@
     <s:form action="volverPropietarioPacientes" method="post">
         <s:submit name="volverPropietarioPacientes" key="submit_volver"/>
     </s:form>
+    <jsp:include page="../FOOTER.jsp" />
 </html>

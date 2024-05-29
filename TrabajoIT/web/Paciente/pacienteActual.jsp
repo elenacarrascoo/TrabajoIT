@@ -13,8 +13,10 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
+        
         <s:form method="post" action="consultarPaciente">
-            <s:label from="consultarPaciente" value="Ver datos de tu mascota: "></s:label>
+            <s:label from="consultarPaciente" value="Ver datos del paciente: "></s:label>
             <s:submit name="consultarPaciente" key="submit_consultarPaciente"></s:submit>
         </s:form>
         <br>
@@ -23,4 +25,5 @@
             <s:submit name="consultarHistorial" key="submit_consultarHistorial"></s:submit>
         </s:form>
     </body>
+    <jsp:include page="../FOOTER.jsp" />
 </html>

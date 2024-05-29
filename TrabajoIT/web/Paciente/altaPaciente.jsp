@@ -14,6 +14,8 @@
         <s:head/>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
+        
         <h1><s:property value="#session.propietario.nombre"/>, introduce los datos de tu mascota:</h1>
 
         <s:form action="registrarPaciente" method="post">
@@ -30,4 +32,5 @@
     <s:form action="volverPropietario" method="post">
         <s:submit name="volverPropietario" key="submit_volver"/>
     </s:form>
+    <jsp:include page="../FOOTER.jsp" />
 </html>

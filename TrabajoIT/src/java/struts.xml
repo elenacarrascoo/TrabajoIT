@@ -5,6 +5,15 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
+        <action name="acercaDeNosotros">
+            <result>/acercaDeNosotros.jsp</result>
+        </action>
+        <action name="volverInicioPropietario">
+            <result>/Propietario/propietario.jsp</result>
+        </action>
+        <action name="volverInicioVeterinario">
+            <result>/Veterinario/veterinario.jsp</result>
+        </action>
         <action name="loginForm">
             <result>/login.jsp</result>
         </action>
@@ -116,7 +125,7 @@
         <action name="opcionesAdicionales" class="acciones.veterinarioAction">
             <result name="generarFactura">/Factura/altaFactura.jsp</result>
             <result name="volver">/Veterinario/veterinario.jsp</result>
-            <result name="salir">/index.jsp</result>   
+            <result name="salir" type="redirectAction">logoutPropietario</result>   
         </action>
         
         <action name="opcionesAgenda" class="acciones.veterinarioAction">
@@ -154,7 +163,7 @@
             <result name="input">/Cita/nuevaCita.jsp</result>
         </action>
        
-       <action name="opcionesAdicionalesCita" class="acciones.citaAction">
+        <action name="opcionesAdicionalesCita" class="acciones.citaAction">
             <result name="propietarioPaciente" type="redirectAction">verPacientes</result>
             <result name="salir">/index.jsp</result>   
         </action>

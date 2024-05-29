@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
+        
         <h1>Los tratamientos son:</h1>
 
         <s:if test="%{!listaTratamientos.isEmpty()}">
@@ -72,5 +74,6 @@
             </s:form>
         </s:else>
     </body>
+    <jsp:include page="../FOOTER.jsp" />
 </html>
 

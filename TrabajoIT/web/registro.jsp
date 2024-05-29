@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:include page="HEADER.jsp" />
+        
         <h1>Bienvenido a nuestro veterinario!</h1>
         
         <h2>¿Como te registras?</h2>
@@ -20,6 +22,7 @@
         <s:form action="elegirRegistro" method="post" >
             <s:radio label="Propietario / Veterinario" name="rolUsuario" list="{'propietario', 'veterinario'}"/>
             <s:submit value="aceptar" name="aceptar"></s:submit>
-        </s:form> 
+        </s:form>
+        <jsp:include page="FOOTER.jsp" />
     </body>
 </html>
