@@ -56,7 +56,7 @@
                                     <tr>
                                         <td colspan="2">
                                             <div align="right">
-                                            <s:submit name="boton" value="Registrar_Tratamiento"></s:submit>
+                                            <s:submit name="boton" value="Registrar Tratamiento"></s:submit>
                                             </div>
                                         </td>
                                     </tr>

@@ -133,7 +133,7 @@ public class tratamientoAction extends ActionSupport {
         Tratamiento tratamiento = new Tratamiento();
 
         switch (boton) {
-            case "Registrar_Tratamiento":
+            case "Registrar Tratamiento":
 
                 SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
                 fechaFormateada = formatoFecha.parse(this.getFecha());
@@ -147,7 +147,7 @@ public class tratamientoAction extends ActionSupport {
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "verTratamientos";
 
-            case "Modificar_Tratamiento":
+            case "Modificar Tratamiento":
                 return "modificacion";
 
             case "Modificar":
