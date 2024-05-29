@@ -11,34 +11,78 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Opciones del Veterinario</title>
+        <style>
+            .centered-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .form-container {
+                margin: 10px 0;
+            }
+        </style>
+
     </head>
     <body>
-        <h1>Bienvenido <s:property value="#session.veterinario.nombre"/>. Especializado en <s:property value="#session.veterinario.especialidad"/></h1>
-        <h2>¿Qué acción deseas realizar?</h2>
+        <jsp:include page="../HEADER.jsp" />
+        <div class="container-fluid pt-3 pb-3" style="min-height: 70vh">
+            <div class="row mt-2 text-center">
+                <h1>Bienvenido <s:property value="#session.veterinario.nombre"/>. Especializado en <s:property value="#session.veterinario.especialidad"/></h1>
+                <h2>¿Qué acción deseas realizar?</h2>
+            </div>
 
-        <s:form action="veterinarioActions" method="post">
-            <s:submit name="boton" value="Consultar Agenda" />
-        </s:form>
-        
-        <s:form action="veterinarioActions" method="post">
-            <s:submit name="boton" value="Modificar Datos" />
-        </s:form>
+            <div class="centered-container">
+               
 
-        <s:form action="veterinarioActions" method="post">
-            <s:submit name="boton" value="Consultar Compañeros" />
-        </s:form>
-        
-         <s:form action="Tratamiento" method="post">
-            <s:submit name="boton" value="Consultar Tratamientos" />
-        </s:form>
+                <div class="form-container">
+                    <s:form action="veterinarioActions" method="post">
+                        <s:submit name="boton" value="Consultar Agenda" />
+                    </s:form>
+                </div>
 
-        <s:form action="veterinarioActions" method="post">
-            <s:submit name="boton" value="Baja Veterinario" />
-        </s:form>
-        
-        <s:form action="veterinarioActions" method="post">
-            <s:submit name="boton" value="LogOut" />
-        </s:form>
+                <div class="form-container">
 
+                    <s:form action="veterinarioActions" method="post">
+                        <s:submit name="boton" value="Modificar Datos" />
+                    </s:form>
+                </div>
+                <div class="form-container">
+
+
+                    <s:form action="veterinarioActions" method="post">
+                        <s:submit name="boton" value="Consultar Compañeros" />
+                    </s:form>
+
+                </div>
+
+                <div class="form-container">
+
+                    <s:form action="Tratamiento" method="post">
+                        <s:submit name="boton" value="Consultar Tratamientos" />
+                    </s:form>
+                </div>
+
+                <div class="form-container">
+
+                    <s:form action="veterinarioActions" method="post">
+                        <s:submit name="boton" value="Baja Veterinario" />
+                    </s:form>
+
+                </div>
+
+                <div class="form-container">
+
+                    <s:form action="veterinarioActions" method="post">
+                        <s:submit name="boton" value="LogOut" />
+                    </s:form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>

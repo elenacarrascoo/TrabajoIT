@@ -13,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
         <h1>El veterinario, ha sido dado de baja con exito</h1>
 
         <s:form action="opcionesAdicionales" method="post">
@@ -20,6 +21,6 @@
 
         </s:form>
 
-
+ <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>
