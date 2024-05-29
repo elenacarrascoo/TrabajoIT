@@ -38,11 +38,7 @@
                                 <s:textfield name="resultados" label="Resultados" required="true"></s:textfield>
                             </td>
                             
-                            
-                            <td class="tdLabel">
-                            <s:textfield name="idCita" label="ID Cita" value="%{#session.idCita}" required="true" readonly="true"/>
-                            </td>
-                            
+                     
                                                         
                         </tr>
                         <tr>

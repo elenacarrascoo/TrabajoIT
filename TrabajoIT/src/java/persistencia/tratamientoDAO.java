@@ -28,17 +28,17 @@ public class tratamientoDAO {
         session.save(tratamiento);
         tx.commit();
     }
-/*
-    public Tratamiento obtenerTratamiento(Cita cita) {
+
+    public Tratamiento obtenerTratamiento(String idTratamiento) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         Query q = session.createQuery("From Tratamiento where idCita=:idCita");
-        q.setParameter("idCita", cita.getId());
+        q.setParameter("idTratamiento", idTratamiento);
         Tratamiento tratamiento = (Tratamiento)q.uniqueResult();
         tx.commit();
         return tratamiento;
     }
-*/
+
     public List<Tratamiento> obtenerTodosLosTratamientos() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();

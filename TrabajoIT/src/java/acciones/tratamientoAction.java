@@ -135,26 +135,19 @@ public class tratamientoAction extends ActionSupport {
         switch (boton) {
             case "Registrar_Tratamiento":
 
-                SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
                 fechaFormateada = formatoFecha.parse(this.getFecha());
-                session.put("idCita", this.getIdCita());
-                Object idCitaObj = session.get("idCita");
-                if (idCitaObj instanceof Integer) {
-                    cita = daocita.obtenerCita((Integer) idCitaObj);
+                tratamiento = new Tratamiento(tipo, fechaFormateada, precio, resultados);
+                dao.crearTratamiento(tratamiento);
+                listaTratamientos = dao.obtenerTodosLosTratamientos();
 
-                    //cita = daocita.obtenerCita((int) session.get("idCita"));
-                    tratamiento = new Tratamiento(tipo, fechaFormateada, precio, resultados);
-                    dao.crearTratamiento(tratamiento);
-                    listaTratamientos = dao.obtenerTodosLosTratamientos();
-
-                    return "registro";
-                }
+                return "registro";
 
             case "Consultar Tratamientos":
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "verTratamientos";
 
-            case "Modificar Tratamiento":
+            case "Modificar_Tratamiento":
                 return "modificacion";
 
             case "Modificar":
@@ -172,20 +165,12 @@ public class tratamientoAction extends ActionSupport {
                 }
 
             case "Eliminar Tratamiento":
-               /* 
-                cita = daocita.obtenerCita((int) session.get("idCita"));
-                tratamiento = dao.obtenerTratamiento(cita);
-                if (tratamiento != null) {
-                    dao.eliminarTratamiento(tratamiento);
-                    listaTratamientos = dao.obtenerTodosLosTratamientos();
-                    return "eliminacion";
-                } else {
-                    return ERROR;
-                }
-                
-                return SUCCESS;
+                tratamiento = (Tratamiento) session.get("tratamiento");
+                dao.eliminarTratamiento(tratamiento);
+                listaTratamientos = dao.obtenerTodosLosTratamientos();
 
-*/
+                return "eliminacion";
+
             case "Volver a Agenda":
                 return "retorno";
 

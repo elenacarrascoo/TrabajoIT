@@ -24,7 +24,6 @@
                         <th>Fecha</th>
                         <th>Precio</th>
                         <th>Resultados</th>
-                        <th>ID Cita</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -37,21 +36,22 @@
                             <td><s:property value="#tratamiento.fecha" /></td>
                             <td><s:property value="#tratamiento.precio" /></td>
                             <td><s:property value="#tratamiento.resultados" /></td>
-                            <td><s:property value="#tratamiento.cita.id" /></td>
                             <td>
                                 <s:form action="Tratamiento" method="post">
-                                    <s:submit name="boton" value ="Modificar Tratamiento" key="submit_modificarTratamiento" />
-                                    <s:hidden name="idCita" value="%{#tratamiento.cita.id}"/> 
+                                    <s:submit name="boton" value ="Modificar_Tratamiento" key="submit_modificarTratamiento" />
+                                    <s:hidden name="idTratamiento" value="%{#tratamiento.id}"/> 
                                 </s:form>
 
                                 <s:form action="Tratamiento" method="post">
                                     <s:submit name="boton"  value="Eliminar Tratamiento" key="submit_eliminarTratamiento" />
-                                    <s:hidden name="idtratamiento" value="%{#tratamiento.id}"/> 
+                                    <s:hidden name="idTratamiento" value="%{#tratamiento.id}"/> 
                                 </s:form>
                             </td>
 
                         </tr>
                     </s:iterator>
+                        
+                        
 
 
 
