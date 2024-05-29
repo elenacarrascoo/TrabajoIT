@@ -15,22 +15,25 @@
     </head>
     <body>
         <jsp:include page="../HEADER.jsp" />
-        
-        <h1><s:property value="#session.propietario.nombre"/>, introduce los datos de tu mascota:</h1>
+        <div class="container-fluid pt-3 pb-3" style="min-height: 70vh">
+            <h1><s:property value="#session.propietario.nombre"/>, introduce los datos de tu mascota:</h1>
 
-        <s:form action="registrarPaciente" method="post">
-            <s:textfield name="nombre" label="Nombre"/>
-            <s:textfield name="especie" label="Especie"/>
-            <s:textfield name="raza" label="Raza"/>
-            <s:textfield name="sexo" label="Sexo"/>
-            <s:textfield name="edad" label="Edad"/>
-            <s:textfield name="fechaNacimiento" label="Fecha de nacimiento" type="date"/>
-            <s:submit name="darAltaPaciente" value="Dar de alta"/>
-        </s:form>
+            <s:form action="registrarPaciente" method="post" enctype="multipart/form-data">
+                <s:textfield name="nombre" label="Nombre"/>
+                <s:textfield name="especie" label="Especie"/>
+                <s:textfield name="raza" label="Raza"/>
+                <s:textfield name="sexo" label="Sexo"/>
+                <s:textfield name="edad" label="Edad"/>
+                <s:textfield name="fechaNacimiento" label="Fecha de nacimiento" type="date"/>
+                <s:file name="image" id="imagen" label="Imagen"/>
+                <s:submit name="darAltaPaciente" value="Dar de alta"/>
+            </s:form>
     </body>
 
-    <s:form action="volverPropietario" method="post">
-        <s:submit name="volverPropietario" key="submit_volver"/>
-    </s:form>
-    <jsp:include page="../FOOTER.jsp" />
+    <a href="<s:url action='volverPropietario'/>" class="btnModificado btn mt-5">
+        <s:text name="submit_volver" />
+    </a> 
+</div>
+
+<jsp:include page="../FOOTER.jsp" />
 </html>

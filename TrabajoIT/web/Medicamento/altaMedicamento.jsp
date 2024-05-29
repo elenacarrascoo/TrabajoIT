@@ -5,14 +5,15 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <%@taglib prefix="s" uri="/struts-tags" %>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
         <h1>Introduce tus datos:</h1>
         
         <s:form action="altaMedicamento" method="post">
@@ -20,5 +21,6 @@
             <s:textfield name="fechaCaducidad" label="Fecha de caducidad" type="date"/>
             <s:submit name="altaMedicamento" value="Añadir medicamento"/>
         </s:form>
+        <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>

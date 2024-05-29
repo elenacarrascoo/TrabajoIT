@@ -80,6 +80,8 @@ public class medicamentoAction extends ActionSupport {
         mdao.altaMedicamento(m);
         Cita c = (Cita) session.get("cita");
         c.setMedicamento(m);
+        citaDAO cdao = new citaDAO();
+        cdao.actualizarCita(c);
         session.remove("cita");
         return SUCCESS;
     }

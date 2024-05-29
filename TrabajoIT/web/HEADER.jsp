@@ -20,7 +20,7 @@
         <div class="container-fluid" style="background-color: #3C6E71;">
             <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
                 <s:if test="%{#session.propietario == null && #session.veterinario == null}">
-                    <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                    <a href="index.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                         <span class="fs-4">UPOVET <i class="fa-solid fa-paw p-1"></i></span>
                     </a>
                 </s:if>

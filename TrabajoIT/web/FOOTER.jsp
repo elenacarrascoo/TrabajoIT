@@ -19,7 +19,7 @@
             <footer class="py-1 my-2">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <s:if test="%{#session.propietario == null && #session.veterinario == null}">
-                        <li class="nav-item"><a href="#" class="nav-link px-2 footerFuente">Inicio</a></li>
+                        <li class="nav-item"><a href="index.jsp" class="nav-link px-2 footerFuente">Inicio</a></li>
                     </s:if>
                     <s:if test="%{#session.propietario != null}">
                         <li class="nav-item"><a href="<s:url action="volverInicioPropietario"></s:url>" class="nav-link px-2 footerFuente">Inicio</a></li>

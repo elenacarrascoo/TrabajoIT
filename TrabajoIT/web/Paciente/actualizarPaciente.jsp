@@ -15,21 +15,23 @@
     </head>
     <body>
         <jsp:include page="../HEADER.jsp" />
-        
-        <h1>Actualiza los datos de tu mascota con id <s:property value="#session.pacienteModificar.id" />:</h1>
+        <div class="container-fluid pt-3 pb-3" style="min-height: 70vh">
+            <h1>Actualiza los datos de tu mascota con id <s:property value="#session.pacienteModificar.id" />:</h1>
 
-        <s:form action="actualizarPaciente" method="post">
-            <s:textfield name="nombre" label="Nombre" value="%{#session.pacienteModificar.nombre}"/>
-            <s:textfield name="especie" label="Especie" value="%{#session.pacienteModificar.especie}"/>
-            <s:textfield name="raza" label="Raza" value="%{#session.pacienteModificar.raza}"/>
-            <s:textfield name="sexo" label="Sexo" value="%{#session.pacienteModificar.sexo}"/>
-            <s:textfield name="edad" label="Edad" value="%{#session.pacienteModificar.edad}"/>
-            <s:textfield name="fechaNacimiento" label="Fecha de nacimiento" type="date" value="%{#session.pacienteModificar.fechaNacimiento}"/>
-            <s:submit name="actualizarPaciente" value="Actualizar datos"/>
-        </s:form>
-    </body>
-    <s:form action="volverPropietarioPacientes" method="post">
-        <s:submit name="volverPropietarioPacientes" key="submit_volver"/>
-    </s:form>
+            <s:form action="actualizarPaciente" method="post">
+                <s:textfield name="nombre" label="Nombre" value="%{#session.pacienteModificar.nombre}"/>
+                <s:textfield name="especie" label="Especie" value="%{#session.pacienteModificar.especie}"/>
+                <s:textfield name="raza" label="Raza" value="%{#session.pacienteModificar.raza}"/>
+                <s:textfield name="sexo" label="Sexo" value="%{#session.pacienteModificar.sexo}"/>
+                <s:textfield name="edad" label="Edad" value="%{#session.pacienteModificar.edad}"/>
+                <s:textfield name="fechaNacimiento" label="Fecha de nacimiento" type="date" value="%{#session.pacienteModificar.fechaNacimiento}"/>
+                <s:submit name="actualizarPaciente" value="Actualizar datos"/>
+            </s:form>
+        </body>
+        <a href="<s:url action='volverPropietarioPacientes'/>" class="btnModificado btn mt-5">
+            <s:text name="submit_volver" />
+        </a> 
+        </div>
+        
     <jsp:include page="../FOOTER.jsp" />
 </html>

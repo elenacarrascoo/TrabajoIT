@@ -20,6 +20,7 @@
                 <thead style="color: #3C6E71 ">
                     <tr>
                         <th>ID</th>
+                        <th>Foto</th>
                         <th>Nombre</th>
                         <th>Especie</th>
                         <th>Raza</th>
@@ -33,6 +34,7 @@
                     <s:iterator var="paciente" value="listaPacientes">
                         <tr>
                             <td><s:property value="#paciente.id"/></td>
+                            <td><img src="${pageContext.request.contextPath}${paciente.foto}" alt="sinFoto" width="75" height="75" class="rounded-circle"></td>                          
                             <td><s:property value="#paciente.nombre"/></td>
                             <td><s:property value="#paciente.especie"/></td>
                             <td><s:property value="#paciente.raza"/></td>
@@ -76,11 +78,11 @@
                                             <s:hidden name="idPaciente" value="%{#paciente.id}"></s:hidden>
                                         </s:form>
                                     </div>    
-                                        
-                                </div>
-                                
 
-                                
+                                </div>
+
+
+
                             </td>
                         </tr>
                     </s:iterator>
@@ -91,7 +93,7 @@
                 <s:text name="submit_volver" />
             </a> 
         </div>
-        
+
         <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>

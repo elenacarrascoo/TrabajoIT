@@ -33,6 +33,9 @@
             <result name="altaVeterinario">/Veterinario/altaVeterinario.jsp</result>
             <result name="error">/registro.jsp</result>
         </action>
+        <action name="volverElegirRegistro">
+            <result>/registro.jsp</result>
+        </action>
         
     </package>
     <package name="propietarioPacienteActions" extends="struts-default">

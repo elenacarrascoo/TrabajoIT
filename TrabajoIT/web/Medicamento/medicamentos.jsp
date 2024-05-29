@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
         <h1>Medicamentos disponibles</h1>
         <s:if test="%{medicamentos.isEmpty()}">
             <table>
@@ -53,5 +55,6 @@
                 <s:submit name="boton" value="LogOut"/>
             </s:form>
         </s:else>
+    <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>

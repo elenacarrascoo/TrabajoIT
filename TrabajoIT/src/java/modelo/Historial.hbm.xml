@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 23-may-2024 19:10:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 29-may-2024 18:20:30 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Historial" table="historial" catalog="clinica_veterinaria" optimistic-lock="version">
         <id name="numHistorial" type="java.lang.Integer">
             <column name="num_historial" />
             <generator class="identity" />
         </id>
-        <many-to-one name="cita" class="modelo.Cita" lazy="false" fetch="join">
+        <many-to-one name="cita" class="modelo.Cita" fetch="select">
             <column name="idCita" not-null="true" />
         </many-to-one>
-        <many-to-one name="paciente" class="modelo.Paciente" lazy="false" fetch="join">
+        <many-to-one name="paciente" class="modelo.Paciente" fetch="select">
             <column name="idPaciente" not-null="true" />
         </many-to-one>
     </class>

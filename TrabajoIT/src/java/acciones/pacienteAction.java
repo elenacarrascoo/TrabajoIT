@@ -7,12 +7,16 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.UUID;
 import modelo.Paciente;
 import modelo.Propietario;
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import persistencia.citaDAO;
 import persistencia.historialDAO;
 import persistencia.pacienteDAO;
@@ -29,6 +33,8 @@ public class pacienteAction extends ActionSupport {
     private String sexo;
     private String edad;
     private String fechaNacimiento;
+    private File image;
+    private String imageFileName;
     private int numHistorial;
     private int id;
     private int idCita;
@@ -85,6 +91,22 @@ public class pacienteAction extends ActionSupport {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public File getImage() {
+        return image;
+    }
+
+    public void setImage(File image) {
+        this.image = image;
+    }
+
+    public String getImageFileName() {
+        return imageFileName;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
+    }
+
     public int getNumHistorial() {
         return numHistorial;
     }
@@ -124,6 +146,17 @@ public class pacienteAction extends ActionSupport {
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-mm-dd");
         Date fechaFormateada = formater.parse(this.getFechaNacimiento());
         Paciente p = new Paciente(prop, this.getNombre(), this.getEspecie(), this.getRaza(), this.getSexo(), Integer.parseInt(this.getEdad()), fechaFormateada);
+        if (this.getImage() != null) {
+            String filePath = ServletActionContext.getServletContext().getRealPath("/FOTOS");
+            System.out.println(filePath);
+            filePath = filePath.replace("\\build", "");
+            System.out.println(filePath);
+            String fileName = UUID.randomUUID().toString().replace("-", "") + imageFileName.substring(imageFileName.lastIndexOf("."));
+
+            FileUtils.copyFile(this.getImage(), new File(filePath, fileName));
+
+            p.setFoto("/FOTOS/" + fileName);
+        }
         pdao.altaPaciente(p);
         return SUCCESS;
     }

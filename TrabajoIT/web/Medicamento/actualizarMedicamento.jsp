@@ -13,10 +13,13 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
         <h1>Formulario de Actualización de Medicamento</h1>
-    <s:form action="medicamentoActions" method="actualizarMedicamento">
-        <s:textfield name="nombre" label="Nombre" required="true"/>
-        <s:textfield name="fechaCaducidad" label="Fecha de Caducidad" required="true"/>
-        <s:submit  name="Enviar" value="Enviar"/>
+        <s:form action="medicamentoActions" method="actualizarMedicamento">
+            <s:textfield name="nombre" label="Nombre" required="true"/>
+            <s:textfield name="fechaCaducidad" label="Fecha de Caducidad" required="true"/>
+            <s:submit  name="Enviar" value="Enviar"/>
+        </s:form>
+        <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>

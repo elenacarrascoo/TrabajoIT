@@ -15,25 +15,27 @@
     </head>
     <body>
         <jsp:include page="../HEADER.jsp" />
+        <div class="container-fluid pt-3 pb-3" style="min-height: 70vh">
+            <h1>Introduce tus datos:</h1>
+
+            <s:form action="registrarPropietario" method="post">
+                <s:textfield name="dni" label="DNI"/>
+                <s:textfield name="nombre" label="Nombre"/>
+                <s:textfield name="direccion" label="Direccion"/>
+                <s:textfield name="telefono" label="Telefono"/>
+                <s:textfield name="correo" label="Correo"/>
+                <s:textfield name="infoContactoAdicional" label="Info contacto adicional"/>
+                <s:password name="password" label="Contraseña"/>
+                <s:submit name="darAltaPropietario" value="Dar de alta"/>
+            </s:form>
+            <br>
+            <br>
+            <br>
+            <a href="<s:url action='volverElegirRegistro'/>" class="btnModificado btn mt-5">
+                <s:text name="submit_volver" />
+            </a>
+        </div>
         
-        <h1>Introduce tus datos:</h1>
-        
-        <s:form action="registrarPropietario" method="post">
-            <s:textfield name="dni" label="DNI"/>
-            <s:textfield name="nombre" label="Nombre"/>
-            <s:textfield name="direccion" label="Direccion"/>
-            <s:textfield name="telefono" label="Telefono"/>
-            <s:textfield name="correo" label="Correo"/>
-            <s:textfield name="infoContactoAdicional" label="Info contacto adicional"/>
-            <s:password name="password" label="Contraseña"/>
-            <s:submit name="darAltaPropietario" value="Dar de alta"/>
-        </s:form>
-        <br>
-        <br>
-        <br>
-        <s:form action="volverPropietario" method="post">
-            <s:submit name="volverPropietario" key="submit_volver"/>
-        </s:form>
         <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>

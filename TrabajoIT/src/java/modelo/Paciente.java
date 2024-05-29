@@ -1,5 +1,5 @@
 package modelo;
-// Generated 23-may-2024 19:10:23 by Hibernate Tools 4.3.1
+// Generated 29-may-2024 18:20:30 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -20,6 +20,7 @@ public class Paciente  implements java.io.Serializable {
      private String sexo;
      private int edad;
      private Date fechaNacimiento;
+     private String foto;
      private Set historials = new HashSet(0);
 
     public Paciente() {
@@ -35,7 +36,7 @@ public class Paciente  implements java.io.Serializable {
         this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
     }
-    public Paciente(Propietario propietario, String nombre, String especie, String raza, String sexo, int edad, Date fechaNacimiento, Set historials) {
+    public Paciente(Propietario propietario, String nombre, String especie, String raza, String sexo, int edad, Date fechaNacimiento, String foto, Set historials) {
        this.propietario = propietario;
        this.nombre = nombre;
        this.especie = especie;
@@ -43,6 +44,7 @@ public class Paciente  implements java.io.Serializable {
        this.sexo = sexo;
        this.edad = edad;
        this.fechaNacimiento = fechaNacimiento;
+       this.foto = foto;
        this.historials = historials;
     }
    
@@ -101,6 +103,13 @@ public class Paciente  implements java.io.Serializable {
     
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+    public String getFoto() {
+        return this.foto;
+    }
+    
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
     public Set getHistorials() {
         return this.historials;

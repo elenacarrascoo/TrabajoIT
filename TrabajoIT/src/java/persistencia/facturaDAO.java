@@ -57,7 +57,7 @@ public class facturaDAO {
         List<Factura> listadoCompleto = null;
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("from Factura where dniPropietario =:dniPropietario");
+        Query q = session.createQuery("from Factura where idPropietario =:dniPropietario");
         q.setParameter("dniPropietario", propietario.getDni());
         listadoCompleto = (List<Factura>) q.list();
         tx.commit();

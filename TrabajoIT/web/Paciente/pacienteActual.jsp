@@ -14,16 +14,18 @@
     </head>
     <body>
         <jsp:include page="../HEADER.jsp" />
-        
-        <s:form method="post" action="consultarPaciente">
-            <s:label from="consultarPaciente" value="Ver datos del paciente: "></s:label>
-            <s:submit name="consultarPaciente" key="submit_consultarPaciente"></s:submit>
-        </s:form>
-        <br>
-        <s:form method="post" action="consultarHistorial">
-            <s:label from="consultarHistorial" value="Consultar historial"></s:label>
-            <s:submit name="consultarHistorial" key="submit_consultarHistorial"></s:submit>
-        </s:form>
+        <div class="container-fluid pt-3 pb-3" style="min-height: 70vh">
+            <s:form method="post" action="consultarPaciente">
+                <s:label from="consultarPaciente" value="Ver datos del paciente: "></s:label>
+                <s:submit name="consultarPaciente" key="submit_consultarPaciente"></s:submit>
+            </s:form>
+            <br>
+            <s:form method="post" action="consultarHistorial">
+                <s:label from="consultarHistorial" value="Consultar historial"></s:label>
+                <s:submit name="consultarHistorial" key="submit_consultarHistorial"></s:submit>
+            </s:form>
+        </div>
+        <jsp:include page="../FOOTER.jsp" />
     </body>
-    <jsp:include page="../FOOTER.jsp" />
+    
 </html>

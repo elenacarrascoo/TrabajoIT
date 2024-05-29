@@ -15,24 +15,26 @@
     </head>
     <body>
         <jsp:include page="../HEADER.jsp" />
+        <div class="container-fluid pt-3 pb-3" style="min-height: 70vh">
+            <h1>Actualiza tus datos:</h1>
+
+            <s:form action="registrarActualizacion" method="post">
+                <s:textfield name="nombre" label="Nombre" value="%{#session.propietario.nombre}"/>
+                <s:textfield name="direccion" label="Direccion" value="%{#session.propietario.direccion}"/>
+                <s:textfield name="telefono" label="Telefono" value="%{#session.propietario.telefono}"/>
+                <s:textfield name="correo" label="Correo" value="%{#session.propietario.correo}"/>
+                <s:textfield name="infoContactoAdicional" label="Información contacto adicional" value="%{#session.propietario.infoContactoAdicional}"/>
+                <s:password name="password" label="Password" value="%{#session.propietario.password}"/>
+                <s:submit name="registrarActualizacion" value="Actualizar datos"/>
+            </s:form>
+            <br>
+            <br>
+            <br>
+            <a href="<s:url action='volverPropietario'/>" class="btnModificado btn mt-5">
+                <s:text name="submit_volver" />
+            </a>
+        </div>
         
-        <h1>Actualiza tus datos:</h1>
-        
-        <s:form action="registrarActualizacion" method="post">
-            <s:textfield name="nombre" label="Nombre" value="%{#session.propietario.nombre}"/>
-            <s:textfield name="direccion" label="Direccion" value="%{#session.propietario.direccion}"/>
-            <s:textfield name="telefono" label="Telefono" value="%{#session.propietario.telefono}"/>
-            <s:textfield name="correo" label="Correo" value="%{#session.propietario.correo}"/>
-            <s:textfield name="infoContactoAdicional" label="Información contacto adicional" value="%{#session.propietario.infoContactoAdicional}"/>
-            <s:password name="password" label="Password" value="%{#session.propietario.password}"/>
-            <s:submit name="registrarActualizacion" value="Actualizar datos"/>
-        </s:form>
-        <br>
-        <br>
-        <br>
-        <s:form action="volverPropietario" method="post">
-            <s:submit name="volverPropietario" key="submit_volver"/>
-        </s:form>
         <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>
