@@ -13,7 +13,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="../HEADER.jsp" />
         <div class="container-fluid pt-3 pb-3" style="min-height: 70vh">
             <h1>Los tratamientos son:</h1>
 
@@ -74,7 +73,6 @@
                 </s:form>
             </s:else>
         </div>
-        <jsp:include page="../FOOTER.jsp" />   
     </body>
     
 </html>
