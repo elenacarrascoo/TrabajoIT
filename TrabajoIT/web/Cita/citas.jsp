@@ -11,8 +11,40 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Citas</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+                font-size: 1em;
+                font-family: 'Arial', sans-serif;
+                text-align: left;
+            }
+            table thead tr {
+                background-color: #009879;
+                color: #ffffff;
+                text-align: left;
+            }
+            table th, table td {
+                padding: 12px 15px;
+                border: 1px solid #dddddd;
+            }
+            table tbody tr {
+                border-bottom: 1px solid #dddddd;
+            }
+            table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+            table tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+            }
+            table tbody tr:hover {
+                background-color: #f1f1f1;
+            }
+        </style>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
         <h1>Gesti&oacute;n de citas del paciente <s:property value="#historialConsultar.paciente.nombre"/></h1>
         <s:form action="cogerCita" method="post">
             <s:submit value="altaCita" name="Alta Cita"></s:submit>
@@ -69,6 +101,7 @@
                 <s:submit name="boton" value="LogOut"/>
             </s:form>
         </s:else>
+            <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>
 

@@ -13,6 +13,7 @@
         <title>Actualizaci&oacute;n de la Cita</title>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
         <h1>Actualizando la cita <s:property value="#session.cita.id"/></h1>
         <s:form>
             <s:textfield name="fecha" label="Fecha"/>
@@ -21,5 +22,6 @@
         
             <s:submit name="modificarCita" value="Actualizar"/>
         </s:form>
+        <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>

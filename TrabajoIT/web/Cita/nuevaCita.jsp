@@ -13,6 +13,7 @@
         <title>Nueva Cita</title>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
         <h1>Nueva Cita</h1>
         <h1>Num historial: <s:property value="#session.numHistorial"/></h1>
     <s:form name="altaCita" action="altaCita" method="post">
@@ -21,5 +22,6 @@
         <s:textfield name="motivo" label="Motivo"/>
         <s:submit name="altaCita" value="Reservar"/>
     </s:form>
+    <jsp:include page="../FOOTER.jsp" />
 </body>
 </html>

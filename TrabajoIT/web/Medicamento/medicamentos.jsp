@@ -15,7 +15,7 @@
     <body>
         <jsp:include page="../HEADER.jsp" />
         <h1>Medicamentos disponibles</h1>
-        <s:if test="%{medicamentos.isEmpty()}">
+        <s:if test="%{medicamentos!=null}">
             <table>
                 <thead>
                     <tr>
@@ -26,35 +26,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <s:iterator var="medicamentos" value="medicamento">
                         <tr>
-                            <td><s:property value="#medicamento.id"/></td>
-                            <td><s:property value="#medicamento.nombre"/></td>
-                            <td><s:property value="#medicamento.fechaCaducidad"/></td>
-                            <td>
-                                <s:form action="actualizarMedicamento" method="post">
-                                    <s:hidden name="idMedicamentoActualiza" value="%{#medicamento.id}"/>
-                                    <button type="submit">Actualizar</button>
-                                </s:form>
-                            </td>
+                            <td><s:property value="medicamentos.id"/></td>
+                            <td><s:property value="medicamentos.nombre"/></td>
+                            <td><s:property value="medicamentos.fechaCaducidad"/></td>
                             <td>
                                 <s:form action="eliminarMedicamento" method="post">
-                                    <s:hidden name="idMedicamentoModificar" value="%{#medicamento.id}"/>
+                                    <s:hidden name="idMedicamentoEliminar" value="%{medicamentos.id}"/>
                                     <button type="submit">Eliminar</button>
                                 </s:form>
                             </td>
                         </tr>
-                    </s:iterator>
                 </tbody>
             </table>
         </s:if>
         <s:else>
-            <p>No se encontraron medicamentos disponibles.</p>
-            <s:form action="opcionesAdicionalesMedicamento" method="post">
-                <s:submit name="boton" value="Volver"/>
-                <s:submit name="boton" value="LogOut"/>
-            </s:form>
+            <p>No hay medicamentos asociados a esta cita.</p>
         </s:else>
-    <jsp:include page="../FOOTER.jsp" />
+        <s:form action="opcionesAdicionalesMedicamento" method="post">
+            <s:submit name="boton" value="Volver"/>
+            <s:submit name="boton" value="LogOut"/>
+        </s:form>
+        <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>

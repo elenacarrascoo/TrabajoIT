@@ -107,7 +107,8 @@
             <result name="consultarAgenda">/Veterinario/agenda.jsp</result>           
             <result name="modificarDatos">/Veterinario/modificarDatos.jsp</result>           
             <result name="consultarCompañeros">/Veterinario/compañeros.jsp</result>            
-            <result name="bajaVeterinario">/Veterinario/bajaVeterinario.jsp</result>            
+            <result name="bajaVeterinario">/Veterinario/bajaVeterinario.jsp</result> 
+            <result name="gestionMedicamentos">/Medicamento/medicamentos.jsp</result>          
             <result name="success">/login.jsp</result>            
             <result name="salir">/index.jsp</result>            
             <result name="cancelar">/registro.jsp</result>         
@@ -166,7 +167,7 @@
             <result name="input">/Cita/nuevaCita.jsp</result>
         </action>
        
-        <action name="opcionesAdicionalesCita" class="acciones.citaAction">
+        <action name="opcionesAdicionalesCita" class="acciones.citaAction" method="opciones">
             <result name="propietarioPaciente" type="redirectAction">verPacientes</result>
             <result name="salir">/index.jsp</result>   
         </action>
@@ -231,12 +232,18 @@
             <result name="modificacion">/Veterinario/agenda.jsp</result>
         </action>
         
-        <action name="actualizarMedicamento" class="acciones.medicamentoAction" method="modificarMedicamento">
+        <action name="eliminarMedicamento" class="acciones.medicamentoAction" method="eliminarMedicamento">
             <result name="success">/Veterinario/agenda.jsp</result>
         </action>
-        
+
         <action name="formAltaMedicamento" class="acciones.medicamentoAction">
             <result>/Medicamento/altaMedicamento.jsp</result>
         </action>
+        
+       <action name="opcionesAdicionalesMedicamento" class="acciones.medicamentoAction" method="opcionesVolver">
+            <result name="agenda">/Veterinario/agenda.jsp</result>
+            <!--<result name="agenda"  type="redirectAction">consultarAgenda</result>-->
+            <result name="salir">/index.jsp</result>   
+        </action> 
     </package>
 </struts>

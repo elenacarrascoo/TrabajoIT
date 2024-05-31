@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import modelo.*;
 import org.apache.struts2.ServletActionContext;
+import persistencia.citaDAO;
 import persistencia.medicamentoDAO;
 import persistencia.veterinarioDAO;
 
@@ -40,7 +41,7 @@ public class veterinarioAction extends ActionSupport {
     private List<Veterinario> listaVeterinarios;
     private String dniVeterinario;
     private String idCita;
-    private List<Medicamento> medicamentos;
+    private Medicamento medicamentos;
 
     public String getIdCita() {
         return idCita;
@@ -139,11 +140,11 @@ public class veterinarioAction extends ActionSupport {
         this.citasVeterinario = citasVeterinario;
     }
 
-    public List<Medicamento> getMedicamentos() {
+    public Medicamento getMedicamentos() {
         return medicamentos;
     }
 
-    public void setMedicamentos(List<Medicamento> medicamentos) {
+    public void setMedicamentos(Medicamento medicamentos) {
         this.medicamentos = medicamentos;
     }
     
@@ -223,9 +224,10 @@ public class veterinarioAction extends ActionSupport {
                 return "actualizarMedicamento";
 
             case "Gestión Medicamentos":
-                medicamentoDAO mdao = new medicamentoDAO();
-                List<Medicamento> medicamentos = mdao.obtenerMedicamentos();
-                setMedicamentos(medicamentos);
+                citaDAO cdao = new citaDAO();
+                Cita c = cdao.obtenerCita(Integer.parseInt(idCita));
+                Medicamento m = c.getMedicamento();
+                this.setMedicamentos(m);
                 return "gestionMedicamentos";
 
             case "Cancelar":
@@ -244,6 +246,17 @@ public class veterinarioAction extends ActionSupport {
         }
     }
 
+    public String consultarAgenda(){
+        veterinarioDAO dao = new veterinarioDAO();
+        HttpServletRequest request = ServletActionContext.getRequest();
+        idCita = request.getParameter("idCita");
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        session.put("idCita",idCita);
+        Veterinario v = (Veterinario) session.get("veterinario");
+        citasVeterinario = dao.obtenerCitas(v.getDni());
+        return "consultarAgenda";
+    }
+    
     public void validate() {
         String actionName = ActionContext.getContext().getName();
 

@@ -98,6 +98,7 @@
                                 <s:form action="opcionesAgenda" method="post">
 
                                     <s:submit name="boton" value="Gestión Medicamentos" key="submit_gestionMedicamentos" />
+                                    <s:hidden name="idCita" value="%{#cita.id}" />
 
                                 </s:form>
 

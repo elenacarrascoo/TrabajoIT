@@ -48,10 +48,19 @@ public class medicamentoDAO {
         List<Medicamento> listadoCompleto = null;
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("from Medicamento");
+        Query q = session.createQuery("FROM Medicamento");
         listadoCompleto = (List<Medicamento>) q.list();
         tx.commit();
         return listadoCompleto;
+    }
+    
+    public Medicamento obtenerMedicamento(int id){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Medicamento m;
+        Query q = session.createQuery("FROM Medicamento WHERE id =" +id);
+        m = (Medicamento) q.uniqueResult();
+        return m;
     }
    
 }

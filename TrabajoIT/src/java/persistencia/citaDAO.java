@@ -16,6 +16,7 @@ import java.util.List;
 import modelo.Cita;
 import modelo.HibernateUtil;
 import modelo.Historial;
+import modelo.Medicamento;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -94,6 +95,15 @@ public class citaDAO {
         tx.commit();
         return citasPendientes;
     } 
+    
+    public Medicamento obtenerMedicamentoCita(int idCita){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("SELECT idMedicamento FROM Cita where id = " + idCita);
+        Medicamento m = (Medicamento) q.uniqueResult();
+        tx.commit();
+        return m;
+    }
     /*
     public List<Cita> obtenerCitasHistorial(Historial historial){
         List<Cita> citas = null;
