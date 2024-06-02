@@ -203,7 +203,7 @@ public class citaAction extends ActionSupport {
         String fechaString = formater.format(cita.getFecha());
         SimpleDateFormat formaterHora = new SimpleDateFormat("HH:mm:ss");
         String horaString = formaterHora.format(cita.getHora());
-      //  enviarCorreo(p.getCorreo(), fechaString, horaString, cita.getMotivo(), importeFactura);
+        enviarCorreo(p.getCorreo(), fechaString, horaString, cita.getMotivo(), importeFactura);
         
         session.remove("idPaciente");
         return SUCCESS;
@@ -332,11 +332,11 @@ public class citaAction extends ActionSupport {
         }
     }
 
-  /*  private static void enviarCorreo(java.lang.String destinatario, java.lang.String fecha, java.lang.String hora, java.lang.String motivo, int importeFactura) {
+    private static void enviarCorreo(java.lang.String destinatario, java.lang.String fecha, java.lang.String hora, java.lang.String motivo, int importeFactura) {
         misservicios.CorreoWS_Service service = new misservicios.CorreoWS_Service();
         misservicios.CorreoWS port = service.getCorreoWSPort();
         port.enviarCorreo(destinatario, fecha, hora, motivo, importeFactura);
-    }   */
+    }   
 
 
     

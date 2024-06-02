@@ -25,6 +25,7 @@
                 <p><strong>Edad:</strong> <s:property value="#session.paciente.edad"/></p>
                 <p><strong>Fecha de nacimiento:</strong> <s:property value="#session.paciente.fechaNacimiento"/></p>
                 <p><strong>Nombre Propietario:</strong> <s:property value="#session.paciente.propietario.nombre"/></p>
+                <img src="${pageContext.request.contextPath}${paciente.foto}" alt="sinFoto" width="100" height="100">  
             </div>
         </body>
         <a href="<s:url action='volverPacienteActual'/>" class="btnModificado btn mt-5">

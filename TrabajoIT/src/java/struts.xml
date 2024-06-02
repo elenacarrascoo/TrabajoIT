@@ -44,6 +44,10 @@
             <result name="input">/Propietario/altaPropietario.jsp</result>
         </action>
         
+        <action name="borrarPropietario" class="acciones.propietarioAction" method="borrarPropietario">
+            <result name="success">/index.jsp</result>
+        </action>
+        
         <action name="formAltaPaciente">
             <result>/Paciente/altaPaciente.jsp</result>
         </action>

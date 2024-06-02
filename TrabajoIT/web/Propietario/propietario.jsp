@@ -49,7 +49,14 @@
                 </div>
                 
             </div>
-            
+            <div class="row col-12 mt-5">
+                <div class="col-12 mt-3 text-center">
+                    <h2>Borrar cuenta</h2>
+                    <a href="<s:url action='borrarPropietario'/>" class="btnModificado btn">
+                        <s:text name="submit_eliminarPropietario" />
+                    </a>
+                </div>
+            </div>
         </div>
         
         <jsp:include page="../FOOTER.jsp" />

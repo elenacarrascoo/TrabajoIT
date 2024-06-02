@@ -134,6 +134,14 @@ public class propietarioAction extends ActionSupport {
         return SUCCESS;
     }
     
+    public String borrarPropietario(){
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        Propietario p = (Propietario) session.get("propietario");
+        propietarioDAO pdao = new propietarioDAO();
+        pdao.bajaPropietario(p);
+        return SUCCESS;
+    }
+    
     public void validate() {
         String actionName = ActionContext.getContext().getName();
 
