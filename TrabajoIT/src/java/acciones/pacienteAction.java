@@ -156,6 +156,8 @@ public class pacienteAction extends ActionSupport {
             FileUtils.copyFile(this.getImage(), new File(filePath, fileName));
 
             p.setFoto("/FOTOS/" + fileName);
+        }else{
+            p.setFoto("/FOTOS/predeterminada.png");
         }
         pdao.altaPaciente(p);
         return SUCCESS;
