@@ -126,15 +126,12 @@ public class CorreoWS {
         String fechaFormateada = formatoFecha.format(fechaActual);
         String nombre = "cita_" + fechaFormateada + ".pdf";
 
-        
-        
-        // Instantiate HtmlFragment object with corresponding HTML fragment
         HtmlFragment t = new HtmlFragment("<body style='line-height: 100px;'><ul><li>Fecha de la cita: "+ fecha +"</li><li>Hora de la fecha: "+hora+"</li><li>Motivo de la cita: "+motivo+"</li></ul>Importe a pagar por esta cita <strong>"+importeFactura+"</strong>></body>");
 
         Page page = doc.getPages().add();
-        // Add HtmlFragment inside page
+
         page.getParagraphs().add(t);
-        // Save resultant PDF file
+
         doc.save(nombre);
         return nombre;
     }

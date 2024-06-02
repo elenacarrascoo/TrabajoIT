@@ -17,7 +17,9 @@ import modelo.Cita;
 import modelo.HibernateUtil;
 import modelo.Historial;
 import modelo.Medicamento;
+import modelo.Paciente;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -104,17 +106,20 @@ public class citaDAO {
         tx.commit();
         return m;
     }
-    /*
-    public List<Cita> obtenerCitasHistorial(Historial historial){
+    
+    
+    public List<Cita> obtenerCitas(Paciente p, Date fecha, Date hora){
         List<Cita> citas = null;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("from Cita where numHistorial =:numHistorial");
-        q.setParameter("numHistorial", historial.getNumHistorial());
+        String sql = "SELECT * FROM Cita c JOIN Historial h ON c.id = h.idCita WHERE h.idPaciente = :idPaciente AND fecha > :fecha OR (fecha = :fecha AND hora > :hora)";
+        SQLQuery q = session.createSQLQuery(sql);
+        q.setParameter("idPaciente", p.getId());
+        q.setParameter("fecha", fecha);
+        q.setParameter("hora", hora);
+        q.addEntity(Cita.class);
         citas = (List<Cita>) q.list();
         tx.commit();
         return citas;
-    } 
-*/
-    
+    }     
 }

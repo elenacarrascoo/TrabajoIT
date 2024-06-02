@@ -96,6 +96,24 @@ public class veterinarioDAO {
         
     }
      
-
+    public List<String> listadoVeterinarios() {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("SELECT nombre FROM Veterinario");
+        List lista = (List<String>) q.list();
+        tx.commit();
+        System.out.println(lista);
+        return lista;
+    }
+    
+        public Veterinario obtenerVeterinarioNombre(String nombre){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("From Veterinario where nombre='" + nombre + "'");
+        Veterinario veterinario = (Veterinario)q.uniqueResult();
+        tx.commit();
+        return veterinario;
+        
+    }
 }
 

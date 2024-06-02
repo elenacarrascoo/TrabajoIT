@@ -47,6 +47,8 @@ public class citaAction extends ActionSupport {
     Veterinario veterinario;
     Veterinario veterinarioSeleccionado;
     List<Veterinario> veterinariosDisponibles;
+    List<String> veterinarios;
+    String veterinarioDisponible;
 
     String fecha;
     String hora;
@@ -54,7 +56,7 @@ public class citaAction extends ActionSupport {
     String boton;
     
     List<Cita> citasPendientes;
-
+    
     public int getIdCitaModificar() {
         return idCitaModificar;
     }
@@ -150,13 +152,32 @@ public class citaAction extends ActionSupport {
     public void setBoton(String boton) {
         this.boton = boton;
     }
-    
+
+    public List<String> getVeterinarios() {
+        return veterinarios;
+    }
+
+    public void setVeterinarios(List<String> veterinarios) {
+        this.veterinarios = veterinarios;
+    }
+
+    public String getVeterinarioDisponible() {
+        return veterinarioDisponible;
+    }
+
+    public void setVeterinarioDisponible(String veterinarioDisponible) {
+        this.veterinarioDisponible = veterinarioDisponible;
+    }
+
     public citaAction() {
     }
 
     public String execute() throws Exception {
         Map<String, Object> session = ActionContext.getContext().getSession();
         session.put("idPaciente", this.getIdPaciente());
+        veterinarioDAO vdao = new veterinarioDAO();
+        List<String> veterinarios = vdao.listadoVeterinarios();
+        this.setVeterinarios(veterinarios);
         return SUCCESS;
     }
 
@@ -169,24 +190,17 @@ public class citaAction extends ActionSupport {
         Date fechaFormateada = formatoFecha.parse(this.getFecha());
 
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
-        Date hora = formatoHora.parse(this.getHora());
-        
-        //Falta asignar como asingar el veterinario
-        //Ver lo de Id Cita
-        
-        //Historial h = hdao.obtenerHistorial((int) session.get("numHistorial"));
-        //Historial h = hdao.obtenerHistorial(1);      
+        Date hora = formatoHora.parse(this.getHora()); 
+            
         veterinarioDAO vdao = new veterinarioDAO();
-        Veterinario v = vdao.obtenerVeterinario("43220987M");
+        Veterinario v = vdao.obtenerVeterinarioNombre(this.getVeterinarioDisponible());
         
-        Veterinario vSelector = this.getVeterinarioSeleccionado();
         Random random = new Random();
         int importeFactura = random.nextInt((99 - 0) + 1) + 0;
         Factura f = new Factura((Propietario) session.get("propietario"), new Date(), importeFactura);
         facturaDAO fdao = new facturaDAO();
         fdao.altaFactura(f);
         Cita cita = new Cita(f, v, fechaFormateada, hora, this.getMotivo());
-        //Cita cita = new Cita(f, vSelector, fechaFormateada, hora, this.getMotivo());
         c.altaCita(cita);
         
         
@@ -196,8 +210,24 @@ public class citaAction extends ActionSupport {
         historialDAO hdao = new historialDAO();
         hdao.altaHistorial(h);
         
-        //List<Cita> citasPendientes = c.obtenerCitasHistorial(h);
-        //this.setCitasPendientes(citasPendientes);
+        
+        Date fechaHoraActual = new Date();
+        
+        SimpleDateFormat formatoF = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatoH = new SimpleDateFormat("HH:mm:ss");
+
+        String fechaActualStr = formatoF.format(fechaHoraActual); // Solo la fecha
+        String horaActualStr = formatoH.format(fechaHoraActual); // Solo la hora
+        
+        Date fechaActual = formatoFecha.parse(fechaActualStr); 
+        Date horaActual = formatoHora.parse(horaActualStr); 
+        
+        
+        List<Cita> citasPendientes = c.obtenerCitas(paciente, fechaActual, horaActual);
+        this.setCitasPendientes(citasPendientes);
+        
+        
+        
         Propietario p = (Propietario) session.get("propietario");
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
         String fechaString = formater.format(cita.getFecha());
@@ -242,34 +272,16 @@ public class citaAction extends ActionSupport {
         pacienteDAO pdao = new pacienteDAO();
         Paciente p = pdao.obtenerPaciente(this.getPacienteConsultar());
         
-        historialDAO hdao = new historialDAO();
-        List<Historial> h = hdao.obtenerHistorialPaciente(p);
-        setHistorialConsultar(h);
         
-        /*for(int i=0; i<h.size(); i++){
-            Cita cita = h.get(i).getCita();
-            if(c.comprobarCitaPendiente(cita, fechaActual, horaActual) == true){
-                this.citasPendientes.add(cita);
-            }
-        }*/
+        citaDAO cdao = new citaDAO();
+        List<Cita> citasPendientes = cdao.obtenerCitas(p, fechaActual, horaActual);
+        this.setCitasPendientes(citasPendientes);
         
-        List<Cita> todasPendientes = c.obtenerCitaPendiente(fechaActual, horaActual);
-        /*for(int i=0; i<h.size(); i++){
-            for(int j=0; j<todasPendientes.size(); j++){
-                if(h.get(i).getCita().getId() == todasPendientes.get(j).getId()){
-                    this.citasPendientes.add(h.get(i).getCita());
-                }
-            }
-        }*/
-        //List<Cita> citasPendientes = c.obtenerCitasPendientes(h, fechaActual, horaActual);
-
-        //session.put("citasPendientes", citasPendientes);
-        //this.setCitasPendientes(citasPendientes);
         return SUCCESS;
     }
 
     public String modificarCita() throws ParseException {
-        //Map<String, Object> session = ActionContext.getContext().getSession();
+        
         citaDAO c = new citaDAO();
         Cita citaModificar = c.obtenerCita(this.getIdCitaModificar());
 
@@ -287,7 +299,6 @@ public class citaAction extends ActionSupport {
     }
 
     public String eliminarCita() {
-       //Map<String, Object> session = ActionContext.getContext().getSession();
         citaDAO c = new citaDAO();
         Cita citaEliminar = c.obtenerCita(this.getIdCitaModificar());
         c.bajaCita(citaEliminar);
