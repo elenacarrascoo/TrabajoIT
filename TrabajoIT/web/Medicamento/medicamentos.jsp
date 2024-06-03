@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Medicamentos</title>
     </head>
     <body>
         <jsp:include page="../HEADER.jsp" />
@@ -35,6 +35,10 @@
                                     <s:hidden name="idMedicamentoEliminar" value="%{medicamentos.id}"/>
                                     <button type="submit">Eliminar</button>
                                 </s:form>
+                                <s:form action="formActualizarMedicamento" method="post">
+                                    <s:hidden name="idMedicamentoModificar" value="%{#medicamento.id}"/>
+                                    <button type="submit">Actualizar</button>
+                                </s:form>
                             </td>
                         </tr>
                 </tbody>

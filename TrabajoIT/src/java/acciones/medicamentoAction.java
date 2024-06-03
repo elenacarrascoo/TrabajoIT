@@ -31,6 +31,7 @@ public class medicamentoAction extends ActionSupport {
     private int idCita;
     private List<Medicamento> medicamentos;
     private int idMedicamentoEliminar;
+    private int idMedicamentoModificar;
     private String medicamento;
     private String boton;
     
@@ -89,8 +90,15 @@ public class medicamentoAction extends ActionSupport {
     public void setBoton(String boton) {
         this.boton = boton;
     }
-    
 
+    public int getIdMedicamentoModificar() {
+        return idMedicamentoModificar;
+    }
+
+    public void setIdMedicamentoModificar(int idMedicamentoModificar) {
+        this.idMedicamentoModificar = idMedicamentoModificar;
+    }
+    
     public String execute() throws Exception {
         Map<String, Object> session = ActionContext.getContext().getSession();
         citaDAO cdao = new citaDAO();
@@ -114,6 +122,27 @@ public class medicamentoAction extends ActionSupport {
         return SUCCESS;
     }
     
+    public String formActualizarMedicamento(){
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        medicamentoDAO mdao = new medicamentoDAO();
+        Medicamento m = mdao.obtenerMedicamento(this.idMedicamentoModificar);
+        session.put("medicamentoModificar", m);
+        return SUCCESS;
+    }
+    
+    public String actualizarMedicamento() throws ParseException{
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
+        Date fechaFormateada = formatoFecha.parse(this.getFechaCaducidad());
+        medicamentoDAO daoM = new medicamentoDAO();
+        Medicamento m = (Medicamento) session.get("medicamentoModificar");
+        m.setNombre(this.getNombre());
+        m.setFechaCaducidad(fechaFormateada);
+        daoM.actualizarMedicamento(m);
+        return SUCCESS;
+    }
+    /* 
+    
     public String modificarMedicamento() throws ParseException{
         Map<String, Object> session = ActionContext.getContext().getSession();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
@@ -126,7 +155,7 @@ public class medicamentoAction extends ActionSupport {
         medicamentos = daoM.obtenerMedicamentos();
         return SUCCESS;
     }
-    
+    */
     public String eliminarMedicamento() throws ParseException{
         medicamentoDAO mDAO = new medicamentoDAO();
         Medicamento m = mDAO.obtenerMedicamento(getIdMedicamentoEliminar());

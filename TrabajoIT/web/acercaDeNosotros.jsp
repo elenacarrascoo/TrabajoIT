@@ -33,8 +33,8 @@
 
             <h2>Nuestro Equipo</h2>
             <div>
-                <h3>Dr. Ana López - Directora Veterinaria</h3>
-                <p>Con más de 15 años de experiencia en medicina veterinaria, la Dra. Ana López es una experta en diagnóstico y tratamiento de enfermedades animales. Su dedicación y amor por los animales la han convertido en una figura respetada en la comunidad veterinaria de Sevilla.</p>
+                <h3>Dr. Elena Carrasco - Directora Veterinaria</h3>
+                <p>Con más de 15 años de experiencia en medicina veterinaria, la Dra. Elena Carrasco es una experta en diagnóstico y tratamiento de enfermedades animales. Su dedicación y amor por los animales la han convertido en una figura respetada en la comunidad veterinaria de Sevilla.</p>
             </div>
             <div>
                 <h3>Dr. Carlos Martínez - Especialista en Cirugía</h3>

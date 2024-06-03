@@ -256,6 +256,13 @@
             <result>/Medicamento/altaMedicamento.jsp</result>
         </action>
         
+        <action name="formActualizarMedicamento" class="acciones.medicamentoAction" method="formActualizarMedicamento">
+            <result>/Medicamento/actualizarMedicamento.jsp</result>
+        </action>
+
+        <action name="actualizarMedicamento" class="acciones.medicamentoAction" method="actualizarMedicamento">
+            <result name="success">/Medicamento/medicamentos.jsp</result>
+        </action>
         
        <action name="opcionesAdicionalesMedicamento" class="acciones.medicamentoAction" method="opcionesVolver">
             <result name="agenda">/Veterinario/agenda.jsp</result>
