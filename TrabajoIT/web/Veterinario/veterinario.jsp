@@ -61,6 +61,14 @@
                         <s:submit name="boton" value="Consultar Tratamientos" />
                     </s:form>
                 </div>
+                
+                <div class="form-container">
+
+                    <s:form action="consultaFacturas" method="post">
+                        <s:submit name="gestionFacturas" value="Gestion Facturas" />
+                    </s:form>
+
+                </div>
 
                 <div class="form-container">
 
