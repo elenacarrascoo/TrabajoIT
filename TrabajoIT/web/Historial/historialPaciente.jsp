@@ -73,7 +73,7 @@
                             <tr>
                                 <td><s:property value="#historial.cita.id"/></td>
                                 <td><s:property value="#historial.cita.fecha"/></td>
-                                <td><s:property value="#hsitorial.cita.hora"/></td>
+                                <td><s:property value="#historial.cita.hora"/></td>
                                 <td><s:property value="#historial.cita.motivo"/></td>
                                 <td><s:property value="#historial.cita.veterinario.dni"/></td>   
                                 <td><s:property value="#historial.cita.tratamiento.tipo"/></td>

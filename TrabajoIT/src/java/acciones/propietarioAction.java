@@ -139,6 +139,7 @@ public class propietarioAction extends ActionSupport {
         Propietario p = (Propietario) session.get("propietario");
         propietarioDAO pdao = new propietarioDAO();
         pdao.bajaPropietario(p);
+        session.clear();
         return SUCCESS;
     }
     

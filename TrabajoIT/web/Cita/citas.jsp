@@ -58,10 +58,9 @@
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Motivo</th>
-                        <th>Numero de Historial Asociado</th>
                         <th>Veterinatio responsable</th>
                         <th>Tratamiento realizado</th>
-                        <th>Receta</th>
+                        <th>Medicamento</th>
                         <th>Factura</th>
                     </tr>
                 </thead>
@@ -72,10 +71,9 @@
                             <td><s:property value="#cita.fecha"/></td>
                             <td><s:property value="#cita.hora"/></td>
                             <td><s:property value="#cita.motivo"/></td>
-                            <td><s:property value="#cita.historial.numHistorial"/></td>
                             <td><s:property value="#cita.veterinario.dni"/></td>
                             <td><s:property value="#cita.tratamiento.id"/></td>
-                            <td><s:property value="#cita.receta.id"/></td>
+                            <td><s:property value="#cita.medicamento.id"/></td>
                             <td><s:property value="#cita.factura.numFactura"/></td>
                             <td>
                                 <s:form action="actualizarCita" method="post">

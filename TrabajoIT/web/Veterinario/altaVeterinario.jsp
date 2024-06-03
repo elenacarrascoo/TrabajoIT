@@ -67,7 +67,7 @@
 
                                         <td class="tdLabel">
                                             <div class="form-floating">
-                                            <s:textfield name="password" label="Password" required="true" key="password.requerida"></s:textfield>
+                                            <s:password name="password" label="Password" required="true" key="password.requerida"></s:password>
                                             </div>
                                         </td>
 

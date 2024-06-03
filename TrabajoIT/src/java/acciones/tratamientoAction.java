@@ -140,7 +140,6 @@ public class tratamientoAction extends ActionSupport {
                 tratamiento = new Tratamiento(tipo, fechaFormateada, precio, resultados);
                 dao.crearTratamiento(tratamiento);
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
-
                 return "registro";
 
             case "Consultar Tratamientos":

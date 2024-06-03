@@ -14,6 +14,7 @@
         <title>Tus facturas</title>
     </head>
     <body>
+        <jsp:include page="../HEADER.jsp" />
         <h1>Tus facturas</h1>
         <table border="1" class="wwFormTable">
             <thead>
@@ -21,7 +22,6 @@
                     <th>Numero factura</th>
                     <th>Fecha</th>
                     <th>Importe</th>
-                    <th>Cita</th>
                     <th>Propietario</th>
                     <th>Acciones</th>
                 </tr>
@@ -32,7 +32,6 @@
                         <td><s:property value="#factura.numFactura"/></td>
                         <td><s:property value="#factura.fecha"/></td>
                         <td><s:property value="#factura.importe"/></td>
-                        <td><s:property value="#factura.cita.id"/></td>
                         <td><s:property value="#factura.propietario.dni"/></td>
                         <td>
                             <s:form action="eliminarFactura" method="post">
@@ -53,5 +52,6 @@
         <s:form action="volverPropietario" method="post">
             <s:submit name="volverPropietario" value="Volver"/>
         </s:form>
+        <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>
