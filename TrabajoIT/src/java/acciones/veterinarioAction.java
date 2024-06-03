@@ -263,17 +263,6 @@ public class veterinarioAction extends ActionSupport {
             throw new ClassCastException("El objeto en la sesión no es del tipo Veterinario");
         }
     }
-
-    public String consultarAgenda(){
-        veterinarioDAO dao = new veterinarioDAO();
-        HttpServletRequest request = ServletActionContext.getRequest();
-        idCita = request.getParameter("idCita");
-        Map<String, Object> session = ActionContext.getContext().getSession();
-        session.put("idCita",idCita);
-        Veterinario v = (Veterinario) session.get("veterinario");
-        citasVeterinario = dao.obtenerCitas(v.getDni());
-        return "consultarAgenda";
-    }
     
     public void validate() {
         String actionName = ActionContext.getContext().getName();
