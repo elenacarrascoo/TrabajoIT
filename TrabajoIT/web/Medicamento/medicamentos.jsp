@@ -33,11 +33,11 @@
                             <td>
                                 <s:form action="eliminarMedicamento" method="post">
                                     <s:hidden name="idMedicamentoEliminar" value="%{medicamentos.id}"/>
-                                    <button type="submit">Eliminar</button>
+                                    <s:submit action="eliminarMedicamento" key="submit_eliminarMedicamento"/>
                                 </s:form>
                                 <s:form action="formActualizarMedicamento" method="post">
                                     <s:hidden name="idMedicamentoModificar" value="%{#medicamento.id}"/>
-                                    <button type="submit">Actualizar</button>
+                                    <<s:submit action="formActualizarMedicamento" key="submit_actualizarMedicamento"/>
                                 </s:form>
                             </td>
                         </tr>

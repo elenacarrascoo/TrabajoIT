@@ -18,7 +18,7 @@
         <s:form action="medicamentoActions" method="actualizarMedicamento">
             <s:textfield name="nombre" label="Nombre" required="true"/>
             <s:textfield name="fechaCaducidad" label="Fecha de Caducidad" required="true"/>
-            <s:submit  name="Enviar" value="Enviar"/>
+            <s:submit  name="Enviar" key="actualizarMedicamento"/>
         </s:form>
         <jsp:include page="../FOOTER.jsp" />
     </body>

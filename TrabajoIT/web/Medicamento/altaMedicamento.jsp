@@ -19,7 +19,7 @@
         <s:form action="altaMedicamento" method="post">
             <s:textfield name="nombre" label="Nombre medicamento"/>
             <s:textfield name="fechaCaducidad" label="Fecha de caducidad" type="date"/>
-            <s:submit name="altaMedicamento" value="Añadir medicamento"/>
+            <s:submit name="altaMedicamento" key="submit_altaMedicamento"/>
         </s:form>
         <jsp:include page="../FOOTER.jsp" />
     </body>

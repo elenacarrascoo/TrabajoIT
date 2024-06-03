@@ -19,7 +19,7 @@
 
         <s:form action="modificarFactura" method="post">
             <s:textfield name="importe" label="Importe"/>
-            <s:submit name="modificarFactura" value="Cambiar importe"/>
+            <s:submit name="modificarFactura" key="submit_actualizarFactura"/>
         </s:form>
     </body>
 

@@ -312,19 +312,19 @@ public class citaAction extends ActionSupport {
         if (actionName.equals("altaCita") || actionName.equals("modificarCita")) {
             
             if (this.getFecha().equals("")) {
-                addFieldError("fecha", "Introduce la fecha");
+                addFieldError("fecha", getText("fecha.requerido"));
             } else {
                 SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-mm-dd");
                 formatoFecha.setLenient(false);
                 try {
                     formatoFecha.parse(this.getFecha());
                 } catch (ParseException e) {
-                    addFieldError("fecha", "Formato de fecha inválido. Utiliza YYYY-mm-dd.");
+                    addFieldError("fecha", getText("fecha.formato"));
                 }
             }
 
             if (this.getHora().equals("")) {
-                addFieldError("hora", "Introduce la hora");
+                addFieldError("hora", getText("hora.requerido"));
             } else {
                 // Validar formato de hora
                 SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
@@ -332,12 +332,12 @@ public class citaAction extends ActionSupport {
                 try {
                     formatoHora.parse(this.getHora());
                 } catch (ParseException e) {
-                    addFieldError("hora", "Formato de hora inválido. Utiliza HH:mm:ss.");
+                    addFieldError("hora", getText("hora.formato"));
                 }
             }
 
             if (this.getMotivo().equals("")) {
-                addFieldError("motivo", "Introduce el motivo");
+                addFieldError("motivo", getText("motivo.requerido"));
             }
 
         }
