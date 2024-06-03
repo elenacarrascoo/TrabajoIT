@@ -298,7 +298,7 @@ public class citaAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public String eliminarCita() {
+    public String eliminarCita() throws ParseException {
         citaDAO c = new citaDAO();
         Cita citaEliminar = c.obtenerCita(this.getIdCitaModificar());
         c.bajaCita(citaEliminar);
