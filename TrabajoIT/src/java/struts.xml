@@ -129,7 +129,7 @@
         <action name="modificacionVeterinario" class="acciones.veterinarioAction">  
             <result name ="modificacionVeterinario">/Veterinario/veterinario.jsp</result>  
         </action>   
-         
+        
         <action name="opcionesAdicionales" class="acciones.veterinarioAction">
             <result name="generarFactura">/Factura/altaFactura.jsp</result>
             <result name="volver">/Veterinario/veterinario.jsp</result>
@@ -159,7 +159,7 @@
         </action>
         
         <action name="modificarCita" class="acciones.citaAction" method="modificarCita">
-            <result name="success"  type="redirectAction">citasPendientes</result>
+            <result name="success" type="redirectAction">citasPendientes</result>
         </action>
         
         <action name="cogerCita" class="acciones.citaAction">
@@ -226,9 +226,17 @@
             <result name="success" type="redirectAction">verFacturas</result>
         </action>
         
+        <action name="consultaFacturas" class="acciones.facturaAction" method="consultaFacturas">
+            <result name="success">/Factura/facturasVeterinario.jsp</result>
+        </action>
         <action name="volverPropietario">
             <result>/Propietario/propietario.jsp</result>
         </action>
+        
+        <action name="volverVeterinario">
+            <result>/Veterinario/veterinarios.jsp</result>
+        </action>
+        
     </package>
     
     <package name="medicamentoActions" extends="struts-default">
@@ -244,6 +252,7 @@
         <action name="formAltaMedicamento" class="acciones.medicamentoAction">
             <result>/Medicamento/altaMedicamento.jsp</result>
         </action>
+        
         
        <action name="opcionesAdicionalesMedicamento" class="acciones.medicamentoAction" method="opcionesVolver">
             <result name="agenda">/Veterinario/agenda.jsp</result>

@@ -110,6 +110,14 @@ public class facturaAction extends ActionSupport {
        return SUCCESS;
     }
     
+    public String consultaFacturas(){
+       Map<String, Object> session = ActionContext.getContext().getSession();
+       facturaDAO fdao = new facturaDAO();
+       List<Factura> listaFacturas = fdao.obtenerFacturas();
+       this.setFacturas(listaFacturas);
+       return SUCCESS;
+    }
+    
     /*
     public String consultarFactura(){
         facturaDAO fdao = new facturaDAO();
