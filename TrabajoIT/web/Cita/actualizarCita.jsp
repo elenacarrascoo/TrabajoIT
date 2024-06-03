@@ -19,7 +19,7 @@
             <s:textfield name="fecha" label="Fecha" type="date"/>
             <s:textfield name="hora" label="Hora"/>
         
-            <s:submit name="modificarCita" value="Actualizar"/>
+            <s:submit name="modificarCita" key="submit_actualizarCita"/>
         </s:form>
         <jsp:include page="../FOOTER.jsp" />
     </body>

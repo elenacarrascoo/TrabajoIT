@@ -20,7 +20,7 @@
         <s:textfield name="hora" label="Hora"/>
         <s:textfield name="motivo" label="Motivo"/>
         <s:select name="veterinarioDisponible" label="Veterinario" cssClass="form-control" placeholder="Veterinario" list="veterinarios"/>                                                  
-        <s:submit name="altaCita" value="Reservar"/>
+        <s:submit name="altaCita" key="submit_reservarCita"/>
     </s:form>
     <jsp:include page="../FOOTER.jsp" />
 </body>

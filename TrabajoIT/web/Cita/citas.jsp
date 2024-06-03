@@ -78,13 +78,13 @@
                             <td>
                                 <s:form action="actualizarCita" method="post">
                                     <s:hidden name="idCitaModificar" value="%{#cita.id}"/>
-                                    <button type="submit">Actualizar</button>
+                                    <s:submit name="actualizarCita" key="submit_actualizarCita"></s:submit>
                                 </s:form>
                             </td>
                             <td>
                                 <s:form action="eliminarCita" method="post">
                                     <s:hidden name="idCitaModificar" value="%{#cita.id}"/>
-                                    <button type="submit">Eliminar</button>
+                                    <s:submit name="eliminarCita" key="submit_eliminarCita"></s:submit>
                                 </s:form>
                             </td>
                         </tr>
@@ -93,7 +93,7 @@
             </table>
         </s:if>
         <s:else>
-            <p>No se encontraron citas pendientes.</p>
+            <p><s:text name="mensajeErrorCitas"/></p>
             <s:form action="opcionesAdicionalesCita" method="post">
                 <s:submit name="boton" value="Volver"/>
                 <s:submit name="boton" value="LogOut"/>
