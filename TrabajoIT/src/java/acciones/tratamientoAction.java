@@ -27,7 +27,7 @@ import persistencia.tratamientoDAO;
 public class tratamientoAction extends ActionSupport {
 
     private String boton;
-    private int id;
+    private int idTratamiento;
     private Cita cita;
     private String tipo;
     private String fecha;
@@ -53,13 +53,15 @@ public class tratamientoAction extends ActionSupport {
         this.boton = boton;
     }
 
-    public int getId() {
-        return id;
+    public int getIdTratamiento() {
+        return idTratamiento;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdTratamiento(int idTratamiento) {
+        this.idTratamiento = idTratamiento;
     }
+
+   
 
     public Cita getCita() {
         return cita;
@@ -133,6 +135,7 @@ public class tratamientoAction extends ActionSupport {
         Tratamiento tratamiento = new Tratamiento();
 
         switch (boton) {
+            
             case "Registrar Tratamiento":
 
                 SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
@@ -146,11 +149,12 @@ public class tratamientoAction extends ActionSupport {
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "verTratamientos";
 
-            case "Modificar Tratamiento":
+            case "Modificar_Tratamiento":
                 return "modificacion";
 
             case "Modificar":
                 tratamiento = (Tratamiento) session.get("tratamiento");
+                
                 if (tratamiento != null) {
 
                     tratamiento.setTipo(this.getTipo());
@@ -163,8 +167,9 @@ public class tratamientoAction extends ActionSupport {
 
                 }
 
-            case "Eliminar Tratamiento":
-                tratamiento = (Tratamiento) session.get("tratamiento");
+            case "Eliminar":
+                idTratamiento = (int) session.get("idtratamiento");
+                tratamiento = dao.obtenerTratamiento(idTratamiento);
                 dao.eliminarTratamiento(tratamiento);
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
 

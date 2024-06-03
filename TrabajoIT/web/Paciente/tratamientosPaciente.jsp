@@ -78,15 +78,14 @@
         </style>
     </head>
     <body>
-        <<<<<<< Updated upstream
+       
         <div class="container-fluid pt-3 pb-3" style="min-height: 70vh">
-            <h1>Los tratamientos son:</h1>
-            =======
+            
             <jsp:include page="../HEADER.jsp" />
 
 
             <h1>Los tratamientos son:</h1>
-            >>>>>>> Stashed changes
+           
 
             <s:if test="%{!listaTratamientos.isEmpty()}">
                 <table border="1">
@@ -111,12 +110,12 @@
                                 <td><s:property value="#tratamiento.resultados" /></td>
                                 <td>
                                     <s:form action="Tratamiento" method="post">
-                                        <s:submit name="boton" value ="Modificar Tratamiento" key="submit_modificarTratamiento" />
+                                        <s:submit name="boton" value ="Modificar_Tratamiento" />
                                         <s:hidden name="idTratamiento" value="%{#tratamiento.id}"/> 
                                     </s:form>
 
                                     <s:form action="Tratamiento" method="post">
-                                        <s:submit name="boton"  value="Eliminar Tratamiento" key="submit_eliminarTratamiento" />
+                                        <s:submit name="boton"  value="Eliminar" />
                                         <s:hidden name="idTratamiento" value="%{#tratamiento.id}"/> 
                                     </s:form>
                                 </td>

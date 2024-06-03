@@ -29,10 +29,10 @@ public class tratamientoDAO {
         tx.commit();
     }
 
-    public Tratamiento obtenerTratamiento(String idTratamiento) {
+    public Tratamiento obtenerTratamiento(int idTratamiento) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("From Tratamiento where idCita=:idCita");
+        Query q = session.createQuery("From Tratamiento where id=:idTratamiento");
         q.setParameter("idTratamiento", idTratamiento);
         Tratamiento tratamiento = (Tratamiento)q.uniqueResult();
         tx.commit();

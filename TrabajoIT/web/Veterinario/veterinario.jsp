@@ -35,7 +35,7 @@
                
 
                 <div class="form-container">
-                    <s:form action="veterinarioActions" method="post">
+                    <s:form action="consultaragenda" method="post">
                         <s:submit name="boton" value="Consultar Agenda" />
                     </s:form>
                 </div>

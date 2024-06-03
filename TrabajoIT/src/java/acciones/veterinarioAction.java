@@ -148,7 +148,6 @@ public class veterinarioAction extends ActionSupport {
         this.medicamentos = medicamentos;
     }
     
-    
 
     public String execute() throws Exception {
         System.out.println("Valor de boton: " + boton); // Para depuración
@@ -163,11 +162,6 @@ public class veterinarioAction extends ActionSupport {
         switch (boton) {
             case "Modificar Datos":
                 return "modificarDatos";
-
-            case "Consultar Agenda":
-                Veterinario v = (Veterinario) session.get("veterinario");
-                citasVeterinario = dao.obtenerCitas(v.getDni());
-                return "consultarAgenda";
 
             case "Consultar Compañeros":
                 listaVeterinarios = dao.obtenerCompañeros();
@@ -243,6 +237,30 @@ public class veterinarioAction extends ActionSupport {
 
                 return SUCCESS;
 
+        }
+    }
+    
+     public String consultarAgenda() {
+         
+        veterinarioDAO dao = new veterinarioDAO();
+        Map<String, Object> session = ActionContext.getContext().getSession();
+
+        // Depuración: Imprime el tipo del objeto en la sesión
+        Object sessionVeterinario = session.get("veterinario");
+        if (sessionVeterinario == null) {
+            System.out.println("El objeto 'veterinario' en la sesión es null");
+            throw new ClassCastException("El objeto en la sesión es null");
+        } else {
+            System.out.println("El tipo del objeto en la sesión es: " + sessionVeterinario.getClass().getName());
+        }
+
+        // Asegúrate de que el objeto en la sesión es del tipo Veterinario
+        if (sessionVeterinario instanceof Veterinario) {
+            Veterinario v = (Veterinario) sessionVeterinario;
+            citasVeterinario = dao.obtenerCitas(v.getDni());
+            return "consultarAgenda";
+        } else {
+            throw new ClassCastException("El objeto en la sesión no es del tipo Veterinario");
         }
     }
 

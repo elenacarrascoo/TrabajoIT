@@ -17,7 +17,7 @@
         <div class="container-fluid text-center" style="height: 79vh;">
             <div class="row h-100 justify-content-center">
                 <main class="form-signin col-lg-3 col-md-6 col-12 align-self-center">
-                    <h1 class="h3 mb-3 fw-normal">Modificación de tratamiento de </h1>
+                    <h1 class="h3 mb-3 fw-normal">Modificación de tratamiento</h1>
 
 
                     <s:form name="Tratamiento" action="Tratamiento" method="post">
@@ -26,10 +26,16 @@
 
                                 <tr>
 
-                                    <td class="tdLabel">
-                                        <div class="form-floating">
-                                            <s:textfield name="tipo" label="Tipo"  required="true" value="%{#session.tratamiento.tipo}" required="true"/>
-                                        </div></td>
+                                     <td class="tdLabel">
+                                            <div class="form-floating">
+                                            <s:select 
+                                                name="tipo" 
+                                                label="Tipo" 
+                                                list="{'Quirúrgico','Desparasitación','Exámenes Clínicos', 'Fisioterapia','Vacunación', 'Diagnóstico', 'Terapias Rehabilitativas', 'Esterilización y Castración','Diagnóstico por Imagen','Tratamiento de Enfermedades Crónicas' }" 
+                                                headerKey="-1" 
+                                                headerValue="Selecciona un tipo" required="true"/>
+                                        </div>
+                                    </td>
 
                                     <td class="tdLabel">
                                         <div class="form-floating">
