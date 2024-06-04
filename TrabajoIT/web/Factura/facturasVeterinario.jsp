@@ -74,7 +74,7 @@
                     </td>                      
                     <td>
                         <s:form action="formModificarFactura" method="post">
-                            <s:submit name="modificarFactura" key="submit_modificarFactura"/>
+                            <s:submit name="formModificarFactura" key="submit_modificarFactura"/>
                             <s:hidden name="numFactura" value="%{#factura.numFactura}"></s:hidden>
                         </s:form>
                     </td>

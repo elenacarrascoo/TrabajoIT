@@ -89,8 +89,12 @@ public class facturaAction extends ActionSupport {
     public String actualizarFactura() {
         Map<String, Object> session = ActionContext.getContext().getSession();
         Factura f = (Factura) session.get("factura");
+        
         f.setImporte(this.getImporte());
+        facturaDAO fdao = new facturaDAO();
+        fdao.actualizarFactura(f);
         session.remove("factura");
+        
         return SUCCESS;
     }
     

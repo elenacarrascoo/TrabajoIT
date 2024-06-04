@@ -224,26 +224,27 @@
             <result name="success">/Factura/propietarioFacturas.jsp</result>
         </action>
         <action name="eliminarFactura" class="acciones.facturaAction" method="eliminarFactura">
-            <result name="success">/Factura/propietarioFacturas.jsp</result>
+            <result name="success" type="redirectAction">consultaFacturas</result>
         </action>
         
         <action name="formModificarFactura" class="acciones.facturaAction">
-            <result name="success" type="redirectAction">verFacturas</result>
+            <result name="success">/Factura/actualizarFactura.jsp</result>
         </action>
         
         <action name="modificarFactura" class="acciones.facturaAction" method="actualizarFactura">
-            <result name="success" type="redirectAction">verFacturas</result>
+            <result name="success" type="redirectAction">consultaFacturas</result>
         </action>
         
         <action name="consultaFacturas" class="acciones.facturaAction" method="consultaFacturas">
             <result name="success">/Factura/facturasVeterinario.jsp</result>
         </action>
-        <action name="volverPropietario">
-            <result type="redirectAction">verFacturas</result>
-        </action>
         
         <action name="volverVeterinario">
-            <result type="redirectAction">consultaFacturas</result>
+            <result>/Veterinario/veterinario.jsp</result>
+        </action>
+        
+        <action name="volverFacturas" class="acciones.facturaAction" method="consultaFacturas">
+            <result name="success">/Factura/facturasVeterinario.jsp</result>
         </action>
         
         <action name="consultaFacturas" class="acciones.facturaAction" method="consultaFacturas">
