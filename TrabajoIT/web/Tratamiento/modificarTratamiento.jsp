@@ -33,13 +33,13 @@
                                                 label="Tipo" 
                                                 list="{'Quirúrgico','Desparasitación','Exámenes Clínicos', 'Fisioterapia','Vacunación', 'Diagnóstico', 'Terapias Rehabilitativas', 'Esterilización y Castración','Diagnóstico por Imagen','Tratamiento de Enfermedades Crónicas' }" 
                                                 headerKey="-1" 
-                                                headerValue="Selecciona un tipo" required="true"/>
+                                                headerValue="Selecciona un tipo" required="true" value="%{#session.tratamiento.tipo}"/>
                                         </div>
                                     </td>
 
                                     <td class="tdLabel">
                                         <div class="form-floating">
-                                            <s:textfield name="fecha" label="Fecha" type="date" value="%{#session.tratamiento.fecha}" required="true" />
+                                            <s:textfield name="fecha" label="Fecha" type="date" required="true" value="%{#session.tratamiento.fecha}"/>
                                         </div>
                                     </td>
 
@@ -60,7 +60,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div align="right">
-                                            <s:submit name="boton" value="Modificar"></s:submit>
+                                            <s:submit name="boton" value="Modificar"/>
                                             </div>
                                         </td>
                                     </tr>
