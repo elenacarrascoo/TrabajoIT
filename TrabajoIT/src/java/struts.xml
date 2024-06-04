@@ -20,6 +20,9 @@
         <action name="registrarForm">
             <result>/registro.jsp</result>
         </action>
+        <action name="volverInicio">
+            <result>/index.jsp</result>
+        </action>  
         
         <action name="login" class="acciones.indexAction">
             <result name="propietario">/Propietario/propietario.jsp</result>

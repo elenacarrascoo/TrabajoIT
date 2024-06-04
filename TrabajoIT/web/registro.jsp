@@ -23,6 +23,9 @@
             <s:radio label="Propietario / Veterinario" name="rolUsuario" list="{'propietario', 'veterinario'}"/>
             <s:submit value="aceptar" name="aceptar"></s:submit>
         </s:form>
+        <a href="<s:url action='volverInicio'/>" class="btnModificado btn mt-5">
+            <s:text name="submit_volver" />
+        </a> 
         <jsp:include page="FOOTER.jsp" />
     </body>
 </html>

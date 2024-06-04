@@ -126,7 +126,40 @@ public class CorreoWS {
         String fechaFormateada = formatoFecha.format(fechaActual);
         String nombre = "cita_" + fechaFormateada + ".pdf";
 
-        HtmlFragment t = new HtmlFragment("<body style='line-height: 100px;'><ul><li>Fecha de la cita: "+ fecha +"</li><li>Hora de la fecha: "+hora+"</li><li>Motivo de la cita: "+motivo+"</li></ul>Importe a pagar por esta cita <strong>"+importeFactura+"€</strong></body>");
+        String htmlContent = "<html>" +
+                "<head>" +
+                "<style>" +
+                "body { font-family: Arial, sans-serif; margin: 20px; }" +
+                ".factura { max-width: 800px; margin: auto; padding: 10px; border: 1px solid #eee; }" +
+                ".factura-header { background-color: #f7f7f7; padding: 10px 20px; margin-bottom: 20px; }" +
+                ".factura-header h1 { margin: 0; font-size: 24px; }" +
+                ".factura-body { margin: 20px 0; }" +
+                ".factura-body ul { list-style: none; padding: 0; }" +
+                ".factura-body li { margin: 10px 0; font-size: 18px; }" +
+                ".factura-footer { text-align: right; margin-top: 20px; font-size: 20px; font-weight: bold; }" +
+                "</style>" +
+                "</head>" +
+                "<body>" +
+                "<div class='factura'>" +
+                "<div class='factura-header'>" +
+                "<h1>Factura</h1>" +
+                "<p>Fecha de emisión: " + fechaActual.toString() + "</p>" +
+                "</div>" +
+                "<div class='factura-body'>" +
+                "<ul>" +
+                "<li><strong>Fecha de la cita:</strong> " + fecha + "</li>" +
+                "<li><strong>Hora de la cita:</strong> " + hora + "</li>" +
+                "<li><strong>Motivo de la cita:</strong> " + motivo + "</li>" +
+                "</ul>" +
+                "</div>" +
+                "<div class='factura-footer'>" +
+                "Importe a pagar: " + importeFactura + "€" +
+                "</div>" +
+                "</div>" +
+                "</body>" +
+                "</html>";
+
+        HtmlFragment t = new HtmlFragment(htmlContent);
 
         Page page = doc.getPages().add();
 
