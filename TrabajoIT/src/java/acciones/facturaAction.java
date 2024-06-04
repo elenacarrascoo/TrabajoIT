@@ -97,7 +97,12 @@ public class facturaAction extends ActionSupport {
     public String eliminarFactura() {
         facturaDAO f = new facturaDAO();
         Factura facturaEliminar = f.obtenerFactura(this.getNumFactura());
-        f.bajaFactura(facturaEliminar);
+        if(facturaEliminar != null){
+            f.bajaFactura(facturaEliminar);
+        }else{
+            return "Error al coger la factura";
+        }
+        
         return SUCCESS;
     }
     

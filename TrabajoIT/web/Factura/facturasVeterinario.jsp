@@ -69,13 +69,13 @@
                     <td>
                         <s:form action="eliminarFactura" method="post">
                             <s:submit name="eliminarFactura" key="submit_eliminarFactura"/>
-                            <s:hidden name="numFactura" value="%{#factura.id}"></s:hidden>
+                            <s:hidden name="numFactura" value="%{#factura.numFactura}"></s:hidden>
                         </s:form>
                     </td>                      
                     <td>
                         <s:form action="formModificarFactura" method="post">
                             <s:submit name="modificarFactura" key="submit_modificarFactura"/>
-                            <s:hidden name="numFactura" value="%{#factura.id}"></s:hidden>
+                            <s:hidden name="numFactura" value="%{#factura.numFactura}"></s:hidden>
                         </s:form>
                     </td>
                 </tr>
@@ -87,7 +87,7 @@
         <p> No existen facturas.</p>
     </s:else>
     <s:form action="volverVeterinario" method="post">
-        <s:submit name="volverVeterinario" ke="submit_volver"/>
+        <s:submit name="volverVeterinario" key="submit_volver"/>
     </s:form>
     <jsp:include page="../FOOTER.jsp" />
     

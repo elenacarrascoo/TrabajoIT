@@ -142,7 +142,7 @@ public class tratamientoAction extends ActionSupport {
                 tratamiento = new Tratamiento(this.getTipo(), fechaFormateada, this.getPrecio(), this.getResultados());
                 //dao.crearTratamiento(tratamiento);
                 citaDAO cDAO = new citaDAO();
-                this.getCita().setTratamiento(tratamiento);
+                c.setTratamiento(tratamiento);
                 daocita.actualizarCita(c);
                 
                 

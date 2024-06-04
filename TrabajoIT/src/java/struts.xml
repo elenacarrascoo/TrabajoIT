@@ -239,19 +239,15 @@
             <result name="success">/Factura/facturasVeterinario.jsp</result>
         </action>
         <action name="volverPropietario">
-            <result>/Propietario/propietario.jsp</result>
+            <result type="redirectAction">verFacturas</result>
         </action>
         
         <action name="volverVeterinario">
-            <result>/Veterinario/veterinarios.jsp</result>
+            <result type="redirectAction">consultaFacturas</result>
         </action>
         
         <action name="consultaFacturas" class="acciones.facturaAction" method="consultaFacturas">
             <result name="success">/Factura/facturasVeterinario.jsp</result>
-        </action>
- 
-        <action name="volverVeterinario">
-            <result>/Veterinario/veterinarios.jsp</result>
         </action>
         
     </package>
