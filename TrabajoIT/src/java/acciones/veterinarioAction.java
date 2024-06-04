@@ -191,6 +191,7 @@ public class veterinarioAction extends ActionSupport {
                 }
 
             case "LogOut":
+                session.clear();
                 return "salir";
 
             case "Volver":
