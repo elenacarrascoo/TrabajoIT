@@ -99,6 +99,7 @@ public class propietarioAction extends ActionSupport {
     }
 
     public String execute() throws Exception {
+        //Dar de alta a un propietario
         propietarioDAO pdao = new propietarioDAO();
         Propietario p = new Propietario(this.getDni(), this.getNombre(), this.getDireccion(), this.getTelefono(), this.getCorreo(), this.getInfoContactoAdicional(), this.getPassword());
         pdao.altaPropietario(p);
@@ -108,6 +109,7 @@ public class propietarioAction extends ActionSupport {
     public String listarPacientesPropietario() {
         Map<String, Object> session = ActionContext.getContext().getSession();
         pacienteDAO pDAO = new pacienteDAO();
+        //Coger propietario de la session y listar todos sus pacientes
         Propietario p = (Propietario) session.get("propietario");
         List<Paciente> listaPacientes = pDAO.obtenerPacientes(p);
         this.setListaPacientes(listaPacientes);

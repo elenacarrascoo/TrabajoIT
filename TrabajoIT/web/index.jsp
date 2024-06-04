@@ -17,7 +17,9 @@
         <div class="container-fluid pt-3 pb-3" style="min-height: 70vh">
             <div class="row mt-2 text-center">
                 <h1>¡BIENVENIDO A NUESTRO VETERINARIO!</h1>
+                <img src="FOTOS/UPOVET.jpg" width="900" height="700">
             </div>
+            
             <div class="row col-12 mt-5">
                 <div class="col-6 text-center">
                     <h2>¿Perteneces ya a UPOVET?</h2>

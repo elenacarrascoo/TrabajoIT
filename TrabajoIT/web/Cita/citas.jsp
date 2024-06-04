@@ -21,7 +21,7 @@
                 text-align: left;
             }
             table thead tr {
-                background-color: #009879;
+                background-color: #3C6E71;
                 color: #ffffff;
                 text-align: left;
             }
@@ -36,7 +36,7 @@
                 background-color: #f3f3f3;
             }
             table tbody tr:last-of-type {
-                border-bottom: 2px solid #009879;
+                border-bottom: 2px solid #3C6E71;
             }
             table tbody tr:hover {
                 background-color: #f1f1f1;

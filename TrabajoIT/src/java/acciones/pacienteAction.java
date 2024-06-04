@@ -139,13 +139,18 @@ public class pacienteAction extends ActionSupport {
         this.idPaciente = idPaciente;
     }
     
+    //Alta paciente
     public String execute() throws Exception {
+        
         Map<String, Object> session = ActionContext.getContext().getSession();
         Propietario prop = (Propietario) session.get("propietario");
         pacienteDAO pdao = new pacienteDAO(); 
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-mm-dd");
         Date fechaFormateada = formater.parse(this.getFechaNacimiento());
+        //Creación nuevo paciente con todos sus atributos
         Paciente p = new Paciente(prop, this.getNombre(), this.getEspecie(), this.getRaza(), this.getSexo(), Integer.parseInt(this.getEdad()), fechaFormateada);
+        
+        //Cambiar nombre foto y asociarla al paciente creado anteriormente
         if (this.getImage() != null) {
             String filePath = ServletActionContext.getServletContext().getRealPath("/FOTOS");
             System.out.println(filePath);
@@ -159,11 +164,14 @@ public class pacienteAction extends ActionSupport {
         }else{
             p.setFoto("/FOTOS/predeterminada.png");
         }
+        
+        //Dar de alta al paciente
         pdao.altaPaciente(p);
         return SUCCESS;
     }
     
     public String formModificarPaciente(){
+        //Meter el paciente a modificar en la session
         Map<String, Object> session = ActionContext.getContext().getSession();
         pacienteDAO pdao = new pacienteDAO();
         Paciente p = pdao.obtenerPaciente(this.getIdPaciente());
