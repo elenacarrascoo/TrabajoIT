@@ -94,11 +94,11 @@
         </s:if>
         <s:else>
             <p><s:text name="mensajeErrorCitas"/></p>
-            <s:form action="opcionesAdicionalesCita" method="post">
-                <s:submit name="boton" value="Volver"/>
-                <s:submit name="boton" value="LogOut"/>
-            </s:form>
         </s:else>
+        <s:form action="opcionesAdicionalesCita" method="post">
+            <s:submit name="boton" value="Volver"/>
+            <s:submit name="boton" value="LogOut"/>
+        </s:form>
             <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>
