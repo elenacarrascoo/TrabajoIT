@@ -68,7 +68,7 @@ public class facturaDAO {
         List<Factura> listadoCompleto = null;
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("from Factura");
+        Query q = session.createQuery("From Factura");
         listadoCompleto = (List<Factura>) q.list();
         tx.commit();
         return listadoCompleto;
