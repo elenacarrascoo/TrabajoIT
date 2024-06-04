@@ -212,7 +212,6 @@
             <result name="registro">/Tratamiento/tratamientoOk.jsp</result>
             <result name="retorno">/Veterinario/agenda.jsp</result>
             <result name="error">/Veterinario/agenda.jsp</result>
-            
         </action>
     </package>
     
