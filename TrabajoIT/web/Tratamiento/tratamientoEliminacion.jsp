@@ -13,12 +13,13 @@
         <title>JSP Page</title>
     </head>
     <body>
+          <jsp:include page="../HEADER.jsp" />
         <h1>El tratamiento ha sido eliminado satisfactoriamente</h1>
         
         <s:form name="Tratamiento" method="post">
             <s:submit name="boton" value="Volver a Opciones"/>
         </s:form>
         
-        
+         <jsp:include page="../FOOTER.jsp" />
     </body>
 </html>

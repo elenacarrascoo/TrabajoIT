@@ -35,8 +35,19 @@ public class tratamientoAction extends ActionSupport {
     private double precio;
     private String resultados;
     private List<Tratamiento> listaTratamientos;
-    private int idCita=0;
+    private int idCita = 0;
     private Date fechaFormateada;
+    private Date fechaFormateada1;
+
+    public Date getFechaFormateada1() {
+        return fechaFormateada1;
+    }
+
+    public void setFechaFormateada1(Date fechaFormateada1) {
+        this.fechaFormateada1 = fechaFormateada1;
+    }
+    
+    
 
     public List<Tratamiento> getListaTratamientos() {
         return listaTratamientos;
@@ -61,8 +72,6 @@ public class tratamientoAction extends ActionSupport {
     public void setIdTratamiento(int idTratamiento) {
         this.idTratamiento = idTratamiento;
     }
-
-   
 
     public Cita getCita() {
         return cita;
@@ -133,19 +142,18 @@ public class tratamientoAction extends ActionSupport {
         session.put("idCita", idCita);
         Cita c = daocita.obtenerCita(this.getIdCita());
         Tratamiento tratamiento = new Tratamiento();
-
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
         switch (boton) {
-            
+
             case "Registrar Tratamiento":
-                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+                // SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
                 fechaFormateada = formatoFecha.parse(this.getFecha());
                 tratamiento = new Tratamiento(this.getTipo(), fechaFormateada, this.getPrecio(), this.getResultados());
                 //dao.crearTratamiento(tratamiento);
                 citaDAO cDAO = new citaDAO();
                 c.setTratamiento(tratamiento);
                 daocita.actualizarCita(c);
-                
-                
+
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "registro";
 
@@ -158,11 +166,12 @@ public class tratamientoAction extends ActionSupport {
 
             case "Modificar":
                 tratamiento = (Tratamiento) session.get("tratamiento");
-                
-                if (tratamiento != null) {
 
+                if (tratamiento != null) {
+                    tratamiento = (Tratamiento) session.get("tratamiento");
                     tratamiento.setTipo(this.getTipo());
-                    tratamiento.setFecha(fechaFormateada);
+                    fechaFormateada1 = formatoFecha.parse(this.getFecha());
+                    tratamiento.setFecha(fechaFormateada1);
                     tratamiento.setPrecio(this.getPrecio());
                     tratamiento.setResultados(this.getResultados());
                     dao.actualizarTratamiento(tratamiento);
@@ -170,14 +179,17 @@ public class tratamientoAction extends ActionSupport {
                     return "modificacionCompletada";
 
                 }
+                
+            case "Volver a Opciones":
+                return "opciones";
 
             case "Eliminar":
-                idTratamiento = (int) session.get("idtratamiento");
+                
                 tratamiento = dao.obtenerTratamiento(idTratamiento);
                 dao.eliminarTratamiento(tratamiento);
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
 
-                return "eliminacion";
+                return "eliminacion_completada";
 
             case "Volver a Agenda":
                 return "retorno";
@@ -192,7 +204,6 @@ public class tratamientoAction extends ActionSupport {
         }
 
     }
-    
 
     public void validate() {
         // Validaciones para la acción de registro o modificación

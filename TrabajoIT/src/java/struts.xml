@@ -264,11 +264,11 @@
         </action>
 
         <action name="formAltaMedicamento" class="acciones.medicamentoAction">
-            <result>/Medicamento/altaMedicamento.jsp</result>
+            <result name="success">/Medicamento/altaMedicamento.jsp</result>
         </action>
         
         <action name="formActualizarMedicamento" class="acciones.medicamentoAction" method="formActualizarMedicamento">
-            <result>/Medicamento/actualizarMedicamento.jsp</result>
+            <result name="success">/Medicamento/actualizarMedicamento.jsp</result>
         </action>
 
         <action name="actualizarMedicamento" class="acciones.medicamentoAction" method="actualizarMedicamento">

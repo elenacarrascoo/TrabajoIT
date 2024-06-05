@@ -116,7 +116,6 @@
 
                                     <s:form action="Tratamiento" method="post">
 
-                                        <s:submit name="boton"  key="submit_eliminarTratamiento"/>
 
                                         <s:submit name="boton" value="Eliminar" />
 
