@@ -12,6 +12,7 @@ import static java.lang.Math.random;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -19,6 +20,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Cita;
 import modelo.Factura;
 import modelo.Historial;
@@ -54,9 +57,9 @@ public class citaAction extends ActionSupport {
     String hora;
     String motivo;
     String boton;
-    
+
     List<Cita> citasPendientes;
-    
+
     public int getIdCitaModificar() {
         return idCitaModificar;
     }
@@ -182,19 +185,20 @@ public class citaAction extends ActionSupport {
     }
 
     Random random = new Random();
+
     public String altaCita() throws ParseException {
         Map<String, Object> session = ActionContext.getContext().getSession();
-        
+
         citaDAO c = new citaDAO();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
         Date fechaFormateada = formatoFecha.parse(this.getFecha());
 
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
-        Date hora = formatoHora.parse(this.getHora()); 
-            
+        Date hora = formatoHora.parse(this.getHora());
+
         veterinarioDAO vdao = new veterinarioDAO();
         Veterinario v = vdao.obtenerVeterinarioNombre(this.getVeterinarioDisponible());
-        
+
         Random random = new Random();
         int importeFactura = random.nextInt((99 - 0) + 1) + 0;
         Factura f = new Factura((Propietario) session.get("propietario"), new Date(), importeFactura);
@@ -202,86 +206,80 @@ public class citaAction extends ActionSupport {
         fdao.altaFactura(f);
         Cita cita = new Cita(f, v, fechaFormateada, hora, this.getMotivo());
         c.altaCita(cita);
-        
-        
+
         pacienteDAO pdao = new pacienteDAO();
         Paciente paciente = pdao.obtenerPaciente((int) session.get("idPaciente"));
         Historial h = new Historial(cita, paciente);
         historialDAO hdao = new historialDAO();
         hdao.altaHistorial(h);
-        
-        
+
         Date fechaHoraActual = new Date();
-        
+
         SimpleDateFormat formatoF = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat formatoH = new SimpleDateFormat("HH:mm:ss");
 
         String fechaActualStr = formatoF.format(fechaHoraActual); // Solo la fecha
         String horaActualStr = formatoH.format(fechaHoraActual); // Solo la hora
-        
-        Date fechaActual = formatoFecha.parse(fechaActualStr); 
-        Date horaActual = formatoHora.parse(horaActualStr); 
-        
-        
+
+        Date fechaActual = formatoFecha.parse(fechaActualStr);
+        Date horaActual = formatoHora.parse(horaActualStr);
+
         List<Cita> citasPendientes = c.obtenerCitas(paciente, fechaActual, horaActual);
         this.setCitasPendientes(citasPendientes);
-        
-        
-        
+
         Propietario p = (Propietario) session.get("propietario");
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
         String fechaString = formater.format(cita.getFecha());
         SimpleDateFormat formaterHora = new SimpleDateFormat("HH:mm:ss");
         String horaString = formaterHora.format(cita.getHora());
         enviarCorreo(p.getCorreo(), fechaString, horaString, cita.getMotivo(), importeFactura);
-        
+
         session.remove("idPaciente");
         return SUCCESS;
     }
-    
-    public String opciones(){
-        if(boton.equalsIgnoreCase("volver")){
+
+    public String opciones() {
+        if (boton.equalsIgnoreCase("volver")) {
             return "propietarioPaciente";
-        }else if(boton.equalsIgnoreCase("volver")){
+        } else if (boton.equalsIgnoreCase("volver")) {
             return "salir";
         }
         return SUCCESS;
     }
-    
-    public String obtenerVeterinarios(){
+
+    public String obtenerVeterinarios() {
         veterinarioDAO vDAO = new veterinarioDAO();
-        setVeterinariosDisponibles(vDAO.obtenerCompañeros());  
+        setVeterinariosDisponibles(vDAO.obtenerCompañeros());
         return SUCCESS;
     }
 
     public String citasPendientes() throws ParseException {
         //Map<String, Object> session = ActionContext.getContext().getSession();
         citaDAO c = new citaDAO();
-        
+
         Date fechaHoraActual = new Date();
-        
+
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
 
         String fechaActualStr = formatoFecha.format(fechaHoraActual); // Solo la fecha
         String horaActualStr = formatoHora.format(fechaHoraActual); // Solo la hora
-        
-        Date fechaActual = formatoFecha.parse(fechaActualStr); 
-        Date horaActual = formatoHora.parse(horaActualStr);   
-        
+
+        Date fechaActual = formatoFecha.parse(fechaActualStr);
+        Date horaActual = formatoHora.parse(horaActualStr);
+
         pacienteDAO pdao = new pacienteDAO();
         Paciente p = pdao.obtenerPaciente(this.getPacienteConsultar());
-        
-        
+
         citaDAO cdao = new citaDAO();
         List<Cita> citasPendientes = cdao.obtenerCitas(p, fechaActual, horaActual);
         this.setCitasPendientes(citasPendientes);
-        
+
         return SUCCESS;
     }
 
     public String modificarCita() throws ParseException {
-        
+
         citaDAO c = new citaDAO();
         Cita citaModificar = c.obtenerCita(this.getIdCitaModificar());
 
@@ -304,13 +302,12 @@ public class citaAction extends ActionSupport {
         c.bajaCita(citaEliminar);
         return SUCCESS;
     }
-    
 
     public void validate() {
         String actionName = ActionContext.getContext().getName();
 
         if (actionName.equals("altaCita") || actionName.equals("modificarCita")) {
-            
+
             if (this.getFecha().equals("")) {
                 addFieldError("fecha", getText("fecha.requerido"));
             } else {
@@ -340,15 +337,52 @@ public class citaAction extends ActionSupport {
                 addFieldError("motivo", getText("motivo.requerido"));
             }
 
+            veterinarioDAO vdao = new veterinarioDAO();
+            Veterinario v = vdao.obtenerVeterinarioNombre(this.getVeterinarioDisponible());
+            List<Cita> citasVeterinario = vdao.obtenerCitas(v.getDni());
+
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+            boolean enc=false;
+            try {
+                for (Cita cita : citasVeterinario) {
+                    System.out.println(cita.getFecha());
+                    System.out.println(formatoFecha.parse(this.getFecha()));
+                    if (cita.getFecha().equals(formatoFecha.parse(this.getFecha()))) {
+                        
+                        Date hora = cita.getHora();
+                        Date horaCita = formatoHora.parse(this.getHora());
+
+                        long diferenciaEnMilisegundos = Math.abs(hora.getTime() - horaCita.getTime());
+                        long diferenciaEnMinutos = diferenciaEnMilisegundos / (1000 * 60);
+
+                        System.out.println(diferenciaEnMinutos);
+
+                        if (diferenciaEnMinutos < 30) {
+                            enc=true;
+                        }
+
+                    }
+
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(citaAction.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(enc){
+                addFieldError("hora", "Veterinario ocupado en esa hora. Pruebe media hora mas tarde");
+            }
+            
         }
+        veterinarioDAO vdao = new veterinarioDAO();
+        List<String> veterinarios = vdao.listadoVeterinarios();
+        this.setVeterinarios(veterinarios);
+
     }
 
     private static void enviarCorreo(java.lang.String destinatario, java.lang.String fecha, java.lang.String hora, java.lang.String motivo, int importeFactura) {
         misservicios.CorreoWS_Service service = new misservicios.CorreoWS_Service();
         misservicios.CorreoWS port = service.getCorreoWSPort();
         port.enviarCorreo(destinatario, fecha, hora, motivo, importeFactura);
-    }   
+    }
 
-
-    
 }

@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Citas</title>
+        <s:head/>
         <style>
             table {
                 width: 100%;
@@ -72,8 +73,8 @@
                             <td><s:property value="#cita.hora"/></td>
                             <td><s:property value="#cita.motivo"/></td>
                             <td><s:property value="#cita.veterinario.dni"/></td>
-                            <td><s:property value="#cita.tratamiento.id"/></td>
-                            <td><s:property value="#cita.medicamento.id"/></td>
+                            <td><s:property value="#cita.medicamento.nombre" /></td>
+                            <td><s:property value="#cita.tratamiento.tipo" /></td>
                             <td><s:property value="#cita.factura.numFactura"/></td>
                             <td>
                                 <s:form action="actualizarCita" method="post">
