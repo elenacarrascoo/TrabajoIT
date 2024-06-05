@@ -161,11 +161,13 @@ public class tratamientoAction extends ActionSupport {
                 listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "verTratamientos";
 
-            case "Modificar_Tratamiento":
+            case "Modificar":
                 return "modificacion";
 
-            case "Modificar":
-                tratamiento = (Tratamiento) session.get("tratamiento");
+            case "Modificacion":
+                //session.put("tratamiento", tratamiento);
+                //tratamiento = (Tratamiento) session.get("tratamiento");
+                tratamiento = dao.obtenerTratamiento(idTratamiento);
 
                 if (tratamiento != null) {
                     tratamiento = (Tratamiento) session.get("tratamiento");

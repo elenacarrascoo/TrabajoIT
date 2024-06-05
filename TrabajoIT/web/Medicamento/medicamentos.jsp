@@ -32,7 +32,7 @@
                             <td><s:property value="medicamentos.fechaCaducidad"/></td>
                             <td>
                                 <s:form action="eliminarMedicamento" method="post">
-                                    <s:hidden name="idMedicamentoEliminar" value="%{#medicamentos.id}"/>
+                                    <s:hidden name="idMedicamentoEliminar" value="%{#medicamento.id}"/>
                                     <s:submit action="eliminarMedicamento" key="submit_eliminarMedicamento"/>
                                 </s:form>
                                 <s:form action="formActualizarMedicamento" method="post">

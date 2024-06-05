@@ -60,7 +60,8 @@
                                 <tr>
                                     <td colspan="2">
                                         <div align="right">
-                                            <s:submit name="boton" value="Modificar"/>
+                                            <s:submit name="boton" value="Modificacion"/>
+                                            <s:hidden name ="idTratamiento" value="%{id}"></s:hidden>
                                             </div>
                                         </td>
                                     </tr>

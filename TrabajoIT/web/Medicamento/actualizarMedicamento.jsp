@@ -15,10 +15,11 @@
     <body>
         <jsp:include page="../HEADER.jsp" />
         <h1>Formulario de Actualización de Medicamento</h1>
-        <s:form action="medicamentoActions" method="actualizarMedicamento">
+        
+        <s:form action="actualizarMedicamento" method="post">
             <s:textfield name="nombre" label="Nombre" required="true"/>
             <s:textfield name="fechaCaducidad" label="Fecha de Caducidad" required="true"/>
-            <s:submit  name="Enviar" key="actualizarMedicamento"/>
+            <s:submit  name="Enviar" value="Actualizar medicamento" key="actualizarMedicamento"/>
         </s:form>
         <jsp:include page="../FOOTER.jsp" />
     </body>

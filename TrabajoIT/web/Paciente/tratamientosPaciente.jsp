@@ -110,8 +110,8 @@
                                 <td><s:property value="#tratamiento.resultados" /></td>
                                 <td>
                                     <s:form action="Tratamiento" method="post">
-                                        <s:submit name="boton" value ="Modificar_Tratamiento" />
-                                        <s:hidden name="idTratamiento" value="%{#tratamiento.id}"/> 
+                                        <s:submit name="boton" value ="Modificar" />
+                                        <s:hidden name="idTratamiento" value="%{tratamiento.id}"/> 
                                     </s:form>
 
                                     <s:form action="Tratamiento" method="post">

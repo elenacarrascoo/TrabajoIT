@@ -13,7 +13,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import modelo.Cita;
+import modelo.HibernateUtil;
 import modelo.Medicamento;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import persistencia.citaDAO;
 import persistencia.medicamentoDAO;
 
@@ -22,10 +25,10 @@ import persistencia.medicamentoDAO;
  * @author ecarr
  */
 public class medicamentoAction extends ActionSupport {
-    
+
     public medicamentoAction() {
     }
-    
+
     private String nombre;
     private String fechaCaducidad;
     private int idCita;
@@ -34,7 +37,16 @@ public class medicamentoAction extends ActionSupport {
     private int idMedicamentoModificar;
     private String medicamento;
     private String boton;
-    
+    private Date fechaFormateada;
+
+    public Date getFechaFormateada() {
+        return fechaFormateada;
+    }
+
+    public void setFechaFormateada(Date fechaFormateada) {
+        this.fechaFormateada = fechaFormateada;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -98,7 +110,7 @@ public class medicamentoAction extends ActionSupport {
     public void setIdMedicamentoModificar(int idMedicamentoModificar) {
         this.idMedicamentoModificar = idMedicamentoModificar;
     }
-    
+
     public String execute() throws Exception {
         Map<String, Object> session = ActionContext.getContext().getSession();
         citaDAO cdao = new citaDAO();
@@ -106,8 +118,8 @@ public class medicamentoAction extends ActionSupport {
         session.put("cita", c);
         return SUCCESS;
     }
-    
-    public String altaMedicamento() throws ParseException{
+
+    public String altaMedicamento() throws ParseException {
         Map<String, Object> session = ActionContext.getContext().getSession();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
         Date fechaFormateada = formatoFecha.parse(this.getFechaCaducidad());
@@ -121,26 +133,33 @@ public class medicamentoAction extends ActionSupport {
         session.remove("cita");
         return SUCCESS;
     }
-    
-    public String formActualizarMedicamento(){
+
+    public String formActualizarMedicamento() {
         Map<String, Object> session = ActionContext.getContext().getSession();
         medicamentoDAO mdao = new medicamentoDAO();
         Medicamento m = mdao.obtenerMedicamento(this.idMedicamentoModificar);
         session.put("medicamentoModificar", m);
         return SUCCESS;
     }
-    
-    public String actualizarMedicamento() throws ParseException{
+
+    public String actualizarMedicamento() throws ParseException {
         Map<String, Object> session = ActionContext.getContext().getSession();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
-        Date fechaFormateada = formatoFecha.parse(this.getFechaCaducidad());
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+        fechaFormateada = formatoFecha.parse(this.getFechaCaducidad());
+        medicamentoDAO mdao = new medicamentoDAO();
+        Medicamento m = mdao.obtenerMedicamento(this.idMedicamentoModificar);
+        session.put("medicamentoModificar", m);
         medicamentoDAO daoM = new medicamentoDAO();
-        Medicamento m = (Medicamento) session.get("medicamentoModificar");
-        m.setNombre(this.getNombre());
-        m.setFechaCaducidad(fechaFormateada);
-        daoM.actualizarMedicamento(m);
+        m = (Medicamento) session.get("medicamentoModificar");
+        if (m != null) {
+            m.setNombre(this.getNombre());
+            m.setFechaCaducidad(fechaFormateada);
+            daoM.actualizarMedicamento(m);
+            medicamentos = daoM.obtenerMedicamentos();
+        }
         return SUCCESS;
     }
+
     /* 
     
     public String modificarMedicamento() throws ParseException{
@@ -155,23 +174,26 @@ public class medicamentoAction extends ActionSupport {
         medicamentos = daoM.obtenerMedicamentos();
         return SUCCESS;
     }
-    */
-    public String eliminarMedicamento() throws ParseException{
+     */
+   public String eliminarMedicamento() throws ParseException{
         medicamentoDAO mDAO = new medicamentoDAO();
         Medicamento m = mDAO.obtenerMedicamento(getIdMedicamentoEliminar());
-        mDAO.bajaMedicamento(m);
+        if (m != null) {
+        mDAO.eliminarMedicamento(m);
         medicamentos = mDAO.obtenerMedicamentos();
+        }
         return SUCCESS;
-    }
-    
-    public String opcionesVolver(){
-        if(boton.equalsIgnoreCase("volver")){
+    }  
+   
+ 
+
+    public String opcionesVolver() {
+        if (boton.equalsIgnoreCase("volver")) {
             return "agenda";
-        }else if(boton.equalsIgnoreCase("logout")){
+        } else if (boton.equalsIgnoreCase("logout")) {
             return "salir";
         }
         return SUCCESS;
     }
-    
-    
+
 }
