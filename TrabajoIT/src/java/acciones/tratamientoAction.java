@@ -35,7 +35,7 @@ public class tratamientoAction extends ActionSupport {
     private double precio;
     private String resultados;
     private List<Tratamiento> listaTratamientos;
-    private int idCita = 0;
+    private int idCita;
     private Date fechaFormateada;
     private Date fechaFormateada1;
 
@@ -136,7 +136,7 @@ public class tratamientoAction extends ActionSupport {
         tratamientoDAO dao = new tratamientoDAO();
         citaDAO daocita = new citaDAO();
 
-        HttpServletRequest request = ServletActionContext.getRequest();
+        //HttpServletRequest request = ServletActionContext.getRequest();
         Map<String, Object> session = ActionContext.getContext().getSession();
         //session.put("idCita", idCita);
         session.put("idCita", idCita);
@@ -149,12 +149,12 @@ public class tratamientoAction extends ActionSupport {
                 // SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
                 fechaFormateada = formatoFecha.parse(this.getFecha());
                 tratamiento = new Tratamiento(this.getTipo(), fechaFormateada, this.getPrecio(), this.getResultados());
-                //dao.crearTratamiento(tratamiento);
-                citaDAO cDAO = new citaDAO();
-                c.setTratamiento(tratamiento);
-                daocita.actualizarCita(c);
-
-                listaTratamientos = dao.obtenerTodosLosTratamientos();
+                dao.crearTratamiento(tratamiento);
+                Cita cSession = (Cita) session.get("c");
+                cSession.setTratamiento(tratamiento);
+                daocita.actualizarCita(cSession);
+                session.remove("c");
+                //listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "registro";
 
             case "Consultar Tratamientos":

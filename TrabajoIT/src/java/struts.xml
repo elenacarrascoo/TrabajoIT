@@ -210,7 +210,7 @@
             <result name="volver">/Veterinario/veterinario.jsp</result>
             <result name="salir">/login.jsp</result>
             <result name="registro">/Tratamiento/tratamientoOk.jsp</result>
-            <result name="retorno">/Veterinario/agenda.jsp</result>
+            <result name="retorno">/Veterinario/veterinario.jsp</result>
             <result name="error">/Veterinario/agenda.jsp</result>
             <result name="opciones">/Veterinario/veterinario.jsp</result>
             

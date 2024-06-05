@@ -40,14 +40,14 @@ public class veterinarioAction extends ActionSupport {
     private List<Cita> citasVeterinario;
     private List<Veterinario> listaVeterinarios;
     private String dniVeterinario;
-    private String idCita;
+    private int idCita;
     private Medicamento medicamentos;
 
-    public String getIdCita() {
+    public int getIdCita() {
         return idCita;
     }
 
-    public void setIdCita(String idCita) {
+    public void setIdCita(int idCita) {
         this.idCita = idCita;
     }
 
@@ -153,11 +153,13 @@ public class veterinarioAction extends ActionSupport {
         System.out.println("Valor de boton: " + boton); // Para depuración
         veterinarioDAO dao = new veterinarioDAO();
         
-        HttpServletRequest request = ServletActionContext.getRequest();
-        idCita = request.getParameter("idCita");
+        //HttpServletRequest request = ServletActionContext.getRequest();
+        //idCita = request.getParameter("idCita");
+        citaDAO cdao = new citaDAO();
+        Cita c = cdao.obtenerCita(this.getIdCita());
         
         Map<String, Object> session = ActionContext.getContext().getSession();
-        session.put("idCita",idCita);
+        session.put("c",c);
         
         switch (boton) {
             case "Modificar Datos":
@@ -219,9 +221,8 @@ public class veterinarioAction extends ActionSupport {
                 return "actualizarMedicamento";
 
             case "Gestión Medicamentos":
-                citaDAO cdao = new citaDAO();
-                Cita c = cdao.obtenerCita(Integer.parseInt(idCita));
-                Medicamento m = c.getMedicamento();
+                Cita cita = cdao.obtenerCita(this.getIdCita());
+                Medicamento m = cita.getMedicamento();
                 this.setMedicamentos(m);
                 return "gestionMedicamentos";
 
