@@ -3,7 +3,6 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <action name="acercaDeNosotros">
             <result>/acercaDeNosotros.jsp</result>
@@ -277,7 +276,6 @@
         
         <action name="opcionesAdicionalesMedicamento" class="acciones.medicamentoAction" method="opcionesVolver">
             <result name="agenda">/Veterinario/agenda.jsp</result>
-            <!--<result name="agenda"  type="redirectAction">consultarAgenda</result>-->
             <result name="salir">/index.jsp</result>   
         </action> 
     </package>

@@ -1,27 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import modelo.Cita;
 import modelo.Factura;
-import modelo.Paciente;
 import modelo.Propietario;
 import persistencia.facturaDAO;
-import persistencia.pacienteDAO;
-import persistencia.propietarioDAO;
 
 /**
  *

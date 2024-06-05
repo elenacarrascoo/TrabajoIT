@@ -1,23 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package acciones;
 
-import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.servlet.http.HttpServletRequest;
 import modelo.*;
-import org.apache.struts2.ServletActionContext;
 import persistencia.citaDAO;
-import persistencia.medicamentoDAO;
 import persistencia.veterinarioDAO;
 
 /**

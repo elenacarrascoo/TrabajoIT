@@ -1,21 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package acciones;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import static java.lang.Math.random;
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +35,7 @@ public class citaAction extends ActionSupport {
     List<Historial> historialConsultar;
 
     int idPaciente;
-    //No estoy seguro de que asi
+
     Veterinario veterinario;
     Veterinario veterinarioSeleccionado;
     List<Veterinario> veterinariosDisponibles;
@@ -254,9 +243,6 @@ public class citaAction extends ActionSupport {
     }
 
     public String citasPendientes() throws ParseException {
-        //Map<String, Object> session = ActionContext.getContext().getSession();
-        citaDAO c = new citaDAO();
-
         Date fechaHoraActual = new Date();
 
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");

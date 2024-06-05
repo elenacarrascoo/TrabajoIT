@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -13,10 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import modelo.Cita;
-import modelo.HibernateUtil;
 import modelo.Medicamento;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import persistencia.citaDAO;
 import persistencia.medicamentoDAO;
 
@@ -137,7 +129,7 @@ public class medicamentoAction extends ActionSupport {
     public String formActualizarMedicamento() {
         Map<String, Object> session = ActionContext.getContext().getSession();
         medicamentoDAO mdao = new medicamentoDAO();
-        Medicamento m = mdao.obtenerMedicamento(this.idMedicamentoModificar);
+        Medicamento m = mdao.obtenerMedicamento(this.getIdMedicamentoModificar());
         session.put("medicamentoModificar", m);
         return SUCCESS;
     }
@@ -145,36 +137,15 @@ public class medicamentoAction extends ActionSupport {
     public String actualizarMedicamento() throws ParseException {
         Map<String, Object> session = ActionContext.getContext().getSession();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-        fechaFormateada = formatoFecha.parse(this.getFechaCaducidad());
         medicamentoDAO mdao = new medicamentoDAO();
-        Medicamento m = mdao.obtenerMedicamento(this.idMedicamentoModificar);
-        session.put("medicamentoModificar", m);
-        medicamentoDAO daoM = new medicamentoDAO();
-        m = (Medicamento) session.get("medicamentoModificar");
-        if (m != null) {
-            m.setNombre(this.getNombre());
-            m.setFechaCaducidad(fechaFormateada);
-            daoM.actualizarMedicamento(m);
-            medicamentos = daoM.obtenerMedicamentos();
-        }
+        Medicamento m = (Medicamento) session.get("medicamentoModificar");
+        m.setNombre(this.getNombre());
+        m.setFechaCaducidad(formatoFecha.parse(this.getFechaCaducidad()));
+        mdao.actualizarMedicamento(m);
+        session.remove("medicamentoModificar");
         return SUCCESS;
     }
 
-    /* 
-    
-    public String modificarMedicamento() throws ParseException{
-        Map<String, Object> session = ActionContext.getContext().getSession();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
-        Date fechaFormateada = formatoFecha.parse(this.getFechaCaducidad());
-        medicamentoDAO daoM = new medicamentoDAO();
-        Medicamento m = (Medicamento) session.get("pacienteAModificar");
-        m.setNombre(this.getNombre());
-        m.setFechaCaducidad(fechaFormateada);
-        daoM.actualizarMedicamento(m);
-        medicamentos = daoM.obtenerMedicamentos();
-        return SUCCESS;
-    }
-     */
    public String eliminarMedicamento() throws ParseException{
         medicamentoDAO mDAO = new medicamentoDAO();
         Medicamento m = mDAO.obtenerMedicamento(getIdMedicamentoEliminar());

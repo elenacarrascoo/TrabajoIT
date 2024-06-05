@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package acciones;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
@@ -13,8 +8,6 @@ import java.util.Map;
 import modelo.Cita;
 import modelo.Historial;
 import modelo.Paciente;
-import modelo.Propietario;
-import modelo.Veterinario;
 import persistencia.citaDAO;
 import persistencia.historialDAO;
 import persistencia.pacienteDAO;
@@ -102,39 +95,12 @@ public class historialAction extends ActionSupport {
        historialDAO h = new historialDAO();
        citaDAO cdao = new citaDAO();
         Paciente p = h.obtenerPacienteIdCita(cdao.obtenerCita(this.getIdCita()));
-       //pacienteDAO p = new pacienteDAO();
        session.put("paciente",p);
-       //Paciente paciente = p.obtenerPaciente(id);
        List<Historial> historialPaciente = h.obtenerHistorialPaciente(p);
        this.setHistorialPaciente(historialPaciente);
        }
        return SUCCESS;
-    }
-    
-    public String modificarHistorial(){
-       //Map<String, Object> session = ActionContext.getContext().getSession();
-       historialDAO h = new historialDAO();
-       pacienteDAO p = new pacienteDAO();
-       Paciente paciente = p.obtenerPaciente(this.getPacienteConsultar());
-       List<Historial> historialModificar = h.obtenerHistorialPaciente(paciente);
-       //No se si es ese id el que hay quye pasarle
-       
-       return SUCCESS;
-    }
-    
-    public String eliminarHistorial(){
-       //Map<String, Object> session = ActionContext.getContext().getSession();
-       historialDAO daoh = new historialDAO();
-       pacienteDAO p = new pacienteDAO();
-       Paciente paciente = p.obtenerPaciente(this.getPacienteConsultar());
-       List<Historial> historialEliminar = daoh.obtenerHistorialPaciente(paciente);
-       for (int i = 0; i < historialEliminar.size(); i++) {
-            daoh.bajaHistorial(historialEliminar.get(i));
-        }
-       //No se si es ese id el que hay quye pasarle
-       return SUCCESS;
-    }
-    
+    } 
 
     
 }

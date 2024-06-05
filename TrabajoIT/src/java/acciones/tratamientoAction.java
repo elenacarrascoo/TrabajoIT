@@ -1,23 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.servlet.http.HttpServletRequest;
 import modelo.Cita;
 import modelo.Tratamiento;
-import org.apache.struts2.ServletActionContext;
 import persistencia.citaDAO;
 import persistencia.tratamientoDAO;
 
@@ -136,9 +128,7 @@ public class tratamientoAction extends ActionSupport {
         tratamientoDAO dao = new tratamientoDAO();
         citaDAO daocita = new citaDAO();
 
-        //HttpServletRequest request = ServletActionContext.getRequest();
         Map<String, Object> session = ActionContext.getContext().getSession();
-        //session.put("idCita", idCita);
         session.put("idCita", idCita);
         Cita c = daocita.obtenerCita(this.getIdCita());
         Tratamiento tratamiento = new Tratamiento();
@@ -146,7 +136,6 @@ public class tratamientoAction extends ActionSupport {
         switch (boton) {
 
             case "Registrar Tratamiento":
-                // SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
                 fechaFormateada = formatoFecha.parse(this.getFecha());
                 tratamiento = new Tratamiento(this.getTipo(), fechaFormateada, this.getPrecio(), this.getResultados());
                 dao.crearTratamiento(tratamiento);
@@ -154,7 +143,6 @@ public class tratamientoAction extends ActionSupport {
                 cSession.setTratamiento(tratamiento);
                 daocita.actualizarCita(cSession);
                 session.remove("c");
-                //listaTratamientos = dao.obtenerTodosLosTratamientos();
                 return "registro";
 
             case "Consultar Tratamientos":
@@ -165,8 +153,6 @@ public class tratamientoAction extends ActionSupport {
                 return "modificacion";
 
             case "Modificacion":
-                //session.put("tratamiento", tratamiento);
-                //tratamiento = (Tratamiento) session.get("tratamiento");
                 tratamiento = dao.obtenerTratamiento(idTratamiento);
 
                 if (tratamiento != null) {

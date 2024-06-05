@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package persistencia;
 
 import java.util.List;
@@ -65,13 +60,4 @@ public class pacienteDAO {
         return listadoCompleto;
     }
 
-/*
-    public Paciente obtenerPacienteNumHistorial(int numHistorialCita) {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("From Paciente where numHistorial = " + numHistorialCita);
-        Paciente p = (Paciente) q.uniqueResult();
-        tx.commit();
-        return p;
-    }*/
 }
