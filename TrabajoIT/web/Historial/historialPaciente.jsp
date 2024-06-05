@@ -52,9 +52,8 @@
         Id del Paciente: <s:property value="historialPaciente[0].paciente.id"/> 
         <br>
         Historial de Citas: 
-        <s:if test="%{!historialPaciente.isEmpty()}">
-            <table>
-                <thead>
+        <s:if test="%{historialPaciente != null && !historialPaciente.isEmpty()}">
+            
                 <table>
                     <thead>
                         <tr>

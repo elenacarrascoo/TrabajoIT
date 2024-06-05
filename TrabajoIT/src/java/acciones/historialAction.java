@@ -25,20 +25,22 @@ import persistencia.pacienteDAO;
  */
 public class historialAction extends ActionSupport {
  
-    int id;
+    int idCita;
     int historialConsultar;
     int pacienteConsultar;
     private List<Cita> listaCitas;
     private List<Historial> historialPaciente;
     private String boton;
 
-    public int getId() {
-        return id;
+    public int getIdCita() {
+        return idCita;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCita(int idCita) {
+        this.idCita = idCita;
     }
+
+    
 
     public int getHistorialConsultar() {
         return historialConsultar;
@@ -94,11 +96,18 @@ public class historialAction extends ActionSupport {
     
     public String verHistorialPaciente(){
        Map<String, Object> session = ActionContext.getContext().getSession();
+       Integer id = (Integer) session.get("id");
+       
+       if(id != null){
        historialDAO h = new historialDAO();
-       pacienteDAO p = new pacienteDAO();
-       Paciente paciente = p.obtenerPaciente(this.getPacienteConsultar());
-       List<Historial> historialPaciente = h.obtenerHistorialPaciente(paciente);
+       citaDAO cdao = new citaDAO();
+        Paciente p = h.obtenerPacienteIdCita(cdao.obtenerCita(this.getIdCita()));
+       //pacienteDAO p = new pacienteDAO();
+       session.put("paciente",p);
+       //Paciente paciente = p.obtenerPaciente(id);
+       List<Historial> historialPaciente = h.obtenerHistorialPaciente(p);
        this.setHistorialPaciente(historialPaciente);
+       }
        return SUCCESS;
     }
     
